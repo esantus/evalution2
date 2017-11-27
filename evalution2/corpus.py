@@ -1,178 +1,347 @@
 """Functions to generate annotated corpora from raw text files.
 
-This module contains a set of functions that are used to generate the annotated gold dataset for model evaluation.
+An eval corpus is saved in a tsv file, and has the following structure:
+
+WORD	LEMMA	POS	INDEX	PARENT	DEP
+<text id="ukwac:http://observer.guardian.co.uk/osm/story/0,,1009777,00.html">
+<s>
+Hooligans	hooligan	NNS	1	4	NMOD
+
+This module further contains a set of functions that are used to generate the annotated gold dataset.
 
 Examples:
-    Convert a corpus into an eval corpus, which is a tsv containing the list of annotated words in the corpus.
-    >>> corpus = convert_corpus('../data/test_raw')
-    Fetch a list of words
-    >>> wlist = '..\data\\wl.csv'
-    We now create a lemma keyed dictionary which contains info for each entry in wlist.
-    >>> pprint((extract_statistics(corpus, wlist)[:2])
-    >>> pprint(pattern_search()[:2])
+    >>>
 """
 
-import codecs
-from pprint import pprint
+import collections
+import gzip
+import inspect
+import logging
+import os
 
-# TODO: fix this when packaged properly: from evaluation._corpus_helpers import *
-from _corpus_helpers import *
+import nltk
 
-
-def convert_corpus(corpus_fn, out_fn=None):
-    """Converts a raw text file into a tsv file with the columns in CORPUS_FIELDS.
-
-    Converts a raw text file into a tsv file with the following columns:
-    token, lemma, pos, index, parent, dep.
-    if is saved in a file named "processed_corpus.txt". More columns can be
-    defined and added in the future.
-
-    Args:
-        corpus_fn (str): path of the corpus.
-        out_fn (str): filename of output file. If None, write to $(corpus_fn)_eval.csv.
-    Returns: (str)
-        Name of the output file.
-
-    """
-
-    with codecs.open(out_fn, "w", "utf-8") as f_corpus:
-        # Loading Spacy's parser
-        parser = English()
-        # Sentences in a paragraph
-        sentences = []
-        for line in raw_corpus:
-            # Cleaning the line from links and similar
-            line = self.clean_line(line)
-            # Ignore empty lines
-            if line != "\n":
-                parsed_line = parser(line)
-
-        # Sentence breaker
-        for span in parsed_line.sents:
-            sentences.append([parsed_line[i] for i in range(span.start, span.end) if parsed_line[i] != "\n"])
-
-        for i in range(0, len(sentences)):
-            # BOS
-            f_corpus.write("<s>\n")
-            # Token, Lemma, POS, Index, Parent-Index, Dep
-            for token in sentences[i]:
-                f_corpus.write(
-                    token.orth_ + "\t" + token.lemma_.lower() + "\t" + token.pos_ + "\t" + str(token.i) + "\t" + (
-                        str(token.head.i) if token.head.i != 0 else "0") + "\t" + token.dep_ + "\n")
-        f_corpus.write("</s>\n")
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+#: Number of fields in the tsv corpus datafile.
+CORPUS_FIELDS = 6
+#: List of constants spelling out the separators
+TOKEN, LEMMA, POS, INDEX, PARENT, DEP = range(0, CORPUS_FIELDS)
 
 
-def extract_statistics(corpus_fn, wlist_fn, out_fn=None):
-    """Extracts statistical information for each word in wordlist and stores it in a dictionary.
+class OrderedCounter(collections.Counter, collections.OrderedDict):
+    pass
+
+
+def _cap_type(word: str):
+    """Returns a string describing the capitalization type of word.
 
     Args:
-        corpus_fn (str): path to the evalution2 corpus
-        wlist_fn (set of strings): file to be opened and processed.
+        word (string): the word to be analyzed
+
     Returns:
-        A dictionary with infornmation about each lemma. For example.
-
-        >>> pprint(extract_statistics(corpus_fn, wlist_fn))[0]
-        'church': {'cap': {'all': 0, 'first': 19, 'none': 169, 'others': 0},
-                'freq': 188,
-                'norm': {'church': 166, 'churches': 22},
-                'pos_dep': {'NNS_COORD': 3,
-                            'NNS_OBJ': 4,
-                            'NN_VMOD': 1, ...}}
+        A string indicating the capitalization of word: 'none', 'all', 'first' or 'others'
     """
 
+    functions = [str.islower, str.isupper, str.istitle]
+    for f in functions:
+        if f(word):
+            return f.__name__[2:]
+    return 'other'
+
+
+def _get_pattern_pairs(corpus, separator="\t"):
+    """Get a set of unique, symmetric word pairs from a file containing pairs of words.
+
+    Returns:
+        A set of pairs and their inverse. For example: {('the', 'a'), ('a', 'the'), ('for', 'be'), ('be', 'for')}
+    """
+
+    pattern_pairs = set()
+    with open(corpus, 'r') as pattern_reader:
+        for line in pattern_reader:
+            split_line = tuple(word.strip() for word in line.split(separator))
+            if len(split_line) == 2:
+                if not any(pair in pattern_pairs for pair in (split_line, split_line[::-1])):
+                    pattern_pairs.add(split_line)
+            else:
+                logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, corpus))
+    return pattern_pairs
+
+
+def _get_wlist(wlist_fn):
+    """"Generate a set of MWEs and a list of words from a file.
+
+    Args:
+        wlist_fn: a file that contains a list of words or MWEs.
+
+    Returns:
+        words, mwes: the set of MWEs and a list of words in wlist_fn.
+    """
     words = set()
     mwes = list()
     with open(wlist_fn, 'r', encoding='utf-8') as wlist_reader:
-        # words = set(line.strip() for line in wlist_reader if len(line.split(' ')) < 2)
         for line in wlist_reader:
             if len(line.split(' ')) < 2:
                 words.add(line.strip())
             else:
-                mwes.append(tuple(line.strip() for line in line.split(' ')))
-        print(mwes)
-    with codecs.open(out_fn, "w", "utf-8") as f_statistics:
-        # TODO: add support for MWEs
-        # Dictionaries for extracting collocations
-        ngram_win2_ppmi_slpd = {'word_freq': {}, 'tot_word_freq': 0, 'ngram_freq': {}, 'tot_ngram_freq': 0,
-                                'collocations': {}}
-        ngram_win3_ppmi_slpd = {'word_freq': {}, 'tot_word_freq': 0, 'ngram_freq': {}, 'tot_ngram_freq': 0,
-                                'collocations': {}}
-        statistics = {}
-        for sentence in get_sentences(corpus_fn):
-            pos = 0
-            all_tokens = [w[TOKEN] for w in sentence]
-            print(all_tokens)
-            for word in sentence:
-                lemma = word[LEMMA]
-                is_mwe = False
-                # Check for MWEs
-                for mwe in mwes:
-                    if lemma == mwe[0]:
-                        joined_mwe = ' '.join(mwe)
-                        # The window is the seq that goes from the index of the first matched word to the len of the MWE
-                        # Notice that MWEs are processed as tokens, not as lemmas.
-                        window = ' '.join(all_tokens[pos:pos + len(mwe)])
-                        if joined_mwe == window:
-                            lemma = joined_mwe
-                            pos += len(mwe) - 1
-                            is_mwe = True
-                            break
-                if lemma in words or is_mwe:
-                    # TODO: refactor using UserDict.__missing__ and d.update instead of this.
-                    print(lemma)
-                    if lemma not in statistics:
-                        # statistics[lemma] = StatsDict()
-                        statistics[lemma] = {}
-                        statistics[lemma]["freq"] = 0
-                        statistics[lemma]["norm"] = {}
-                        statistics[lemma]["cap"] = {cap: 0 for cap in ("first", "all", "none", "others")}
-                        statistics[lemma]["pos_dep"] = {}
-                    norm_token = lemma if is_mwe else word[TOKEN]
-                    # The normalized form of proper nouns is left capitalized.
-                    if not lemma.istitle():
-                        norm_token = norm_token.lower()
-                    if norm_token not in statistics[lemma]["norm"]:
-                        statistics[lemma]["norm"][norm_token] = 0
-                    if word[POS] + "_" + word[DEP] not in statistics[lemma]["pos_dep"]:
-                        statistics[lemma]["pos_dep"][word[POS] + "_" + word[DEP]] = 0
-
-                    statistics[lemma]["freq"] += 1
-                    statistics[lemma]["norm"][norm_token] += 1
-                    statistics[lemma]["cap"][cap_type(word[TOKEN])] += 1
-                    statistics[lemma]["pos_dep"][word[POS] + "_" + word[DEP]] += 1
-                    # ngram_win2_ppmi_slpd = update_collocations(sentence, ngram_win2_ppmi_slpd, words, 2,
-                    #                                           stopwords=True, lemma=True, pos=True, dep=True,
-                    #                                           PLMI=False)
-                    # ngram_win3_ppmi_slpd = update_collocations(sentence, ngram_win3_ppmi_slpd, words, 3,
-                    #                                           stopwords=True, lemma=True, pos=True, dep=True,
-                    #                                           PLMI=False)
-                pos += 1
-            pprint(statistics)
-            break
-        # pprint(statistics['church'])
-        return statistics
+                mwes.append(list(word.strip() for word in line.split(' ')))
+    return words, mwes
 
 
-def pattern_search(pattern):
+def _get_sentences(corpus_fn: str, check_corpus=False) -> list:
     """
-    pattern_search is useful to find patterns in the corpus, such as those
-    that link two words. this function returns the pattern as list of tuples,
-    each of which containing all the csv fields in the corpus.
+    Yield all the sentences in an eval corpus file.
 
     Args:
-        pattern (strings): pattern, written as a csv string containing the
-        following elements: column=value, quantifiers (i.e., "*+?{}[]").
+        corpus_fn (str): path to the file containing the corpus.
+        check_corpus (bool): if True, print corpus warnings
+    Yields:
+        a list of tuples representing a sentence in the corpus.
+    """
+
+    s = []
+    line_no = 1
+    with _open_corpus(corpus_fn) as corpus:
+        for line in corpus:
+            # The header is read in open_corpus, so we start from line 2
+            line_no += 1
+            # Ignore start and end of DOC
+            if '<text' in line or '</text' in line or '<s>' in line:
+                continue
+            # Yield at the end of SENTENCE
+            elif '</s>' in line:
+                yield s
+                s = []
+            # Append all TOKENS
+            else:
+                s_line = line.split()
+                # only append valid lines
+                if len(s_line) == CORPUS_FIELDS:
+                    word, lemma, pos, index, parent, dep = line.split()
+                    s.append((word, lemma, pos, int(index), int(parent), dep))
+                else:
+                    if check_corpus:
+                        logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
+
+
+def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
+    """Open an eval corpus and return a file reader.
+
+      :param corpus_fn: path to the corpus filename.
+      :param encoding: specify the encoding of the file
+      :return: a file reader of the corpus.
+    """
+
+    if os.path.basename(corpus_fn).endswith('.gz'):
+        corpus = gzip.open(corpus_fn, 'r', encoding=encoding)
+    else:
+        corpus = open(corpus_fn, 'r', encoding=encoding)
+
+    if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
+        corpus.close()
+        raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
+                         "convert_corpus(corpus) to create an evalution2 corpus" % corpus_fn)
+    return corpus
+
+
+def _sort_ngram(colloc):
+    """
+    __sort_ngram return the sorted dictionary
+
+    Args:
+        colloc (dictionary of strings): dictionary containing the ngrams and their frequency
 
     Returns:
-        It yields the file and offsets of where to find the pattern.
+        colloc (dictionary): sorted dictionary
     """
-    pass
+
+    return sorted([(ngram, colloc[ngram]) for ngram in colloc], key=lambda x: x[1], reverse=True)
+
+
+def extract_statistics(sentence, words, mwes, statistics):
+    """Extracts statistical information for each word in words and mwes and stores it in w_stats.
+
+    Returns:
+        True if the dictionary was updated sucessfully.
+    """
+    pos = 0
+    all_tokens = [w[TOKEN] for w in sentence]
+    for word in sentence:
+        c_word = word[TOKEN]
+        is_mwe = False
+        # Check for MWEs
+        for mwe in mwes:
+            if c_word == mwe[0]:
+                joined_mwe = ' '.join(mwe)
+                # The window is the seq that goes from the index of the first matched word to the len of the MWE
+                window = ' '.join(all_tokens[pos:pos + len(mwe)])
+                if joined_mwe == window:
+                    c_word = joined_mwe
+                    pos += len(mwe) - 1
+                    is_mwe = True
+                    break
+        # MWEs are processed as tokens, singleton as lemmas.
+        if not is_mwe:
+            c_word = word[LEMMA]
+        if c_word in words or is_mwe:
+            if c_word not in statistics:
+                statistics[c_word] = {}
+                statistics[c_word]["freq"] = 0
+                statistics[c_word]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
+                statistics[c_word]["norm"] = collections.Counter()
+                statistics[c_word]["pos_dep"] = collections.Counter()
+            norm_token = c_word if is_mwe else word[TOKEN]
+            # Only the normalized form of proper nouns is left capitalized.
+            if not c_word.istitle() or is_mwe:
+                norm_token = norm_token.lower()
+            statistics[c_word]["freq"] += 1
+            statistics[c_word]["norm"][norm_token] += 1
+            statistics[c_word]["cap"][_cap_type(word[TOKEN])] += 1
+            statistics[c_word]["pos_dep"][word[POS] + "_" + word[DEP]] += 1
+        pos += 1
+    return True
+
+
+def extract_patterns(sentence, word_pairs, patterns, islemma=False,
+                     save_TOKEN=True, save_DEP=False, save_LEMMA=False, save_PARENT=False, save_POS=False):
+    """Returns a dictionary containing all the words between each pair of a set of pair of words."""
+
+    # TODO: replace with a dictionary of save_ arguments and check if they exist as corpus fields.
+    frame = inspect.currentframe()
+    args = inspect.getargvalues(frame)[3]
+    save_args = {k: v for (k, v) in args.items() if k.startswith('save_')}
+    # First time running, initialize dictionary
+    if not patterns:
+        for pair in word_pairs:
+            # We use OrderedCounter to cross-reference the fields.
+            patterns[pair] = {arg[5:]: OrderedCounter() for (arg, val) in save_args.items() if val}
+            # Explicitly declare freq = 0 just in case we need to iterate over keys.
+            patterns[pair]['freq'] = 0
+    # TODO: Benchmark a regexp approach?
+    all_words = [w[LEMMA] for w in sentence] if islemma else [w[TOKEN] for w in sentence]
+    for pair in word_pairs:
+        for i, word in enumerate(all_words):
+            if word == pair[0]:
+                word1, word2 = pair[0], pair[1]
+            elif word == pair[1]:
+                word1, word2 = pair[1], pair[0]
+            else:
+                continue
+            match_index = i
+            for x in range(i, len(all_words)):
+                if all_words[x] == word2:
+                    patterns[pair]['freq'] += 1
+                    for arg, save in save_args.items():
+                        if save:
+                            target_name = arg[5:]
+                            corpus_field = globals()[target_name]
+                            all_targets = [w[corpus_field] for w in sentence]
+                            in_between = ' '.join(all_targets[match_index:x + 1])
+                            patterns[pair][target_name][in_between] += 1
+
+    return True
+
+
+def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, islemma=True, pos=True, dep=True,
+                   PLMI=False):
+    """
+    extract_ngrams searches ngrams of size win (with or without stopwords)
+    for all the words in the wordlist.
+
+    Args:
+        islemma:
+        sentence:
+        wordlist (set of strings): list of words for which we want to extract
+        ngrams:
+        win (int): number of words in the ngram
+        stopwords (bool): True if stopwords should be considered, False otherwise
+        lemma (bool): True if the lemmatized ngrams should be extracted, False if
+        the tokenized
+        pos (bool): True if the POS should be attached to the tokens/lemmas
+        dep (bool): True if the dep should be attached to the tokens/lemmas
+        PLMI (bool): True to assign PLMI score, False to assign PPMI
+
+    Returns:
+        It returns a dictionary of ngram sets, for every word in wordlist
+    """
+
+    if not ngrams:
+        ngrams = {'tot_word_freq': 0, 'word_freq': collections.Counter(), 'tot_ngram_freq': 0, 'ngram_freq': {}}
+    field = LEMMA if islemma else TOKEN
+    # TODO: check if this should include stopwords
+    ngrams['tot_word_freq'] += len(sentence)
+
+    if not include_stopwords:
+        # TODO: why stopwords?
+        stopwords = nltk.corpus.stopwords.words('english')
+        sentence = [w for w in sentence if w[TOKEN] not in stopwords]
+
+    if pos and not dep:
+        raw_sentence = [str(w[field] + '-' + w[POS]) for w in sentence]
+    elif pos and dep:
+        raw_sentence = [str(w[DEP] + ':' + w[field] + '-' + w[POS]) for w in sentence]
+    else:
+        raw_sentence = [w[field] for w in sentence]
+
+    for word in sentence:
+        ngrams['word_freq'][word] += 1
+    # Generates the ngrams
+    for i, word in enumerate(raw_sentence):
+        if sentence[i][field] in wordlist:
+            ngram = tuple(raw_sentence[i:i + win])
+            # TODO: refactor with defaultdict
+            if not ngram in ngrams['ngram_freq']:
+                ngrams['ngram_freq'][ngram] = {'freq': 0}
+            ngrams['ngram_freq'][ngram]['freq'] += 1
+            ngrams['tot_ngram_freq'] += 1
+
+
+def add_ngram_probability(ngrams, plmi=False):
+    # For every ngram that was identified
+    for ngram in ngrams['ngram_freq']:
+        # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
+        curr_ngram = ngrams['ngram_freq'][ngram]
+        if curr_ngram['freq'] > 3:
+            ngram_prob = float(curr_ngram['freq']) / ngrams['tot_ngram_freq']
+            # Initializing the variable to calculate the probability of components as independent events
+            components_prob = 1
+            for word in ngram:
+                components_prob *= float(ngrams['word_freq'][word]) / ngrams['tot_word_freq']
+            # ngram probability in PPMI
+            curr_ngram['probability'] = math.log(ngram_prob / components_prob)  # PPMI
+            # Adaptation to PLMI
+            if plmi:
+                curr_ngram['probability'] *= curr_ngram['freq']  # PLMI
+    return True
 
 
 def main():
-    wlist = '..\data\\wl.csv'
-    corpus = '..\data\\corpus.csv'
-    extract_statistics(corpus, wlist, 'stats.txt')
+    wlist = '..\data\\test\\wl.csv'
+    corpus = '..\data\\test\\corpus.csv'
+    patterns_fn = '..\data\\test\\patterns.csv'
+    ngrams, patterns, statistics = (dict() for _ in range(3))
+    words, mwes = _get_wlist(wlist)
+    pattern_pairs = _get_pattern_pairs(patterns_fn)
+
+    for sentence in _get_sentences(corpus):
+        ngram_args = (sentence, words, ngrams)
+        pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
+        stat_args = (sentence, words, mwes, statistics)
+        for f, args in (
+                (extract_ngrams, ngram_args),
+                (extract_patterns, pattern_args),
+                (extract_statistics, stat_args),
+        ):
+            if not f(*args):
+                logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
+
+                # pprint(patterns)
+                # pprint(ngrams)
+                # pprint(statistics)
+                # pprint(statistics['church'])
+                # pprint(statistics['used to be'])
 
 
-main()
+if __name__ == '__main__':
+    main()
