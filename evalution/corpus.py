@@ -145,20 +145,6 @@ def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
     return corpus
 
 
-def _sort_ngram(colloc):
-    """
-    __sort_ngram return the sorted dictionary
-
-    Args:
-        colloc (dictionary of strings): dictionary containing the ngrams and their frequency
-
-    Returns:
-        colloc (dictionary): sorted dictionary
-    """
-
-    return sorted([(ngram, colloc[ngram]) for ngram in colloc], key=lambda x: x[1], reverse=True)
-
-
 def extract_statistics(sentence, words, mwes, statistics):
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
@@ -245,26 +231,7 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
 
 def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, islemma=True, pos=True, dep=True,
                    PLMI=False):
-    """
-    extract_ngrams searches ngrams of size win (with or without stopwords)
-    for all the words in the wordlist.
-
-    Args:
-        islemma:
-        sentence:
-        wordlist (set of strings): list of words for which we want to extract
-        ngrams:
-        win (int): number of words in the ngram
-        stopwords (bool): True if stopwords should be considered, False otherwise
-        lemma (bool): True if the lemmatized ngrams should be extracted, False if
-        the tokenized
-        pos (bool): True if the POS should be attached to the tokens/lemmas
-        dep (bool): True if the dep should be attached to the tokens/lemmas
-        PLMI (bool): True to assign PLMI score, False to assign PPMI
-
-    Returns:
-        It returns a dictionary of ngram sets, for every word in wordlist
-    """
+    """Extract_ngrams from a sentence and update an ngram dictionary."""
 
     if not ngrams:
         ngrams = {'tot_word_freq': 0, 'word_freq': collections.Counter(), 'tot_ngram_freq': 0, 'ngram_freq': {}}
