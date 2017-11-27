@@ -1,1 +1,0 @@
-This directory includes the data on which the library is based to provide the report.
