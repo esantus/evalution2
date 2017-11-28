@@ -14,6 +14,7 @@ Examples:
 """
 
 import collections
+import csv
 import gzip
 import inspect
 import logging
@@ -21,6 +22,7 @@ import math
 import os
 
 import nltk
+import tqdm
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -154,6 +156,7 @@ def extract_statistics(sentence, words, mwes, statistics):
     Returns:
         True if the dictionary was updated sucessfully.
     """
+
     pos = 0
     all_tokens = [w[TOKEN] for w in sentence]
     for word in sentence:
@@ -297,11 +300,54 @@ def add_ngram_probability(ngrams, plmi=False):
             for word in ngram:
                 components_prob *= float(ngrams['word_freq'][word]) / ngrams['tot_word_freq']
             # ngram probability in PPMI
-            curr_ngram['probability'] = math.log(ngram_prob / components_prob)  # PPMI
+            probability = math.log(ngram_prob / components_prob)  # PPMI
             # Adaptation to PLMI
             if plmi:
-                curr_ngram['probability'] *= curr_ngram['freq']  # PLMI
-    return True
+                probability *= curr_ngram['freq']  # PLMI
+            ngrams['ngram_freq'][ngram]['probability'] = probability
+    return ngrams
+
+
+def save_ngrams(ngrams, outfile_path, probability=True):
+    """Save ngrams to a tsv file."""
+
+    if len(ngrams) != 4:
+        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
+
+    with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
+        ngram_writer = csv.writer(outfile)
+        header = ['id', 'ngram', 'freq']
+        if probability:
+            header.append('probability')
+        ngram_writer.writerow(header)
+        for id, ngram_tuple in enumerate(ngrams['ngram_freq']):
+            ngram = ngrams['ngram_freq'][ngram_tuple]
+            row = [id, ngram_tuple, ngram['freq']]
+            if probability:
+                row.append(ngram.get('probability', 'NA'))
+            ngram_writer.writerow(row)
+    logging.info('%s saved.' % outfile_path)
+
+
+def save_patterns(patterns, otufile_path):
+    """Save patterns dictionary in file."""
+
+    if len(ngrams) != 4:
+        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
+
+    with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
+        ngram_writer = csv.writer(outfile)
+        header = ['id', 'ngram', 'freq']
+        if probability:
+            header.append('probability')
+        ngram_writer.writerow(header)
+        for id, ngram_tuple in enumerate(ngrams['ngram_freq']):
+            ngram = ngrams['ngram_freq'][ngram_tuple]
+            row = [id, ngram_tuple, ngram['freq']]
+            if probability:
+                row.append(ngram.get('probability', 'NA'))
+            ngram_writer.writerow(row)
+    logging.info('%s saved.' % outfile_path)
 
 
 def main():
@@ -312,7 +358,8 @@ def main():
     words, mwes = _get_wlist(wlist)
     pattern_pairs = _get_pattern_pairs(patterns_fn)
 
-    for sentence in get_sentences(corpus):
+    logging.info('Extracting ngrams, patterns and statistics.')
+    for sentence in tqdm.tqdm(get_sentences(corpus), mininterval=0.5):
         ngram_args = (sentence, words, ngrams)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
@@ -321,8 +368,10 @@ def main():
                         (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
-
-    add_ngram_probability(ngrams)
+    logging.info('Extraction completed.')
+    ngrams = add_ngram_probability(ngrams)
+    save_ngrams(ngrams, '..\\data\\test\\ngrams.csv')
+    # save_patterns(patterns,'..\\data\\test\\patterns.csv')
 
     # pprint(patterns)
     # pprint(statistics)
