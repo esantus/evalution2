@@ -144,6 +144,13 @@ def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
 def extract_statistics(sentence, words, mwes, statistics):
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
+    The dictionary is strucutred as follows:
+    statistics {
+        'word': {
+            'cap': {lower<str>: freq<int>, upper<str>:freq<int>, title<str>:freq<int>, other<str>:freq<int>
+            'freq': freq<int>
+            'norm: dict(form<str>: freq<int>): # a dictionary containing normalized forms and their frequencies
+            'pos_dep': dict(pos-dep<str>: freq<int>):
     Returns:
         True if the dictionary was updated sucessfully.
     """
@@ -187,7 +194,14 @@ def extract_statistics(sentence, words, mwes, statistics):
 
 def extract_patterns(sentence, word_pairs, patterns, islemma=False,
                      save_TOKEN=True, save_DEP=False, save_LEMMA=False, save_PARENT=False, save_POS=False):
-    """Returns a dictionary containing all the words between each pair of a set of pair of words."""
+    """Returns a dictionary containing all the words between each pair of a set of pair of words.
+
+    The dictionary has the following structure:
+    patterns {
+            (w1, w1): { # keys are pairs (tuples) of two strings indicating a word (token, or lemma if islemma == True)
+            DEP: ... # the values are another dictionary whose keys are the corpus fields (DEP, LEMMA, TOKEN, ...)
+            LEMMA: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
+    """
 
     # TODO: replace with a dictionary of save_ arguments and check if they exist as corpus fields.
     frame = inspect.currentframe()
@@ -226,7 +240,17 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
 
 def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, islemma=True, pos=True, dep=True,
                    PLMI=False):
-    """Extract_ngrams from a sentence and update an ngram dictionary."""
+    """Extract_ngrams from a sentence and update an ngram dictionary.
+
+    The ngram dictionary has the following structure:
+    ngram {
+            'tot_ngram_freq':freq<int>: total number of ngrams
+            'tot_word_freq': freq<int>: total number of words
+            'word_freq': <dict(word: freq<int>)>: a dict containing all the words (in the ngram format) and their freq.
+            'ngram_freq': <dict(ngram<tuple>: dict(freq: freq<int>): the key of the dictionary are ngram pairs (tuples),
+                the values are dictionary containing only the key 'freq' and the frequency of the ngram.
+                The dictionary can be further populated by add_ngram_probability().}
+    """
 
     if not ngrams:
         ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={})
@@ -261,7 +285,7 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
 
 
 def add_ngram_probability(ngrams, plmi=False):
-    """Add probability to ngrams"""
+    """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability']."""
     # For every ngram that was identified
     for ngram in ngrams['ngram_freq']:
         # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
@@ -292,9 +316,9 @@ def main():
         ngram_args = (sentence, words, ngrams)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
-        for f, args in ((extract_ngrams, ngram_args),):
-            #                (extract_patterns, pattern_args),
-            #                (extract_statistics, stat_args)):
+        for f, args in ((extract_ngrams, ngram_args),
+                        (extract_patterns, pattern_args),
+                        (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
 
