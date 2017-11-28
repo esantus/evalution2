@@ -196,7 +196,7 @@ def extract_statistics(sentence, words, mwes, statistics):
 
 
 def extract_patterns(sentence, word_pairs, patterns, islemma=False,
-                     save_TOKEN=True, save_DEP=False, save_LEMMA=False, save_PARENT=False, save_POS=False):
+                     save_token=True, save_dep=False, save_lemma=False, save_parent=False, save_pos=False):
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -209,12 +209,12 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
     # TODO: replace with a dictionary of save_ arguments and check if they exist as corpus fields.
     frame = inspect.currentframe()
     args = inspect.getargvalues(frame)[3]
-    save_args = {k: v for (k, v) in args.items() if k.startswith('save_')}
+    save_args = {k.upper(): v for (k, v) in args.items() if k.startswith('save_')}
     # First time running, initialize dictionary
     if not patterns:
         for pair in word_pairs:
             # We use OrderedCounter to cross-reference the fields.
-            patterns[pair] = {arg[5:]: OrderedCounter() for (arg, val) in save_args.items() if val}
+            patterns[pair] = {arg[5:].upper(): OrderedCounter() for (arg, val) in save_args.items() if val}
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
     # TODO: Benchmark a regexp approach?
@@ -239,7 +239,6 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
                             in_between = ' '.join(all_targets[match_index:x + 1])
                             patterns[pair][target_name][in_between] += 1
     return True
-
 
 def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, islemma=True, pos=True, dep=True,
                    PLMI=False):
@@ -286,7 +285,6 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
             ngrams['tot_ngram_freq'] += 1
     return True
 
-
 def add_ngram_probability(ngrams, plmi=False):
     """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability']."""
     # For every ngram that was identified
@@ -308,6 +306,7 @@ def add_ngram_probability(ngrams, plmi=False):
     return ngrams
 
 
+# TODO: Maybe use a decorator.
 def save_ngrams(ngrams, outfile_path, probability=True):
     """Save ngrams to a tsv file."""
 
@@ -320,9 +319,9 @@ def save_ngrams(ngrams, outfile_path, probability=True):
         if probability:
             header.append('probability')
         ngram_writer.writerow(header)
-        for id, ngram_tuple in enumerate(ngrams['ngram_freq']):
+        for col_id, ngram_tuple in enumerate(ngrams['ngram_freq']):
             ngram = ngrams['ngram_freq'][ngram_tuple]
-            row = [id, ngram_tuple, ngram['freq']]
+            row = [col_id, ngram_tuple, ngram['freq']]
             if probability:
                 row.append(ngram.get('probability', 'NA'))
             ngram_writer.writerow(row)
@@ -330,7 +329,10 @@ def save_ngrams(ngrams, outfile_path, probability=True):
 
 
 def save_patterns(patterns, outfile_path):
-    """Save patterns dictionary in file."""
+    """Save patterns dictionary in a csv file."""
+
+    if len(patterns) != 2:
+        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         pattern_writer = csv.writer(outfile)
@@ -346,6 +348,51 @@ def save_patterns(patterns, outfile_path):
                         pattern_writer.writerow(row)
                         col_id += 1
     logging.info('%s saved.' % outfile_path)
+
+
+def save_statistics(statistics, outfile_path):
+    """Save statistics dictionary in a csv file."""
+
+    if len(statistics) != 11:
+        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
+
+    # TODO: refactor this trash.
+    filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
+                 for suffix in ['words', 'forms', 'posdep']]
+    open_args = dict(mode='w', encoding='utf-8', newline='')
+    with open(filenames[0], **open_args) as outfile_words, open(
+            filenames[1], **open_args) as outfile_norm, open(
+        filenames[2], **open_args) as outfile_posdep:
+
+        wordf = csv.writer(outfile_words)
+        normf = csv.writer(outfile_norm)
+        posdepf = csv.writer(outfile_posdep)
+        header_main = ['id', 'word', 'freq.', 'cap_lower', 'cap_upper', 'cap_title', 'cap_other']
+        header_norm = ['id', 'word_id', 'norm.', 'freq.']
+        header_posdep = ['id', 'word_id', 'posdep', 'freq.']
+        wordf.writerow(header_main)
+        normf.writerow(header_norm)
+        posdepf.writerow(header_posdep)
+        word_id, norm_id, posdep_id = (0 for _ in range(3))
+
+        for word, attrs in statistics.items():
+            cap = attrs['cap']
+            # TODO: make cap ordered and then unpack.
+            row = [word_id, word, cap['lower'], cap['upper'], cap['title'], cap['other']]
+            wordf.writerow(row)
+            for attr_name, attr_values in attrs.items():
+                if attr_name == 'norm':
+                    for norm, freq in attr_values.items():
+                        row = [norm_id, word_id, norm, freq]
+                        normf.writerow(row)
+                        norm_id += 1
+                elif attr_name == 'pos_dep':
+                    for posdep, freq in attr_values.items():
+                        row = [posdep_id, word_id, posdep, freq]
+                        posdepf.writerow(row)
+                        posdep_id += 1
+            word_id += 1
+    logging.info('%s saved.' % ', '.join(filenames))
 
 
 def main():
@@ -368,9 +415,10 @@ def main():
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
     ngrams = add_ngram_probability(ngrams)
-    save_ngrams(ngrams, '..\\data\\test\\nGrams.csv')
-    save_patterns(patterns, '..\\data\\test\\patterns.csv')
-
+    output_dir = '..\\data\\output\\'
+    save_ngrams(ngrams, output_dir + 'ngrams.csv')
+    save_patterns(patterns, output_dir + 'patterns.csv')
+    save_statistics(statistics, output_dir + 'statistics.csv')
     # pprint(patterns)
     # pprint(statistics)
     # pprint(statistics['church'])
