@@ -92,6 +92,21 @@ def _get_wlist(wlist_fn):
     return words, mwes
 
 
+def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
+    """Open an eval corpus and return a file reader."""
+
+    if os.path.basename(corpus_fn).endswith('.gz'):
+        corpus = gzip.open(corpus_fn, 'r', encoding=encoding)
+    else:
+        corpus = open(corpus_fn, 'r', encoding=encoding)
+
+    if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
+        corpus.close()
+        raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
+                         "convert_corpus(corpus) to create an evalution2 corpus" % corpus_fn)
+    return corpus
+
+
 def get_sentences(corpus_fn: str, check_corpus=False):
     """
     Yield all the sentences in an eval corpus file.
@@ -126,21 +141,6 @@ def get_sentences(corpus_fn: str, check_corpus=False):
                 else:
                     if check_corpus:
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
-
-
-def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
-    """Open an eval corpus and return a file reader."""
-
-    if os.path.basename(corpus_fn).endswith('.gz'):
-        corpus = gzip.open(corpus_fn, 'r', encoding=encoding)
-    else:
-        corpus = open(corpus_fn, 'r', encoding=encoding)
-
-    if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
-        corpus.close()
-        raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
-                         "convert_corpus(corpus) to create an evalution2 corpus" % corpus_fn)
-    return corpus
 
 
 def extract_statistics(sentence, words, mwes, statistics):
@@ -329,31 +329,29 @@ def save_ngrams(ngrams, outfile_path, probability=True):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_patterns(patterns, otufile_path):
+def save_patterns(patterns, outfile_path):
     """Save patterns dictionary in file."""
 
-    if len(ngrams) != 4:
-        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
-
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
-        ngram_writer = csv.writer(outfile)
-        header = ['id', 'ngram', 'freq']
-        if probability:
-            header.append('probability')
-        ngram_writer.writerow(header)
-        for id, ngram_tuple in enumerate(ngrams['ngram_freq']):
-            ngram = ngrams['ngram_freq'][ngram_tuple]
-            row = [id, ngram_tuple, ngram['freq']]
-            if probability:
-                row.append(ngram.get('probability', 'NA'))
-            ngram_writer.writerow(row)
+        pattern_writer = csv.writer(outfile)
+        header = ['id', 'pair', 'pair freq.', 'type', 'context', 'frequency']
+        pattern_writer.writerow(header)
+        col_id = 0
+        for pair, ntypes in patterns.items():
+            pair_freq = ntypes['freq']
+            for ntype, contexts in ntypes.items():
+                if ntype != 'freq':
+                    for context, frequency in contexts.items():
+                        row = [col_id, pair, pair_freq, ntype, context, frequency]
+                        pattern_writer.writerow(row)
+                        col_id += 1
     logging.info('%s saved.' % outfile_path)
 
 
 def main():
     wlist = '..\data\\test\\wl.csv'
     corpus = '..\data\\test\\tiny_corpus.csv'
-    patterns_fn = '..\data\\test\\patterns.csv'
+    patterns_fn = '..\data\\test\\patterns.txt'
     ngrams, patterns, statistics = (dict() for _ in range(3))
     words, mwes = _get_wlist(wlist)
     pattern_pairs = _get_pattern_pairs(patterns_fn)
@@ -370,8 +368,8 @@ def main():
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
     ngrams = add_ngram_probability(ngrams)
-    save_ngrams(ngrams, '..\\data\\test\\ngrams.csv')
-    # save_patterns(patterns,'..\\data\\test\\patterns.csv')
+    save_ngrams(ngrams, '..\\data\\test\\nGrams.csv')
+    save_patterns(patterns, '..\\data\\test\\patterns.csv')
 
     # pprint(patterns)
     # pprint(statistics)
