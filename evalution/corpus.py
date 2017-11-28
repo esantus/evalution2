@@ -17,6 +17,7 @@ import collections
 import gzip
 import inspect
 import logging
+import math
 import os
 
 import nltk
@@ -50,7 +51,7 @@ def _cap_type(word: str):
     return 'other'
 
 
-def _get_pattern_pairs(corpus, separator="\t"):
+def _get_pattern_pairs(wlist, separator="\t"):
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
 
     Returns:
@@ -58,7 +59,7 @@ def _get_pattern_pairs(corpus, separator="\t"):
     """
 
     pattern_pairs = set()
-    with open(corpus, 'r') as pattern_reader:
+    with open(wlist, 'r') as pattern_reader:
         for line in pattern_reader:
             split_line = tuple(word.strip() for word in line.split(separator))
             if len(split_line) == 2:
@@ -89,7 +90,7 @@ def _get_wlist(wlist_fn):
     return words, mwes
 
 
-def _get_sentences(corpus_fn: str, check_corpus=False) -> list:
+def get_sentences(corpus_fn: str, check_corpus=False):
     """
     Yield all the sentences in an eval corpus file.
 
@@ -126,12 +127,7 @@ def _get_sentences(corpus_fn: str, check_corpus=False) -> list:
 
 
 def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
-    """Open an eval corpus and return a file reader.
-
-      :param corpus_fn: path to the corpus filename.
-      :param encoding: specify the encoding of the file
-      :return: a file reader of the corpus.
-    """
+    """Open an eval corpus and return a file reader."""
 
     if os.path.basename(corpus_fn).endswith('.gz'):
         corpus = gzip.open(corpus_fn, 'r', encoding=encoding)
@@ -225,7 +221,6 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
                             all_targets = [w[corpus_field] for w in sentence]
                             in_between = ' '.join(all_targets[match_index:x + 1])
                             patterns[pair][target_name][in_between] += 1
-
     return True
 
 
@@ -234,9 +229,9 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
     """Extract_ngrams from a sentence and update an ngram dictionary."""
 
     if not ngrams:
-        ngrams = {'tot_word_freq': 0, 'word_freq': collections.Counter(), 'tot_ngram_freq': 0, 'ngram_freq': {}}
-    field = LEMMA if islemma else TOKEN
+        ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={})
     # TODO: check if this should include stopwords
+    field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
 
     if not include_stopwords:
@@ -262,10 +257,14 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
                 ngrams['ngram_freq'][ngram] = {'freq': 0}
             ngrams['ngram_freq'][ngram]['freq'] += 1
             ngrams['tot_ngram_freq'] += 1
+    # pprint(ngrams)
+    return ngrams
 
 
 def add_ngram_probability(ngrams, plmi=False):
+    """Add probability to ngrams"""
     # For every ngram that was identified
+    print(ngrams)
     for ngram in ngrams['ngram_freq']:
         # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
         curr_ngram = ngrams['ngram_freq'][ngram]
@@ -291,23 +290,23 @@ def main():
     words, mwes = _get_wlist(wlist)
     pattern_pairs = _get_pattern_pairs(patterns_fn)
 
-    for sentence in _get_sentences(corpus):
+    for sentence in get_sentences(corpus):
         ngram_args = (sentence, words, ngrams)
+        print(ngrams)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
-        for f, args in (
-                (extract_ngrams, ngram_args),
-                (extract_patterns, pattern_args),
-                (extract_statistics, stat_args),
-        ):
+        for f, args in ((extract_ngrams, ngram_args),):
+            #                (extract_patterns, pattern_args),
+            #                (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
 
-                # pprint(patterns)
-                # pprint(ngrams)
-                # pprint(statistics)
-                # pprint(statistics['church'])
-                # pprint(statistics['used to be'])
+    add_ngram_probability(ngrams)
+    # pprint(patterns)
+    # pprint(ngrams)
+    # pprint(statistics)
+    # pprint(statistics['church'])
+    # pprint(statistics['used to be'])
 
 
 if __name__ == '__main__':
