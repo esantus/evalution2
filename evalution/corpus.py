@@ -66,7 +66,7 @@ def _get_pattern_pairs(wlist, separator="\t"):
                 if not any(pair in pattern_pairs for pair in (split_line, split_line[::-1])):
                     pattern_pairs.add(split_line)
             else:
-                logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, corpus))
+                logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, wlist))
     return pattern_pairs
 
 
@@ -246,7 +246,7 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
     else:
         raw_sentence = [w[field] for w in sentence]
 
-    for word in sentence:
+    for word in raw_sentence:
         ngrams['word_freq'][word] += 1
     # Generates the ngrams
     for i, word in enumerate(raw_sentence):
@@ -257,14 +257,12 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
                 ngrams['ngram_freq'][ngram] = {'freq': 0}
             ngrams['ngram_freq'][ngram]['freq'] += 1
             ngrams['tot_ngram_freq'] += 1
-    # pprint(ngrams)
-    return ngrams
+    return True
 
 
 def add_ngram_probability(ngrams, plmi=False):
     """Add probability to ngrams"""
     # For every ngram that was identified
-    print(ngrams)
     for ngram in ngrams['ngram_freq']:
         # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
         curr_ngram = ngrams['ngram_freq'][ngram]
@@ -284,7 +282,7 @@ def add_ngram_probability(ngrams, plmi=False):
 
 def main():
     wlist = '..\data\\test\\wl.csv'
-    corpus = '..\data\\test\\corpus.csv'
+    corpus = '..\data\\test\\tiny_corpus.csv'
     patterns_fn = '..\data\\test\\patterns.csv'
     ngrams, patterns, statistics = (dict() for _ in range(3))
     words, mwes = _get_wlist(wlist)
@@ -292,7 +290,6 @@ def main():
 
     for sentence in get_sentences(corpus):
         ngram_args = (sentence, words, ngrams)
-        print(ngrams)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
         for f, args in ((extract_ngrams, ngram_args),):
@@ -302,8 +299,8 @@ def main():
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
 
     add_ngram_probability(ngrams)
+
     # pprint(patterns)
-    # pprint(ngrams)
     # pprint(statistics)
     # pprint(statistics['church'])
     # pprint(statistics['used to be'])
