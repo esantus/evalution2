@@ -394,7 +394,7 @@ def save_statistics(statistics, outfile_path):
         normf = csv.writer(outfile_norm)
         posdepf = csv.writer(outfile_posdep)
         header_main = ['stat_id', 'word', 'freq.', 'cap_lower', 'cap_upper', 'cap_title', 'cap_other']
-        header_norm = ['norn_id', 'stat_id', 'norm.', 'freq.']
+        header_norm = ['norm_id', 'stat_id', 'norm.', 'freq.']
         header_posdep = ['posdep_id', 'stat_id', 'posdep', 'freq.']
         wordf.writerow(header_main)
         normf.writerow(header_norm)
@@ -405,7 +405,7 @@ def save_statistics(statistics, outfile_path):
             if word == 'last_id':
                 continue
             cap = attrs['cap']
-            row = [word_id, word, cap['lower'], cap['upper'], cap['title'], cap['other']]
+            row = [word_id, word, attrs['freq'], cap['lower'], cap['upper'], cap['title'], cap['other']]
             wordf.writerow(row)
             for attr_name, attr_values in attrs.items():
                 if attr_name == 'norm':
