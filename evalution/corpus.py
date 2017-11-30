@@ -13,6 +13,9 @@ Examples:
     >>>
 """
 
+# TODO: Add support for multiple corpus
+# TODO: Add test sets
+# TODO: Check patterns lemma
 import collections
 import csv
 import gzip
@@ -213,7 +216,6 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
             LEMMA: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
     """
 
-    # TODO: replace with a dictionary of save_ arguments and check if they exist as corpus fields.
     frame = inspect.currentframe()
     args = inspect.getargvalues(frame)[3]
     save_args = {k.upper(): v for (k, v) in args.items() if k.startswith('save_')}
@@ -327,7 +329,6 @@ def add_ngram_probability(ngrams, plmi=False):
     return ngrams
 
 
-# TODO: Maybe use a decorator.
 def save_ngrams(ngrams, outfile_path, probability=True):
     """Save ngrams to a tsv file."""
 
@@ -424,7 +425,7 @@ def save_statistics(statistics, outfile_path):
 
 def main():
     wlist = '..\data\\test\\wordlist.csv'
-    corpus = '..\data\\test\\tiny_corpus.csv'
+    corpus = '..\data\\test\\nano_corpus.csv'
     patterns_fn = '..\data\\test\\patterns.csv'
     ngrams, patterns, statistics = (dict() for _ in range(3))
     words, mwes = _get_wlist(wlist)
