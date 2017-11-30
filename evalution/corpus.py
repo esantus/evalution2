@@ -109,19 +109,27 @@ def _get_wlist(wlist_fn):
     return words, mwes
 
 
-def _open_corpus(corpus_fn, encoding='ISO-8859-2'):
-    """Open an eval corpus and return a file reader."""
+def _open_corpus(corpus_path, encoding='ISO-8859-2'):
+    """Yield an eval corpus reader at a time."""
 
-    if os.path.basename(corpus_fn).endswith('.gz'):
-        corpus = gzip.open(corpus_fn, 'r', encoding=encoding)
+    if os.path.isdir(corpus_path):
+        to_open = [(os.path.join(corpus_path, f)) for f in os.listdir(corpus_path) if
+                   os.path.isfile(os.path.join(corpus_path, f))]
     else:
-        corpus = open(corpus_fn, 'r', encoding=encoding)
+        to_open = [corpus_path]
+    if not to_open:
+        raise ValueError("'%s' does not contain any corpus " % corpus_path)
 
-    if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
-        corpus.close()
-        raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
-                         "convert_corpus(corpus) to create an evalution2 corpus" % corpus_fn)
-    return corpus
+    for filename in to_open:
+        if os.path.basename(filename).endswith('.gz'):
+            corpus = gzip.open(filename, 'rt', encoding=encoding)
+        else:
+            corpus = open(filename, 'r', encoding=encoding)
+        if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
+            corpus.close()
+            raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
+                             "convert_corpus(corpus) to create an evalution2 corpus" % filename)
+        yield corpus
 
 
 def get_sentences(corpus_fn: str, check_corpus=False):
@@ -137,27 +145,28 @@ def get_sentences(corpus_fn: str, check_corpus=False):
 
     s = []
     line_no = 1
-    with _open_corpus(corpus_fn) as corpus:
-        for line in corpus:
-            # The header is read in open_corpus, so we start from line 2
-            line_no += 1
-            # Ignore start and end of DOC
-            if '<text' in line or '</text' in line or '<s>' in line:
-                continue
-            # Yield at the end of SENTENCE
-            elif '</s>' in line:
-                yield s
-                s = []
-            # Append all TOKENS
-            else:
-                s_line = line.split()
-                # only append valid lines
-                if len(s_line) == CORPUS_FIELDS:
-                    word, lemma, pos, index, parent, dep = line.split()
-                    s.append((word, lemma, pos, int(index), int(parent), dep))
+    for corpus_reader in _open_corpus(corpus_fn):
+        with corpus_reader as corpus:
+            for line in corpus:
+                # The header is read in open_corpus, so we start from line 2
+                line_no += 1
+                # Ignore start and end of DOC
+                if '<text' in line or '</text' in line or '<s>' in line:
+                    continue
+                # Yield at the end of SENTENCE
+                elif '</s>' in line:
+                    yield s
+                    s = []
+                # Append all TOKENS
                 else:
-                    if check_corpus:
-                        logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
+                    s_line = line.split()
+                    # only append valid lines
+                    if len(s_line) == CORPUS_FIELDS:
+                        word, lemma, pos, index, parent, dep = line.split()
+                        s.append((word, lemma, pos, int(index), int(parent), dep))
+                    else:
+                        if check_corpus:
+                            logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
 def extract_statistics(sentence, words, statistics, mwes=None):
@@ -217,10 +226,11 @@ def extract_patterns(sentence, word_pairs, patterns,
     save_args = {k.upper(): v for (k, v) in args.items() if k.startswith('save_')}
     # First time running, initialize dictionary
     if not patterns:
-        for pair in word_pairs:
+        for pair_id, pair in enumerate(word_pairs):
             patterns[pair] = {arg[5:].upper(): collections.Counter() for (arg, val) in save_args.items() if val}
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
+            patterns[pair]['pair_id'] = pair_id
     # TODO: Benchmark a regexp approach?
     all_lemmas = [w[LEMMA] for w in sentence]
     all_tokens = [w[TOKEN] for w in sentence]
@@ -246,7 +256,7 @@ def extract_patterns(sentence, word_pairs, patterns,
     return True
 
 
-def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwords=False, islemma=True, pos=True,
+def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, exclude_stopwords=True, islemma=True, pos=True,
                    dep=True):
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
@@ -263,7 +273,7 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
         ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={}, last_id=0)
     field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
-    if not include_stopwords:
+    if exclude_stopwords:
         stopwords = nltk.corpus.stopwords.words('english')
         sentence = [w for w in sentence if w[TOKEN] not in stopwords]
 
@@ -362,15 +372,16 @@ def save_patterns(patterns, outfile_path):
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         pattern_writer = csv.writer(outfile)
-        header = ['pattern_id', 'word1', 'word2', 'freq.', 'type', 'context', 'frequency']
+        header = ['pattern_id', 'pair_id', 'word1', 'word2', 'freq.', 'type', 'context', 'frequency']
         pattern_writer.writerow(header)
         col_id = 0
         for pair, ntypes in patterns.items():
             pair_freq = ntypes['freq']
+            pair_id = ntypes['pair_id']
             for ntype, contexts in ntypes.items():
-                if ntype != 'freq':
+                if type(contexts) is collections.Counter:
                     for context, frequency in contexts.items():
-                        row = [col_id, pair[0], pair[1], pair_freq, ntype, context, frequency]
+                        row = [col_id, pair_id, pair[0], pair[1], pair_freq, ntype, context, frequency]
                         pattern_writer.writerow(row)
                         col_id += 1
     logging.info('%s saved.' % outfile_path)
@@ -420,7 +431,7 @@ def save_statistics(statistics, outfile_path):
 
 def main():
     wlist = '..\data\\test\\wordlist.csv'
-    corpus = '..\data\\test\\nano_corpus.csv'
+    corpus = '..\data\\test\\tiny_corpus.csv'
     patterns_fn = '..\data\\test\\patterns.csv'
     ngrams, patterns, statistics = (dict() for _ in range(3))
     words, mwes = _get_wlist(wlist)
