@@ -1,17 +1,13 @@
 WORD	LEMMA	POS	INDEX	PARENT	DEP
 <text id="ukwac:http://observer.guardian.co.uk/osm/story/0,,1009777,00.html">
 <s>
-Dog	Dog	NNS	1	4	NMOD
-is	is	NNS	1	4	NMOD
+Dog	dog	NNS	1	4	NMOD
+was	is	NNS	1	4	NMOD
 an	an	NNS	1	4	NMOD
-animals	animal	NNS	1	4	NMOD
-such	such	NNS	1	4	NMOD
-as 	as	NNS	1	4	NMOD
-dog	dog	NNS	1	4	NMOD
-of	of	NNS	1	4	NMOD
+Animals	animal	NNS	1	4	NMOD
 </s>
 <s>
-dog	dog	NNS	1	4	NMOD
+dogs	dog	NNS	1	4	NMOD
 is	is	NNS	1	4	NMOD
 an	an	NNS	1	4	NMOD
 animal	animal	NNS	1	4	NMOD
