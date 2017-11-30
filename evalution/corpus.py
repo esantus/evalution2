@@ -331,7 +331,7 @@ def save_ngrams(ngrams, outfile_path, probability=True):
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
-        header = ['id', 'ngram', 'freq']
+        header = ['ngram_id', 'ngram', 'freq']
         if probability:
             header.append('probability')
         ngram_writer.writerow(header)
@@ -352,7 +352,7 @@ def save_patterns(patterns, outfile_path):
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         pattern_writer = csv.writer(outfile)
-        header = ['id', 'pair', 'pair freq.', 'type', 'context', 'frequency']
+        header = ['pattern_id', 'pair', 'pair freq.', 'type', 'context', 'frequency']
         pattern_writer.writerow(header)
         col_id = 0
         for pair, ntypes in patterns.items():
@@ -382,9 +382,9 @@ def save_statistics(statistics, outfile_path):
         wordf = csv.writer(outfile_words)
         normf = csv.writer(outfile_norm)
         posdepf = csv.writer(outfile_posdep)
-        header_main = ['id', 'word', 'freq.', 'cap_lower', 'cap_upper', 'cap_title', 'cap_other']
-        header_norm = ['id', 'word_id', 'norm.', 'freq.']
-        header_posdep = ['id', 'word_id', 'posdep', 'freq.']
+        header_main = ['stat_id', 'word', 'freq.', 'cap_lower', 'cap_upper', 'cap_title', 'cap_other']
+        header_norm = ['norn_id', 'stat_id', 'norm.', 'freq.']
+        header_posdep = ['posdep_id', 'stat_id', 'posdep', 'freq.']
         wordf.writerow(header_main)
         normf.writerow(header_norm)
         posdepf.writerow(header_posdep)
