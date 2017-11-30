@@ -59,12 +59,12 @@ def _check_mwes(word_index, field, mwes, sentence):
     Returns:
         (str, int): a tuple containing the mwe and its position in the sentence.
     """
-    all_tokens = [w[TOKEN] for w in sentence]
     word = sentence[word_index][field]
     for mwe in mwes:
         if word == mwe[0]:
             joined_mwe = ' '.join(mwe)
             target_end_index = word_index + len(mwe)
+            all_tokens = [w[TOKEN] for w in sentence]
             window = ' '.join(all_tokens[word_index:target_end_index])
             if joined_mwe == window:
                 word = joined_mwe
@@ -175,41 +175,29 @@ def extract_statistics(sentence, words, mwes, statistics):
         True if the dictionary was updated sucessfully.
     """
 
-    pos = 0
-    all_tokens = [w[TOKEN] for w in sentence]
-    for word in sentence:
-        c_word = word[TOKEN]
-        is_mwe = False
-        # Check for MWEs
-        for mwe in mwes:
-            if c_word == mwe[0]:
-                joined_mwe = ' '.join(mwe)
-                # The window is the seq that goes from the index of the first matched word to the len of the MWE
-                window = ' '.join(all_tokens[pos:pos + len(mwe)])
-                if joined_mwe == window:
-                    c_word = joined_mwe
-                    pos += len(mwe) - 1
-                    is_mwe = True
-                    break
-        # MWEs are processed as tokens, singleton as lemmas.
-        if not is_mwe:
-            c_word = word[LEMMA]
-        if c_word in words or is_mwe:
-            if c_word not in statistics:
-                statistics[c_word] = {}
-                statistics[c_word]["freq"] = 0
-                statistics[c_word]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
-                statistics[c_word]["norm"] = collections.Counter()
-                statistics[c_word]["pos_dep"] = collections.Counter()
-            norm_token = c_word if is_mwe else word[TOKEN]
+    for i in range(0, len(sentence)):
+        word = sentence[i][TOKEN]
+        mwe = _check_mwes(i, TOKEN, mwes, sentence)
+        if mwe:
+            word, mwe_end_index = mwe
+        else:
+            # MWEs are processed as tokens, singleton as lemmas.
+            word = word[LEMMA]
+        if word in words or mwe:
+            if word not in statistics:
+                statistics[word] = {}
+                statistics[word]["freq"] = 0
+                statistics[word]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
+                statistics[word]["norm"] = collections.Counter()
+                statistics[word]["pos_dep"] = collections.Counter()
+            norm_token = word if mwe else sentence[i][TOKEN]
             # Only the normalized form of proper nouns is left capitalized.
-            if not c_word.istitle() or is_mwe:
+            if not word.istitle() or mwe:
                 norm_token = norm_token.lower()
-            statistics[c_word]["freq"] += 1
-            statistics[c_word]["norm"][norm_token] += 1
-            statistics[c_word]["cap"][_cap_type(word[TOKEN])] += 1
-            statistics[c_word]["pos_dep"][word[POS] + "_" + word[DEP]] += 1
-        pos += 1
+            statistics[word]["freq"] += 1
+            statistics[word]["norm"][norm_token] += 1
+            statistics[word]["cap"][_cap_type(word[TOKEN])] += 1
+            statistics[word]["pos_dep"][word[POS] + "_" + word[DEP]] += 1
     return True
 
 
@@ -276,13 +264,9 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
 
     if not ngrams:
         ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={})
-    # TODO: check if this should include stopwords
     field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
-    mwe = False
-
     if not include_stopwords:
-        # TODO: why stopwords?
         stopwords = nltk.corpus.stopwords.words('english')
         sentence = [w for w in sentence if w[TOKEN] not in stopwords]
 
@@ -299,13 +283,12 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
         word = sentence[i][field]
         raw_word = raw_sentence[i]
         ngrams['word_freq'][raw_word] += 1
-        if mwes:
-            mwe = _check_mwes(i, field, mwes, sentence)
-            if mwe:
-                word, second_ngram_index = mwe
-                raw_word = ' '.join(raw_sentence[i:second_ngram_index])
-            else:
-                word = raw_word[LEMMA]
+        mwe = _check_mwes(i, field, mwes, sentence)
+        if mwe:
+            word, second_ngram_index = mwe
+            raw_word = ' '.join(raw_sentence[i:second_ngram_index])
+        else:
+            word = raw_word[LEMMA]
         # -1 because we include the first ngram
         end_window_index = second_ngram_index + win - 1
         if end_window_index > len(sentence):
