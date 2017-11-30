@@ -24,8 +24,9 @@ import logging
 import math
 import os
 
-import nltk
 import tqdm
+
+from evalution import _data
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -274,7 +275,8 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, exclude_stopwor
     field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
-        stopwords = nltk.corpus.stopwords.words('english')
+        # The stopword list was obtaned using nltk.corpus.stopwords
+        stopwords = _data.stopwords
         sentence = [w for w in sentence if w[TOKEN] not in stopwords]
 
     if pos and not dep:
