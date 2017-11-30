@@ -712,7 +712,7 @@ collapse	collapse	NN	19	37	DEP
 of	of	IN	20	19	NMOD
 Leeds	Leeds	NP	21	20	PMOD
 ,	,	,	22	19	P
-£	£	$	23	26	NMOD
+ï¿½	ï¿½	$	23	26	NMOD
 30m	30m	JJ	24	26	NMOD
 transfer	transfer	NN	25	26	NMOD
 fees	fee	NNS	26	19	NMOD
@@ -2777,7 +2777,7 @@ Mandaric	Mandaric	NP	1	15	SBJ
 ,	,	,	2	1	P
 who	who	WP	3	4	SBJ
 invested	invest	VVD	4	1	NMOD
-£	£	$	5	4	OBJ
+ï¿½	ï¿½	$	5	4	OBJ
 20	@card@	CD	6	5	DEP
 million	million	CD	7	5	DEP
 from	from	IN	8	4	ADV
@@ -4056,7 +4056,7 @@ response	response	NN	27	24	OBJ
 '	'	''	1	19	DEP
 Bollocks.	Bollocks.	NP	2	0	ROOT
 '	'	''	3	0	ROOT
-·	·	SYM	4	0	ROOT
+ï¿½	ï¿½	SYM	4	0	ROOT
 '	'	POS	5	4	NMOD
 Rolling	Rolling	NP	6	0	ROOT
 with	with	IN	7	11	VMOD
@@ -4069,7 +4069,7 @@ by	by	IN	13	12	LGS
 Blake	Blake	NP	14	0	ROOT
 Publishing	Publishing	NP	15	0	ROOT
 at	at	IN	16	0	ROOT
-£	£	$	17	18	NMOD
+ï¿½	ï¿½	$	17	18	NMOD
 16.99	@card@	CD	18	16	PMOD
 .	.	SENT	19	0	ROOT
 </s>
@@ -4091,7 +4091,7 @@ month	month	NN	14	12	ADV
 by	by	IN	15	12	LGS
 Orion	Orion	NP	16	0	ROOT
 at	at	IN	17	16	ADV
-£	£	$	18	19	NMOD
+ï¿½	ï¿½	$	18	19	NMOD
 9.99	@card@	CD	19	17	PMOD
 .	.	SENT	20	0	ROOT
 </s>
@@ -4258,7 +4258,7 @@ to	to	TO	20	17	ADV
 a	a	DT	21	23	NMOD
 mere	mere	JJ	22	23	NMOD
 143.	@ord@	CD	23	20	PMOD
-·	·	SYM	24	0	ROOT
+ï¿½	ï¿½	SYM	24	0	ROOT
 Research	Research	NP	25	0	ROOT
 by	by	IN	26	0	ROOT
 Arindam	Arindam	NP	27	0	ROOT
@@ -4300,18 +4300,18 @@ the	the	DT	30	31	NMOD
 event	event	NN	31	29	PMOD
 ,	,	,	32	38	P
 the	the	DT	33	38	DEP
-“Nokia	“Nokia	NP	34	0	ROOT
+ï¿½Nokia	ï¿½Nokia	NP	34	0	ROOT
 Unleashed	Unleashed	NP	35	0	ROOT
 Music	Music	NP	36	0	ROOT
-Festival”	Festival”	NP	37	0	ROOT
+Festivalï¿½	Festivalï¿½	NP	37	0	ROOT
 .	.	SENT	38	0	ROOT
 </s>
 <s>
 The	the	DT	1	2	NMOD
-“Nokia	“nokia	NN	2	0	ROOT
+ï¿½Nokia	ï¿½nokia	NN	2	0	ROOT
 Unleashed	Unleashed	NP	3	0	ROOT
 Music	Music	NP	4	6	VMOD
-Festival”	Festival”	NP	5	6	SBJ
+Festivalï¿½	Festivalï¿½	NP	5	6	SBJ
 will	will	MD	6	0	ROOT
 take	take	VV	7	6	VC
 place	place	NN	8	7	OBJ
@@ -4439,9 +4439,9 @@ top	top	JJ	61	65	NMOD
 five	five	CD	62	65	NMOD
 debut	debut	NN	63	65	NMOD
 album.	album.	JJ	64	65	NMOD
-“Back	“back	NN	65	59	PMOD
+ï¿½Back	ï¿½back	NN	65	59	PMOD
 to	to	TO	66	65	NMOD
-Bedlam”	Bedlam”	NP	67	68	SBJ
+Bedlamï¿½	Bedlamï¿½	NP	67	68	SBJ
 has	have	VHZ	68	66	PMOD
 been	be	VBN	69	68	VC
 steadily	steadily	RB	70	71	ADV
@@ -4452,7 +4452,7 @@ way	way	NN	74	71	OBJ
 up	up	IN	75	71	ADV
 the	the	DT	76	78	NMOD
 charts	chart	NNS	77	78	NMOD
-–	–	NN	78	75	PMOD
+ï¿½	ï¿½	NN	78	75	PMOD
 the	the	DT	79	80	NMOD
 fruit	fruit	NN	80	71	OBJ
 no	no	DT	81	82	NMOD
@@ -4467,10 +4467,10 @@ John	John	NP	88	112	ADV
 an	a	DT	90	91	NMOD
 appearance	appearance	NN	91	112	DEP
 on	on	IN	92	91	NMOD
-“Later	“later	JJR	93	112	P
+ï¿½Later	ï¿½later	JJR	93	112	P
 With	with	IN	94	112	DEP
 Jools	Jools	NP	95	0	ROOT
-Holland”	Holland”	NP	96	0	ROOT
+Hollandï¿½	Hollandï¿½	NP	96	0	ROOT
 and	and	CC	97	96	CC
 regular	regular	JJ	98	99	NMOD
 airplay	airplay	NN	99	96	COORD
@@ -4485,7 +4485,7 @@ the	the	DT	107	108	NMOD
 album	album	NN	108	106	PMOD
 such	such	JJ	109	110	DEP
 as	as	IN	110	108	NMOD
-“Beautiful”	“beautiful”	NN	111	110	PMOD
+ï¿½Beautifulï¿½	ï¿½beautifulï¿½	NN	111	110	PMOD
 .	.	SENT	112	7	P
 </s>
 <s>
@@ -4610,9 +4610,9 @@ the	the	DT	4	68	DEP
 NME	NME	NP	5	68	P
 &	&	CC	6	68	DEP
 Q	Q	NP	7	8	NMOD
-“Best	“best	NN	8	0	ROOT
+ï¿½Best	ï¿½best	NN	8	0	ROOT
 New	New	NP	9	68	P
-Band”	Band”	NP	10	14	VMOD
+Bandï¿½	Bandï¿½	NP	10	14	VMOD
 Award	Award	NP	11	14	SBJ
 ,	,	,	12	14	P
 Razorlight	razorlight	NN	13	14	SBJ
@@ -4655,16 +4655,16 @@ a	a	DT	49	53	NMOD
 stunning	stunning	JJ	50	53	NMOD
 debut	debut	NN	51	53	NMOD
 album	album	NN	52	53	NMOD
-“Up	“up	NN	53	48	OBJ
+ï¿½Up	ï¿½up	NN	53	48	OBJ
 All	all	DT	54	0	ROOT
-Night”	Night”	NP	55	0	ROOT
+Nightï¿½	Nightï¿½	NP	55	0	ROOT
 with	with	IN	56	0	ROOT
 hits	hit	NNS	57	56	PMOD
 like	like	IN	58	57	NMOD
-“Golden	“Golden	NP	59	63	SBJ
-Touch”	Touch”	NP	60	63	SBJ
+ï¿½Golden	ï¿½Golden	NP	59	63	SBJ
+Touchï¿½	Touchï¿½	NP	60	63	SBJ
 and	and	CC	61	60	CC
-“Vice”	“vice”	JJ	62	60	COORD
+ï¿½Viceï¿½	ï¿½viceï¿½	JJ	62	60	COORD
 showcasing	showcase	VVG	63	58	PMOD
 the	the	DT	64	65	NMOD
 band	band	NN	65	67	NMOD
@@ -4707,8 +4707,8 @@ year	year	NN	28	26	PMOD
 Their	their	PP$	1	29	DEP
 latest	late	JJS	2	29	P
 single	single	JJ	3	29	DEP
-“Somewhere	“Somewhere	NP	4	6	VMOD
-Else”	Else”	NP	5	6	SBJ
+ï¿½Somewhere	ï¿½Somewhere	NP	4	6	VMOD
+Elseï¿½	Elseï¿½	NP	5	6	SBJ
 shot	shoot	VVD	6	0	ROOT
 straight	straight	RB	7	6	ADV
 into	into	IN	8	6	ADV
@@ -4755,9 +4755,9 @@ releasing	release	VVG	17	16	VC
 their	their	PP$	18	21	NMOD
 next	next	JJ	19	21	NMOD
 single	single	JJ	20	21	NMOD
-“Deep	“deep	NN	21	17	OBJ
+ï¿½Deep	ï¿½deep	NN	21	17	OBJ
 and	and	CC	22	15	CC
-Meaningless”	Meaningless”	NP	23	28	VMOD
+Meaninglessï¿½	Meaninglessï¿½	NP	23	28	VMOD
 on	on	IN	24	28	VMOD
 July	July	NP	25	26	NMOD
 4	4	CD	26	24	PMOD
@@ -4899,10 +4899,10 @@ weeks	week	NNS	14	13	PMOD
 </s>
 <s>
 The	the	DT	1	2	NMOD
-“Nokia	“nokia	NN	2	0	ROOT
+ï¿½Nokia	ï¿½nokia	NN	2	0	ROOT
 Unleashed	Unleashed	NP	3	6	VMOD
 Music	Music	NP	4	6	VMOD
-Festival”	Festival”	NP	5	6	SBJ
+Festivalï¿½	Festivalï¿½	NP	5	6	SBJ
 will	will	MD	6	2	NMOD
 also	also	RB	7	6	ADV
 feature	feature	VV	8	6	VC
@@ -4971,13 +4971,13 @@ www.ticketweb.co.uk	www.ticketweb.co.uk	NP	8	23	ADV
 ,	,	,	9	23	P
 priced	price	VVN	10	23	DEP
 at	at	IN	11	10	ADV
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 19.50	@card@	CD	13	11	PMOD
 for	for	IN	14	13	NMOD
 the	the	DT	15	0	ROOT
 Friday	Friday	NP	16	0	ROOT
 and	and	CC	17	16	CC
-£	£	$	18	19	NMOD
+ï¿½	ï¿½	$	18	19	NMOD
 25.00	@card@	CD	19	16	COORD
 for	for	IN	20	19	NMOD
 the	the	DT	21	22	NMOD
@@ -5011,7 +5011,7 @@ a	a	DT	11	13	NMOD
 reduced	reduced	JJ	12	13	NMOD
 price	price	NN	13	10	PMOD
 of	of	IN	14	13	NMOD
-£	£	$	15	16	NMOD
+ï¿½	ï¿½	$	15	16	NMOD
 39.50	@card@	CD	16	14	PMOD
 .	.	SENT	17	7	P
 </s>
@@ -5221,7 +5221,7 @@ products	product	NNS	11	6	COORD
 is	be	VBZ	12	0	ROOT
 more	more	JJR	13	15	DEP
 than	than	IN	14	15	DEP
-£	£	$	15	19	NMOD
+ï¿½	ï¿½	$	15	19	NMOD
 8	8	CD	16	15	DEP
 b	b	SYM	17	19	NMOD
 per	per	FW	18	19	NMOD
@@ -8038,7 +8038,7 @@ helps	help	VVZ	3	1	COORD
 <s>
 Jim	Jim	NP	1	4	NMOD
 Copyright	Copyright	NP	2	4	NMOD
-©	©	SYM	3	4	NMOD
+ï¿½	ï¿½	SYM	3	4	NMOD
 2000	@card@	CD	4	0	ROOT
 ,	,	,	5	4	P
 James	James	NP	6	0	ROOT
@@ -9699,7 +9699,7 @@ at	at	IN	19	12	ADV
 5	5	CD	20	22	NMOD
 minute	minute	NN	21	22	NMOD
 intervals	interval	NNS	22	19	PMOD
-–	–	JJ	23	22	NMOD
+ï¿½	ï¿½	JJ	23	22	NMOD
 on	on	IN	24	12	ADV
 a	a	DT	25	27	NMOD
 tidal	tidal	JJ	26	27	NMOD
@@ -9862,7 +9862,7 @@ officials	official	NNS	152	150	PMOD
 and	and	CC	153	152	CC
 competitors	competitor	NNS	154	152	COORD
 at	at	IN	155	146	ADV
-HWR…	HWR…	NP	156	155	PMOD
+HWRï¿½	HWRï¿½	NP	156	155	PMOD
 not	not	RB	157	159	VMOD
 to	to	TO	158	159	VMOD
 mention	mention	VV	159	146	ADV
@@ -10091,7 +10091,7 @@ up	up	RB	33	32	PMOD
 points	point	NNS	35	38	NMOD
 limbo	limbo	NN	36	38	NMOD
 dancing	dancing	NN	37	38	NMOD
-)–	)–	NN	38	28	PRN
+)ï¿½	)ï¿½	NN	38	28	PRN
 this	this	DT	39	40	NMOD
 means	means	NN	40	38	OBJ
 that	that	IN	41	43	VMOD
@@ -10181,7 +10181,7 @@ for	for	IN	10	9	NMOD
 Intermediate	Intermediate	NP	11	10	PMOD
 and	and	CC	12	6	CC
 Senior	Senior	NP	13	14	NMOD
-–	–	NN	14	6	COORD
+ï¿½	ï¿½	NN	14	6	COORD
 make	make	VVP	15	2	VC
 crews	crew	NNS	16	17	SBJ
 have	have	VHP	17	15	OBJ
@@ -10284,7 +10284,7 @@ racing	race	VVG	25	24	PMOD
 up	up	RP	26	25	PRT
 last	last	JJ	27	28	NMOD
 year	year	NN	28	25	ADV
-–	–	NN	29	25	OBJ
+ï¿½	ï¿½	NN	29	25	OBJ
 as	as	IN	30	25	ADV
 in	in	IN	31	30	PMOD
 2004	@card@	CD	32	31	PMOD
@@ -10302,10 +10302,10 @@ but	but	CC	43	42	CC
 had	have	VHD	44	40	OBJ
 done	do	VVN	45	44	VC
 the	the	DT	46	50	NMOD
-“	“	JJ	47	50	NMOD
+ï¿½	ï¿½	JJ	47	50	NMOD
 honest	honest	JJ	48	50	NMOD
 thing	thing	NN	49	50	NMOD
-”	”	NN	50	45	OBJ
+ï¿½	ï¿½	NN	50	45	OBJ
 by	by	IN	51	45	ADV
 entering	enter	VVG	52	51	PMOD
 the	the	DT	53	55	NMOD
@@ -10379,7 +10379,7 @@ produce	produce	VV	37	36	VC
 some	some	DT	38	40	NMOD
 tight	tight	JJ	39	40	NMOD
 races	race	NNS	40	37	OBJ
-–	–	JJ	41	40	NMOD
+ï¿½	ï¿½	JJ	41	40	NMOD
 the	the	NP	42	70	VMOD
 Osiris	Osiris	NP	43	0	ROOT
 /	/	SYM	44	0	ROOT
@@ -10461,7 +10461,7 @@ Thames	Thames	NP	5	6	SBJ
 won	win	VVD	6	11	ADV
 as	as	IN	7	6	ADV
 expected	expect	VVN	8	9	NMOD
-–	–	NN	9	7	PMOD
+ï¿½	ï¿½	NN	9	7	PMOD
 this	this	DT	10	11	SBJ
 is	be	VBZ	11	0	ROOT
 a	a	DT	12	13	NMOD
@@ -10492,7 +10492,7 @@ and	and	CC	5	2	CC
 Furnivall	Furnivall	NP	6	13	SBJ
 en	en	IN	7	13	ADV
 route	route	NN	8	9	NMOD
-–	–	NN	9	7	PMOD
+ï¿½	ï¿½	NN	9	7	PMOD
 both	both	CC	10	9	CC
 of	of	IN	11	13	ADV
 which	which	WDT	12	11	PMOD
@@ -10508,7 +10508,7 @@ the	the	DT	21	23	NMOD
 senior	senior	JJ	22	23	NMOD
 event	event	NN	23	20	PMOD
 either	either	CC	24	23	CC
-–	–	NN	25	23	COORD
+ï¿½	ï¿½	NN	25	23	COORD
 but	but	CC	26	2	CC
 then	then	RB	27	2	COORD
 ,	,	,	28	2	P
@@ -10965,7 +10965,7 @@ contenders	contender	NNS	14	11	PMOD
 but	but	CC	16	10	CC
 early	early	JJ	17	18	NMOD
 days	day	NNS	18	20	NMOD
-yet…	yet…	JJ	19	20	NMOD
+yetï¿½	yetï¿½	JJ	19	20	NMOD
 Conditions	condition	NNS	20	23	SBJ
 for	for	IN	21	20	NMOD
 racing	racing	NN	22	21	PMOD
@@ -11504,7 +11504,7 @@ height	height	NN	67	63	NMOD
 Yes	yes	UH	1	9	VMOD
 ,	,	,	2	9	P
 For	for	IN	3	9	ADV
-£	£	$	4	5	NMOD
+ï¿½	ï¿½	$	4	5	NMOD
 100	@card@	CD	5	3	PMOD
 ,	,	,	6	9	P
 Dan	Dan	NP	7	0	ROOT
@@ -11541,7 +11541,7 @@ just	just	RB	17	19	NMOD
 a	a	DT	18	19	NMOD
 little	little	JJ	19	16	PRD
 over	over	IN	20	19	NMOD
-£	£	$	21	22	NMOD
+ï¿½	ï¿½	$	21	22	NMOD
 12	@card@	CD	22	20	PMOD
 a	a	DT	23	24	NMOD
 head	head	NN	24	22	ADV
@@ -12194,7 +12194,7 @@ all	all	DT	6	8	NMOD
 related	related	JJ	7	8	NMOD
 elements	element	NNS	8	9	SBJ
 are	are	VBP	9	4	COORD
-©	©	SYM	10	0	ROOT
+ï¿½	ï¿½	SYM	10	0	ROOT
 Carlton	Carlton	NP	11	0	ROOT
 International	International	NP	12	0	ROOT
 Media	Media	NP	13	0	ROOT
@@ -12229,7 +12229,7 @@ of	of	IN	3	2	NMOD
 this	this	DT	4	5	NMOD
 page	page	NN	5	3	PMOD
 are	are	VBP	6	0	ROOT
-©	©	SYM	7	0	ROOT
+ï¿½	ï¿½	SYM	7	0	ROOT
 Joseph	Joseph	NP	8	0	ROOT
 Oldham	Oldham	NP	9	0	ROOT
 .	.	SENT	10	6	P
@@ -17019,7 +17019,7 @@ including	include	VVG	13	12	NMOD
 many	many	JJ	14	18	NMOD
 continental	continental	JJ	15	18	NMOD
 style	style	NN	16	18	NMOD
-café	café	NN	17	18	NMOD
+cafï¿½	cafï¿½	NN	17	18	NMOD
 bars	bar	NNS	18	13	PMOD
 ,	,	,	19	18	P
 lively	lively	JJ	20	21	NMOD
@@ -17670,7 +17670,7 @@ men	man	NNS	7	4	PRD
 's	's	POS	8	7	NMOD
 cancer	cancer	NN	9	11	NMOD
 guide	guide	NN	10	11	NMOD
-–	–	NN	11	7	NMOD
+ï¿½	ï¿½	NN	11	7	NMOD
 not	not	RB	12	14	CC
 only	only	RB	13	12	DEP
 is	be	VBZ	14	4	ADV
@@ -20211,8 +20211,8 @@ If	if	IN	1	4	VMOD
 a	a	DT	2	3	NMOD
 driver	driver	NN	3	4	SBJ
 is	be	VBZ	4	8	SBJ
-“sin	“sin	NN	5	7	NMOD
-binned”the	binned”the	NN	6	7	NMOD
+ï¿½sin	ï¿½sin	NN	5	7	NMOD
+binnedï¿½the	binnedï¿½the	NN	6	7	NMOD
 system	system	NN	7	4	PRD
 prevents	prevent	VVZ	8	0	ROOT
 the	the	DT	9	10	NMOD
@@ -21753,7 +21753,7 @@ BiggyBoo	BiggyBoo	NP	58	63	NMOD
 Books	Books	NPS	59	63	NMOD
 Questo	Questo	NP	60	63	NMOD
 libro	libro	NP	61	63	NMOD
-è	è	NN	62	63	NMOD
+ï¿½	ï¿½	NN	62	63	NMOD
 un	un	NN	63	48	NMOD
 guida	Guida	NP	64	70	P
 iniziale	iniziale	NP	65	70	P
@@ -21795,7 +21795,7 @@ Il	Il	FW	1	9	NMOD
 valore	valore	NP	2	9	NMOD
 del	del	FW	3	9	NMOD
 nome	nome	NN	4	9	NMOD
-può	può	NN	5	9	NMOD
+puï¿½	puï¿½	NN	5	9	NMOD
 allora	allora	NN	6	9	NMOD
 essere	essere	NN	7	9	NMOD
 confrontato	confrontato	NN	8	9	NMOD
@@ -21821,7 +21821,7 @@ modo	modo	NN	27	0	ROOT
 .	.	SENT	28	27	P
 </s>
 <s>
-Poichè	Poichè	NP	1	23	ADV
+Poichï¿½	Poichï¿½	NP	1	23	ADV
 ,	,	,	2	23	P
 gli	gli	NP	3	8	NMOD
 aspetti	aspetti	NP	4	8	NMOD
@@ -21874,7 +21874,7 @@ Ching	Ching	NP	9	38	NMOD
 ,	,	,	11	38	P
 le	le	DT	12	14	NMOD
 vaste	vaste	JJ	13	14	NMOD
-complessità	complessità	NN	14	38	SBJ
+complessitï¿½	complessitï¿½	NN	14	38	SBJ
 del	del	DT	15	23	NMOD
 macrocosmo	macrocosmo	NN	16	23	NMOD
 sono	sono	NN	17	23	NMOD
@@ -21888,7 +21888,7 @@ del	del	NP	24	38	NMOD
 microcosmo	microcosmo	NP	25	38	NMOD
 ,	,	,	26	38	P
 e	e	NN	27	28	NMOD
-così	così	NN	28	38	SBJ
+cosï¿½	cosï¿½	NN	28	38	SBJ
 ogni	ogni	NP	29	38	NMOD
 sistema	Sistema	NP	30	38	NMOD
 di	di	NP	31	38	NMOD
@@ -21915,7 +21915,7 @@ numeri	numeri	NP	10	15	NMOD
 collegato	collegato	NP	11	15	NMOD
 alle	alle	NP	12	15	NMOD
 lettere	lettere	NN	13	15	NMOD
-è	è	NN	14	15	NMOD
+ï¿½	ï¿½	NN	14	15	NMOD
 proposto	proposto	NN	15	22	DEP
 per	per	IN	16	15	NMOD
 darci	Darci	NP	17	0	ROOT
@@ -21928,9 +21928,9 @@ mondo	Mondo	NP	21	0	ROOT
 <s>
 Naturalmente	Naturalmente	NP	1	36	NMOD
 ,	,	,	2	36	P
-ciò	ciò	JJ	3	5	NMOD
+ciï¿½	ciï¿½	JJ	3	5	NMOD
 non	non	JJ	4	5	NMOD
-è	è	NN	5	36	SBJ
+ï¿½	ï¿½	NN	5	36	SBJ
 basato	basato	NP	6	36	NMOD
 su	Su	NP	7	36	NMOD
 una	Una	NP	8	36	NMOD
@@ -22011,7 +22011,7 @@ dell'autore	dell'autore	NN	11	5	NMOD
 per	per	IN	12	11	NMOD
 il	il	JJ	13	17	NMOD
 sistema	sistema	NN	14	17	NMOD
-può	può	NN	15	17	NMOD
+puï¿½	puï¿½	NN	15	17	NMOD
 essere	essere	NN	16	17	NMOD
 contagioso	contagioso	NN	17	12	PMOD
 .	.	SENT	18	0	ROOT
@@ -22021,7 +22021,7 @@ Ellis	Ellis	NP	1	12	NMOD
 Taylor	Taylor	NP	2	7	NMOD
 si	si	NP	3	7	NMOD
 lascia	lascia	NP	4	7	NMOD
-l'oppurtunità	l'oppurtunità	NP	5	7	NMOD
+l'oppurtunitï¿½	l'oppurtunitï¿½	NP	5	7	NMOD
 di	di	NP	6	7	NMOD
 fare	fare	NN	7	12	NMOD
 vari	Vari	NP	8	12	NMOD
@@ -22040,7 +22040,7 @@ punto	punto	NN	19	12	NMOD
 </s>
 <s>
 Egli	Egli	NP	1	18	DEP
-è	è	JJ	2	5	NMOD
+ï¿½	ï¿½	JJ	2	5	NMOD
 chiaramente	chiaramente	NN	3	5	NMOD
 un	un	NN	4	5	NMOD
 individuo	individuo	NN	5	9	NMOD
@@ -22061,7 +22061,7 @@ scorrevole	scorrevole	NN	17	13	NMOD
 <s>
 Il	Il	NP	1	4	NMOD
 libro	libro	NP	2	4	NMOD
-pùo	pùo	NN	3	4	NMOD
+pï¿½o	pï¿½o	NN	3	4	NMOD
 essere	essere	NN	4	10	NMOD
 a	a	DT	5	8	NMOD
 volte	volte	NN	6	8	NMOD
@@ -22082,7 +22082,7 @@ Appendice	Appendice	NP	18	16	VMOD
 <s>
 Presumibilmente	Presumibilmente	NP	1	4	NMOD
 questo	questo	NP	2	4	NMOD
-è	è	NN	3	4	NMOD
+ï¿½	ï¿½	NN	3	4	NMOD
 necessario	necessario	NN	4	21	NMOD
 per	per	IN	5	4	NMOD
 facilitare	facilitare	JJ	6	7	NMOD
@@ -22105,7 +22105,7 @@ sistema	sistema	NN	21	0	ROOT
 </s>
 <s>
 Ed	Ed	NP	1	13	DEP
-è	è	NP	2	4	VMOD
+ï¿½	ï¿½	NP	2	4	VMOD
 qui	qui	NP	3	4	SBJ
 dove	dive	VVD	4	0	ROOT
 il	il	JJ	5	6	NMOD
@@ -22149,7 +22149,7 @@ generale	generale	NN	25	24	PMOD
 <s>
 Questo	Questo	NP	1	14	DEP
 libro	libro	NP	2	4	NMOD
-è	è	NN	3	4	NMOD
+ï¿½	ï¿½	NN	3	4	NMOD
 disponibile	disponibile	NN	4	0	ROOT
 presso	presso	NP	5	0	ROOT
 Biggy	Biggy	NP	6	0	ROOT
@@ -22339,7 +22339,7 @@ turned	turn	VVN	19	11	COORD
 over	over	IN	20	11	NMOD
 more	more	JJR	21	24	DEP
 than	than	IN	22	24	DEP
-€72	€72	JJ	23	24	NMOD
+ï¿½72	ï¿½72	JJ	23	24	NMOD
 billion	billion	CD	24	20	PMOD
 .	.	SENT	25	3	P
 </s>
@@ -22392,13 +22392,13 @@ sectors	sector	NNS	16	11	PMOD
 Annual	annual	JJ	1	2	NMOD
 sales	sale	NNS	2	3	SBJ
 were	be	VBD	3	0	ROOT
-£	£	$	4	3	PRD
+ï¿½	ï¿½	$	4	3	PRD
 5	5	CD	5	4	DEP
 billion	billion	CD	6	4	DEP
 ,	,	,	7	3	P
 and	and	CC	8	3	CC
 exports	export	VVZ	9	3	COORD
-£	£	$	10	9	OBJ
+ï¿½	ï¿½	$	10	9	OBJ
 1.5	@card@	CD	11	10	DEP
 billion	billion	CD	12	10	DEP
 .	.	SENT	13	3	P
@@ -23187,7 +23187,7 @@ during	during	IN	5	4	ADV
 the	the	DT	6	7	NMOD
 discussions	discussion	NNS	7	5	PMOD
 :	:	:	8	4	P
-•	•	NN	9	11	NMOD
+ï¿½	ï¿½	NN	9	11	NMOD
 the	the	DT	10	11	NMOD
 need	need	NN	11	4	OBJ
 for	for	IN	12	11	NMOD
@@ -23206,7 +23206,7 @@ to	to	TO	24	25	VMOD
 sort	sort	VV	25	23	EXP
 for	for	IN	26	25	ADV
 recycling	recycle	VVG	27	26	PMOD
-•	•	NN	28	27	OBJ
+ï¿½	ï¿½	NN	28	27	OBJ
 The	the	DT	29	30	NMOD
 development	development	NN	30	27	OBJ
 of	of	IN	31	30	NMOD
@@ -23281,7 +23281,7 @@ a	a	DT	12	16	NMOD
 public	public	JJ	13	16	NMOD
 awareness	awareness	NN	14	16	NMOD
 scheme.	scheme.	JJ	15	16	NMOD
-•	•	NN	16	9	COORD
+ï¿½	ï¿½	NN	16	9	COORD
 the	the	DT	17	18	NMOD
 development	development	NN	18	9	COORD
 of	of	IN	19	18	NMOD
@@ -23332,7 +23332,7 @@ need	need	VVP	32	27	OBJ
 to	to	TO	33	34	VMOD
 be	be	VB	34	32	OBJ
 developed	develop	VVN	35	34	VC
-•	•	NN	36	35	OBJ
+ï¿½	ï¿½	NN	36	35	OBJ
 The	the	DT	37	38	NMOD
 importance	importance	NN	38	35	ADV
 of	of	IN	39	38	NMOD
@@ -23415,7 +23415,7 @@ Green	Green	NP	18	26	NMOD
 MEP	MEP	NP	19	26	NMOD
 Hiltrud	Hiltrud	NP	20	26	NMOD
 Breyer.	Breyer.	NP	21	26	NMOD
-•	•	NP	22	26	NMOD
+ï¿½	ï¿½	NP	22	26	NMOD
 Phthalates	Phthalates	NP	23	26	NMOD
 :	:	:	24	26	P
 the	the	DT	25	26	NMOD
@@ -23435,7 +23435,7 @@ public	public	JJ	38	39	NMOD
 fears	fear	NNS	39	36	OBJ
 about	about	IN	40	39	NMOD
 them.	them.	JJ	41	43	NMOD
-•	•	JJ	42	43	NMOD
+ï¿½	ï¿½	JJ	42	43	NMOD
 Encouragement	encouragement	NN	43	40	PMOD
 of	of	IN	44	43	NMOD
 technological	technological	JJ	45	44	PMOD
@@ -23465,7 +23465,7 @@ possibly	possibly	RB	8	7	ADV
 help	help	VV	9	7	VC
 fund	fund	NN	10	14	NMOD
 this.	this.	NN	11	14	NMOD
-•	•	JJ	12	14	NMOD
+ï¿½	ï¿½	JJ	12	14	NMOD
 Substitution	substitution	NN	13	14	NMOD
 options	option	NNS	14	9	OBJ
 -	-	:	15	7	P
@@ -23513,7 +23513,7 @@ itself	itself	PP	56	55	OBJ
 for	for	IN	57	55	ADV
 some	some	DT	58	63	NMOD
 applications.	applications.	JJ	59	63	NMOD
-•	•	JJ	60	63	NMOD
+ï¿½	ï¿½	JJ	60	63	NMOD
 New	New	NP	61	63	NMOD
 member	member	NN	62	63	NMOD
 states	state	NNS	63	57	PMOD
@@ -23539,7 +23539,7 @@ and	and	CC	82	80	CC
 probably	probably	RB	83	80	COORD
 most	most	JJS	84	87	NMOD
 importantly	importantly	RB	85	86	AMOD
-•	•	JJ	86	87	NMOD
+ï¿½	ï¿½	JJ	86	87	NMOD
 Legislation	legislation	NN	87	44	NMOD
 -	-	:	88	44	P
 MEPs	MEPs	NP	89	90	SBJ
@@ -24439,7 +24439,7 @@ Left	Left	NP	10	33	P
 Finnish	Finnish	JJ	11	33	DEP
 MEP	MEP	NP	12	33	DEP
 Esko	Esko	NP	13	15	VMOD
-Seppänen	Seppänen	NP	14	15	SBJ
+Seppï¿½nen	Seppï¿½nen	NP	14	15	SBJ
 commented	comment	VVD	15	0	ROOT
 that	that	IN	16	22	VMOD
 the	the	DT	17	19	NMOD
@@ -26348,7 +26348,7 @@ for	for	IN	7	6	NMOD
 GBP	gbp	NN	9	7	PMOD
 (	(	(	10	17	P
 or	or	CC	11	17	CC
-250€	250€	JJ	12	17	ADV
+250ï¿½	250ï¿½	JJ	12	17	ADV
 )	)	)	13	0	ROOT
 ,	,	,	14	17	P
 shipping	ship	VVG	15	16	NMOD
@@ -26546,17 +26546,17 @@ Ages	Ages	NPS	15	30	VMOD
 7	7	CD	18	30	VMOD
 -	-	:	19	30	P
 9pm	9pm	NN	20	30	SBJ
-£	£	$	21	22	NMOD
+ï¿½	ï¿½	$	21	22	NMOD
 35	@card@	CD	22	20	NMOD
 per	per	IN	23	22	NMOD
 term	term	NN	24	23	PMOD
 (	(	(	25	28	P
-£	£	$	26	28	NMOD
+ï¿½	ï¿½	$	26	28	NMOD
 20	@card@	CD	27	28	NMOD
 concession	concession	NN	28	24	PRN
 )	)	)	29	28	P
 Get	get	VVP	30	3	ADV
-Movin’	Movin’	NP	31	0	ROOT
+Movinï¿½	Movinï¿½	NP	31	0	ROOT
 on	on	IN	32	0	ROOT
 a	a	DT	33	0	ROOT
 Tuesday	Tuesday	NP	34	35	SBJ
@@ -26604,12 +26604,12 @@ Ages	Ages	NPS	15	63	DEP
 6.30	@card@	CD	18	22	NMOD
 -	-	:	19	18	P
 7.30pm	7.30pm	NP	20	22	NMOD
-£	£	$	21	22	NMOD
+ï¿½	ï¿½	$	21	22	NMOD
 30	@card@	CD	22	63	DEP
 per	per	IN	23	22	NMOD
 term	term	NN	24	23	PMOD
 (	(	(	25	28	P
-£	£	$	26	28	NMOD
+ï¿½	ï¿½	$	26	28	NMOD
 15	@card@	CD	27	28	NMOD
 concession	concession	NN	28	24	PRN
 )	)	)	29	28	P
@@ -26669,12 +26669,12 @@ Ages	Ages	NPS	7	45	DEP
 6	6	CD	10	14	DEP
 -	-	:	11	10	P
 7.30pm	7.30pm	NP	12	14	NMOD
-£	£	$	13	14	NMOD
+ï¿½	ï¿½	$	13	14	NMOD
 30	@card@	CD	14	45	ADV
 per	per	IN	15	14	NMOD
 term	term	NN	16	15	PMOD
 (	(	(	17	20	P
-£	£	$	18	20	NMOD
+ï¿½	ï¿½	$	18	20	NMOD
 15	@card@	CD	19	20	NMOD
 concession	concession	NN	20	16	PRN
 )	)	)	21	20	P
@@ -26737,12 +26737,12 @@ Ages	Ages	NPS	28	66	DEP
 5	5	CD	31	35	NMOD
 -	-	:	32	31	P
 6.30pm	6.30pm	JJ	33	35	NMOD
-£	£	$	34	35	NMOD
+ï¿½	ï¿½	$	34	35	NMOD
 30	@card@	CD	35	66	DEP
 per	per	IN	36	35	NMOD
 term	term	NN	37	36	PMOD
 (	(	(	38	41	P
-£	£	$	39	41	NMOD
+ï¿½	ï¿½	$	39	41	NMOD
 15	@card@	CD	40	41	NMOD
 concession	concession	NN	41	37	PRN
 )	)	)	42	41	P
@@ -26754,7 +26754,7 @@ Friday	Friday	NP	47	66	DEP
 Shake	Shake	NP	48	66	ADV
 ,	,	,	49	66	P
 Rattle	Rattle	NP	50	66	DEP
-n’	n’	NP	51	0	ROOT
+nï¿½	nï¿½	NP	51	0	ROOT
 Roll	Roll	NP	52	0	ROOT
 in	in	IN	53	0	ROOT
 this	this	DT	54	55	NMOD
@@ -26805,7 +26805,7 @@ Ages	Ages	NPS	26	27	NMOD
 10	@card@	CD	31	29	NMOD
 -	-	:	32	27	P
 11am	11am	JJ	33	35	NMOD
-£	£	$	34	35	NMOD
+ï¿½	ï¿½	$	34	35	NMOD
 2	2	CD	35	27	NMOD
 Get	get	VV	36	10	VC
 SMart	Smart	NP	37	36	ADV
@@ -26844,12 +26844,12 @@ Ages	Ages	NPS	8	0	ROOT
 ,	,	,	11	10	P
 10.30	@card@	CD	12	13	DEP
 -12.30	@card@	CD	13	10	COORD
-£	£	$	14	15	NMOD
+ï¿½	ï¿½	$	14	15	NMOD
 35	@card@	CD	15	10	COORD
 per	per	IN	16	15	NMOD
 term	term	NN	17	16	PMOD
 (	(	(	18	21	P
-£	£	$	19	21	NMOD
+ï¿½	ï¿½	$	19	21	NMOD
 20	@card@	CD	20	21	NMOD
 concession	concession	NN	21	17	PRN
 )	)	)	22	21	P
@@ -28861,21 +28861,21 @@ FIFA	FIFA	NN	16	14	PMOD
 Madden	Madden	NP	18	44	DEP
 NFL	NFL	NP	19	44	ADV
 ,	,	,	20	44	P
-NCAA®	NCAA®	NP	21	44	DEP
+NCAAï¿½	NCAAï¿½	NP	21	44	DEP
 Football	Football	NP	22	44	ADV
 ,	,	,	23	44	P
-NHL®	NHL®	NP	24	25	NMOD
+NHLï¿½	NHLï¿½	NP	24	25	NMOD
 hockey	hockey	NN	25	44	DEP
 ,	,	,	26	25	P
 NBA	NBA	NP	27	44	DEP
 LIVE	Live	NP	28	44	ADV
 ,	,	,	29	44	P
-NASCAR®	NASCAR®	NP	30	44	DEP
+NASCARï¿½	NASCARï¿½	NP	30	44	DEP
 and	and	CC	31	30	CC
 Tiger	Tiger	NP	32	44	DEP
 Woods	Woods	NP	33	0	ROOT
 PGA	PGA	NP	34	0	ROOT
-TOUR®	TOUR®	NP	35	37	VMOD
+TOURï¿½	TOURï¿½	NP	35	37	VMOD
 Golf	Golf	NP	36	37	SBJ
 franchises	franchise	VVZ	37	0	ROOT
 deliver	deliver	VV	38	37	OBJ
@@ -28903,10 +28903,10 @@ Speedâ„¢	Speedâ„¢	NP	12	11	PMOD
 Battlefield	Battlefield	NP	14	12	COORD
 ,	,	,	15	2	P
 and	and	CC	16	2	CC
-Half-Life®	Half-Life®	NP	17	18	NMOD
+Half-Lifeï¿½	Half-Lifeï¿½	NP	17	18	NMOD
 franchises	franchise	NNS	18	2	COORD
 join	join	VVP	19	0	ROOT
-Warhammer®	Warhammer®	NP	20	23	NMOD
+Warhammerï¿½	Warhammerï¿½	NP	20	23	NMOD
 Online	Online	NP	21	23	NMOD
 :	:	:	22	23	P
 Age	age	NN	23	19	OBJ
@@ -29188,7 +29188,7 @@ AF	AF	NP	31	4	NMOD
 <s>
 Price	price	NN	1	0	ROOT
 :	:	:	2	1	P
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 159.46	@card@	CD	4	1	NMOD
 (	(	(	5	6	P
 Including	include	VVG	6	1	PRN
@@ -29290,7 +29290,7 @@ AF	AF	NP	20	17	NMOD
 <s>
 Price	price	NN	1	0	ROOT
 :	:	:	2	1	P
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 76.94	@card@	CD	4	1	NMOD
 (	(	(	5	6	P
 Including	include	VVG	6	1	PRN
@@ -29426,7 +29426,7 @@ wallet	wallet	NN	5	2	PMOD
 <s>
 Price	price	NN	1	0	ROOT
 :	:	:	2	1	P
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 72.29	@card@	CD	4	1	NMOD
 (	(	(	5	6	P
 Including	include	VVG	6	1	PRN
@@ -30299,8 +30299,8 @@ the	the	DT	14	16	VMOD
 BCDTA	BCDTA	NP	15	16	SBJ
 joined	join	VVD	16	0	ROOT
 the	the	DT	17	19	NMOD
-Fédération	Fédération	NP	18	19	NMOD
-Européene	européene	NN	19	16	OBJ
+Fï¿½dï¿½ration	Fï¿½dï¿½ration	NP	18	19	NMOD
+Europï¿½ene	europï¿½ene	NN	19	16	OBJ
 du	du	NP	20	29	NMOD
 Commerce	Commerce	NP	21	29	NMOD
 Chimique	Chimique	NP	22	29	NMOD
@@ -31769,21 +31769,21 @@ as	as	IN	42	61	DEP
 Admiral	Admiral	NP	43	46	NMOD
 Bailey	Bailey	NP	44	46	NMOD
 's	's	POS	45	44	NMOD
-“Think	“think	NN	46	0	ROOT
+ï¿½Think	ï¿½think	NN	46	0	ROOT
 me	me	PP	47	48	SBJ
 did	do	VVD	48	46	NMOD
-done”	done”	NP	49	0	ROOT
+doneï¿½	doneï¿½	NP	49	0	ROOT
 and	and	CC	50	49	CC
 Brian	Brian	NP	51	0	ROOT
 &	&	CC	52	51	CC
 Tony	Tony	NP	53	56	NMOD
 Gold	Gold	NP	54	56	NMOD
 's	's	POS	55	54	NMOD
-“Pass	“pass	NN	56	51	COORD
+ï¿½Pass	ï¿½pass	NN	56	51	COORD
 me	me	PP	57	56	IOBJ
 a	a	DT	58	60	NMOD
 dub	dub	NN	59	60	NMOD
-plate”	plate”	NN	60	56	NMOD
+plateï¿½	plateï¿½	NN	60	56	NMOD
 .	.	SENT	61	0	ROOT
 </s>
 <s>
@@ -31815,15 +31815,15 @@ feel	feel	NN	22	13	ADV
 Standout	standout	NN	1	2	NMOD
 tracks	track	NNS	2	3	SBJ
 include	include	VVP	3	0	ROOT
-“Bad	“Bad	NP	4	0	ROOT
-boys”-Super	boys”-Super	NP	5	0	ROOT
+ï¿½Bad	ï¿½Bad	NP	4	0	ROOT
+boysï¿½-Super	boysï¿½-Super	NP	5	0	ROOT
 Black	Black	NP	6	0	ROOT
 and	and	CC	7	6	CC
-“Rock	“rock	VV	8	6	COORD
+ï¿½Rock	ï¿½rock	VV	8	6	COORD
 them	them	PP	9	8	OBJ
 one	one	CD	10	6	COORD
 by	by	IN	11	10	NMOD
-one”-	one”-	NN	12	11	PMOD
+oneï¿½-	oneï¿½-	NN	12	11	PMOD
 Eccleton	Eccleton	NP	13	0	ROOT
 Jarrett	Jarrett	NP	14	0	ROOT
 .	.	SENT	15	3	P
@@ -40299,7 +40299,7 @@ readers	reader	NNS	17	11	OBJ
 </text>
 <text id="ukwac:http://lembingley.itweek.co.uk/2006/07/index.html">
 <s>
-«	«	)	1	49	DEP
+ï¿½	ï¿½	)	1	49	DEP
 June	June	NP	2	0	ROOT
 2006	@card@	CD	3	0	ROOT
 |	|	SYM	4	0	ROOT
@@ -40307,7 +40307,7 @@ Main	Main	NP	5	0	ROOT
 |	|	SYM	6	0	ROOT
 August	August	NP	7	0	ROOT
 2006	@card@	CD	8	0	ROOT
-»	»	(	9	0	ROOT
+ï¿½	ï¿½	(	9	0	ROOT
 July	July	NP	10	0	ROOT
 31	@card@	CD	11	0	ROOT
 ,	,	,	12	0	ROOT
@@ -40540,7 +40540,7 @@ facility	facility	NN	19	17	PMOD
 which	which	WDT	20	21	SBJ
 retails	retail	VVZ	21	19	NMOD
 for	for	IN	22	21	ADV
-£	£	$	23	24	NMOD
+ï¿½	ï¿½	$	23	24	NMOD
 1774	@card@	CD	24	22	PMOD
 excluding	exclude	VVG	25	24	NMOD
 VAT	VAT	NN	26	25	PMOD
@@ -40557,7 +40557,7 @@ are	are	VBP	7	5	NMOD
 faced	face	VVN	8	7	VC
 with	with	IN	9	8	ADV
 a	a	DT	10	14	NMOD
-£	£	$	11	14	NMOD
+ï¿½	ï¿½	$	11	14	NMOD
 50	@card@	CD	12	11	AMOD
 connection	connection	NN	13	14	NMOD
 charge	charge	NN	14	9	PMOD
@@ -40565,7 +40565,7 @@ and	and	CC	15	14	CC
 monthly	monthly	JJ	16	17	NMOD
 fee	fee	NN	17	14	COORD
 of	of	IN	18	17	NMOD
-£	£	$	19	20	NMOD
+ï¿½	ï¿½	$	19	20	NMOD
 25	@card@	CD	20	18	PMOD
 .	.	SENT	21	0	ROOT
 </s>
@@ -40653,7 +40653,7 @@ costs	cost	NNS	9	10	SBJ
 broke	break	VVD	10	0	ROOT
 down	down	RP	11	10	PRT
 as	as	IN	12	10	ADV
-â€œ£1375	â€œ£1375	NN	13	12	PMOD
+â€œï¿½1375	â€œï¿½1375	NN	13	12	PMOD
 for	for	IN	14	13	NMOD
 the	the	DT	15	16	NMOD
 handset	handset	NN	16	14	PMOD
@@ -40667,14 +40667,14 @@ in	in	IN	23	22	PRD
 the	the	DT	24	25	NMOD
 boot	boot	NN	25	23	PMOD
 ,	,	,	26	20	P
-£	£	$	27	28	NMOD
+ï¿½	ï¿½	$	27	28	NMOD
 290	@card@	CD	28	20	NMOD
 for	for	IN	29	28	NMOD
 the	the	DT	30	32	NMOD
 hands-free	hands-free	JJ	31	32	NMOD
 facility	facility	NN	32	29	PMOD
 ,	,	,	33	20	P
-£	£	$	34	35	NMOD
+ï¿½	ï¿½	$	34	35	NMOD
 28.95	@card@	CD	35	20	NMOD
 for	for	IN	36	35	NMOD
 the	the	DT	37	39	NMOD
@@ -40683,7 +40683,7 @@ kit	kit	NN	39	36	PMOD
 and	and	CC	40	35	CC
 a	a	DT	41	44	NMOD
 whopping	whopping	JJ	42	44	NMOD
-£	£	$	43	44	NMOD
+ï¿½	ï¿½	$	43	44	NMOD
 79.95	@card@	CD	44	35	COORD
 for	for	IN	45	44	NMOD
 an	a	DT	46	47	NMOD
@@ -42366,19 +42366,19 @@ vibration	vibration	NN	29	28	PMOD
 </s>
 <s>
 RRP	rrp	JJS	1	3	NMOD
-£	£	$	2	3	NMOD
+ï¿½	ï¿½	$	2	3	NMOD
 49.95	@card@	CD	3	16	SBJ
 You	you	PP	4	5	SBJ
 save	save	VV	5	3	NMOD
 :	:	:	6	3	P
-£	£	$	7	8	NMOD
+ï¿½	ï¿½	$	7	8	NMOD
 23.00	@card@	CD	8	3	NMOD
 (	(	(	9	11	P
 46	@card@	CD	10	11	NMOD
 %	%	NN	11	3	PRN
 )	)	)	12	11	P
 Only	only	RB	13	14	DEP
-£	£	$	14	11	NMOD
+ï¿½	ï¿½	$	14	11	NMOD
 26.95	@card@	CD	15	14	DEP
 Tell	tell	VV	16	0	ROOT
 a	a	DT	17	18	NMOD
@@ -42434,7 +42434,7 @@ vibration	vibration	NN	29	28	PMOD
 </s>
 <s>
 Only	only	RB	1	3	NMOD
-£	£	$	2	3	NMOD
+ï¿½	ï¿½	$	2	3	NMOD
 49.95	@card@	CD	3	4	SBJ
 Tell	tell	VV	4	0	ROOT
 a	a	DT	5	6	NMOD
@@ -42595,7 +42595,7 @@ buy	buy	VV	13	10	COORD
 yourself	yourself	PP	14	17	SBJ
 a	a	DT	15	17	NMOD
 cheap	cheap	JJ	16	17	NMOD
-car…	car…	NN	17	13	OBJ
+carï¿½	carï¿½	NN	17	13	OBJ
 so	so	IN	18	20	VMOD
 it	it	PP	19	20	SBJ
 follows	follow	VVZ	20	5	ADV
@@ -42716,7 +42716,7 @@ If	if	IN	1	3	VMOD
 you	you	PP	2	3	SBJ
 are	are	VBP	3	18	ADV
 offered	offer	VVN	4	3	VC
-£	£	$	5	6	NMOD
+ï¿½	ï¿½	$	5	6	NMOD
 1000	@card@	CD	6	4	OBJ
 for	for	IN	7	4	ADV
 your	your	PP$	8	10	NMOD
@@ -42746,7 +42746,7 @@ making	make	VVG	31	25	ADV
 up	up	RP	32	31	PRT
 the	the	DT	33	35	NMOD
 money	money	NN	34	35	NMOD
-elsewhere…	elsewhere…	NN	35	31	OBJ
+elsewhereï¿½	elsewhereï¿½	NN	35	31	OBJ
 but	but	CC	36	18	CC
 if	if	IN	37	39	VMOD
 it	it	PP	38	39	SBJ
@@ -43092,7 +43092,7 @@ keep	keep	VV	19	10	COORD
 that	that	DT	20	21	NMOD
 profit	profit	NN	21	19	OBJ
 for	for	IN	22	19	ADV
-yourself…	yourself…	NN	23	22	PMOD
+yourselfï¿½	yourselfï¿½	NN	23	22	PMOD
 it	it	PP	24	25	SBJ
 's	be	VBZ	25	10	OBJ
 not	not	RB	26	25	VMOD
@@ -45048,7 +45048,7 @@ OFFICES	office	NNS	7	57	ADV
 TO	TO	TO	8	7	NMOD
 BENEFIT	Benefit	NP	9	12	NMOD
 FROM	From	NP	10	12	NMOD
-£	£	$	11	12	NMOD
+ï¿½	ï¿½	$	11	12	NMOD
 300M	300m	JJ	12	8	PMOD
 OF	of	IN	13	7	NMOD
 GOVERNMENT	Government	NP	14	17	NMOD
@@ -45056,7 +45056,7 @@ FUNDING	Funding	NP	15	17	NMOD
 A	a	DT	16	17	NMOD
 fund	fund	NN	17	13	PMOD
 of	of	IN	18	17	NMOD
-£	£	$	19	22	NMOD
+ï¿½	ï¿½	$	19	22	NMOD
 300m	300m	JJ	20	22	NMOD
 announced	announce	VVN	21	22	NMOD
 today	today	NN	22	18	PMOD
@@ -45174,7 +45174,7 @@ In	in	IN	2	25	ADV
 the	the	DT	5	7	VMOD
 Government	Government	NP	6	7	SBJ
 pledged	pledge	VVD	7	25	SBJ
-£	£	$	8	9	AMOD
+ï¿½	ï¿½	$	8	9	AMOD
 450m	450m	JJ	9	7	PRD
 to	to	TO	10	11	VMOD
 support	support	VV	11	9	AMOD
@@ -46842,7 +46842,7 @@ The	the	DT	39	0	ROOT
 Funeralcare	Funeralcare	NP	40	0	ROOT
 Forum	Forum	NP	41	0	ROOT
 Copyright	Copyright	NP	42	0	ROOT
-©	©	SYM	43	0	ROOT
+ï¿½	ï¿½	SYM	43	0	ROOT
 2004	@card@	CD	44	0	ROOT
 Co-operative	Co-operative	NP	45	0	ROOT
 Group	Group	NP	46	0	ROOT
@@ -48022,7 +48022,7 @@ at	at	IN	21	12	ADV
 a	a	DT	22	23	NMOD
 cost	cost	NN	23	21	PMOD
 of	of	IN	24	23	NMOD
-£	£	$	25	26	NMOD
+ï¿½	ï¿½	$	25	26	NMOD
 51,000	@card@	CD	26	24	PMOD
 .	.	SENT	27	0	ROOT
 </s>
@@ -48151,7 +48151,7 @@ stop	stop	VV	91	90	VC
 <s>
 An	a	DT	1	4	NMOD
 additional	additional	JJ	2	4	NMOD
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 10,000	@card@	CD	4	5	SBJ
 has	have	VHZ	5	0	ROOT
 been	be	VBN	6	5	VC
@@ -50377,7 +50377,7 @@ competition	competition	NN	64	58	NMOD
 based	base	VVN	65	64	NMOD
 at	at	IN	66	65	ADV
 Christ	Christ	NP	67	72	VMOD
-Church	Church	NP	68	72	SBJ
+Church	church	NP	68	72	SBJ
 College	College	NP	69	72	ADV
 ,	,	,	70	72	P
 Oxford	Oxford	NP	71	72	SBJ
@@ -51514,7 +51514,7 @@ Jolt	Jolt	NP	32	0	ROOT
 FOR	for	IN	33	0	ROOT
 IMMEDIATE	Immediate	NP	34	36	NMOD
 RELEASE	Release	NP	35	36	NMOD
-–	–	NN	36	0	ROOT
+ï¿½	ï¿½	NN	36	0	ROOT
 December	December	NP	37	0	ROOT
 16	@card@	CD	38	45	VMOD
 ,	,	,	39	45	P
@@ -51659,7 +51659,7 @@ AKA	Aka	NP	39	84	DEP
 Solidflux	Solidflux	NP	41	84	DEP
 Concept	Concept	NP	42	84	P
 Art	Art	NP	43	84	DEP
-–	–	NP	44	84	P
+ï¿½	ï¿½	NP	44	84	P
 Craig	Craig	NP	45	84	DEP
 Petty	Petty	NP	46	84	ADV
 ,	,	,	47	84	P
@@ -51678,7 +51678,7 @@ Optimizer	Optimizer	NP	59	63	NMOD
 About	about	IN	60	63	NMOD
 Strike	Strike	NP	61	63	NMOD
 Force	Force	NP	62	63	NMOD
-–	–	NN	63	66	SBJ
+ï¿½	ï¿½	NN	63	66	SBJ
 A	a	DT	64	66	NMOD
 Hardcore	Hardcore	NP	65	66	NMOD
 Mod	Mod	NN	66	84	DEP
@@ -52290,7 +52290,7 @@ staff	staff	NN	25	21	COORD
 inquires	inquire	VVZ	26	0	ROOT
 Michael	Michael	NP	27	30	NMOD
 Hamlett	Hamlett	NP	28	30	NMOD
-–	–	JJ	29	30	NMOD
+ï¿½	ï¿½	JJ	29	30	NMOD
 hamlettm	hamlettm	NN	30	26	OBJ
 @	@	SYM	31	65	P
 nc.rr.com	nc.rr.com	NP	32	65	P
@@ -52419,7 +52419,7 @@ of	of	IN	5	4	NMOD
 Jolt.co.uk	Jolt.co.uk	NP	6	7	SBJ
 said	say	VVD	7	5	PMOD
 ;	;	:	8	10	P
-“We	“we	NNS	9	10	SBJ
+ï¿½We	ï¿½we	NNS	9	10	SBJ
 are	are	VBP	10	0	ROOT
 very	very	RB	11	12	AMOD
 happy	happy	JJ	12	10	PRD
@@ -52457,7 +52457,7 @@ for	for	IN	23	18	ADV
 the	the	DT	24	29	NMOD
 stalwart	stalwart	JJ	25	29	NMOD
 Planetarion	planetarion	NN	26	29	NMOD
-community.”	community.”	NN	27	29	NMOD
+community.ï¿½	community.ï¿½	NN	27	29	NMOD
 jolt	jolt	NN	28	29	NMOD
 re-design	re-design	NN	29	23	PMOD
 -	-	:	30	6	P
@@ -53118,7 +53118,7 @@ particular	particular	JJ	24	25	NMOD
 times	time	NNS	25	23	PMOD
 of	of	IN	26	25	NMOD
 the	the	DT	27	28	NMOD
-year.â€	year.â€	NN	28	26	PMOD
+year.ï¿½	year.ï¿½	NN	28	26	PMOD
 ?	?	SENT	29	2	P
 </s>
 <s>
@@ -53422,7 +53422,7 @@ curves	curve	NNS	22	23	SBJ
 replace	replace	VVP	23	13	COORD
 the	the	DT	24	26	NMOD
 sharp	sharp	JJ	25	26	NMOD
-bends.â€	bends.â€	NN	26	23	OBJ
+bends.ï¿½	bends.ï¿½	NN	26	23	OBJ
 ?	?	SENT	27	13	P
 </s>
 <s>
@@ -53683,7 +53683,7 @@ risk	risk	NN	22	24	NMOD
 management	management	NN	23	24	NMOD
 work	work	NN	24	19	PMOD
 in	in	IN	25	18	ADV
-Boscastle.â€	Boscastle.â€	NP	26	25	PMOD
+Boscastle.ï¿½	Boscastle.ï¿½	NP	26	25	PMOD
 ?	?	SENT	27	8	P
 </s>
 <s>
@@ -54131,7 +54131,7 @@ the	the	DT	19	20	NMOD
 sustainability	sustainability	NN	20	18	OBJ
 of	of	IN	21	20	NMOD
 the	the	DT	22	23	NMOD
-industry.â€	industry.â€	NN	23	21	PMOD
+industry.ï¿½	industry.ï¿½	NN	23	21	PMOD
 ?	?	SENT	24	14	P
 </s>
 <s>
@@ -54674,7 +54674,7 @@ Defra	Defra	NP	39	40	NMOD
 helpline	helpline	NN	40	37	PMOD
 on	on	IN	41	40	NMOD
 08459	@card@	CD	42	43	AMOD
-335577.â€	335577.â€	JJ	43	41	PMOD
+335577.ï¿½	335577.ï¿½	JJ	43	41	PMOD
 ?	?	SENT	44	2	P
 </s>
 <s>
@@ -55082,7 +55082,7 @@ Disabled	Disabled	NP	9	14	NMOD
 Peoples	Peoples	NPS	10	14	NMOD
 '	'	POS	11	10	NMOD
 Organisations	Organisations	NP	12	14	NMOD
-–	–	NN	13	14	NMOD
+ï¿½	ï¿½	NN	13	14	NMOD
 organisations	organisation	NNS	14	7	OBJ
 which	which	WDT	15	16	SBJ
 were	be	VBD	16	14	NMOD
@@ -56217,7 +56217,7 @@ solicitor	solicitor	NN	10	12	NMOD
 bill	bill	NN	12	3	OBJ
 -	-	:	13	12	P
 or	or	CC	14	12	CC
-£	£	$	15	16	NMOD
+ï¿½	ï¿½	$	15	16	NMOD
 700	@card@	CD	16	12	COORD
 from	from	IN	17	16	NMOD
 us	us	PP	18	17	PMOD
@@ -56498,7 +56498,7 @@ a	a	DT	38	40	NMOD
 disabled	disabled	JJ	39	40	NMOD
 person	person	NN	40	37	PMOD
 for	for	IN	41	36	ADV
-£	£	$	42	43	NMOD
+ï¿½	ï¿½	$	42	43	NMOD
 500	@card@	CD	43	41	PMOD
 .	.	SENT	44	7	P
 </s>
@@ -56616,7 +56616,7 @@ accident	accident	NN	66	63	PMOD
 Canifence	Canifence	NP	1	2	SBJ
 is	be	VBZ	2	0	ROOT
 an	a	DT	3	4	NMOD
-‘invisible	‘invisible	NN	4	2	PRD
+ï¿½invisible	ï¿½invisible	NN	4	2	PRD
 '	'	POS	5	4	NMOD
 dog	dog	NN	6	7	NMOD
 fence	fence	NN	7	4	NMOD
@@ -57188,24 +57188,24 @@ Extra	Extra	NP	5	7	NMOD
 100m	100m	NP	6	7	NMOD
 wire	wire	NN	7	1	ADV
 --	--	:	8	10	P
-£	£	$	9	10	NMOD
+ï¿½	ï¿½	$	9	10	NMOD
 15.50	@card@	CD	10	27	NMOD
 Dummy	Dummy	NP	11	27	NMOD
 Collar	Collar	NP	12	27	NMOD
 --	--	:	13	27	NMOD
-£	£	$	14	16	NMOD
+ï¿½	ï¿½	$	14	16	NMOD
 16.95	@card@	CD	15	16	NMOD
 1	1	CD	16	27	NMOD
 Collar	Collar	NP	17	27	NMOD
 System	System	NP	18	27	NMOD
 --	--	:	19	27	NMOD
-£	£	$	20	22	NMOD
+ï¿½	ï¿½	$	20	22	NMOD
 169.00	@card@	CD	21	22	NMOD
 2	2	CD	22	27	NMOD
 Collar	Collar	NP	23	27	NMOD
 System	System	NP	24	27	NMOD
 --	--	:	25	27	NMOD
-£	£	$	26	27	NMOD
+ï¿½	ï¿½	$	26	27	NMOD
 239.00	@card@	CD	27	0	ROOT
 </s>
 </text>
@@ -57273,7 +57273,7 @@ Anatomy	anatomy	NN	35	34	PMOD
 Ernst	Ernst	NP	37	46	P
 Moritz	Moritz	NP	38	46	DEP
 Arndt	Arndt	NP	39	46	P
-Universität	Universität	NP	40	46	DEP
+Universitï¿½t	Universitï¿½t	NP	40	46	DEP
 Greifswald	Greifswald	NP	41	46	ADV
 ,	,	,	42	46	P
 Friedrich	Friedrich	NP	43	46	DEP
@@ -59568,7 +59568,7 @@ farmsteads	farmstead	NNS	16	5	COORD
 ,	,	,	17	5	P
 fields	field	NNS	18	5	COORD
 ,	,	,	19	5	P
-churches	church	NNS	20	5	COORD
+CHurches	church	NNS	20	5	COORD
 and	and	CC	21	5	CC
 trackways	trackways	NNS	22	5	COORD
 -	-	:	23	5	P
@@ -62199,7 +62199,7 @@ sound	sound	NN	20	19	PMOD
 into	into	IN	21	15	ADV
 different	different	JJ	22	24	NMOD
 auditory	auditory	JJ	23	24	NMOD
-‘images	‘images	NNS	24	21	PMOD
+ï¿½images	ï¿½images	NNS	24	21	PMOD
 '	'	''	25	15	P
 and	and	CC	26	15	CC
 how	how	WRB	27	30	ADV
@@ -66309,7 +66309,7 @@ against	against	IN	20	19	ADV
 the	the	DT	21	24	NMOD
 whole	whole	JJ	22	24	NMOD
 political	political	JJ	23	24	NMOD
-church	church	NN	24	20	PMOD
+CHURCH	church	NN	24	20	PMOD
 ,	,	,	25	2	P
 and	and	CC	26	2	CC
 Free	Free	NP	27	40	DEP
@@ -67891,10 +67891,10 @@ Labour	Labour	NP	115	114	PMOD
 </text>
 <text id="ukwac:http://www.mymanchesterjobs.co.uk/jobdetails-13145.html">
 <s>
-£	£	$	1	2	NMOD
+ï¿½	ï¿½	$	1	2	NMOD
 16,000	@card@	CD	2	0	ROOT
 -	-	:	3	2	P
-£	£	$	4	5	NMOD
+ï¿½	ï¿½	$	4	5	NMOD
 18,000	@card@	CD	5	2	COORD
 A	a	DT	6	0	ROOT
 Manchester	Manchester	NP	7	0	ROOT
@@ -69028,7 +69028,7 @@ a	a	DT	27	29	NMOD
 personal	personal	JJ	28	29	NMOD
 fortune	fortune	NN	29	26	OBJ
 of	of	IN	30	29	NMOD
-£	£	$	31	30	PMOD
+ï¿½	ï¿½	$	31	30	PMOD
 15	@card@	CD	32	31	DEP
 million	million	CD	33	31	DEP
 .	.	SENT	34	0	ROOT
@@ -69612,7 +69612,7 @@ those	those	DT	6	3	PRD
 of	of	IN	7	6	NMOD
 the	the	DT	8	9	NMOD
 society.	society.	NN	9	7	PMOD
-©	©	SYM	10	0	ROOT
+ï¿½	ï¿½	SYM	10	0	ROOT
 Society	Society	NP	11	0	ROOT
 for	for	IN	12	0	ROOT
 the	the	DT	13	14	NMOD
@@ -72115,7 +72115,7 @@ parish	parish	NN	3	4	NMOD
 workhouse	workhouse	NN	4	0	ROOT
 ,	,	,	5	4	P
 2005.	@ord@	CD	6	10	DEP
-©	©	SYM	7	0	ROOT
+ï¿½	ï¿½	SYM	7	0	ROOT
 Peter	Peter	NP	8	0	ROOT
 Higginbotham	Higginbotham	NP	9	0	ROOT
 .	.	SENT	10	0	ROOT
@@ -72400,7 +72400,7 @@ census	census	NN	10	7	PMOD
 had	have	VHD	11	0	ROOT
 been	be	VBN	12	11	VC
 25,879	@card@	CD	13	14	NMOD
-—	—	NN	14	12	PRD
+ï¿½	ï¿½	NN	14	12	PRD
 ranging	range	VVG	15	14	NMOD
 from	from	IN	16	15	ADV
 Nether	Nether	NP	17	0	ROOT
@@ -72435,7 +72435,7 @@ period	period	NN	8	6	PMOD
 1836-38	@card@	CD	9	8	NMOD
 had	have	VHD	10	0	ROOT
 been	be	VBN	11	10	VC
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 6,392	@card@	CD	13	11	OBJ
 or	or	CC	14	13	CC
 4s.11d.	4s.11d.	JJ	15	13	COORD
@@ -72546,7 +72546,7 @@ Turnpike	Turnpike	NP	13	14	SBJ
 was	be	VBD	14	0	ROOT
 purchased	purchase	VVN	15	14	VC
 for	for	IN	16	15	ADV
-£	£	$	17	18	NMOD
+ï¿½	ï¿½	$	17	18	NMOD
 415	@card@	CD	18	16	PMOD
 from	from	IN	19	15	ADV
 the	the	DT	20	0	ROOT
@@ -72623,7 +72623,7 @@ A	a	DT	1	3	NMOD
 building	building	NN	2	3	NMOD
 tender	tender	NN	3	7	SBJ
 of	of	IN	4	3	NMOD
-£	£	$	5	6	NMOD
+ï¿½	ï¿½	$	5	6	NMOD
 5,340	@card@	CD	6	4	PMOD
 was	be	VBD	7	0	ROOT
 accepted	accept	VVN	8	7	VC
@@ -72735,7 +72735,7 @@ entrance	entrance	NN	3	0	ROOT
 ,	,	,	4	3	P
 early	early	JJ	5	6	NMOD
 1900s	1900s	NNS	6	3	NMOD
-©	©	SYM	7	0	ROOT
+ï¿½	ï¿½	SYM	7	0	ROOT
 Peter	Peter	NP	8	0	ROOT
 Higginbotham	Higginbotham	NP	9	0	ROOT
 .	.	SENT	10	0	ROOT
@@ -72748,7 +72748,7 @@ the	the	DT	4	5	NMOD
 south-west	south-west	NN	5	3	PMOD
 ,	,	,	6	11	P
 c.1915	c.1915	NN	7	11	DEP
-©	©	SYM	8	0	ROOT
+ï¿½	ï¿½	SYM	8	0	ROOT
 Peter	Peter	NP	9	0	ROOT
 Higginbotham	Higginbotham	NP	10	0	ROOT
 .	.	SENT	11	0	ROOT
@@ -72777,7 +72777,7 @@ master	master	NN	17	13	COORD
 Bakewell	Bakewell	NP	1	3	NMOD
 workhouse	workhouse	NN	2	3	NMOD
 c.1915	c.1915	NN	3	0	ROOT
-©	©	SYM	4	0	ROOT
+ï¿½	ï¿½	SYM	4	0	ROOT
 Peter	Peter	NP	5	0	ROOT
 Higginbotham	Higginbotham	NP	6	0	ROOT
 .	.	SENT	7	0	ROOT
@@ -72805,7 +72805,7 @@ clock	clock	NN	7	4	PMOD
 and	and	CC	8	7	CC
 bell	bell	NN	9	7	COORD
 costing	cost	VVG	10	7	NMOD
-£	£	$	11	12	NMOD
+ï¿½	ï¿½	$	11	12	NMOD
 80	@card@	CD	12	10	OBJ
 .	.	SENT	13	2	P
 </s>
@@ -72818,7 +72818,7 @@ the	the	DT	5	6	NMOD
 west	west	NN	6	4	PMOD
 ,	,	,	7	3	P
 2001.	@ord@	CD	8	12	DEP
-©	©	SYM	9	0	ROOT
+ï¿½	ï¿½	SYM	9	0	ROOT
 Peter	Peter	NP	10	0	ROOT
 Higginbotham	Higginbotham	NP	11	0	ROOT
 .	.	SENT	12	0	ROOT
@@ -72889,7 +72889,7 @@ building	building	NN	23	20	PMOD
 <s>
 It	it	PP	1	2	SBJ
 cost	cost	VVD	2	0	ROOT
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 444	@card@	CD	4	2	OBJ
 and	and	CC	5	2	CC
 the	the	DT	6	7	NMOD
@@ -72912,7 +72912,7 @@ the	the	DT	5	6	NMOD
 west	west	NN	6	4	PMOD
 ,	,	,	7	3	P
 2001.	@ord@	CD	8	12	DEP
-©	©	SYM	9	0	ROOT
+ï¿½	ï¿½	SYM	9	0	ROOT
 Peter	Peter	NP	10	0	ROOT
 Higginbotham	Higginbotham	NP	11	0	ROOT
 .	.	SENT	12	0	ROOT
@@ -72962,7 +72962,7 @@ the	the	DT	5	6	NMOD
 north	north	NN	6	4	PMOD
 ,	,	,	7	3	P
 2001.	@ord@	CD	8	12	DEP
-©	©	SYM	9	0	ROOT
+ï¿½	ï¿½	SYM	9	0	ROOT
 Peter	Peter	NP	10	0	ROOT
 Higginbotham	Higginbotham	NP	11	0	ROOT
 .	.	SENT	12	0	ROOT
@@ -72995,7 +72995,7 @@ mortuary	mortuary	JJ	2	3	NMOD
 block	block	NN	3	0	ROOT
 ,	,	,	4	3	P
 2001.	@ord@	CD	5	9	DEP
-©	©	SYM	6	0	ROOT
+ï¿½	ï¿½	SYM	6	0	ROOT
 Peter	Peter	NP	7	0	ROOT
 Higginbotham	Higginbotham	NP	8	0	ROOT
 .	.	SENT	9	0	ROOT
@@ -73037,7 +73037,7 @@ from	from	IN	13	9	NMOD
 north-east	north-east	NN	14	13	PMOD
 ,	,	,	15	9	P
 2001.	@ord@	CD	16	20	DEP
-©	©	SYM	17	0	ROOT
+ï¿½	ï¿½	SYM	17	0	ROOT
 Peter	Peter	NP	18	0	ROOT
 Higginbotham	Higginbotham	NP	19	0	ROOT
 .	.	SENT	20	0	ROOT
@@ -73089,7 +73089,7 @@ Derbyshire	Derbyshire	NP	17	0	ROOT
 Few	few	JJ	1	2	NMOD
 records	record	NNS	2	3	SBJ
 survive	survive	VVP	3	0	ROOT
-—	—	JJ	4	5	NMOD
+ï¿½	ï¿½	JJ	4	5	NMOD
 holdings	holding	NNS	5	6	SBJ
 include	include	VVP	6	3	OBJ
 :	:	:	7	3	P
@@ -73146,7 +73146,7 @@ the	the	DT	14	15	NMOD
 address	address	NN	15	0	ROOT
 below	below	IN	16	15	ADV
 Price	Price	NP	17	22	SBJ
-UK£18.95	UK£18.95	NP	18	22	VMOD
+UKï¿½18.95	UKï¿½18.95	NP	18	22	VMOD
 ,	,	,	19	22	P
 US$29.95	US$29.95	NP	20	22	VMOD
 Website	Website	NP	21	22	SBJ
@@ -74944,9 +74944,9 @@ is	be	VBZ	3	0	ROOT
 also	also	RB	4	3	ADV
 featured	feature	VVN	5	3	VC
 on	on	IN	6	5	ADV
-“Great	“great	NN	7	6	PMOD
+ï¿½Great	ï¿½great	NN	7	6	PMOD
 Googa	Googa	NP	8	0	ROOT
-Mooga”	Mooga”	NP	9	11	NMOD
+Moogaï¿½	Moogaï¿½	NP	9	11	NMOD
 CDCHD	CDCHD	NP	10	11	NMOD
 880	@card@	CD	11	0	ROOT
 )	)	)	12	0	ROOT
@@ -76762,7 +76762,7 @@ away	away	RB	17	16	ADV
 from	from	IN	18	17	AMOD
 the	the	DT	19	21	NMOD
 station	station	NN	20	21	NMOD
-—	—	NN	21	18	PMOD
+ï¿½	ï¿½	NN	21	18	PMOD
 but	but	CC	22	10	CC
 they	they	PP	23	24	SBJ
 did	do	VVD	24	10	COORD
@@ -77657,7 +77657,7 @@ with	with	IN	12	4	ADV
 stories	storey	NNS	13	12	PMOD
 in	in	IN	14	13	NMOD
 them	them	PP	15	14	PMOD
-—	—	JJ	16	19	NMOD
+ï¿½	ï¿½	JJ	16	19	NMOD
 and	and	CC	17	16	CC
 large	large	JJ	18	16	COORD
 envelopes	envelope	NNS	19	4	OBJ
@@ -77729,7 +77729,7 @@ the	the	DT	9	10	NMOD
 air	air	NN	10	8	PMOD
 and	and	CC	11	5	CC
 say	say	VVP	12	5	COORD
-—	—	JJ	13	17	NMOD
+ï¿½	ï¿½	JJ	13	17	NMOD
 "	"	``	14	17	P
 Hooray	Hooray	NP	15	17	NMOD
 ,	,	,	16	17	P
@@ -78403,9 +78403,9 @@ it	it	PP	6	7	SBJ
 a	a	DT	8	9	NMOD
 word	word	NN	9	7	PRD
 that	that	IN	10	0	ROOT
-—	—	NN	11	0	ROOT
+ï¿½	ï¿½	NN	11	0	ROOT
 well	well	RB	12	13	AMOD
-—	—	JJ	13	24	DEP
+ï¿½	ï¿½	JJ	13	24	DEP
 oh	oh	UH	14	16	DEP
 ,	,	,	15	16	P
 no	no	UH	16	20	VMOD
@@ -78619,7 +78619,7 @@ Phyllis	Phyllis	NP	3	2	VMOD
 Stop	stop	VV	2	0	ROOT
 a	a	DT	3	5	NMOD
 minute	minute	NN	4	5	NMOD
-—	—	NN	5	2	OBJ
+ï¿½	ï¿½	NN	5	2	OBJ
 my	my	PP$	6	7	NMOD
 bootlace	bootlace	NN	7	8	SBJ
 is	be	VBZ	8	5	NMOD
@@ -78657,7 +78657,7 @@ ever	ever	RB	26	25	ADV
 be	be	VB	27	25	VC
 ,	,	,	28	18	P
 Phil	Phil	NP	29	32	NMOD
-—	—	NN	30	32	NMOD
+ï¿½	ï¿½	NN	30	32	NMOD
 throwing	throw	VVG	31	32	NMOD
 coal	coal	NN	32	18	PRD
 at	at	IN	33	18	ADV
@@ -78968,7 +78968,7 @@ have	have	VH	20	18	VC
 a	a	DT	21	24	NMOD
 toothless	toothless	JJ	22	24	NMOD
 child	child	NN	23	24	NMOD
-—	—	NN	24	20	OBJ
+ï¿½	ï¿½	NN	24	20	OBJ
 but	but	CC	25	2	CC
 it	it	PP	26	27	SBJ
 means	mean	VVZ	27	2	COORD
@@ -79052,7 +79052,7 @@ that	that	WDT	14	15	SBJ
 begin	begin	VVP	15	13	NMOD
 with	with	IN	16	15	ADV
 "	"	``	17	29	P
-Why—	Why—	NP	18	29	ADV
+Whyï¿½	Whyï¿½	NP	18	29	ADV
 "	"	''	19	29	P
 which	which	WDT	20	22	NMOD
 many	many	JJ	21	22	NMOD
@@ -79080,7 +79080,7 @@ had	have	VHD	8	2	ADV
 not	not	RB	9	8	VMOD
 known	know	VVN	10	8	VC
 before	before	IN	11	10	ADV
-—	—	NN	12	11	PMOD
+ï¿½	ï¿½	NN	12	11	PMOD
 as	as	RB	13	10	ADV
 ,	,	,	14	48	P
 for	for	IN	15	25	VMOD
@@ -79296,7 +79296,7 @@ an	a	DT	3	5	NMOD
 old	old	JJ	4	5	NMOD
 lady	lady	NN	5	2	PRD
 once	once	IN	6	9	VMOD
-—	—	JJ	7	8	NMOD
+ï¿½	ï¿½	JJ	7	8	NMOD
 someone	someone	NN	8	9	SBJ
 kidded	kid	VVD	9	2	ADV
 her	her	PP	10	9	OBJ
@@ -79824,7 +79824,7 @@ exchanged	exchange	VVN	16	15	VC
 <s>
 "	"	''	1	8	P
 No	no	DT	2	3	NMOD
-—	—	NN	3	8	SBJ
+ï¿½	ï¿½	NN	3	8	SBJ
 really	really	RB	4	8	ADV
 not	not	RB	5	4	AMOD
 ,	,	,	6	8	P
@@ -80044,7 +80044,7 @@ making	make	VVG	27	26	VC
 Mother	Mother	NP	28	0	ROOT
 so	so	IN	29	0	ROOT
 quiet	quiet	JJ	30	31	NMOD
-—	—	NN	31	0	ROOT
+ï¿½	ï¿½	NN	31	0	ROOT
 the	the	DT	32	33	NMOD
 thoughts	thought	NNS	33	0	ROOT
 of	of	IN	34	33	NMOD
@@ -80193,7 +80193,7 @@ way	way	NN	10	13	OBJ
 the	the	DT	11	12	NMOD
 trains	train	NNS	12	13	SBJ
 come	come	VVP	13	8	OBJ
-—	—	NN	14	13	OBJ
+ï¿½	ï¿½	NN	14	13	OBJ
 and	and	CC	15	13	CC
 do	do	VVP	16	13	COORD
 n't	n't	RB	17	16	VMOD
@@ -80286,7 +80286,7 @@ she	she	PP	14	15	SBJ
 did	do	VVD	15	3	COORD
 say	say	VV	16	15	VC
 it	it	PP	17	18	SBJ
-—	—	JJ	18	16	OBJ
+ï¿½	ï¿½	JJ	18	16	OBJ
 and	and	CC	19	18	CC
 neither	neither	RB	20	33	ADV
 her	her	PP$	21	23	NMOD
@@ -80419,7 +80419,7 @@ My	my	PP$	1	2	NMOD
 sister	sister	NN	2	5	NMOD
 's	's	POS	3	2	NMOD
 eldest	eldest	JJ	4	5	NMOD
-—	—	NN	5	7	ADV
+ï¿½	ï¿½	NN	5	7	ADV
 she	she	PP	6	7	SBJ
 took	take	VVD	7	0	ROOT
 a	a	DT	8	9	NMOD
@@ -80652,7 +80652,7 @@ now	now	RB	5	3	ADV
 and	and	CC	7	2	CC
 beef	beef	NN	8	10	NMOD
 essence	essence	NN	9	10	NMOD
-—	—	NN	10	0	ROOT
+ï¿½	ï¿½	NN	10	0	ROOT
 and	and	CC	11	10	CC
 soda-water	soda-water	NN	12	10	COORD
 and	and	CC	13	12	CC
@@ -81205,7 +81205,7 @@ were	be	VBD	6	3	OBJ
 making	make	VVG	7	6	VC
 a	a	DT	8	10	NMOD
 good	good	JJ	9	10	NMOD
-—	—	NN	10	7	OBJ
+ï¿½	ï¿½	NN	10	7	OBJ
 but	but	CC	11	6	CC
 what	what	WP	12	14	PRD
 they	they	PP	13	14	SBJ
@@ -81341,11 +81341,11 @@ bedside	bedside	NN	19	16	PMOD
 <s>
 "	"	``	1	0	ROOT
 Oh	oh	UH	2	4	NMOD
-—	—	NN	3	4	NMOD
+ï¿½	ï¿½	NN	3	4	NMOD
 ah	ah	NN	4	0	ROOT
 ,	,	,	5	15	P
 yes	yes	UH	6	7	NMOD
-—	—	NN	7	15	SBJ
+ï¿½	ï¿½	NN	7	15	SBJ
 I	I	PP	8	9	SBJ
 think	think	VVP	9	7	NMOD
 I	I	PP	10	11	SBJ
@@ -81369,7 +81369,7 @@ tired	tired	JJ	8	7	AMOD
 you	you	PP	9	10	SBJ
 'll	will	MD	10	5	NMOD
 be	be	VB	11	10	VC
-—	—	JJ	12	11	PRD
+ï¿½	ï¿½	JJ	12	11	PRD
 I	I	PP	13	14	SBJ
 do	do	VVP	14	5	NMOD
 hate	hate	VV	15	14	VC
@@ -82481,7 +82481,7 @@ Father	Father	NP	38	39	SBJ
 does	do	VVZ	39	35	OBJ
 ,	,	,	40	30	P
 but	but	CC	41	30	CC
-—	—	JJ	42	46	SBJ
+ï¿½	ï¿½	JJ	42	46	SBJ
 "	"	''	43	46	P
 "	"	``	44	46	P
 You	you	PP	45	46	SBJ
@@ -82535,7 +82535,7 @@ finds	find	VVZ	21	18	OBJ
 herself	herself	PP	22	25	SBJ
 this	this	DT	23	25	NMOD
 evening	evening	NN	24	25	NMOD
-—	—	NN	25	21	OBJ
+ï¿½	ï¿½	NN	25	21	OBJ
 and	and	CC	26	11	CC
 I	I	PP	27	28	SBJ
 've	have	VHP	28	11	COORD
@@ -83072,21 +83072,21 @@ per	per	IN	20	19	NMOD
 page	page	NN	21	20	PMOD
 Sort	Sort	NP	22	46	NMOD
 by	by	IN	23	46	NMOD
-£	£	$	24	35	NMOD
+ï¿½	ï¿½	$	24	35	NMOD
 high	high	JJ	25	35	NMOD
-»	»	(	26	35	P
-£	£	$	27	35	NMOD
+ï¿½	ï¿½	(	26	35	P
+ï¿½	ï¿½	$	27	35	NMOD
 low	low	JJ	28	27	AMOD
 /	/	SYM	29	35	NMOD
-£	£	$	30	35	NMOD
+ï¿½	ï¿½	$	30	35	NMOD
 low	low	JJ	31	35	NMOD
-»	»	(	32	35	P
-£	£	$	33	35	NMOD
+ï¿½	ï¿½	(	32	35	P
+ï¿½	ï¿½	$	33	35	NMOD
 high	high	JJ	34	35	NMOD
 Auction	auction	NN	35	23	PMOD
 Guide	Guide	NP	36	46	NMOD
 Price	Price	NP	37	40	NMOD
-£	£	$	38	40	NMOD
+ï¿½	ï¿½	$	38	40	NMOD
 105,000+	105,000+	JJ	39	38	AMOD
 3	3	CD	40	46	NMOD
 Bedroom	Bedroom	NP	41	46	NMOD
@@ -83155,7 +83155,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 373	@card@	CD	3	13	NMOD
 0042	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 179,500	@card@	CD	6	5	DEP
 3	3	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -83258,7 +83258,7 @@ Telephone	telephone	NN	1	14	NMOD
 0845	@card@	CD	2	14	NMOD
 345	@card@	CD	3	14	NMOD
 9840	@card@	JJ	4	14	NMOD
-£	£	$	5	14	NMOD
+ï¿½	ï¿½	$	5	14	NMOD
 184,950	@card@	CD	6	5	DEP
 4	4	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	14	NMOD
@@ -83366,7 +83366,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 345	@card@	CD	3	13	NMOD
 9840	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 185,000	@card@	CD	6	5	DEP
 4	4	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -83485,7 +83485,7 @@ in	in	IN	6	5	ADV
 the	the	DT	7	8	NMOD
 Region	region	NN	8	6	PMOD
 of	of	IN	9	8	NMOD
-£	£	$	10	9	PMOD
+ï¿½	ï¿½	$	10	9	PMOD
 245,000	@card@	CD	11	10	DEP
 3	3	CD	12	10	DEP
 Bedroom	Bedroom	NP	13	10	COORD
@@ -83607,7 +83607,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 402	@card@	CD	3	13	NMOD
 8340	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 260,000	@card@	CD	6	5	DEP
 4	4	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -83717,7 +83717,7 @@ Telephone	telephone	NN	1	15	NMOD
 0845	@card@	CD	2	6	DEP
 345	@card@	CD	3	6	DEP
 9840	@card@	JJ	4	6	NMOD
-£	£	$	5	6	NMOD
+ï¿½	ï¿½	$	5	6	NMOD
 299,950	@card@	CD	6	15	NMOD
 Guide	Guide	NP	7	15	NMOD
 Price	Price	NP	8	15	NMOD
@@ -83830,7 +83830,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 345	@card@	CD	3	13	NMOD
 9840	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 350,000	@card@	CD	6	5	DEP
 4	4	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -83937,7 +83937,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 345	@card@	CD	3	13	NMOD
 9840	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 355,000	@card@	CD	6	5	DEP
 5	5	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -84036,7 +84036,7 @@ Telephone	telephone	NN	1	13	NMOD
 0845	@card@	CD	2	13	NMOD
 402	@card@	CD	3	13	NMOD
 0890	@card@	JJ	4	13	NMOD
-£	£	$	5	13	NMOD
+ï¿½	ï¿½	$	5	13	NMOD
 375,000	@card@	CD	6	5	DEP
 3	3	CD	7	5	DEP
 Bedroom	Bedroom	NP	8	13	NMOD
@@ -84197,7 +84197,7 @@ should	should	MD	7	5	NMOD
 turn	turn	VV	8	7	VC
 javascript	javascript	JJ	9	10	NMOD
 on.	on.	NN	10	8	OBJ
-©	©	SYM	11	13	NMOD
+ï¿½	ï¿½	SYM	11	13	NMOD
 2005-2006	@card@	CD	12	13	NMOD
 Look4aProperty.com	look4aproperty.com	NN	13	8	ADV
 |	|	SYM	14	16	NMOD
@@ -84308,7 +84308,7 @@ Manager	Manager	NP	6	0	ROOT
 for	for	IN	7	9	VMOD
 Filmlink	Filmlink	NP	8	9	SBJ
 said	say	VVD	9	0	ROOT
-“The	“the	NN	10	12	NMOD
+ï¿½The	ï¿½the	NN	10	12	NMOD
 nations	nation	NNS	11	12	NMOD
 media	medium	NNS	12	13	SBJ
 have	have	VHP	13	9	OBJ
@@ -84330,7 +84330,7 @@ Film	Film	NP	28	29	NMOD
 production	production	NN	29	27	PMOD
 in	in	IN	30	29	ADV
 the	the	DT	31	146	VMOD
-UK.”	UK.”	NP	32	146	VMOD
+UK.ï¿½	UK.ï¿½	NP	32	146	VMOD
 MEPC	MEPC	NP	33	146	SBJ
 ,	,	,	34	146	P
 one	one	CD	35	146	SBJ
@@ -84364,7 +84364,7 @@ and	and	CC	62	61	CC
 hi-tech	hi-tech	NN	63	61	COORD
 business	business	NN	64	57	PMOD
 park.	park.	JJ	65	66	NMOD
-“It	“it	NN	66	67	SBJ
+ï¿½It	ï¿½it	NN	66	67	SBJ
 's	be	VBZ	67	56	OBJ
 a	a	DT	68	70	NMOD
 significant	significant	JJ	69	70	NMOD
@@ -84377,14 +84377,14 @@ other	other	JJ	75	73	PRD
 like	like	IN	76	73	ADV
 it	it	PP	77	76	PMOD
 in	in	IN	78	73	ADV
-Europe.”	europe.”	NN	79	78	PMOD
+Europe.ï¿½	europe.ï¿½	NN	79	78	PMOD
 says	say	VVZ	80	41	PMOD
 Chris	Chris	NP	81	100	NMOD
 Holt	Holt	NP	82	100	NMOD
 adding	add	VVG	83	100	NMOD
 that	that	IN	84	88	VMOD
 ,	,	,	85	88	P
-“their	“their	NN	86	87	NMOD
+ï¿½their	ï¿½their	NN	86	87	NMOD
 plans	plan	NNS	87	88	SBJ
 include	include	VVP	88	83	OBJ
 developing	develop	VVG	89	88	OBJ
@@ -84423,7 +84423,7 @@ with	with	IN	121	120	NMOD
 the	the	DT	122	125	NMOD
 new	new	JJ	123	125	NMOD
 film	film	NN	124	125	NMOD
-studios.”	studios.”	NN	125	121	PMOD
+studios.ï¿½	studios.ï¿½	NN	125	121	PMOD
 Filmlink	Filmlink	NP	126	120	NMOD
 ,	,	,	127	102	P
 develop	develop	VVP	128	102	COORD
@@ -84631,7 +84631,7 @@ Level	Level	NP	16	0	ROOT
 </text>
 <text id="ukwac:http://www.cf.ac.uk/encap/romtext/articles/cc04_n01.html">
 <s>
-‘Few	‘few	JJ	1	3	NMOD
+ï¿½Few	ï¿½few	JJ	1	3	NMOD
 poetic	poetic	JJ	2	3	NMOD
 careers	career	NNS	3	4	SBJ
 can	can	MD	4	0	ROOT
@@ -84715,7 +84715,7 @@ in	in	IN	34	33	ADV
 such	such	JJ	35	36	NMOD
 poems	poem	NNS	36	34	PMOD
 as	as	IN	37	36	NMOD
-‘The	‘The	NP	38	0	ROOT
+ï¿½The	ï¿½The	NP	38	0	ROOT
 Homes	Homes	NPS	39	0	ROOT
 of	of	IN	40	39	NMOD
 England	England	NP	41	0	ROOT
@@ -84737,7 +84737,7 @@ language	language	NN	11	8	PMOD
 than	than	IN	12	7	NMOD
 Hemans	Hemans	NP	13	0	ROOT
 's	's	POS	14	13	NMOD
-‘The	‘The	NP	15	0	ROOT
+ï¿½The	ï¿½The	NP	15	0	ROOT
 Name	Name	NP	16	0	ROOT
 of	of	IN	17	16	NMOD
 England	England	NP	18	0	ROOT
@@ -84816,7 +84816,7 @@ Its	its	PP$	29	31	NMOD
 pealing	peal	VVG	30	31	NMOD
 note	note	NN	31	32	SBJ
 hath	have	VHZ	32	28	NMOD
-stirr'd,—	stirr'd,—	JJ	33	34	NMOD
+stirr'd,ï¿½	stirr'd,ï¿½	JJ	33	34	NMOD
 Sound	sound	NN	34	32	OBJ
 on	on	IN	35	32	ADV
 ,	,	,	36	28	P
@@ -84848,7 +84848,7 @@ contents	content	NNS	12	13	NMOD
 pages	page	NNS	13	10	PMOD
 of	of	IN	14	13	NMOD
 a	a	DT	15	16	NMOD
-‘Complete	‘complete	NN	16	14	PMOD
+ï¿½Complete	ï¿½complete	NN	16	14	PMOD
 '	'	POS	17	16	NMOD
 Hemans	Hemans	NP	18	19	SBJ
 shows	show	VVZ	19	9	NMOD
@@ -84870,7 +84870,7 @@ own	own	JJ	34	35	NMOD
 isle	isle	NN	35	32	PMOD
 as	as	IN	36	0	ROOT
 they	they	PP	37	50	P
-‘stirred	‘stirred	JJ	38	50	DEP
+ï¿½stirred	ï¿½stirred	JJ	38	50	DEP
 '	'	''	39	50	DEP
 to	to	TO	40	39	ADV
 the	the	DT	41	43	NMOD
@@ -84889,7 +84889,7 @@ In	in	IN	1	50	ADV
 poems	poem	NNS	2	1	PMOD
 such	such	JJ	3	4	DEP
 as	as	IN	4	2	NMOD
-‘Chant	‘chant	NN	5	4	PMOD
+ï¿½Chant	ï¿½chant	NN	5	4	PMOD
 of	of	IN	6	5	NMOD
 the	the	DT	7	8	NMOD
 Bards	Bards	NP	8	6	PMOD
@@ -84901,7 +84901,7 @@ Edward	Edward	NP	13	50	DEP
 I	I	NP	14	50	P
 '	'	POS	15	14	NMOD
 and	and	CC	16	14	CC
-‘Owen	‘Owen	NP	17	50	DEP
+ï¿½Owen	ï¿½Owen	NP	17	50	DEP
 Glyndwr	Glyndwr	NP	18	26	VMOD
 's	's	POS	19	18	NMOD
 War-Song	War-Song	NP	20	26	VMOD
@@ -84962,7 +84962,7 @@ Welsh	Welsh	JJ	22	23	NMOD
 audience	audience	NN	23	19	PMOD
 as	as	IN	24	23	NMOD
 a	a	DT	25	26	NMOD
-‘poet	‘poet	NN	26	24	PMOD
+ï¿½poet	ï¿½poet	NN	26	24	PMOD
 for	for	IN	27	26	NMOD
 Wales	Wales	NP	28	32	SBJ
 '	'	POS	29	28	NMOD
@@ -85145,7 +85145,7 @@ historian	historian	NN	6	2	PMOD
 Jane	Jane	NP	7	15	SBJ
 Williams	Williams	NP	8	15	ADV
 ,	,	,	9	15	P
-‘no	‘no	NN	10	11	NMOD
+ï¿½no	ï¿½no	NN	10	11	NMOD
 spot	spot	NN	11	15	SBJ
 in	in	IN	12	11	ADV
 the	the	DT	13	14	NMOD
@@ -85165,7 +85165,7 @@ spot	spot	NN	26	27	SBJ
 was	be	VBD	27	0	ROOT
 Hemans	Hemans	NP	28	30	NMOD
 's	's	POS	29	28	NMOD
-‘scene	‘scene	NN	30	27	PRD
+ï¿½scene	ï¿½scene	NN	30	27	PRD
 of	of	IN	31	30	NMOD
 writing	write	VVG	32	31	PMOD
 '	'	''	33	32	P
@@ -85421,14 +85421,14 @@ counterparts	counterpart	NNS	5	2	PRD
 in	in	IN	7	2	ADV
 whose	whose	WP$	8	9	NMOD
 ranks	rank	NNS	9	7	PMOD
-Hemans—through	Hemans—through	NP	10	19	VMOD
+Hemansï¿½through	Hemansï¿½through	NP	10	19	VMOD
 her	her	PP$	11	12	NMOD
 use	use	NN	12	19	SBJ
 of	of	IN	13	12	NMOD
 the	the	DT	14	17	NMOD
 first-person	first-person	NN	15	17	NMOD
 plural	plural	NN	16	17	NMOD
-pronoun—here	pronoun—here	NN	17	13	PMOD
+pronounï¿½here	pronounï¿½here	NN	17	13	PMOD
 firmly	firmly	RB	18	19	ADV
 includes	include	VVZ	19	2	ADV
 herself	herself	PP	20	19	OBJ
@@ -85436,7 +85436,7 @@ herself	herself	PP	20	19	OBJ
 wanting	want	VVG	22	19	ADV
 in	in	IN	23	22	ADV
 Welsh	Welsh	JJ	24	25	NMOD
-‘patriot-feeling	‘patriot-feeling	NN	25	23	PMOD
+ï¿½patriot-feeling	ï¿½patriot-feeling	NN	25	23	PMOD
 '	'	''	26	23	P
 :	:	:	27	2	P
 Land	land	NN	28	32	DEP
@@ -85538,13 +85538,13 @@ are	are	VBP	18	9	NMOD
 eulogized	eulogize	VVN	19	18	VC
 in	in	IN	20	19	ADV
 the	the	DT	21	22	NMOD
-poem—also	poem—also	NN	22	20	PMOD
+poemï¿½also	poemï¿½also	NN	22	20	PMOD
 published	publish	VVN	23	22	NMOD
 in	in	IN	24	23	ADV
-1822—which	1822—which	NP	25	27	SBJ
+1822ï¿½which	1822ï¿½which	NP	25	27	SBJ
 immediately	immediately	RB	26	27	ADV
 precedes	precede	VVZ	27	24	PMOD
-‘The	‘the	NNS	28	27	OBJ
+ï¿½The	ï¿½the	NNS	28	27	OBJ
 Meeting	meet	VVG	29	28	NMOD
 of	of	IN	30	29	ADV
 the	the	DT	31	0	ROOT
@@ -85561,7 +85561,7 @@ poetry	poetry	NN	40	37	PMOD
 </s>
 <s>
 In	in	IN	1	42	DEP
-‘England	‘England	NP	2	42	P
+ï¿½England	ï¿½England	NP	2	42	P
 's	's	POS	3	2	NMOD
 Dead	Dead	NP	4	42	DEP
 '	'	POS	5	4	NMOD
@@ -85606,7 +85606,7 @@ stranger	stranger	NN	41	40	OBJ
 <s>
 track	track	VV	1	0	ROOT
 the	the	DT	2	3	NMOD
-deep—	deep—	JJ	3	1	OBJ
+deepï¿½	deepï¿½	JJ	3	1	OBJ
 Free	Free	NP	4	10	NMOD
 ,	,	,	5	10	P
 free	free	RB	6	10	NMOD
@@ -85642,7 +85642,7 @@ p.	P.	NP	2	3	NMOD
 )	)	)	4	3	P
 Poems	Poems	NP	5	3	NMOD
 like	like	IN	6	3	NMOD
-‘England	‘England	NP	7	11	ADV
+ï¿½England	ï¿½England	NP	7	11	ADV
 's	's	POS	8	7	NMOD
 Dead	Dead	NP	9	11	SBJ
 '	'	''	10	11	P
@@ -85792,7 +85792,7 @@ cost	cost	NN	36	34	PMOD
 of	of	IN	37	36	NMOD
 deconstructing	deconstructing	VVG	38	37	PMOD
 the	the	DT	39	40	NMOD
-‘greatness	‘greatness	NN	40	38	OBJ
+ï¿½greatness	ï¿½greatness	NN	40	38	OBJ
 '	'	''	41	40	P
 of	of	IN	42	40	NMOD
 the	the	DT	43	44	NMOD
@@ -85894,13 +85894,13 @@ construction	construction	NN	33	31	PMOD
 of	of	IN	34	33	NMOD
 early	early	JJ	35	37	NMOD
 nineteenth-century	nineteenth-century	NN	36	37	NMOD
-British—as	british—as	NNS	37	34	PMOD
+Britishï¿½as	britishï¿½as	NNS	37	34	PMOD
 opposed	oppose	VVN	38	37	NMOD
 to	to	TO	39	38	ADV
 either	either	DT	40	41	NMOD
 Welsh	Welsh	NN	41	39	PMOD
 or	or	CC	42	41	CC
-English—identity	english—identity	NN	43	41	COORD
+Englishï¿½identity	englishï¿½identity	NN	43	41	COORD
 .	.	SENT	44	6	P
 </s>
 <s>
@@ -86016,7 +86016,7 @@ Britons	Briton	NNS	10	6	PMOD
 Forging	forge	VVG	12	35	SBJ
 a	a	DT	13	14	NMOD
 Nation	nation	NN	14	12	OBJ
-1707–1837	1707–1837	JJ	15	14	NMOD
+1707ï¿½1837	1707ï¿½1837	JJ	15	14	NMOD
 ,	,	,	16	14	P
 the	the	DT	17	18	NMOD
 years	year	NNS	18	14	NMOD
@@ -86035,14 +86035,14 @@ terms	term	NNS	30	29	PMOD
 of	of	IN	31	30	NMOD
 British	British	JJ	32	34	NMOD
 identity.	identity.	JJ	33	34	NMOD
-‘There	‘there	NN	34	31	PMOD
+ï¿½There	ï¿½there	NN	34	31	PMOD
 was	be	VBD	35	0	ROOT
 ,	,	,	36	39	P
 '	'	''	37	39	P
 Colley	Colley	NP	38	39	SBJ
 says	say	VVZ	39	0	ROOT
 ,	,	,	40	39	P
-‘a	‘a	NP	41	43	NMOD
+ï¿½a	ï¿½a	NP	41	43	NMOD
 profound	profound	JJ	42	43	NMOD
 loss	loss	NN	43	46	SBJ
 of	of	IN	44	43	NMOD
@@ -86100,7 +86100,7 @@ an	a	DT	9	11	NMOD
 invented	invent	VVN	10	11	NMOD
 nation	nation	NN	11	8	PMOD
 ,	,	,	12	50	P
-superimposed—during	superimposed—during	VVG	13	0	ROOT
+superimposedï¿½during	superimposedï¿½during	VVG	13	0	ROOT
 the	the	DT	14	15	NMOD
 century	century	NN	15	13	OBJ
 which	which	WDT	16	17	SBJ
@@ -86110,7 +86110,7 @@ Act	Act	NP	19	0	ROOT
 of	of	IN	20	19	NMOD
 Union	Union	NP	21	0	ROOT
 with	with	IN	22	0	ROOT
-Scotland—onto	scotland—onto	NN	23	31	NMOD
+Scotlandï¿½onto	scotlandï¿½onto	NN	23	31	NMOD
 much	much	RB	24	25	AMOD
 older	old	JJR	25	31	NMOD
 English	English	JJ	26	31	NMOD
@@ -86250,7 +86250,7 @@ freedom-fighter	freedom-fighter	JJ	26	25	NMOD
 <s>
 In	in	IN	1	37	DEP
 her	her	PP$	2	3	NMOD
-‘England	‘england	NN	3	1	PMOD
+ï¿½England	ï¿½england	NN	3	1	PMOD
 and	and	CC	4	3	CC
 Spain	Spain	NP	5	0	ROOT
 ,	,	,	6	5	P
@@ -86278,7 +86278,7 @@ Isles	Isles	NP	27	36	NMOD
 (	(	(	28	36	P
 or	or	CC	29	36	CC
 rather	rather	RB	30	31	AMOD
-‘Isle	‘isle	JJ	31	36	NMOD
+ï¿½Isle	ï¿½isle	JJ	31	36	NMOD
 '	'	''	32	31	P
 )	)	)	33	31	P
 :	:	:	34	31	P
@@ -86337,7 +86337,7 @@ is	be	VBZ	7	0	ROOT
 of	of	IN	8	7	ADV
 course	course	NN	9	8	PMOD
 the	the	DT	10	11	NMOD
-‘Despot	‘despot	NN	11	7	PRD
+ï¿½Despot	ï¿½despot	NN	11	7	PRD
 of	of	IN	12	11	NMOD
 France	France	NP	13	12	PMOD
 !	!	SENT	14	7	P
@@ -86366,7 +86366,7 @@ attempts	attempt	NNS	14	12	PMOD
 to	to	TO	15	14	NMOD
 annex	annex	NN	16	19	NMOD
 Spain.	Spain.	NP	17	19	NMOD
-‘Wouldst	‘wouldst	NN	18	19	NMOD
+ï¿½Wouldst	ï¿½wouldst	NN	18	19	NMOD
 thou	thou	NNS	19	15	PMOD
 yet	yet	RB	20	7	ADV
 by	by	IN	21	7	ADV
@@ -86585,7 +86585,7 @@ wield	wield	VV	15	1	AMOD
 </s>
 <s>
 [	[	SYM	1	20	DEP
-…	…	NN	2	20	DEP
+ï¿½	ï¿½	NN	2	20	DEP
 ]	]	SYM	3	0	ROOT
 The	the	DT	4	5	NMOD
 reign	reign	NN	5	0	ROOT
@@ -86599,7 +86599,7 @@ restore	restore	VV	11	8	OBJ
 And	and	CC	13	5	CC
 bid	bid	NN	14	17	NMOD
 oppression	oppression	NN	15	17	NMOD
-fall—to	fall—to	NN	16	17	NMOD
+fallï¿½to	fallï¿½to	NN	16	17	NMOD
 rise	rise	NN	17	5	COORD
 no	no	RB	18	5	NMOD
 more	more	RBR	19	18	AMOD
@@ -86607,7 +86607,7 @@ more	more	RBR	19	18	AMOD
 </s>
 <s>
 But	but	CC	1	56	CC
-‘England	‘England	NP	2	0	ROOT
+ï¿½England	ï¿½England	NP	2	0	ROOT
 and	and	CC	3	2	CC
 Spain	Spain	NP	4	6	SBJ
 '	'	POS	5	4	NMOD
@@ -86638,14 +86638,14 @@ an	a	DT	29	30	NMOD
 eulogy	eulogy	NN	30	28	PMOD
 to	to	TO	31	30	NMOD
 the	the	DT	32	34	NMOD
-‘sweet	‘sweet	JJ	33	34	NMOD
+ï¿½sweet	ï¿½sweet	JJ	33	34	NMOD
 Peace	peace	NN	34	31	PMOD
 '	'	''	35	34	P
 which	which	WDT	36	37	SBJ
 will	will	MD	37	34	NMOD
 return	return	VV	38	37	VC
 once	once	IN	39	42	VMOD
-‘mad	‘mad	NN	40	41	NMOD
+ï¿½mad	ï¿½mad	NN	40	41	NMOD
 ambition	ambition	NN	41	42	SBJ
 has	have	VHZ	42	38	ADV
 ceased	cease	VVN	43	42	VC
@@ -86665,7 +86665,7 @@ lesson	lesson	NN	55	53	OBJ
 </s>
 <s>
 The	the	DT	1	2	NMOD
-‘demon-breath	‘demon-breath	NN	2	6	SBJ
+ï¿½demon-breath	ï¿½demon-breath	NN	2	6	SBJ
 '	'	''	3	2	P
 of	of	IN	4	2	NMOD
 war	war	NN	5	4	PMOD
@@ -86673,7 +86673,7 @@ will	will	MD	6	0	ROOT
 be	be	VB	7	6	VC
 assuaged	assuage	VVN	8	7	VC
 when	when	WRB	9	0	ROOT
-‘the	‘the	JJ	10	11	NMOD
+ï¿½the	ï¿½the	JJ	10	11	NMOD
 despot	despot	NN	11	14	NMOD
 's	's	POS	12	11	NMOD
 dread	dread	NN	13	14	NMOD
@@ -86737,7 +86737,7 @@ that	that	IN	29	64	VMOD
 although	although	IN	30	61	VMOD
 Napoleon	Napoleon	NP	31	34	NMOD
 's	's	POS	32	31	NMOD
-‘mad	‘mad	NN	33	34	NMOD
+ï¿½mad	ï¿½mad	NN	33	34	NMOD
 ambition	ambition	NN	34	61	SBJ
 '	'	POS	35	34	NMOD
 duly	duly	RB	36	37	AMOD
@@ -86808,7 +86808,7 @@ greed	greed	NN	30	26	PMOD
 as	as	IN	31	30	NMOD
 the	the	DT	32	34	NMOD
 French	French	JJ	33	34	NMOD
-‘tyrant	‘tyrant	NN	34	31	PMOD
+ï¿½tyrant	ï¿½tyrant	NN	34	31	PMOD
 '	'	''	35	34	P
 had	have	VHD	36	25	PMOD
 shown	show	VVN	37	36	VC
@@ -86849,7 +86849,7 @@ and	and	CC	27	29	CC
 other	other	JJ	28	29	NMOD
 territories	territory	NNS	29	42	SBJ
 ostensibly	ostensibly	RB	30	31	AMOD
-‘freed	‘freed	JJR	31	42	ADV
+ï¿½freed	ï¿½freed	JJR	31	42	ADV
 '	'	''	32	31	P
 from	from	IN	33	31	COORD
 Dutch	Dutch	JJ	34	37	NMOD
@@ -86953,7 +86953,7 @@ as	as	IN	74	73	ADV
 British	British	JJ	75	76	NMOD
 territories	territory	NNS	76	74	PMOD
 in	in	IN	77	73	ADV
-1824–26	1824–26	JJ	78	77	PMOD
+1824ï¿½26	1824ï¿½26	JJ	78	77	PMOD
 .	.	SENT	79	0	ROOT
 </s>
 <s>
@@ -87049,7 +87049,7 @@ references	reference	NNS	4	2	PMOD
 in	in	IN	5	4	ADV
 the	the	DT	6	8	NMOD
 poem	poem	NN	7	8	NMOD
-‘England	‘england	NN	8	0	ROOT
+ï¿½England	ï¿½england	NN	8	0	ROOT
 's	's	POS	9	8	NMOD
 Dead	Dead	NP	10	19	SBJ
 '	'	''	11	19	P
@@ -87228,7 +87228,7 @@ the	the	DT	51	52	NMOD
 reviewers	reviewer	NNS	52	50	PMOD
 of	of	IN	53	52	NMOD
 her	her	PP$	54	55	NMOD
-‘Wallace	‘wallace	NN	55	57	NMOD
+ï¿½Wallace	ï¿½wallace	NN	55	57	NMOD
 's	's	POS	56	55	NMOD
 Invocation	invocation	NN	57	53	PMOD
 to	to	TO	58	47	ADV
@@ -87392,7 +87392,7 @@ Britannia	Britannia	NP	30	31	DEP
 </s>
 <s>
 In	in	IN	1	41	DEP
-‘The	‘The	NP	2	36	NMOD
+ï¿½The	ï¿½The	NP	2	36	NMOD
 Fair	Fair	NP	3	36	NMOD
 Isle	Isle	NP	4	36	NMOD
 '	'	POS	5	16	VMOD
@@ -87415,7 +87415,7 @@ the	the	DT	21	22	NMOD
 coming	come	VVG	22	20	PMOD
 of	of	IN	23	22	NMOD
 the	the	DT	24	25	NMOD
-Anglo–Saxons	anglo–saxons	NNS	25	23	PMOD
+Angloï¿½Saxons	angloï¿½saxons	NNS	25	23	PMOD
 by	by	IN	26	22	NMOD
 a	a	DT	27	29	NMOD
 bardic	bardic	JJ	28	29	NMOD
@@ -87449,7 +87449,7 @@ of	of	IN	12	11	NMOD
 your	your	PP$	13	14	NMOD
 clime	clime	NN	14	12	PMOD
 [	[	SYM	15	16	NMOD
-…	…	NN	16	8	ADV
+ï¿½	ï¿½	NN	16	8	ADV
 ]	]	SYM	17	19	VMOD
 Ages	Ages	NPS	18	19	SBJ
 may	may	MD	19	1	OBJ
@@ -87629,7 +87629,7 @@ by	by	IN	6	5	LGS
 Hemans	Hemans	NP	7	5	ADV
 in	in	IN	8	5	ADV
 both	both	DT	9	10	NMOD
-‘Wallace	‘wallace	NN	10	12	NMOD
+ï¿½Wallace	ï¿½wallace	NN	10	12	NMOD
 's	's	POS	11	10	NMOD
 Invocation	invocation	NN	12	8	PMOD
 to	to	TO	13	5	ADV
@@ -87653,9 +87653,9 @@ Britain	Britain	NP	29	33	NMOD
 early	early	JJ	31	33	NMOD
 freedom	freedom	NN	32	33	NMOD
 fighters	fighter	NNS	33	34	SBJ
-successfully—according	successfully—according	VVG	34	23	NMOD
+successfullyï¿½according	successfullyï¿½according	VVG	34	23	NMOD
 to	to	TO	35	34	ADV
-Hemans—vanquished	Hemans—vanquished	NP	36	43	NMOD
+Hemansï¿½vanquished	Hemansï¿½vanquished	NP	36	43	NMOD
 an	a	DT	37	43	NMOD
 earlier	earlier	RBR	38	39	AMOD
 southern	southern	JJ	39	43	NMOD
@@ -87765,7 +87765,7 @@ brave	brave	JJ	47	45	COORD
 ,	,	,	48	45	P
 Yielded	yielded	JJ	49	45	COORD
 the	the	DT	50	53	NMOD
-Roman—but	Roman—but	NP	51	53	NMOD
+Romanï¿½but	Romanï¿½but	NP	51	53	NMOD
 a	a	DT	52	53	NMOD
 grave	grave	NN	53	43	PMOD
 !	!	SENT	54	17	P
@@ -87793,7 +87793,7 @@ the	the	DT	19	21	NMOD
 departing	depart	VVG	20	21	NMOD
 Romans	Roman	NNS	21	0	ROOT
 ,	,	,	22	21	P
-‘Lords	‘lords	NNS	23	21	NMOD
+ï¿½Lords	ï¿½lords	NNS	23	21	NMOD
 of	of	IN	24	23	NMOD
 earth	earth	NN	25	24	PMOD
 !	!	SENT	26	0	ROOT
@@ -87814,7 +87814,7 @@ wages	wage	NNS	10	6	OBJ
 <s>
 '	'	''	1	12	NMOD
 (	(	(	2	12	P
-‘Caswallon	‘Caswallon	NP	3	12	NMOD
+ï¿½Caswallon	ï¿½Caswallon	NP	3	12	NMOD
 's	's	POS	4	3	NMOD
 Triumph	Triumph	NP	5	12	NMOD
 '	'	POS	6	5	NMOD
@@ -87832,11 +87832,11 @@ French	French	JJ	16	14	PMOD
 constituted	constitute	VVD	18	0	ROOT
 an	a	DT	19	21	NMOD
 unproblematic	unproblematic	JJ	20	21	NMOD
-‘Other	‘other	NN	21	18	OBJ
+ï¿½Other	ï¿½other	NN	21	18	OBJ
 '	'	''	22	21	P
 against	against	IN	23	0	ROOT
 which	which	WDT	24	23	PMOD
-‘Britain	‘britain	NN	25	27	SBJ
+ï¿½Britain	ï¿½britain	NN	25	27	SBJ
 '	'	''	26	27	P
 could	could	MD	27	21	NMOD
 readily	readily	RB	28	27	ADV
@@ -87852,7 +87852,7 @@ the	the	DT	2	3	NMOD
 entry	entry	NN	3	0	ROOT
 of	of	IN	4	3	NMOD
 the	the	DT	5	6	NMOD
-Anglo–Saxon	anglo–saxon	NN	6	4	PMOD
+Angloï¿½Saxon	angloï¿½saxon	NN	6	4	PMOD
 into	into	IN	7	3	NMOD
 this	this	DT	8	12	NMOD
 happy	happy	JJ	9	12	NMOD
@@ -87888,7 +87888,7 @@ splitting	splitting	NN	19	13	NMOD
 of	of	IN	20	19	NMOD
 the	the	DT	21	23	NMOD
 sign	sign	NN	22	23	NMOD
-‘Anglo–Saxon	‘anglo–saxon	NN	23	20	PMOD
+ï¿½Angloï¿½Saxon	ï¿½angloï¿½saxon	NN	23	20	PMOD
 '	'	POS	24	23	NMOD
 ,	,	,	25	23	P
 in	in	IN	26	0	ROOT
@@ -87910,10 +87910,10 @@ the	the	DT	41	42	NMOD
 English	English	NP	42	40	PMOD
 as	as	IN	43	42	NMOD
 a	a	DT	44	45	NMOD
-race—‘Saeson	race—‘saeson	NN	45	43	PMOD
+raceï¿½ï¿½Saeson	raceï¿½ï¿½saeson	NN	45	43	PMOD
 '	'	POS	46	45	NMOD
 and	and	CC	47	45	CC
-‘Sassenach'—derive	‘sassenach'—derive	JJ	48	45	COORD
+ï¿½Sassenach'ï¿½derive	ï¿½sassenach'ï¿½derive	JJ	48	45	COORD
 from	from	IN	49	48	AMOD
 the	the	DT	50	51	NMOD
 name	name	NN	51	49	PMOD
@@ -87922,7 +87922,7 @@ the	the	DT	53	54	NMOD
 Saxon--rather	Saxon--rather	NP	54	52	PMOD
 than	than	IN	55	48	AMOD
 the	the	DT	56	58	NMOD
-Anglo–Germanic	anglo–germanic	JJ	57	58	NMOD
+Angloï¿½Germanic	angloï¿½germanic	JJ	57	58	NMOD
 tribe	tribe	NN	58	55	PMOD
 .	.	SENT	59	0	ROOT
 </s>
@@ -87945,20 +87945,20 @@ the	the	DT	15	0	ROOT
 English	English	NP	16	0	ROOT
 but	but	CC	17	16	CC
 of	of	IN	18	16	COORD
-‘Cambrians	‘cambrians	NNS	19	0	ROOT
+ï¿½Cambrians	ï¿½cambrians	NNS	19	0	ROOT
 '	'	POS	20	19	NMOD
 or	or	CC	21	19	CC
-‘Britons	‘britons	NNS	22	19	COORD
+ï¿½Britons	ï¿½britons	NNS	22	19	COORD
 '	'	''	23	19	P
 versus	versus	IN	24	19	ADV
-‘Saxons	‘saxons	NNS	25	27	SBJ
+ï¿½Saxons	ï¿½saxons	NNS	25	27	SBJ
 '	'	POS	26	25	NMOD
 only	only	RB	27	24	PMOD
 .	.	SENT	28	0	ROOT
 </s>
 <s>
 In	in	IN	1	29	ADV
-‘The	‘The	NP	2	6	NMOD
+ï¿½The	ï¿½The	NP	2	6	NMOD
 Dying	Dying	NP	3	6	NMOD
 Bard	Bard	NP	4	6	NMOD
 's	's	POS	5	4	NMOD
@@ -87994,7 +87994,7 @@ Saxon	Saxon	NP	33	32	PMOD
 rather	rather	RB	35	29	CC
 than	than	IN	36	35	DEP
 as	as	IN	37	35	DEP
-Anglo–Norman	Anglo–Norman	NP	38	35	DEP
+Angloï¿½Norman	Angloï¿½Norman	NP	38	35	DEP
 or	or	CC	39	38	CC
 English	English	NP	40	38	COORD
 .	.	SENT	41	29	P
@@ -88008,7 +88008,7 @@ the	the	DT	5	6	NMOD
 bard	bard	NN	6	7	SBJ
 proclaims	proclaim	VVZ	7	0	ROOT
 :	:	:	8	7	P
-‘Saxon	‘saxon	NN	9	11	ADV
+ï¿½Saxon	ï¿½saxon	NN	9	11	ADV
 ,	,	,	10	11	P
 think	think	VVP	11	7	COORD
 not	not	RB	12	11	VMOD
@@ -88016,7 +88016,7 @@ all	all	DT	13	14	SBJ
 is	be	VBZ	14	11	OBJ
 won.	won.	NN	15	14	PRD
 [	[	SYM	16	17	NMOD
-…	…	NN	17	0	ROOT
+ï¿½	ï¿½	NN	17	0	ROOT
 ]	]	SYM	18	19	VMOD
 Dreamer	Dreamer	NP	19	0	ROOT
 !	!	SENT	20	7	P
@@ -88037,7 +88037,7 @@ mountain-land	mountain-land	NN	11	9	PMOD
 </s>
 <s>
 [	[	SYM	1	5	NMOD
-…	…	NN	2	5	NMOD
+ï¿½	ï¿½	NN	2	5	NMOD
 ]	]	SYM	3	5	NMOD
 Think'st	Think'st	NP	4	5	NMOD
 thou	thou	NNS	5	0	ROOT
@@ -88064,7 +88064,7 @@ p.	P.	NP	3	4	NMOD
 )	)	)	5	4	P
 Here	here	RB	6	10	NMOD
 the	the	DT	7	8	NMOD
-‘Saxon	‘saxon	NN	8	10	NMOD
+ï¿½Saxon	ï¿½saxon	NN	8	10	NMOD
 '	'	POS	9	8	NMOD
 features	feature	NNS	10	4	NMOD
 as	as	IN	11	10	NMOD
@@ -88094,7 +88094,7 @@ land	land	NN	34	32	PMOD
 ,	,	,	35	4	P
 but	but	CC	36	4	CC
 the	the	DT	37	38	NMOD
-‘Angles	‘angles	NNS	38	40	SBJ
+ï¿½Angles	ï¿½angles	NNS	38	40	SBJ
 '	'	''	39	40	P
 are	are	VBP	40	4	COORD
 not	not	RB	41	40	VMOD
@@ -88156,7 +88156,7 @@ anything	anything	NN	47	46	PMOD
 other	other	JJ	48	47	NMOD
 than	than	IN	49	48	AMOD
 English.	english.	JJ	50	52	NMOD
-‘A	‘a	NN	51	52	NMOD
+ï¿½A	ï¿½a	NN	51	52	NMOD
 sound	sound	NN	52	49	PMOD
 is	be	VBZ	53	0	ROOT
 on	on	IN	54	59	ADV
@@ -88172,7 +88172,7 @@ still	still	RB	63	64	AMOD
 resistant	resistant	JJ	64	61	COORD
 Owain	Owain	NP	65	73	DEP
 ,	,	,	66	70	P
-‘A	‘a	NN	67	68	NMOD
+ï¿½A	ï¿½a	NN	67	68	NMOD
 murmur	murmur	NN	68	0	ROOT
 as	as	RB	69	70	DEP
 of	of	IN	70	0	ROOT
@@ -88234,7 +88234,7 @@ the	the	DT	33	34	NMOD
 Saxon	Saxon	NP	34	0	ROOT
 ,	,	,	35	34	P
 but	but	CC	36	34	CC
-‘the	‘the	NN	37	38	NMOD
+ï¿½the	ï¿½the	NN	37	38	NMOD
 name	name	NN	38	34	COORD
 of	of	IN	39	34	NMOD
 England	England	NP	40	42	SBJ
@@ -88390,7 +88390,7 @@ predecessors	predecessor	NNS	57	53	PMOD
 But	but	CC	1	44	CC
 Hemans	Hemans	NP	2	44	DEP
 's	's	POS	3	2	NMOD
-‘Fair	‘Fair	NP	4	7	VMOD
+ï¿½Fair	ï¿½Fair	NP	4	7	VMOD
 Isle	Isle	NP	5	7	SBJ
 '	'	POS	6	5	NMOD
 is	be	VBZ	7	0	ROOT
@@ -88428,7 +88428,7 @@ reverts	revert	VVZ	38	0	ROOT
 to	to	TO	39	38	ADV
 calling	call	VVG	40	39	PMOD
 simply	simply	RB	41	42	AMOD
-‘England	‘england	JJ	42	0	ROOT
+ï¿½England	ï¿½england	JJ	42	0	ROOT
 '	'	''	43	38	P
 .	.	SENT	44	0	ROOT
 </s>
@@ -88441,7 +88441,7 @@ Notes	note	NNS	1	0	ROOT
 Felicia	Felicia	NP	1	26	DEP
 Hemans	Hemans	NP	2	26	ADV
 ,	,	,	3	26	P
-‘The	‘The	NP	4	26	DEP
+ï¿½The	ï¿½The	NP	4	26	DEP
 Name	Name	NP	5	0	ROOT
 of	of	IN	6	5	NMOD
 England	England	NP	7	0	ROOT
@@ -88517,7 +88517,7 @@ p.	P.	NP	22	23	NMOD
 <s>
 Hemans	hemans	NNS	1	13	ADV
 ,	,	,	2	13	P
-‘The	‘the	NNS	3	13	DEP
+ï¿½The	ï¿½the	NNS	3	13	DEP
 Meeting	meet	VVG	4	3	NMOD
 of	of	IN	5	4	ADV
 the	the	DT	6	0	ROOT
@@ -88530,7 +88530,7 @@ pp	pp	NP	12	0	ROOT
 .	.	SENT	13	0	ROOT
 </s>
 <s>
-246–47	246–47	JJ	1	7	ADV
+246ï¿½47	246ï¿½47	JJ	1	7	ADV
 ;	;	:	2	7	P
 the	the	DT	3	6	NMOD
 italicised	italicise	VVN	4	6	NMOD
@@ -88544,7 +88544,7 @@ from	from	IN	11	10	NMOD
 the	the	DT	12	19	NMOD
 Welsh	Welsh	NP	13	19	NMOD
 Eisteddfod	Eisteddfod	NP	14	19	NMOD
-prayer—‘	prayer—‘	NP	15	19	NMOD
+prayerï¿½ï¿½	prayerï¿½ï¿½	NP	15	19	NMOD
 Yng	Yng	NP	16	19	NMOD
 ngwyneb	ngwyneb	NP	17	19	NMOD
 haul	haul	NN	18	19	NMOD
@@ -88568,7 +88568,7 @@ Britons	Briton	NNS	4	25	DEP
 Forging	forge	VVG	6	4	NMOD
 a	a	DT	7	25	P
 Nation	Nation	NP	8	9	AMOD
-1707–1837	1707–1837	JJ	9	25	DEP
+1707ï¿½1837	1707ï¿½1837	JJ	9	25	DEP
 (	(	(	10	25	P
 New	New	NP	11	25	DEP
 Haven	Haven	NP	12	25	P
@@ -88605,7 +88605,7 @@ Hemans	Hemans	NP	11	17	NMOD
 '	'	POS	12	11	NMOD
 prize-winning	prize-winning	JJ	13	15	NMOD
 poem	poem	NN	14	15	NMOD
-‘Wallace	‘wallace	NN	15	17	NMOD
+ï¿½Wallace	ï¿½wallace	NN	15	17	NMOD
 's	's	POS	16	15	NMOD
 Invocation	invocation	NN	17	9	PMOD
 to	to	TO	18	17	NMOD
@@ -88618,7 +88618,7 @@ II	II	NP	1	8	NMOD
 Felicia	Felicia	NP	2	8	NMOD
 Hemans	Hemans	NP	3	8	NMOD
 (	(	(	4	5	P
-1793–1835	1793–1835	NP	5	0	ROOT
+1793ï¿½1835	1793ï¿½1835	NP	5	0	ROOT
 )	)	)	6	5	P
 :	:	:	7	8	P
 Bibliography	bibliography	NN	8	25	ADV
@@ -88892,9 +88892,9 @@ By	by	IN	1	9	DEP
 the	the	DT	2	3	NMOD
 Authors	Authors	NP	3	0	ROOT
 of	of	IN	4	3	NMOD
-“The	“The	NP	5	8	NMOD
+ï¿½The	ï¿½The	NP	5	8	NMOD
 Odd	Odd	NP	6	8	NMOD
-Volume,”	Volume,”	NP	7	8	NMOD
+Volume,ï¿½	Volume,ï¿½	NP	7	8	NMOD
 &c	&c	NN	8	4	PMOD
 .	.	SENT	9	0	ROOT
 </s>
@@ -88938,7 +88938,7 @@ This	this	DT	3	4	NMOD
 article	article	NN	4	5	SBJ
 is	be	VBZ	5	0	ROOT
 copyright	copyright	NN	6	5	PRD
-©	©	SYM	7	0	ROOT
+ï¿½	ï¿½	SYM	7	0	ROOT
 2000	@card@	CD	8	0	ROOT
 Centre	Centre	NP	9	0	ROOT
 for	for	IN	10	0	ROOT
@@ -89013,14 +89013,14 @@ this	this	DT	3	8	NMOD
 Article	Article	NP	4	8	NMOD
 J.	J.	NP	5	8	NMOD
 AARON.	AARON.	NP	6	8	NMOD
-‘	‘	NN	7	8	NMOD
-“Saxon	“saxon	NN	8	2	PMOD
+ï¿½	ï¿½	NN	7	8	NMOD
+ï¿½Saxon	ï¿½saxon	NN	8	2	PMOD
 ,	,	,	9	1	P
 Think	think	VVP	10	0	ROOT
 not	not	RB	11	10	VMOD
 All	all	DT	12	13	SBJ
 Is	be	VBZ	13	10	OBJ
-Won”	Won”	NP	14	38	DEP
+Wonï¿½	Wonï¿½	NP	14	38	DEP
 :	:	:	15	38	P
 Felicia	Felicia	NP	16	38	DEP
 Hemans	Hemans	NP	17	38	P
@@ -89072,16 +89072,16 @@ originally	originally	RB	10	11	ADV
 presented	present	VVN	11	9	NMOD
 at	at	IN	12	11	ADV
 the	the	DT	13	14	NMOD
-‘Scenes	‘scenes	NNS	14	12	PMOD
+ï¿½Scenes	ï¿½scenes	NNS	14	12	PMOD
 of	of	IN	15	14	NMOD
 Writing	write	VVG	16	15	PMOD
 ,	,	,	17	22	P
-1750–1850	1750–1850	NP	18	20	NMOD
+1750ï¿½1850	1750ï¿½1850	NP	18	20	NMOD
 '	'	POS	19	18	NMOD
 conference	conference	NN	20	22	SBJ
 ,	,	,	21	22	P
 held	hold	VVD	22	3	PRN
-20–23	20–23	JJ	23	25	NMOD
+20ï¿½23	20ï¿½23	JJ	23	25	NMOD
 July	July	NP	24	25	NMOD
 1998	@card@	CD	25	3	PRD
 ,	,	,	26	3	P
@@ -89163,7 +89163,7 @@ Honno	Honno	NP	17	61	ADV
 )	)	)	20	61	ADV
 ,	,	,	21	61	P
 Our	our	PP$	22	61	DEP
-Sisters’	Sisters’	NP	23	24	AMOD
+Sistersï¿½	Sistersï¿½	NP	23	24	AMOD
 Land	Land	NP	24	0	ROOT
 :	:	:	25	61	P
 The	the	DT	26	28	NMOD
@@ -89241,7 +89241,7 @@ Richards	Richards	NP	9	32	ADV
 ,	,	,	10	32	P
 Jason	Jason	NP	11	17	NMOD
 Foster	Foster	NP	12	17	NMOD
-£	£	$	13	14	NMOD
+ï¿½	ï¿½	$	13	14	NMOD
 5000	@card@	CD	14	17	NMOD
 Grant	Grant	NP	15	17	NMOD
 Won	Won	NP	16	17	NMOD
@@ -89332,7 +89332,7 @@ now	now	RB	2	3	AMOD
 down	down	RB	3	5	ADV
 to	to	TO	4	5	VMOD
 approx.	approx.	VV	5	0	ROOT
-£	£	$	6	7	NMOD
+ï¿½	ï¿½	$	6	7	NMOD
 1700	@card@	CD	7	5	OBJ
 .	.	SENT	8	5	P
 </s>
@@ -89343,7 +89343,7 @@ County	County	NP	2	6	VMOD
 U13	U13	NP	4	5	NMOD
 team	team	NN	5	6	SBJ
 won	win	VVD	6	9	ADV
-–	–	NN	7	6	OBJ
+ï¿½	ï¿½	NN	7	6	OBJ
 all	all	RB	8	6	ADV
 played	play	VVD	9	0	ROOT
 well	well	RB	10	9	ADV
@@ -89353,7 +89353,7 @@ well	well	RB	10	9	ADV
 U17	u17	JJ	1	2	NMOD
 Team	team	NN	2	3	SBJ
 won	win	VVD	3	0	ROOT
-–	–	JJ	4	7	NMOD
+ï¿½	ï¿½	JJ	4	7	NMOD
 Oliver	Oliver	NP	5	7	NMOD
 Dixon	Dixon	NP	6	7	NMOD
 beating	beating	NN	7	3	OBJ
@@ -89434,7 +89434,7 @@ th	th	NN	13	10	PMOD
 Jan.	Jan.	NP	14	17	NMOD
 County	County	NP	15	17	NMOD
 Shirts	Shirts	NP	16	17	NMOD
-–	–	NN	17	9	ADV
+ï¿½	ï¿½	NN	17	9	ADV
 All	all	DT	18	21	NMOD
 County	County	NP	19	21	NMOD
 team	team	NN	20	21	NMOD
@@ -89600,7 +89600,7 @@ Steve	Steve	NP	1	2	SBJ
 is	be	VBZ	2	0	ROOT
 undertaking	undertake	VVG	3	2	VC
 some	some	DT	4	6	NMOD
-‘taster	‘taster	JJR	5	6	NMOD
+ï¿½taster	ï¿½taster	JJR	5	6	NMOD
 sessions	session	NNS	6	3	OBJ
 '	'	''	7	3	P
 at	at	IN	8	3	ADV
@@ -89613,7 +89613,7 @@ Friday	Friday	NP	13	15	NMOD
 th	th	NN	15	12	PMOD
 Jan.	Jan.	NP	16	20	NMOD
 Girls	Girls	NP	17	20	NMOD
-–	–	NP	18	20	NMOD
+ï¿½	ï¿½	NP	18	20	NMOD
 Coaching	Coaching	NP	19	20	NMOD
 morning	morning	NN	20	8	PMOD
 planned	plan	VVN	21	20	NMOD
@@ -89640,7 +89640,7 @@ lot	lot	NN	39	37	OBJ
 <s>
 Graded	grade	VVN	1	5	NMOD
 Tournaments	Tournaments	NP	2	5	NMOD
-–	–	JJ	3	5	NMOD
+ï¿½	ï¿½	JJ	3	5	NMOD
 Last	last	JJ	4	5	NMOD
 one	one	NN	5	6	SBJ
 held	hold	VVD	6	0	ROOT
@@ -89678,9 +89678,9 @@ area	area	NN	10	8	PMOD
 Awards	award	NNS	1	8	SBJ
 For	for	IN	2	1	NMOD
 All	all	DT	3	7	NMOD
-–	–	JJ	4	7	NMOD
+ï¿½	ï¿½	JJ	4	7	NMOD
 Re	Re	NP	5	7	NMOD
-–	–	NN	6	7	NMOD
+ï¿½	ï¿½	NN	6	7	NMOD
 Submission	submission	NN	7	2	PMOD
 was	be	VBD	8	0	ROOT
 agreed	agree	VVN	9	8	VC
@@ -89711,7 +89711,7 @@ SUCCESS	success	NN	1	0	ROOT
 !	!	SENT	1	0	ROOT
 </s>
 <s>
-£	£	$	1	2	NMOD
+ï¿½	ï¿½	$	1	2	NMOD
 5000	@card@	CD	2	3	SBJ
 was	be	VBD	3	0	ROOT
 awarded	award	VVN	4	3	VC
@@ -89731,7 +89731,7 @@ AOB	AOB	NP	1	27	DEP
 Tom	Tom	NP	2	27	DEP
 Elton	Elton	NP	3	27	P
 Barrett	Barrett	NP	4	27	DEP
-–	–	NP	5	27	P
+ï¿½	ï¿½	NP	5	27	P
 Won	Won	NP	6	27	DEP
 by	by	IN	7	0	ROOT
 Jonathan	Jonathan	NP	8	13	NMOD
@@ -92272,7 +92272,7 @@ ahead	ahead	RB	19	18	ADV
 </s>
 <s>
 Even	even	RB	1	3	NMOD
-£	£	$	2	3	NMOD
+ï¿½	ï¿½	$	2	3	NMOD
 5/month	5/month	JJ	3	0	ROOT
 can	can	MD	4	0	ROOT
 help	help	VV	5	4	VC
@@ -99171,7 +99171,7 @@ an	a	DT	8	10	NMOD
 Assembly	Assembly	NP	9	10	NMOD
 premium	premium	NN	10	14	SBJ
 of	of	IN	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 1,000	@card@	CD	13	11	PMOD
 should	should	MD	14	6	OBJ
 be	be	VB	15	14	VC
@@ -100185,7 +100185,7 @@ Living	live	VVG	9	8	PMOD
 <s>
 See	see	VV	1	0	ROOT
 how	how	WRB	2	4	NMOD
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 15	@card@	CD	4	1	OBJ
 per	per	IN	5	4	NMOD
 month	month	NN	6	5	PMOD
@@ -100911,7 +100911,7 @@ way	way	NN	14	11	OBJ
 "	"	''	16	17	P
 said	say	VVD	17	0	ROOT
 the	the	DT	18	21	NMOD
-£	£	$	19	21	NMOD
+ï¿½	ï¿½	$	19	21	NMOD
 500,000	@card@	CD	20	19	AMOD
 midfielder	midfielder	NN	21	17	SBJ
 .	.	SENT	22	17	P
@@ -101580,11 +101580,11 @@ bar	bar	NN	50	45	PMOD
 <s>
 Satirical	satirical	JJ	1	4	NMOD
 Comic,fnlst	Comic,fnlst	NP	2	4	NMOD
-“So	“so	NN	3	4	NMOD
+ï¿½So	ï¿½so	NN	3	4	NMOD
 u	u	NN	4	5	SBJ
 think	think	VVP	5	0	ROOT
 your	your	PP$	6	9	NMOD
-fny”	fny”	NN	7	9	NMOD
+fnyï¿½	fnyï¿½	NN	7	9	NMOD
 comedy	comedy	NN	8	9	NMOD
 comp	comp	NN	9	0	ROOT
 in	in	IN	10	9	ADV
@@ -101610,7 +101610,7 @@ and	and	CC	7	4	CC
 try	try	VV	8	4	COORD
 stop	stop	VV	9	8	OBJ
 a	a	DT	10	11	NMOD
-war“One	war“one	NN	11	9	OBJ
+warï¿½One	warï¿½one	NN	11	9	OBJ
 of	of	IN	12	11	NMOD
 UK	UK	NP	13	36	SBJ
 's	's	POS	14	13	NMOD
@@ -102883,7 +102883,7 @@ for	for	IN	19	23	DEP
 as	as	RB	20	23	DEP
 little	little	JJ	21	23	DEP
 as	as	IN	22	23	DEP
-£	£	$	23	32	ADV
+ï¿½	ï¿½	$	23	32	ADV
 15	@card@	CD	24	23	DEP
 per	per	IN	25	23	NMOD
 year	year	NN	26	25	PMOD
@@ -103043,7 +103043,7 @@ see	see	VV	19	14	ADV
 </s>
 <s>
 For	for	IN	1	9	ADV
-£	£	$	2	3	NMOD
+ï¿½	ï¿½	$	2	3	NMOD
 15	@card@	CD	3	1	PMOD
 per	per	IN	4	3	NMOD
 year	year	NN	5	4	PMOD
@@ -103124,7 +103124,7 @@ will	will	MD	8	4	OBJ
 be	be	VB	9	8	VC
 applied	apply	VVN	10	9	VC
 of	of	IN	11	10	ADV
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 9	9	CD	13	11	PMOD
 per	per	IN	14	13	NMOD
 year	year	NN	15	14	PMOD
@@ -103171,7 +103171,7 @@ Fees	fee	NNS	37	0	ROOT
 FREE	free	JJ	38	40	NMOD
 Annual	annual	JJ	39	40	NMOD
 Fees	fee	NNS	40	0	ROOT
-£	£	$	41	43	NMOD
+ï¿½	ï¿½	$	41	43	NMOD
 17.63	@card@	CD	42	43	NMOD
 E-Mail	E-mail	NN	43	40	NMOD
 4	4	CD	44	43	NMOD
@@ -103813,7 +103813,7 @@ which	which	WDT	3	4	SBJ
 will	will	MD	4	2	NMOD
 total	total	VV	5	4	VC
 approximately	approximately	RB	6	7	DEP
-£	£	$	7	5	OBJ
+ï¿½	ï¿½	$	7	5	OBJ
 17.5	@card@	CD	8	7	DEP
 million	million	CD	9	7	DEP
 .	.	SENT	10	0	ROOT
@@ -104487,7 +104487,7 @@ many	many	JJ	12	13	NMOD
 museums	museum	NNS	13	10	PMOD
 and	and	CC	14	9	CC
 the	the	DT	15	18	NMOD
-Feskekörka	Feskekörka	NP	16	18	NMOD
+Feskekï¿½rka	Feskekï¿½rka	NP	16	18	NMOD
 fish	fish	NN	17	18	NMOD
 market	market	NN	18	9	COORD
 .	.	SENT	19	2	P
@@ -104538,7 +104538,7 @@ with	with	IN	9	8	NMOD
 restaurants	restaurant	NNS	10	9	PMOD
 and	and	CC	11	10	CC
 pavement	pavement	NN	12	13	NMOD
-cafés	cafés	NNS	13	10	COORD
+cafï¿½s	cafï¿½s	NNS	13	10	COORD
 .	.	SENT	14	0	ROOT
 </s>
 <s>
@@ -104564,7 +104564,7 @@ centre	centre	NN	6	0	ROOT
 .	.	SENT	7	6	P
 </s>
 <s>
-Feskekörka	Feskekörka	NP	1	15	DEP
+Feskekï¿½rka	Feskekï¿½rka	NP	1	15	DEP
 The	the	DT	2	5	NMOD
 old	old	JJ	3	5	NMOD
 fish	fish	NN	4	5	NMOD
@@ -104581,7 +104581,7 @@ restaurants	restaurant	NNS	14	10	OBJ
 .	.	SENT	15	0	ROOT
 </s>
 <s>
-Trädgårdsföreningen	Trädgårdsföreningen	NP	1	5	NMOD
+Trï¿½dgï¿½rdsfï¿½reningen	Trï¿½dgï¿½rdsfï¿½reningen	NP	1	5	NMOD
 Park	Park	NP	2	5	NMOD
 An	a	DT	3	5	NMOD
 established	establish	VVN	4	5	NMOD
@@ -104601,7 +104601,7 @@ rosarium	rosarium	NN	17	12	COORD
 .	.	SENT	18	0	ROOT
 </s>
 <s>
-Götaplatsen	Götaplatsen	NP	1	22	DEP
+Gï¿½taplatsen	Gï¿½taplatsen	NP	1	22	DEP
 Site	Site	NP	2	0	ROOT
 of	of	IN	3	2	NMOD
 the	the	DT	4	5	NMOD
@@ -106040,7 +106040,7 @@ SDI	SDI	NP	32	38	VMOD
 at	at	IN	33	38	ADV
 Bio	Bio	NP	34	36	NMOD
 2006	@card@	CD	35	36	NMOD
-–	–	NN	36	33	PMOD
+ï¿½	ï¿½	NN	36	33	PMOD
 which	which	WDT	37	38	SBJ
 will	will	MD	38	31	PMOD
 include	include	VV	39	38	VC
@@ -109284,7 +109284,7 @@ Back	back	RB	6	7	PMOD
 to	to	TO	7	14	NMOD
 Top	top	JJ	8	9	NMOD
 Copyright	copyright	NN	9	7	PMOD
-©	©	SYM	10	14	NMOD
+ï¿½	ï¿½	SYM	10	14	NMOD
 2004	@card@	CD	11	14	NMOD
 -	-	:	12	11	P
 2005	@card@	CD	13	14	NMOD
@@ -109292,7 +109292,7 @@ www.englishmonarcs.co.uk	www.englishmonarcs.co.uk	NN	14	3	PMOD
 All	all	DT	15	16	NMOD
 rights	right	NNS	16	17	SBJ
 reserved	reserve	VVN	17	0	ROOT
-®	®	SYM	18	0	ROOT
+ï¿½	ï¿½	SYM	18	0	ROOT
 </s>
 </text>
 <text id="ukwac:http://www.officereality.co.uk/office-furniture-links.php">
@@ -111352,8 +111352,8 @@ introduction	introduction	NN	6	4	PMOD
 of	of	IN	7	6	NMOD
 the	the	DT	8	12	NMOD
 4-6-0	@card@	CD	9	12	NMOD
-‘Lord	‘lord	NN	10	12	NMOD
-Nelson’	nelson’	JJ	11	12	NMOD
+ï¿½Lord	ï¿½lord	NN	10	12	NMOD
+Nelsonï¿½	nelsonï¿½	JJ	11	12	NMOD
 class	class	NN	12	7	PMOD
 the	the	DT	13	0	ROOT
 Traffic	Traffic	NP	14	0	ROOT
@@ -111397,8 +111397,8 @@ down	down	IN	15	11	ADV
 version	version	NN	16	15	PMOD
 of	of	IN	17	16	NMOD
 the	the	DT	18	20	NMOD
-‘Lord	‘lord	NN	19	20	NMOD
-Nelsons’	nelsons’	NN	20	17	PMOD
+ï¿½Lord	ï¿½lord	NN	19	20	NMOD
+Nelsonsï¿½	nelsonsï¿½	NN	20	17	PMOD
 with	with	IN	21	16	NMOD
 one	one	CD	22	24	NMOD
 less	less	JJR	23	24	NMOD
@@ -111464,8 +111464,8 @@ Winchester	Winchester	NP	3	17	SBJ
 As	as	IN	4	11	VMOD
 a	a	DT	5	7	NMOD
 shortened	shorten	VVN	6	7	NMOD
-‘Lord	‘lord	NN	7	11	SBJ
-Nelson’	Nelson’	NP	8	11	VMOD
+ï¿½Lord	ï¿½lord	NN	7	11	SBJ
+Nelsonï¿½	Nelsonï¿½	NP	8	11	VMOD
 Belpaire	Belpaire	NP	9	10	NMOD
 boiler	boiler	NN	10	11	SBJ
 could	could	MD	11	17	ADV
@@ -111477,8 +111477,8 @@ Maunsell	Maunsell	NP	16	17	SBJ
 turned	turn	VVD	17	2	NMOD
 to	to	TO	18	17	ADV
 the	the	DT	19	23	NMOD
-‘King	‘king	JJ	20	23	NMOD
-Arthur’s’	Arthur’s’	NP	21	23	NMOD
+ï¿½King	ï¿½king	JJ	20	23	NMOD
+Arthurï¿½sï¿½	Arthurï¿½sï¿½	NP	21	23	NMOD
 round-top	round-top	JJ	22	23	NMOD
 boiler	boiler	NN	23	18	PMOD
 and	and	CC	24	17	CC
@@ -111521,8 +111521,8 @@ as	as	IN	7	6	NMOD
 possible	possible	JJ	8	7	PMOD
 from	from	IN	9	6	NMOD
 the	the	DT	10	12	NMOD
-‘Lord	‘lord	NN	11	12	NMOD
-Nelsons’	nelsons’	NN	12	9	PMOD
+ï¿½Lord	ï¿½lord	NN	11	12	NMOD
+Nelsonsï¿½	nelsonsï¿½	NN	12	9	PMOD
 .	.	SENT	13	3	P
 </s>
 <s>
@@ -111635,7 +111635,7 @@ and	and	CC	17	16	CC
 became	become	VVD	18	16	COORD
 known	know	VVN	19	18	VC
 as	as	IN	20	19	ADV
-Maunsell’s	Maunsell’s	NP	21	22	NMOD
+Maunsellï¿½s	Maunsellï¿½s	NP	21	22	NMOD
 masterpiece	masterpiece	NN	22	20	PMOD
 .	.	SENT	23	5	P
 </s>
@@ -118704,19 +118704,19 @@ reported	report	VVD	12	0	ROOT
 pre-tax	pre-tax	JJ	13	14	NMOD
 profits	profit	NNS	14	12	OBJ
 of	of	IN	15	14	NMOD
-£	£	$	16	17	NMOD
+ï¿½	ï¿½	$	16	17	NMOD
 11.6m	11.6m	JJ	17	15	PMOD
 on	on	IN	18	12	ADV
 a	a	DT	19	20	NMOD
 turnover	turnover	NN	20	18	PMOD
 of	of	IN	21	20	NMOD
-£	£	$	22	26	NMOD
+ï¿½	ï¿½	$	22	26	NMOD
 56.7m	56.7m	JJ	23	26	NMOD
 and	and	CC	24	23	CC
 gross	gross	JJ	25	23	COORD
 assets	asset	NNS	26	21	PMOD
 of	of	IN	27	26	NMOD
-£	£	$	28	29	NMOD
+ï¿½	ï¿½	$	28	29	NMOD
 41.8m	41.8m	JJ	29	27	PMOD
 .	.	SENT	30	0	ROOT
 </s>
@@ -118785,19 +118785,19 @@ reported	report	VVD	26	0	ROOT
 pre-tax	pre-tax	JJ	27	28	NMOD
 profits	profit	NNS	28	26	OBJ
 of	of	IN	29	28	NMOD
-£	£	$	30	31	NMOD
+ï¿½	ï¿½	$	30	31	NMOD
 23.1m	23.1m	JJ	31	29	PMOD
 on	on	IN	32	26	ADV
 a	a	DT	33	34	NMOD
 turnover	turnover	NN	34	32	PMOD
 of	of	IN	35	34	NMOD
-£	£	$	36	40	NMOD
+ï¿½	ï¿½	$	36	40	NMOD
 131.3m	131.3m	JJ	37	40	NMOD
 and	and	CC	38	37	CC
 gross	gross	JJ	39	37	COORD
 assets	asset	NNS	40	35	PMOD
 of	of	IN	41	40	NMOD
-£	£	$	42	43	NMOD
+ï¿½	ï¿½	$	42	43	NMOD
 193.3m	193.3m	JJ	43	41	PMOD
 .	.	SENT	44	0	ROOT
 </s>
@@ -118813,7 +118813,7 @@ valued	value	VVN	8	7	VC
 at	at	IN	9	8	ADV
 less	less	JJR	10	12	DEP
 than	than	IN	11	12	DEP
-£	£	$	12	9	PMOD
+ï¿½	ï¿½	$	12	9	PMOD
 70m	70m	JJ	13	15	SBJ
 (	(	(	14	15	P
 see	see	VV	15	8	OBJ
@@ -119958,7 +119958,7 @@ decentralisation	decentralisation	NN	2	0	ROOT
 a	a	DT	4	5	NMOD
 research	research	NN	5	2	NMOD
 scoping	scoping	VVG	6	5	NMOD
-study—final	study—final	JJ	7	8	NMOD
+studyï¿½final	studyï¿½final	JJ	7	8	NMOD
 report	report	NN	8	6	OBJ
 A	a	DT	9	11	NMOD
 research	research	NN	10	11	NMOD
@@ -120122,7 +120122,7 @@ demand-	demand-	NN	26	29	NMOD
 side	side	NN	27	29	NMOD
 policy	policy	NN	28	29	NMOD
 option	option	NN	29	25	PMOD
-–	–	JJ	30	32	NMOD
+ï¿½	ï¿½	JJ	30	32	NMOD
 social	social	JJ	31	32	NMOD
 transfers	transfer	NNS	32	24	NMOD
 ,	,	,	33	32	P
@@ -120368,10 +120368,10 @@ feasibility	feasibility	NN	63	64	NMOD
 constraints	constraint	NNS	64	58	OBJ
 of	of	IN	65	64	NMOD
 a	a	DT	66	68	NMOD
-“trade	“trade	JJ	67	68	NMOD
+ï¿½trade	ï¿½trade	JJ	67	68	NMOD
 regime	regime	NN	68	65	PMOD
 with	with	IN	69	68	NMOD
-redistribution.”	redistribution.”	NN	70	69	PMOD
+redistribution.ï¿½	redistribution.ï¿½	NN	70	69	PMOD
 Taking	take	VVG	71	70	NMOD
 a	a	DT	72	74	NMOD
 normative	normative	JJ	73	74	NMOD
@@ -120386,8 +120386,8 @@ the	the	DT	81	82	NMOD
 existence	existence	NN	82	80	PMOD
 of	of	IN	83	82	NMOD
 a	a	DT	84	89	NMOD
-“socially	“socially	RB	85	86	AMOD
-responsible”	responsible”	JJ	86	89	NMOD
+ï¿½socially	ï¿½socially	RB	85	86	AMOD
+responsibleï¿½	responsibleï¿½	JJ	86	89	NMOD
 open	open	RB	87	89	AMOD
 More	more	RBR	88	89	AMOD
 ..	..	JJ	89	83	PMOD
@@ -120986,7 +120986,7 @@ This	this	DT	37	38	NMOD
 briefing	briefing	NN	38	39	SBJ
 outlines	outline	VVZ	39	0	ROOT
 a	a	DT	40	44	NMOD
-£	£	$	41	44	NMOD
+ï¿½	ï¿½	$	41	44	NMOD
 21	@card@	CD	42	41	DEP
 million	million	CD	43	41	DEP
 project	project	NN	44	45	SBJ
@@ -121592,7 +121592,7 @@ the	the	DT	56	61	NMOD
 Belgian	Belgian	JJ	57	61	NMOD
 funded	funded	JJ	58	61	NMOD
 project	project	NN	59	61	NMOD
-‘Better	‘better	NN	60	61	NMOD
+ï¿½Better	ï¿½better	NN	60	61	NMOD
 policy	policy	NN	61	55	PMOD
 and	and	CC	62	0	ROOT
 Management	Management	NP	63	0	ROOT
@@ -121648,195 +121648,195 @@ hinder	hinder	VV	112	110	COORD
 their	their	PP$	113	304	NMOD
 More	more	JJR	114	304	NMOD
 ...	...	:	115	304	P
- 	 	JJ	116	304	NMOD
- 	 	JJ	117	304	NMOD
- 	 	NN	118	304	NMOD
- 	 	NN	119	304	NMOD
- 	 	NN	120	304	NMOD
- 	 	NN	121	304	NMOD
- 	 	NN	122	304	NMOD
- 	 	NN	123	304	NMOD
- 	 	NN	124	304	NMOD
- 	 	NN	125	304	NMOD
- 	 	NN	126	304	NMOD
- 	 	NN	127	304	NMOD
- 	 	NN	128	304	NMOD
- 	 	NN	129	304	NMOD
- 	 	NN	130	304	NMOD
- 	 	NN	131	304	NMOD
- 	 	NN	132	304	NMOD
- 	 	NN	133	304	NMOD
- 	 	NN	134	304	NMOD
- 	 	NN	135	304	NMOD
- 	 	NN	136	304	NMOD
- 	 	NN	137	304	NMOD
- 	 	NN	138	304	NMOD
- 	 	NN	139	304	NMOD
- 	 	NN	140	304	NMOD
- 	 	NN	141	304	NMOD
- 	 	NN	142	304	NMOD
- 	 	NN	143	304	NMOD
- 	 	NN	144	304	NMOD
- 	 	NN	145	304	NMOD
- 	 	NN	146	304	NMOD
- 	 	NN	147	304	NMOD
- 	 	NN	148	304	NMOD
- 	 	NN	149	304	NMOD
- 	 	NN	150	304	NMOD
- 	 	NN	151	304	NMOD
- 	 	NN	152	304	NMOD
- 	 	NN	153	304	NMOD
- 	 	NN	154	304	NMOD
- 	 	NN	155	304	NMOD
- 	 	NN	156	304	NMOD
- 	 	NN	157	304	NMOD
- 	 	NN	158	304	NMOD
- 	 	NN	159	304	NMOD
- 	 	NN	160	304	NMOD
- 	 	NN	161	304	NMOD
- 	 	NN	162	304	NMOD
- 	 	NN	163	304	NMOD
- 	 	NN	164	304	NMOD
- 	 	NN	165	304	NMOD
- 	 	NN	166	304	NMOD
- 	 	NN	167	304	NMOD
- 	 	NN	168	304	NMOD
- 	 	NN	169	304	NMOD
- 	 	NN	170	304	NMOD
- 	 	NN	171	304	NMOD
- 	 	NN	172	304	NMOD
- 	 	NN	173	304	NMOD
- 	 	NN	174	304	NMOD
- 	 	NN	175	304	NMOD
- 	 	NN	176	304	NMOD
- 	 	NN	177	304	NMOD
- 	 	NN	178	304	NMOD
- 	 	NN	179	304	NMOD
- 	 	NN	180	304	NMOD
- 	 	NN	181	304	NMOD
- 	 	NN	182	304	NMOD
- 	 	NN	183	304	NMOD
- 	 	NN	184	304	NMOD
- 	 	NN	185	304	NMOD
- 	 	NN	186	304	NMOD
- 	 	NN	187	304	NMOD
- 	 	NN	188	304	NMOD
- 	 	NN	189	304	NMOD
- 	 	NN	190	304	NMOD
- 	 	NN	191	304	NMOD
- 	 	NN	192	304	NMOD
- 	 	NN	193	304	NMOD
- 	 	NN	194	304	NMOD
- 	 	NN	195	304	NMOD
- 	 	NN	196	304	NMOD
- 	 	NN	197	304	NMOD
- 	 	NN	198	304	NMOD
- 	 	NN	199	304	NMOD
- 	 	NN	200	304	NMOD
- 	 	NN	201	304	NMOD
- 	 	NN	202	304	NMOD
- 	 	NN	203	304	NMOD
- 	 	NN	204	304	NMOD
- 	 	NN	205	304	NMOD
- 	 	NN	206	304	NMOD
- 	 	NN	207	304	NMOD
- 	 	NN	208	304	NMOD
- 	 	NN	209	304	NMOD
- 	 	NN	210	304	NMOD
- 	 	NN	211	304	NMOD
- 	 	NN	212	304	NMOD
- 	 	NN	213	304	NMOD
- 	 	NN	214	304	NMOD
- 	 	NN	215	304	NMOD
- 	 	NN	216	304	NMOD
- 	 	NN	217	304	NMOD
- 	 	NN	218	304	NMOD
- 	 	NN	219	304	NMOD
- 	 	NN	220	304	NMOD
- 	 	NN	221	304	NMOD
- 	 	NN	222	304	NMOD
- 	 	NN	223	304	NMOD
- 	 	NN	224	304	NMOD
- 	 	NN	225	304	NMOD
- 	 	NN	226	304	NMOD
- 	 	NN	227	304	NMOD
- 	 	NN	228	304	NMOD
- 	 	NN	229	304	NMOD
- 	 	NN	230	304	NMOD
- 	 	NN	231	304	NMOD
- 	 	NN	232	304	NMOD
- 	 	NN	233	304	NMOD
- 	 	NN	234	304	NMOD
- 	 	NN	235	304	NMOD
- 	 	NN	236	304	NMOD
- 	 	NN	237	304	NMOD
- 	 	NN	238	304	NMOD
- 	 	NN	239	304	NMOD
- 	 	NN	240	304	NMOD
- 	 	NN	241	304	NMOD
- 	 	NN	242	304	NMOD
- 	 	NN	243	304	NMOD
- 	 	NN	244	304	NMOD
- 	 	NN	245	304	NMOD
- 	 	NN	246	304	NMOD
- 	 	NN	247	304	NMOD
- 	 	NN	248	304	NMOD
- 	 	NN	249	304	NMOD
- 	 	NN	250	304	NMOD
- 	 	NN	251	304	NMOD
- 	 	NN	252	304	NMOD
- 	 	NN	253	304	NMOD
- 	 	NN	254	304	NMOD
- 	 	NN	255	304	NMOD
- 	 	NN	256	304	NMOD
- 	 	NN	257	304	NMOD
- 	 	NN	258	304	NMOD
- 	 	NN	259	304	NMOD
- 	 	NN	260	304	NMOD
- 	 	NN	261	304	NMOD
- 	 	NN	262	304	NMOD
- 	 	NN	263	304	NMOD
- 	 	NN	264	304	NMOD
- 	 	NN	265	304	NMOD
- 	 	NN	266	304	NMOD
- 	 	NN	267	304	NMOD
- 	 	NN	268	304	NMOD
- 	 	NN	269	304	NMOD
- 	 	NN	270	304	NMOD
- 	 	NN	271	304	NMOD
- 	 	NN	272	304	NMOD
- 	 	NN	273	304	NMOD
- 	 	NN	274	304	NMOD
- 	 	NN	275	304	NMOD
- 	 	NN	276	304	NMOD
- 	 	NN	277	304	NMOD
- 	 	NN	278	304	NMOD
- 	 	NN	279	304	NMOD
- 	 	NN	280	304	NMOD
- 	 	NN	281	304	NMOD
- 	 	NN	282	304	NMOD
- 	 	NN	283	304	NMOD
- 	 	NN	284	304	NMOD
- 	 	NN	285	304	NMOD
- 	 	NN	286	304	NMOD
- 	 	NN	287	304	NMOD
- 	 	NN	288	304	NMOD
- 	 	NN	289	304	NMOD
- 	 	NN	290	304	NMOD
- 	 	NN	291	304	NMOD
- 	 	NN	292	304	NMOD
- 	 	NN	293	304	NMOD
- 	 	NN	294	304	NMOD
- 	 	NN	295	304	NMOD
- 	 	NN	296	304	NMOD
- 	 	NN	297	304	NMOD
- 	 	NN	298	304	NMOD
- 	 	NN	299	304	NMOD
- 	 	NN	300	304	NMOD
- 	 	NN	301	304	NMOD
- 	 	NN	302	304	NMOD
- 	 	JJ	303	304	NMOD
- 	 	NN	304	112	OBJ
+ï¿½	ï¿½	JJ	116	304	NMOD
+ï¿½	ï¿½	JJ	117	304	NMOD
+ï¿½	ï¿½	NN	118	304	NMOD
+ï¿½	ï¿½	NN	119	304	NMOD
+ï¿½	ï¿½	NN	120	304	NMOD
+ï¿½	ï¿½	NN	121	304	NMOD
+ï¿½	ï¿½	NN	122	304	NMOD
+ï¿½	ï¿½	NN	123	304	NMOD
+ï¿½	ï¿½	NN	124	304	NMOD
+ï¿½	ï¿½	NN	125	304	NMOD
+ï¿½	ï¿½	NN	126	304	NMOD
+ï¿½	ï¿½	NN	127	304	NMOD
+ï¿½	ï¿½	NN	128	304	NMOD
+ï¿½	ï¿½	NN	129	304	NMOD
+ï¿½	ï¿½	NN	130	304	NMOD
+ï¿½	ï¿½	NN	131	304	NMOD
+ï¿½	ï¿½	NN	132	304	NMOD
+ï¿½	ï¿½	NN	133	304	NMOD
+ï¿½	ï¿½	NN	134	304	NMOD
+ï¿½	ï¿½	NN	135	304	NMOD
+ï¿½	ï¿½	NN	136	304	NMOD
+ï¿½	ï¿½	NN	137	304	NMOD
+ï¿½	ï¿½	NN	138	304	NMOD
+ï¿½	ï¿½	NN	139	304	NMOD
+ï¿½	ï¿½	NN	140	304	NMOD
+ï¿½	ï¿½	NN	141	304	NMOD
+ï¿½	ï¿½	NN	142	304	NMOD
+ï¿½	ï¿½	NN	143	304	NMOD
+ï¿½	ï¿½	NN	144	304	NMOD
+ï¿½	ï¿½	NN	145	304	NMOD
+ï¿½	ï¿½	NN	146	304	NMOD
+ï¿½	ï¿½	NN	147	304	NMOD
+ï¿½	ï¿½	NN	148	304	NMOD
+ï¿½	ï¿½	NN	149	304	NMOD
+ï¿½	ï¿½	NN	150	304	NMOD
+ï¿½	ï¿½	NN	151	304	NMOD
+ï¿½	ï¿½	NN	152	304	NMOD
+ï¿½	ï¿½	NN	153	304	NMOD
+ï¿½	ï¿½	NN	154	304	NMOD
+ï¿½	ï¿½	NN	155	304	NMOD
+ï¿½	ï¿½	NN	156	304	NMOD
+ï¿½	ï¿½	NN	157	304	NMOD
+ï¿½	ï¿½	NN	158	304	NMOD
+ï¿½	ï¿½	NN	159	304	NMOD
+ï¿½	ï¿½	NN	160	304	NMOD
+ï¿½	ï¿½	NN	161	304	NMOD
+ï¿½	ï¿½	NN	162	304	NMOD
+ï¿½	ï¿½	NN	163	304	NMOD
+ï¿½	ï¿½	NN	164	304	NMOD
+ï¿½	ï¿½	NN	165	304	NMOD
+ï¿½	ï¿½	NN	166	304	NMOD
+ï¿½	ï¿½	NN	167	304	NMOD
+ï¿½	ï¿½	NN	168	304	NMOD
+ï¿½	ï¿½	NN	169	304	NMOD
+ï¿½	ï¿½	NN	170	304	NMOD
+ï¿½	ï¿½	NN	171	304	NMOD
+ï¿½	ï¿½	NN	172	304	NMOD
+ï¿½	ï¿½	NN	173	304	NMOD
+ï¿½	ï¿½	NN	174	304	NMOD
+ï¿½	ï¿½	NN	175	304	NMOD
+ï¿½	ï¿½	NN	176	304	NMOD
+ï¿½	ï¿½	NN	177	304	NMOD
+ï¿½	ï¿½	NN	178	304	NMOD
+ï¿½	ï¿½	NN	179	304	NMOD
+ï¿½	ï¿½	NN	180	304	NMOD
+ï¿½	ï¿½	NN	181	304	NMOD
+ï¿½	ï¿½	NN	182	304	NMOD
+ï¿½	ï¿½	NN	183	304	NMOD
+ï¿½	ï¿½	NN	184	304	NMOD
+ï¿½	ï¿½	NN	185	304	NMOD
+ï¿½	ï¿½	NN	186	304	NMOD
+ï¿½	ï¿½	NN	187	304	NMOD
+ï¿½	ï¿½	NN	188	304	NMOD
+ï¿½	ï¿½	NN	189	304	NMOD
+ï¿½	ï¿½	NN	190	304	NMOD
+ï¿½	ï¿½	NN	191	304	NMOD
+ï¿½	ï¿½	NN	192	304	NMOD
+ï¿½	ï¿½	NN	193	304	NMOD
+ï¿½	ï¿½	NN	194	304	NMOD
+ï¿½	ï¿½	NN	195	304	NMOD
+ï¿½	ï¿½	NN	196	304	NMOD
+ï¿½	ï¿½	NN	197	304	NMOD
+ï¿½	ï¿½	NN	198	304	NMOD
+ï¿½	ï¿½	NN	199	304	NMOD
+ï¿½	ï¿½	NN	200	304	NMOD
+ï¿½	ï¿½	NN	201	304	NMOD
+ï¿½	ï¿½	NN	202	304	NMOD
+ï¿½	ï¿½	NN	203	304	NMOD
+ï¿½	ï¿½	NN	204	304	NMOD
+ï¿½	ï¿½	NN	205	304	NMOD
+ï¿½	ï¿½	NN	206	304	NMOD
+ï¿½	ï¿½	NN	207	304	NMOD
+ï¿½	ï¿½	NN	208	304	NMOD
+ï¿½	ï¿½	NN	209	304	NMOD
+ï¿½	ï¿½	NN	210	304	NMOD
+ï¿½	ï¿½	NN	211	304	NMOD
+ï¿½	ï¿½	NN	212	304	NMOD
+ï¿½	ï¿½	NN	213	304	NMOD
+ï¿½	ï¿½	NN	214	304	NMOD
+ï¿½	ï¿½	NN	215	304	NMOD
+ï¿½	ï¿½	NN	216	304	NMOD
+ï¿½	ï¿½	NN	217	304	NMOD
+ï¿½	ï¿½	NN	218	304	NMOD
+ï¿½	ï¿½	NN	219	304	NMOD
+ï¿½	ï¿½	NN	220	304	NMOD
+ï¿½	ï¿½	NN	221	304	NMOD
+ï¿½	ï¿½	NN	222	304	NMOD
+ï¿½	ï¿½	NN	223	304	NMOD
+ï¿½	ï¿½	NN	224	304	NMOD
+ï¿½	ï¿½	NN	225	304	NMOD
+ï¿½	ï¿½	NN	226	304	NMOD
+ï¿½	ï¿½	NN	227	304	NMOD
+ï¿½	ï¿½	NN	228	304	NMOD
+ï¿½	ï¿½	NN	229	304	NMOD
+ï¿½	ï¿½	NN	230	304	NMOD
+ï¿½	ï¿½	NN	231	304	NMOD
+ï¿½	ï¿½	NN	232	304	NMOD
+ï¿½	ï¿½	NN	233	304	NMOD
+ï¿½	ï¿½	NN	234	304	NMOD
+ï¿½	ï¿½	NN	235	304	NMOD
+ï¿½	ï¿½	NN	236	304	NMOD
+ï¿½	ï¿½	NN	237	304	NMOD
+ï¿½	ï¿½	NN	238	304	NMOD
+ï¿½	ï¿½	NN	239	304	NMOD
+ï¿½	ï¿½	NN	240	304	NMOD
+ï¿½	ï¿½	NN	241	304	NMOD
+ï¿½	ï¿½	NN	242	304	NMOD
+ï¿½	ï¿½	NN	243	304	NMOD
+ï¿½	ï¿½	NN	244	304	NMOD
+ï¿½	ï¿½	NN	245	304	NMOD
+ï¿½	ï¿½	NN	246	304	NMOD
+ï¿½	ï¿½	NN	247	304	NMOD
+ï¿½	ï¿½	NN	248	304	NMOD
+ï¿½	ï¿½	NN	249	304	NMOD
+ï¿½	ï¿½	NN	250	304	NMOD
+ï¿½	ï¿½	NN	251	304	NMOD
+ï¿½	ï¿½	NN	252	304	NMOD
+ï¿½	ï¿½	NN	253	304	NMOD
+ï¿½	ï¿½	NN	254	304	NMOD
+ï¿½	ï¿½	NN	255	304	NMOD
+ï¿½	ï¿½	NN	256	304	NMOD
+ï¿½	ï¿½	NN	257	304	NMOD
+ï¿½	ï¿½	NN	258	304	NMOD
+ï¿½	ï¿½	NN	259	304	NMOD
+ï¿½	ï¿½	NN	260	304	NMOD
+ï¿½	ï¿½	NN	261	304	NMOD
+ï¿½	ï¿½	NN	262	304	NMOD
+ï¿½	ï¿½	NN	263	304	NMOD
+ï¿½	ï¿½	NN	264	304	NMOD
+ï¿½	ï¿½	NN	265	304	NMOD
+ï¿½	ï¿½	NN	266	304	NMOD
+ï¿½	ï¿½	NN	267	304	NMOD
+ï¿½	ï¿½	NN	268	304	NMOD
+ï¿½	ï¿½	NN	269	304	NMOD
+ï¿½	ï¿½	NN	270	304	NMOD
+ï¿½	ï¿½	NN	271	304	NMOD
+ï¿½	ï¿½	NN	272	304	NMOD
+ï¿½	ï¿½	NN	273	304	NMOD
+ï¿½	ï¿½	NN	274	304	NMOD
+ï¿½	ï¿½	NN	275	304	NMOD
+ï¿½	ï¿½	NN	276	304	NMOD
+ï¿½	ï¿½	NN	277	304	NMOD
+ï¿½	ï¿½	NN	278	304	NMOD
+ï¿½	ï¿½	NN	279	304	NMOD
+ï¿½	ï¿½	NN	280	304	NMOD
+ï¿½	ï¿½	NN	281	304	NMOD
+ï¿½	ï¿½	NN	282	304	NMOD
+ï¿½	ï¿½	NN	283	304	NMOD
+ï¿½	ï¿½	NN	284	304	NMOD
+ï¿½	ï¿½	NN	285	304	NMOD
+ï¿½	ï¿½	NN	286	304	NMOD
+ï¿½	ï¿½	NN	287	304	NMOD
+ï¿½	ï¿½	NN	288	304	NMOD
+ï¿½	ï¿½	NN	289	304	NMOD
+ï¿½	ï¿½	NN	290	304	NMOD
+ï¿½	ï¿½	NN	291	304	NMOD
+ï¿½	ï¿½	NN	292	304	NMOD
+ï¿½	ï¿½	NN	293	304	NMOD
+ï¿½	ï¿½	NN	294	304	NMOD
+ï¿½	ï¿½	NN	295	304	NMOD
+ï¿½	ï¿½	NN	296	304	NMOD
+ï¿½	ï¿½	NN	297	304	NMOD
+ï¿½	ï¿½	NN	298	304	NMOD
+ï¿½	ï¿½	NN	299	304	NMOD
+ï¿½	ï¿½	NN	300	304	NMOD
+ï¿½	ï¿½	NN	301	304	NMOD
+ï¿½	ï¿½	NN	302	304	NMOD
+ï¿½	ï¿½	JJ	303	304	NMOD
+ï¿½	ï¿½	NN	304	112	OBJ
 </s>
 </text>
 <text id="ukwac:http://www.rotherhamweb.co.uk/h/gummer/18.htm">
@@ -121854,8 +121854,8 @@ Gummer	Gummer	NP	1	40	ADV
 ,	,	,	2	40	P
 J.P.	J.P.	NP	3	40	DEP
 back	back	RB	4	0	ROOT
-«	«	)	5	0	ROOT
-«	«	)	6	8	VMOD
+ï¿½	ï¿½	)	5	0	ROOT
+ï¿½	ï¿½	)	6	8	VMOD
 Next	Next	NP	7	8	SBJ
 came	come	VVD	8	0	ROOT
 the	the	DT	9	10	NMOD
@@ -122670,7 +122670,7 @@ side-door	side-door	NN	9	0	ROOT
 in	in	IN	10	9	ADV
 Spendlove	Spendlove	NP	11	0	ROOT
 's	's	POS	12	11	NMOD
-»	»	(	13	0	ROOT
+ï¿½	ï¿½	(	13	0	ROOT
 next	next	JJ	14	0	ROOT
 </s>
 </text>
@@ -127817,7 +127817,7 @@ vBulletin	vbulletin	NN	23	24	NMOD
 v3.5.4	v3.5.4	NN	24	19	PMOD
 ,	,	,	25	10	P
 Copyright	Copyright	NP	26	0	ROOT
-©2000-2006	©2000-2006	NP	27	0	ROOT
+ï¿½2000-2006	ï¿½2000-2006	NP	27	0	ROOT
 ,	,	,	28	0	ROOT
 Jelsoft	Jelsoft	NP	29	0	ROOT
 Enterprises	Enterprises	NPS	30	0	ROOT
@@ -130393,7 +130393,7 @@ it	it	PP	7	6	OBJ
 all	all	RB	8	6	ADV
 for	for	IN	9	6	ADV
 just	just	RB	10	11	DEP
-£	£	$	11	9	PMOD
+ï¿½	ï¿½	$	11	9	PMOD
 5.25	@card@	CD	12	11	DEP
 per	per	IN	13	11	NMOD
 gift	gift	NN	14	15	NMOD
@@ -131871,7 +131871,7 @@ such	such	JJ	20	21	DEP
 as	as	IN	21	19	NMOD
 the	the	DT	22	23	NMOD
 rabbit	rabbit	NN	23	21	PMOD
-…	…	JJ	24	23	NMOD
+ï¿½	ï¿½	JJ	24	23	NMOD
 Vestiges	Vestiges	NP	25	26	SBJ
 are	are	VBP	26	19	NMOD
 instances	instance	NNS	27	26	PRD
@@ -131963,7 +131963,7 @@ of	of	IN	7	6	NMOD
 a	a	DT	8	11	NMOD
 lymphoid	lymphoid	JJ	9	11	NMOD
 function	function	NN	10	11	NMOD
-…	…	NN	11	7	PMOD
+ï¿½	ï¿½	NN	11	7	PMOD
 There	there	RB	12	13	ADV
 is	be	VBZ	13	0	ROOT
 experimental	experimental	JJ	14	15	NMOD
@@ -133190,11 +133190,11 @@ is	be	VBZ	15	0	ROOT
 there	there	RB	16	15	PRD
 of	of	IN	17	16	AMOD
 the	the	DT	18	21	NMOD
-£	£	$	19	21	NMOD
+ï¿½	ï¿½	$	19	21	NMOD
 100,000-a-week	100,000-a-week	JJ	20	19	AMOD
 footballer	footballer	NN	21	17	PMOD
 donating	donate	VVG	22	21	NMOD
-£	£	$	23	24	NMOD
+ï¿½	ï¿½	$	23	24	NMOD
 1,000	@card@	CD	24	22	OBJ
 a	a	DT	25	26	NMOD
 week	week	NN	26	24	ADV
@@ -134677,7 +134677,7 @@ and	and	CC	8	7	CC
 cultural	cultural	JJ	9	10	NMOD
 industries	industry	NNS	10	7	COORD
 is	be	VBZ	11	0	ROOT
-£	£	$	12	11	PRD
+ï¿½	ï¿½	$	12	11	PRD
 1.1	@card@	CD	13	12	DEP
 billion	billion	CD	14	12	DEP
 according	accord	VVG	15	11	ADV
@@ -136241,7 +136241,7 @@ freshness	freshness	NN	29	25	COORD
 throughout	throughout	IN	30	24	ADV
 the	the	DT	31	34	NMOD
 wine.	wine.	JJ	32	34	NMOD
-£	£	$	33	34	NMOD
+ï¿½	ï¿½	$	33	34	NMOD
 5.99	@card@	CD	34	30	PMOD
 More	more	JJR	35	36	NMOD
 details	detail	NNS	36	45	NMOD
@@ -136272,7 +136272,7 @@ flavours	flavour	NNS	60	55	PMOD
 on	on	IN	61	54	ADV
 the	the	DT	62	68	NMOD
 palate.	palate.	JJ	63	68	NMOD
-£	£	$	64	65	NMOD
+ï¿½	ï¿½	$	64	65	NMOD
 6.49	@card@	CD	65	68	NMOD
 More	more	JJR	66	68	NMOD
 details	detail	NNS	67	68	NMOD
@@ -136309,7 +136309,7 @@ enticing	entice	VVG	9	7	COORD
 with	with	IN	10	9	ADV
 good	good	JJ	11	14	NMOD
 length.	length.	JJ	12	14	NMOD
-£	£	$	13	14	NMOD
+ï¿½	ï¿½	$	13	14	NMOD
 6.49	@card@	CD	14	16	NMOD
 More	more	JJR	15	16	NMOD
 details	detail	NNS	16	10	PMOD
@@ -136343,7 +136343,7 @@ and	and	CC	4	3	CC
 a	a	DT	5	9	NMOD
 long	long	RB	6	7	AMOD
 finish.	finish.	JJ	7	9	NMOD
-£	£	$	8	9	NMOD
+ï¿½	ï¿½	$	8	9	NMOD
 6.49	@card@	CD	9	10	AMOD
 More	more	JJR	10	11	NMOD
 details	detail	NNS	11	3	COORD
@@ -136371,7 +136371,7 @@ Excellent	excellent	JJ	1	25	DEP
 with	with	IN	2	1	AMOD
 Thai	Thai	NP	3	9	NMOD
 food.	food.	NP	4	9	NMOD
-£	£	$	5	9	NMOD
+ï¿½	ï¿½	$	5	9	NMOD
 7.99	@card@	CD	6	9	NMOD
 More	more	JJR	7	9	NMOD
 details	detail	NNS	8	9	NMOD
@@ -136405,7 +136405,7 @@ flowers	flower	NNS	7	6	PMOD
 peaches	peach	NNS	9	7	COORD
 and	and	CC	10	7	CC
 honey.	honey.	JJ	11	16	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 9.99	@card@	CD	13	14	ADV
 More	more	JJR	14	16	NMOD
 details	detail	NNS	15	16	NMOD
@@ -137236,7 +137236,7 @@ for	for	IN	17	23	ADV
 Constitutional	Constitutional	NP	18	21	NMOD
 Affairs	Affairs	NPS	19	21	NMOD
 (	(	(	20	21	P
-“DCA”	“dca”	NN	21	17	PMOD
+ï¿½DCAï¿½	ï¿½dcaï¿½	NN	21	17	PMOD
 )	)	)	22	23	P
 has	have	VHZ	23	0	ROOT
 published	publish	VVN	24	23	VC
@@ -137339,7 +137339,7 @@ are	are	VBP	14	4	COORD
 available	available	JJ	15	14	PRD
 on	on	IN	16	14	ADV
 the	the	DT	17	19	NMOD
-DCA’s	DCA’s	NP	18	19	NMOD
+DCAï¿½s	DCAï¿½s	NP	18	19	NMOD
 website	website	NN	19	16	PMOD
 at	at	IN	20	14	PRD
 :	:	:	21	14	P
@@ -137356,7 +137356,7 @@ of	of	IN	6	12	ADV
 Government	Government	NP	7	10	NMOD
 Commerce	Commerce	NP	8	10	NMOD
 (	(	(	9	10	P
-“OGC”	“ogc”	NN	10	6	PMOD
+ï¿½OGCï¿½	ï¿½ogcï¿½	NN	10	6	PMOD
 )	)	)	11	10	P
 has	have	VHZ	12	0	ROOT
 over	over	IN	13	12	ADV
@@ -137385,7 +137385,7 @@ guidance	guidance	NN	5	3	PMOD
 is	be	VBZ	6	0	ROOT
 available	available	JJ	7	6	PRD
 on	on	IN	8	7	AMOD
-OGC’s	OGC’s	NP	9	10	NMOD
+OGCï¿½s	OGCï¿½s	NP	9	10	NMOD
 website	website	NN	10	8	PMOD
 at	at	IN	11	6	ADV
 :	:	:	12	6	P
@@ -137401,8 +137401,8 @@ also	also	RB	5	4	ADV
 recently	recently	RB	6	7	AMOD
 published	publish	VVN	7	4	VC
 10	@card@	CD	8	10	NMOD
-“top	“top	NN	9	10	NMOD
-tips”	tips”	NN	10	7	OBJ
+ï¿½top	ï¿½top	NN	9	10	NMOD
+tipsï¿½	tipsï¿½	NN	10	7	OBJ
 for	for	IN	11	10	NMOD
 public	public	JJ	12	13	NMOD
 authorities	authority	NNS	13	11	PMOD
@@ -137426,14 +137426,14 @@ A	a	DT	1	2	NMOD
 copy	copy	NN	2	7	SBJ
 of	of	IN	3	2	NMOD
 the	the	DT	4	6	NMOD
-“top	“top	NN	5	6	NMOD
-tips”	tips”	NN	6	3	PMOD
+ï¿½top	ï¿½top	NN	5	6	NMOD
+tipsï¿½	tipsï¿½	NN	6	3	PMOD
 are	are	VBP	7	0	ROOT
 available	available	JJ	8	7	PRD
 on	on	IN	9	7	ADV
 the	the	DT	10	13	NMOD
 Information	Information	NP	11	13	NMOD
-Commissioner’s	Commissioner’s	NP	12	13	NMOD
+Commissionerï¿½s	Commissionerï¿½s	NP	12	13	NMOD
 website	website	NN	13	9	PMOD
 at	at	IN	14	7	PRD
 :	:	:	15	7	P
@@ -138910,7 +138910,7 @@ list	list	NN	20	5	COORD
 of	of	IN	21	20	NMOD
 further	further	JJR	22	32	NMOD
 reading.	reading.	NP	23	32	NMOD
-©	©	SYM	24	32	NMOD
+ï¿½	ï¿½	SYM	24	32	NMOD
 Roy	Roy	NP	25	32	NMOD
 Johnson	Johnson	NP	26	32	NMOD
 2002	@card@	CD	27	32	NMOD
@@ -139139,7 +139139,7 @@ list	list	NN	15	13	OBJ
 for	for	IN	16	15	NMOD
 more	more	JJR	17	20	NMOD
 details.	details.	JJ	18	20	NMOD
-•	•	NN	19	20	NMOD
+ï¿½	ï¿½	NN	19	20	NMOD
 Power	power	NN	20	16	PMOD
 :	:	:	21	15	P
 2x	2x	NP	22	30	NMOD
@@ -139148,33 +139148,33 @@ CR123A	CR123A	NP	24	30	NMOD
 (	(	(	25	26	P
 included	include	VVN	26	24	PRN
 )	)	)	27	26	P
-•	•	JJ	28	30	NMOD
+ï¿½	ï¿½	JJ	28	30	NMOD
 Light	light	NN	29	30	NMOD
 Output	output	NN	30	15	NMOD
 :	:	:	31	15	P
 65	@card@	CD	32	34	NMOD
 Lumens	Lumens	NP	33	34	NMOD
-•	•	NN	34	15	NMOD
+ï¿½	ï¿½	NN	34	15	NMOD
 Battery	Battery	NP	35	41	NMOD
 Life	Life	NP	36	41	NMOD
 :	:	:	37	36	P
 1	1	CD	38	41	NMOD
 hour	hour	NN	39	41	NMOD
-•	•	NN	40	41	NMOD
+ï¿½	ï¿½	NN	40	41	NMOD
 Module	module	NN	41	13	ADV
 :	:	:	42	13	P
 USA	USA	NP	43	0	ROOT
 6V	6V	NP	44	0	ROOT
 Xenon	Xenon	NP	45	0	ROOT
-•	•	NP	46	0	ROOT
+ï¿½	ï¿½	NP	46	0	ROOT
 Weight	Weight	NP	47	0	ROOT
 :	:	:	48	0	ROOT
 120g	120g	NP	49	0	ROOT
-•	•	NP	50	0	ROOT
+ï¿½	ï¿½	NP	50	0	ROOT
 Length	Length	NP	51	0	ROOT
 :	:	:	52	0	ROOT
 130mm	130mm	NP	53	0	ROOT
-•	•	NP	54	0	ROOT
+ï¿½	ï¿½	NP	54	0	ROOT
 Diameter	Diameter	NP	55	0	ROOT
 :	:	:	56	0	ROOT
 34mm	34mm	NP	57	0	ROOT
@@ -141758,7 +141758,7 @@ raised	raise	VVN	3	2	NMOD
 at	at	IN	4	3	ADV
 present	present	JJ	5	4	PMOD
 are	are	VBP	6	0	ROOT
-£	£	$	7	8	NMOD
+ï¿½	ï¿½	$	7	8	NMOD
 1300	@card@	CD	8	6	PRD
 ,	,	,	9	8	P
 a	a	DT	10	12	NMOD
@@ -143330,7 +143330,7 @@ Page	page	NN	1	27	DEP
 6	6	CD	2	1	NMOD
 of	of	IN	3	1	NMOD
 8	8	CD	4	3	PMOD
-«	«	)	5	1	P
+ï¿½	ï¿½	)	5	1	P
 First	first	RB	6	7	AMOD
 Previous	previous	JJ	7	1	NMOD
 4	4	CD	8	12	DEP
@@ -143339,14 +143339,14 @@ Previous	previous	JJ	7	1	NMOD
 7	7	CD	11	12	DEP
 8	8	CD	12	27	DEP
 Next	next	JJ	13	0	ROOT
-›	›	JJ	14	27	DEP
+ï¿½	ï¿½	JJ	14	27	DEP
 Last	last	JJ	15	27	DEP
-»	»	(	16	27	DEP
+ï¿½	ï¿½	(	16	27	DEP
 House	House	NP	17	27	P
 of	of	IN	18	17	NMOD
 Tiny	Tiny	NP	19	23	NMOD
 Tearaways	Tearaways	NP	20	23	NMOD
-£	£	$	21	23	NMOD
+ï¿½	ï¿½	$	21	23	NMOD
 12.99	@card@	CD	22	23	NMOD
 Author	author	NN	23	18	PMOD
 :	:	:	24	17	P
@@ -143733,7 +143733,7 @@ one	one	CD	13	0	ROOT
 I	I	PP	1	2	SBJ
 'm	be	VBP	2	0	ROOT
 Bored	bored	JJ	3	2	PRD
-£	£	$	4	6	NMOD
+ï¿½	ï¿½	$	4	6	NMOD
 7.99	@card@	CD	5	4	AMOD
 ..Again	..again	NN	6	2	ADV
 .	.	SENT	7	2	P
@@ -143930,7 +143930,7 @@ Again	again	RB	39	37	ADV
 Learn	learn	VV	1	0	ROOT
 To	To	TO	2	1	ADV
 Swim	Swim	NP	3	6	NMOD
-£	£	$	4	6	NMOD
+ï¿½	ï¿½	$	4	6	NMOD
 9.99	@card@	CD	5	6	NMOD
 Paperback	paperback	NN	6	2	PMOD
 :	:	:	7	6	P
@@ -144024,7 +144024,7 @@ way	way	NN	31	28	COORD
 <s>
 Little	little	JJ	1	4	NMOD
 Angels	Angels	NPS	2	4	NMOD
-£	£	$	3	4	NMOD
+ï¿½	ï¿½	$	3	4	NMOD
 9.99	@card@	CD	4	0	ROOT
 Guide	Guide	NP	5	0	ROOT
 to	to	TO	6	0	ROOT
@@ -144212,7 +144212,7 @@ you	you	PP	40	39	PMOD
 Pocket	pocket	NN	1	10	DEP
 First	First	NP	2	0	ROOT
 Aid	Aid	NP	3	5	NMOD
-£	£	$	4	5	NMOD
+ï¿½	ï¿½	$	4	5	NMOD
 5.99	@card@	CD	5	0	ROOT
 Family	Family	NP	6	0	ROOT
 First	First	NP	7	0	ROOT
@@ -144303,7 +144303,7 @@ resusitation	resusitation	NN	32	31	PMOD
 Real	real	JJ	1	6	NMOD
 Family	Family	NP	2	6	NMOD
 Food	Food	NP	3	6	NMOD
-£	£	$	4	6	NMOD
+ï¿½	ï¿½	$	4	6	NMOD
 16.98	@card@	CD	5	6	NMOD
 Author	author	NN	6	0	ROOT
 :	:	:	7	6	P
@@ -144502,7 +144502,7 @@ then	then	RB	29	30	ADV
 let	let	VV	30	24	COORD
 it	it	PP	31	32	SBJ
 disappear	disappear	VV	32	30	OBJ
-again……..this	again……..this	NNS	33	32	OBJ
+againï¿½ï¿½..this	againï¿½ï¿½..this	NNS	33	32	OBJ
 was	be	VBD	34	0	ROOT
 my	my	PP$	35	36	NMOD
 introduction	introduction	NN	36	34	PRD
@@ -144554,7 +144554,7 @@ sex	sex	NN	40	41	NMOD
 shop	shop	NN	41	36	PRN
 I	I	PP	42	43	SBJ
 'm	be	VBP	43	30	OBJ
-afraid….oh	afraid….oh	NN	44	43	PRD
+afraidï¿½.oh	afraidï¿½.oh	NN	44	43	PRD
 how	how	WRB	45	0	ROOT
 sad	sad	JJ	46	45	AMOD
 !	!	SENT	47	8	P
@@ -148333,21 +148333,21 @@ is	be	VBZ	4	1	OBJ
 built	build	VVN	6	4	ADV
 into	into	IN	7	6	ADV
 the	the	DT	8	10	VMOD
-OS´	OS´	NP	9	10	SBJ
+OSï¿½	OSï¿½	NP	9	10	SBJ
 does	do	VVZ	10	7	PMOD
 n't	n't	RB	11	10	VMOD
 make	make	VV	12	10	VC
 it	it	PP	13	16	SBJ
 magically	magically	RB	14	16	AMOD
 `	`	``	15	16	P
-better´	better´	JJ	16	12	OBJ
+betterï¿½	betterï¿½	JJ	16	12	OBJ
 nor	nor	CC	17	4	CC
 does	do	VVZ	18	4	COORD
 saying	say	VVG	19	18	OBJ
 it	it	PP	20	22	SBJ
 `	`	``	21	22	P
 loads	load	NNS	22	0	ROOT
-faster´	faster´	NN	23	22	OBJ
+fasterï¿½	fasterï¿½	NN	23	22	OBJ
 because	because	IN	24	0	ROOT
 its	its	PP$	25	0	ROOT
 built	build	VVN	26	0	ROOT
@@ -152648,7 +152648,7 @@ the	the	DT	12	16	NMOD
 first	first	JJ	13	16	NMOD
 few	few	JJ	14	16	NMOD
 nights.	nights.	JJ	15	16	NMOD
- 	 	NN	16	11	PMOD
+ï¿½	ï¿½	NN	16	11	PMOD
 If	if	IN	17	16	NMOD
 you	you	PP	18	17	PMOD
 are	are	VBP	19	27	ADV
@@ -152670,7 +152670,7 @@ with	with	IN	34	33	NMOD
 the	the	DT	35	38	NMOD
 ward	ward	NN	36	38	NMOD
 staff.	staff.	JJ	37	38	NMOD
- 	 	NN	38	34	PMOD
+ï¿½	ï¿½	NN	38	34	PMOD
 There	There	EX	39	40	SBJ
 are	are	VBP	40	28	ADV
 a	a	DT	41	43	NMOD
@@ -154147,7 +154147,7 @@ Contact	Contact	NP	6	0	ROOT
 Details	Details	NP	7	0	ROOT
 |	|	SYM	8	0	ROOT
 Sitemap	Sitemap	NP	9	0	ROOT
-©	©	SYM	10	0	ROOT
+ï¿½	ï¿½	SYM	10	0	ROOT
 2006	@card@	CD	11	0	ROOT
 University	University	NP	12	0	ROOT
 of	of	IN	13	12	NMOD
@@ -154472,7 +154472,7 @@ declared	declare	VVD	24	6	COORD
 "	"	``	26	24	P
 The	the	DT	27	29	NMOD
 old	old	JJ	28	29	NMOD
-clichés	clichés	NNS	29	30	SBJ
+clichï¿½s	clichï¿½s	NNS	29	30	SBJ
 have	have	VHP	30	24	OBJ
 been	be	VBN	31	30	VC
 replaced	replace	VVN	32	31	VC
@@ -154560,7 +154560,7 @@ surprisingly	surprisingly	RB	16	17	AMOD
 strong	strong	JJ	17	18	NMOD
 performance	performance	NN	18	14	OBJ
 by	by	IN	19	14	ADV
-Jürgen	Jürgen	NP	20	23	NMOD
+Jï¿½rgen	Jï¿½rgen	NP	20	23	NMOD
 Klinsmann	Klinsmann	NP	21	23	NMOD
 's	's	POS	22	21	NMOD
 team	team	NN	23	19	PMOD
@@ -155151,7 +155151,7 @@ Saturday	Saturday	NP	2	3	NMOD
 night	night	NN	3	12	NMOD
 on	on	IN	4	3	NMOD
 the	the	DT	5	6	NMOD
-Kurfürstendamm	Kurfürstendamm	NP	6	4	PMOD
+Kurfï¿½rstendamm	Kurfï¿½rstendamm	NP	6	4	PMOD
 ,	,	,	7	12	P
 western	western	JJ	8	12	NMOD
 Berlin	Berlin	NP	9	12	NMOD
@@ -155572,7 +155572,7 @@ busy	busy	JJ	16	13	NMOD
 partying	party	VVG	17	13	NMOD
 and	and	CC	18	17	CC
 meeting	meet	VVG	19	17	COORD
-Fräuleins	fräuleins	NNS	20	19	OBJ
+Frï¿½uleins	frï¿½uleins	NNS	20	19	OBJ
 at	at	IN	21	19	ADV
 the	the	DT	22	26	SBJ
 Fan	Fan	NP	23	26	VMOD
@@ -158058,7 +158058,7 @@ least	least	JJS	26	28	NMOD
 four	four	CD	27	28	NMOD
 times	time	NNS	28	25	PMOD
 a	a	DT	29	30	NMOD
-year.â€	year.â€	NN	30	21	ADV
+year.ï¿½	year.ï¿½	NN	30	21	ADV
 ?	?	SENT	31	3	P
 </s>
 <s>
@@ -158247,7 +158247,7 @@ to	to	TO	27	26	NMOD
 anybody	anybody	NN	28	27	PMOD
 in	in	IN	29	28	ADV
 the	the	DT	30	31	NMOD
-business.â€	business.â€	NN	31	29	PMOD
+business.ï¿½	business.ï¿½	NN	31	29	PMOD
 ?	?	SENT	32	3	P
 </s>
 <s>
@@ -158280,7 +158280,7 @@ to	to	TO	26	27	VMOD
 use	use	VV	27	24	OBJ
 them	them	PP	28	27	OBJ
 with	with	IN	29	27	ADV
-care.â€	care.â€	NN	30	29	PMOD
+care.ï¿½	care.ï¿½	NN	30	29	PMOD
 ?	?	SENT	31	0	ROOT
 </s>
 <s>
@@ -158321,7 +158321,7 @@ regions	region	NNS	4	2	PMOD
 in	in	IN	5	1	NMOD
 Norway	Norway	NP	6	0	ROOT
 Rosario	Rosario	NP	7	0	ROOT
-Asián	Asián	NP	8	0	ROOT
+Asiï¿½n	Asiï¿½n	NP	8	0	ROOT
 Chaves	Chaves	NP	9	0	ROOT
 The	The	NP	10	0	ROOT
 Role	Role	NP	11	0	ROOT
@@ -158424,15 +158424,15 @@ faith	faith	NN	74	72	PMOD
 </s>
 <s>
 The	the	DT	1	3	NMOD
-‘distanced	‘distanced	JJ	2	3	NMOD
+ï¿½distanced	ï¿½distanced	JJ	2	3	NMOD
 neighbor	neighbor	NN	3	5	NMOD
 '	'	POS	4	3	NMOD
 paradox	paradox	NN	5	0	ROOT
 :	:	:	6	5	P
-‘over-embedded	‘over-embedded	JJ	7	10	NMOD
+ï¿½over-embedded	ï¿½over-embedded	JJ	7	10	NMOD
 '	'	''	8	10	P
 and	and	CC	9	10	CC
-‘under-socialized	‘under-socialized	NN	10	5	NMOD
+ï¿½under-socialized	ï¿½under-socialized	NN	10	5	NMOD
 '	'	POS	11	10	NMOD
 economic	economic	JJ	12	13	NMOD
 relations	relation	NNS	13	10	NMOD
@@ -158456,8 +158456,8 @@ contest	contest	NN	30	32	NMOD
 '	'	POS	31	30	NMOD
 peripherality	peripherality	NN	32	37	NMOD
 '	'	POS	33	32	NMOD
-Jirí	Jirí	NP	34	37	NMOD
-Blažek	Blažek	NP	35	37	NMOD
+Jirï¿½	Jirï¿½	NP	34	37	NMOD
+Blaï¿½ek	Blaï¿½ek	NP	35	37	NMOD
 Forthcoming	Forthcoming	NP	36	37	NMOD
 accession	accession	NN	37	22	NMOD
 :	:	:	38	22	P
@@ -158478,7 +158478,7 @@ in	in	IN	52	40	NMOD
 the	the	DT	53	0	ROOT
 Czech	Czech	JJ	54	113	DEP
 Republic	Republic	NP	55	0	ROOT
-Oddbjørn	Oddbjørn	NP	56	0	ROOT
+Oddbjï¿½rn	Oddbjï¿½rn	NP	56	0	ROOT
 Bukve	Bukve	NP	57	0	ROOT
 Towards	Towards	NP	58	0	ROOT
 a	a	DT	59	0	ROOT
@@ -158542,7 +158542,7 @@ Ove	Ove	NP	1	45	DEP
 Bjarnar	Bjarnar	NP	2	45	DEP
 and	and	CC	3	2	CC
 Hallgeir	Hallgeir	NP	4	0	ROOT
-Gammelsæter	Gammelsæter	NP	5	45	DEP
+Gammelsï¿½ter	Gammelsï¿½ter	NP	5	45	DEP
 Convergent	Convergent	NP	6	0	ROOT
 and	and	CC	7	6	CC
 Divergent	Divergent	NP	8	23	NMOD
@@ -158566,7 +158566,7 @@ Italian	Italian	JJ	25	27	NMOD
 industrial	industrial	JJ	26	27	NMOD
 districts	district	NNS	27	24	PMOD
 S	S	NP	28	31	NMOD
-Bråthen	Bråthen	NP	29	31	NMOD
+Brï¿½then	Brï¿½then	NP	29	31	NMOD
 The	the	DT	30	31	NMOD
 viability	viability	NN	31	23	NMOD
 of	of	IN	32	31	NMOD
@@ -158611,7 +158611,7 @@ Peter	Peter	NP	10	19	NMOD
 Cabus	Cabus	NP	11	19	NMOD
 Governance	Governance	NP	12	19	NMOD
 in	in	IN	13	0	ROOT
-Flanders’	Flanders’	NP	14	16	NMOD
+Flandersï¿½	Flandersï¿½	NP	14	16	NMOD
 regional	regional	JJ	15	16	NMOD
 policy	policy	NN	16	13	PMOD
 :	:	:	17	19	P
@@ -158660,7 +158660,7 @@ in	in	IN	59	0	ROOT
 Italy	Italy	NP	60	0	ROOT
 Marjolein	Marjolein	NP	61	0	ROOT
 C.J.	C.J.	NP	62	0	ROOT
-Caniëls	Caniëls	NP	63	0	ROOT
+Caniï¿½ls	Caniï¿½ls	NP	63	0	ROOT
 and	and	CC	64	63	CC
 Henny	Henny	NP	65	0	ROOT
 A.	A.	NP	66	0	ROOT
@@ -158901,8 +158901,8 @@ Lessons	Lessons	NP	14	37	DEP
 from	from	IN	15	0	ROOT
 Austria	Austria	NP	16	0	ROOT
 Dr.	Dr.	NP	17	0	ROOT
-Özlem	Özlem	NP	18	0	ROOT
-Dündar	Dündar	NP	19	0	ROOT
+ï¿½zlem	ï¿½zlem	NP	18	0	ROOT
+Dï¿½ndar	Dï¿½ndar	NP	19	0	ROOT
 Community	Community	NP	20	0	ROOT
 Involvement	Involvement	NP	21	0	ROOT
 in	in	IN	22	0	ROOT
@@ -158949,7 +158949,7 @@ Factors	Factors	NP	4	10	NMOD
 of	of	IN	5	4	NMOD
 regional	regional	JJ	6	7	NMOD
 competitiveness	competitiveness	NN	7	5	PMOD
-Károly	Károly	NP	8	10	NMOD
+Kï¿½roly	Kï¿½roly	NP	8	10	NMOD
 Fazekas	Fazekas	NP	9	10	NMOD
 Effects	effect	NNS	10	0	ROOT
 of	of	IN	11	10	NMOD
@@ -159008,7 +159008,7 @@ evolution	evolution	NN	63	60	COORD
 Margarida	Margarida	NP	64	68	NMOD
 Fontes	Fontes	NP	65	68	NMOD
 Distant	Distant	NP	66	68	NMOD
-networking”	networking”	NN	67	68	NMOD
+networkingï¿½	networkingï¿½	NN	67	68	NMOD
 strategies	strategy	NNS	68	60	OBJ
 :	:	:	69	51	P
 integrating	integrate	VVG	70	51	NMOD
@@ -159054,8 +159054,8 @@ Database	Database	NP	109	160	DEP
 Construction	Construction	NP	110	160	DEP
 and	and	CC	111	110	CC
 Analysis	Analysis	NP	112	0	ROOT
-Zoltån	Zoltån	NP	113	0	ROOT
-Gål	Gål	NP	114	0	ROOT
+Zoltï¿½n	Zoltï¿½n	NP	113	0	ROOT
+Gï¿½l	Gï¿½l	NP	114	0	ROOT
 Challenges	Challenges	NP	115	160	DEP
 of	of	IN	116	115	NMOD
 the	the	DT	117	121	NMOD
@@ -159156,7 +159156,7 @@ Polit	Polit	NP	12	0	ROOT
 .	.	SENT	13	0	ROOT
 </s>
 <s>
-Øyvind	Øyvind	NP	1	21	DEP
+ï¿½yvind	ï¿½yvind	NP	1	21	DEP
 Glosvik	Glosvik	NP	2	21	DEP
 Networks	Networks	NPS	3	21	P
 and	and	CC	4	3	CC
@@ -159254,11 +159254,11 @@ Process	Process	NP	72	112	P
 Vesa	Vesa	NP	73	112	DEP
 Harmaakorpi	Harmaakorpi	NP	74	112	ADV
 ,	,	,	75	112	P
-Helinä	Helinä	NP	76	112	DEP
+Helinï¿½	Helinï¿½	NP	76	112	DEP
 Melkas	Melkas	NP	77	112	P
 and	and	CC	78	77	CC
 Riika	Riika	NP	79	112	DEP
-Kivelä	Kivelä	NP	80	112	P
+Kivelï¿½	Kivelï¿½	NP	80	112	P
 Knowledge	Knowledge	NP	81	112	DEP
 Management	Management	NP	82	112	P
 and	and	CC	83	82	CC
@@ -159483,8 +159483,8 @@ Jensen	Jensen	NP	2	38	DEP
 Svante	Svante	NP	4	38	DEP
 Leijon	Leijon	NP	5	38	DEP
 and	and	CC	6	5	CC
-Björn	Björn	NP	7	0	ROOT
-Trägårdh	Trägårdh	NP	8	0	ROOT
+Bjï¿½rn	Bjï¿½rn	NP	7	0	ROOT
+Trï¿½gï¿½rdh	Trï¿½gï¿½rdh	NP	8	0	ROOT
 Towards	Towards	NP	9	38	DEP
 a	a	DT	10	12	NMOD
 future-oriented	future-oriented	JJ	11	12	NMOD
@@ -159524,8 +159524,8 @@ Ertugrul	Ertugrul	NP	4	11	NMOD
 Deliktas	Deliktas	NP	5	11	NMOD
 and	and	CC	6	5	CC
 A.	A.	NP	7	9	NMOD
-Özlem	Özlem	NN	8	9	NMOD
-Önder	Önder	NN	9	5	COORD
+ï¿½zlem	ï¿½zlem	NN	8	9	NMOD
+ï¿½nder	ï¿½nder	NN	9	5	COORD
 The	the	DT	10	11	NMOD
 Effects	effects	NN	11	52	DEP
 of	of	IN	12	11	NMOD
@@ -159600,7 +159600,7 @@ viability	viability	NN	26	27	SBJ
 can	can	MD	27	22	COORD
 be	be	VB	28	27	VC
 improved	improve	VVN	29	28	VC
-–	–	JJ	30	31	NMOD
+ï¿½	ï¿½	JJ	30	31	NMOD
 insights	insight	NNS	31	29	OBJ
 from	from	IN	32	29	ADV
 a	a	DT	33	36	NMOD
@@ -159646,7 +159646,7 @@ Policy	Policy	NP	72	88	VMOD
 Mikel	Mikel	NP	73	88	VMOD
 Landabaso	Landabaso	NP	74	88	VMOD
 ,	,	,	75	88	P
-Bénédicte	Bénédicte	NP	76	88	VMOD
+Bï¿½nï¿½dicte	Bï¿½nï¿½dicte	NP	76	88	VMOD
 Mouton	Mouton	NP	77	88	VMOD
 and	and	CC	78	77	CC
 Michal	Michal	NP	79	88	SBJ
@@ -159705,7 +159705,7 @@ Arezzo	Arezzo	NP	35	0	ROOT
 Jewellery	Jewellery	NP	36	0	ROOT
 District	District	NP	37	65	DEP
 (	(	(	38	39	P
-1947–2001	1947–2001	JJ	39	0	ROOT
+1947ï¿½2001	1947ï¿½2001	JJ	39	0	ROOT
 )	)	)	40	39	P
 :	:	:	41	65	P
 Focus	focus	VV	42	65	DEP
@@ -159854,7 +159854,7 @@ Carla	Carla	NP	35	0	ROOT
 Azevedo	Azevedo	NP	36	0	ROOT
 Lobo	Lobo	NP	37	278	DEP
 and	and	CC	38	37	CC
-José	José	NP	39	45	NMOD
+Josï¿½	Josï¿½	NP	39	45	NMOD
 da	da	NP	40	45	NMOD
 Silva	Silva	NP	41	45	NMOD
 Costa	Costa	NP	42	45	NMOD
@@ -159917,7 +159917,7 @@ Industrial	Industrial	NP	98	278	DEP
 Dynamics	Dynamics	NPS	99	278	DEP
 of	of	IN	100	99	NMOD
 the	the	DT	101	107	NMOD
-Öresund	Öresund	NP	102	107	NMOD
+ï¿½resund	ï¿½resund	NP	102	107	NMOD
 Region	Region	NP	103	107	NMOD
 Alessandro	Alessandro	NP	104	107	NMOD
 Maffioli	Maffioli	NP	105	107	NMOD
@@ -159929,10 +159929,10 @@ integration	integration	NN	110	108	PMOD
 in	in	IN	111	99	ADV
 Hungary	Hungary	NP	112	0	ROOT
 C.	C.	NP	113	0	ROOT
-Marcianò	Marcianò	NP	114	278	DEP
+Marcianï¿½	Marcianï¿½	NP	114	278	DEP
 ,	,	,	115	278	P
 T.	T.	NP	116	278	DEP
-Calabrò	Calabrò	NP	117	0	ROOT
+Calabrï¿½	Calabrï¿½	NP	117	0	ROOT
 and	and	CC	118	117	CC
 A.	A.	NP	119	125	NMOD
 I.	I.	NP	120	125	NMOD
@@ -160110,7 +160110,7 @@ regional	regional	JJ	11	12	NMOD
 differences	difference	NNS	12	8	COORD
 Menevis	Menevis	NP	13	64	P
 Uzbay	Uzbay	NP	14	64	DEP
-Ögüt	Ögüt	NP	15	64	P
+ï¿½gï¿½t	ï¿½gï¿½t	NP	15	64	P
 and	and	CC	16	15	CC
 R.	R.	NP	17	64	DEP
 Funda	Funda	NP	18	0	ROOT
@@ -160361,7 +160361,7 @@ Labour	Labour	NP	5	292	DEP
 and	and	CC	6	5	CC
 Urban	Urban	NP	7	12	NMOD
 Policy	Policy	NP	8	12	NMOD
-Zoltán	Zoltán	NP	9	12	NMOD
+Zoltï¿½n	Zoltï¿½n	NP	9	12	NMOD
 Raffay	Raffay	NP	10	12	NMOD
 Business	Business	NP	11	12	NMOD
 services	service	NNS	12	5	COORD
@@ -160389,7 +160389,7 @@ Of	of	IN	33	0	ROOT
 Accession	Accession	NP	34	0	ROOT
 Countries	Countries	NPS	35	0	ROOT
 Jari	Jari	NP	36	0	ROOT
-Ritsilä	Ritsilä	NP	37	0	ROOT
+Ritsilï¿½	Ritsilï¿½	NP	37	0	ROOT
 and	and	CC	38	37	CC
 Jukka	Jukka	NP	39	42	NMOD
 Haukka	Haukka	NP	40	42	NMOD
@@ -160857,7 +160857,7 @@ the	the	DT	76	77	NMOD
 Regions	region	NNS	77	75	PMOD
 of	of	IN	78	77	NMOD
 Europe	Europe	NP	79	145	P
-Jérôme	Jérôme	NP	80	145	DEP
+Jï¿½rï¿½me	Jï¿½rï¿½me	NP	80	145	DEP
 Vicente	Vicente	NP	81	145	P
 Ambivalences	Ambivalences	NP	82	145	DEP
 of	of	IN	83	82	NMOD
@@ -161147,7 +161147,7 @@ x	x	SYM	11	12	NMOD
 w107cm	w107cm	NN	12	3	NMOD
 x	x	SYM	13	0	ROOT
 d53cm	d53cm	NP	14	0	ROOT
-£	£	$	15	0	ROOT
+ï¿½	ï¿½	$	15	0	ROOT
 219.99	@card@	CD	16	40	VMOD
 Mexican	Mexican	JJ	17	40	VMOD
 Rustic	Rustic	NP	18	0	ROOT
@@ -161240,7 +161240,7 @@ x	x	SYM	11	43	VMOD
 w50cm	w50cm	NN	12	43	VMOD
 x	x	SYM	13	0	ROOT
 45cm	45cm	JJ	14	43	VMOD
-£	£	$	15	0	ROOT
+ï¿½	ï¿½	$	15	0	ROOT
 239.99	@card@	CD	16	15	AMOD
 Mexican	Mexican	JJ	17	15	AMOD
 Rustic	Rustic	NP	18	0	ROOT
@@ -161336,7 +161336,7 @@ x	x	SYM	11	12	NMOD
 w112cm	w112cm	NN	12	3	NMOD
 x	x	SYM	13	26	VMOD
 d55cm	d55cm	NP	14	16	NMOD
-£	£	$	15	16	NMOD
+ï¿½	ï¿½	$	15	16	NMOD
 189.99	@card@	CD	16	26	VMOD
 Montrose	Montrose	NP	17	25	NMOD
 Solid	Solid	NP	18	25	NMOD
@@ -161409,7 +161409,7 @@ and	and	CC	5	4	CC
 Oak	Oak	NP	7	8	NMOD
 chairs	chair	NNS	8	0	ROOT
 -	-	:	9	8	P
-£	£	$	10	12	NMOD
+ï¿½	ï¿½	$	10	12	NMOD
 759.99	@card@	CD	11	12	NMOD
 5ft	5ft	NN	12	8	NMOD
 to	to	TO	13	14	VMOD
@@ -161421,7 +161421,7 @@ and	and	CC	17	20	CC
 Oak	Oak	NP	19	20	NMOD
 chairs	chair	NNS	20	14	OBJ
 -	-	:	21	20	P
-£	£	$	22	25	NMOD
+ï¿½	ï¿½	$	22	25	NMOD
 869.99	@card@	CD	23	25	NMOD
 5ft	5ft	NN	24	25	NMOD
 table	table	NN	25	20	COORD
@@ -161432,7 +161432,7 @@ chairs	chair	NNS	29	20	COORD
 and	and	CC	30	20	CC
 sideboard	sideboard	NN	31	20	COORD
 -	-	:	32	20	P
-£	£	$	33	35	NMOD
+ï¿½	ï¿½	$	33	35	NMOD
 1089.99	@card@	CD	34	35	NMOD
 5ft	5ft	NN	35	20	NMOD
 to	to	TO	36	37	VMOD
@@ -161446,7 +161446,7 @@ chairs	chair	NNS	43	40	COORD
 and	and	CC	44	40	CC
 sideboard	sideboard	NN	45	40	COORD
 -	-	:	46	40	P
-£	£	$	47	50	NMOD
+ï¿½	ï¿½	$	47	50	NMOD
 1199.99	@card@	CD	48	50	NMOD
 TV	TV	NN	49	50	NMOD
 Unit	unit	NN	50	40	NMOD
@@ -161457,7 +161457,7 @@ x	x	SYM	53	71	DEP
 x	x	SYM	55	71	DEP
 550h	550h	NP	56	71	P
 mm	mm	NP	57	71	P
-£	£	$	58	59	NMOD
+ï¿½	ï¿½	$	58	59	NMOD
 219.99	@card@	CD	59	0	ROOT
 Monty	Monty	NP	60	71	DEP
 Beech	Beech	NP	61	71	P
@@ -161479,7 +161479,7 @@ xD16	xD16	NP	2	0	ROOT
 x	x	SYM	4	0	ROOT
 H28	H28	NP	5	0	ROOT
 "	"	``	6	0	ROOT
-£	£	$	7	8	NMOD
+ï¿½	ï¿½	$	7	8	NMOD
 44.99	@card@	CD	8	0	ROOT
 Oakleigh	Oakleigh	NP	9	0	ROOT
 Natural	Natural	NP	10	0	ROOT
@@ -161509,7 +161509,7 @@ Oakleigh	Oakleigh	NP	9	10	NMOD
 Items	item	NNS	10	26	NMOD
 also	also	RB	11	12	AMOD
 available.	available.	JJ	12	10	NMOD
-£	£	$	13	14	NMOD
+ï¿½	ï¿½	$	13	14	NMOD
 109.99	@card@	CD	14	12	ADV
 Old	Old	NP	15	26	NMOD
 Mill	Mill	NP	16	26	NMOD
@@ -161573,7 +161573,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	32	SBJ
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 249.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	24	NMOD
 Mill	Mill	NP	15	24	NMOD
@@ -161719,7 +161719,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	0	ROOT
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 259.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	0	ROOT
 Mill	Mill	NP	15	0	ROOT
@@ -161783,7 +161783,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	23	SBJ
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 229.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	22	NMOD
 Mill	Mill	NP	15	22	NMOD
@@ -161844,7 +161844,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	27	SBJ
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 399.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	23	NMOD
 Mill	Mill	NP	15	23	NMOD
@@ -161909,7 +161909,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	26	SBJ
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 649.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	23	NMOD
 Mill	Mill	NP	15	23	NMOD
@@ -161969,7 +161969,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	29	SBJ
 available.	available.	VVG	11	10	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 399.99	@card@	CD	13	11	OBJ
 Old	Old	NP	14	26	NMOD
 Mill	Mill	NP	15	26	NMOD
@@ -162032,7 +162032,7 @@ Mill	Mill	NP	8	10	NMOD
 Oak	Oak	NP	9	10	NMOD
 items	item	NNS	10	11	SBJ
 available.	available.	VVG	11	3	NMOD
-£	£	$	12	13	NMOD
+ï¿½	ï¿½	$	12	13	NMOD
 379.99	@card@	CD	13	11	OBJ
 Orly	Orly	NP	14	23	NMOD
 Solid	Solid	NP	15	23	NMOD
@@ -162279,7 +162279,7 @@ and	and	CC	5	4	CC
 6	6	CD	6	7	NMOD
 leather	leather	NN	7	4	COORD
 -	-	:	8	4	P
-£	£	$	9	10	NMOD
+ï¿½	ï¿½	$	9	10	NMOD
 1199	@card@	CD	10	1	COORD
 ,	,	,	11	1	P
 6ft	6ft	JJ	12	0	ROOT
@@ -162287,7 +162287,7 @@ and	and	CC	13	12	CC
 6	6	CD	14	15	NMOD
 slat	slat	NN	15	12	COORD
 -	-	:	16	1	P
-£	£	$	17	18	NMOD
+ï¿½	ï¿½	$	17	18	NMOD
 989	@card@	CD	18	1	NMOD
 ,	,	,	19	18	P
 5ft	5ft	NN	20	18	COORD
@@ -162295,7 +162295,7 @@ and	and	CC	21	18	CC
 4	4	CD	22	23	NMOD
 leather	leather	NN	23	18	COORD
 -	-	:	24	1	P
-£	£	$	25	26	NMOD
+ï¿½	ï¿½	$	25	26	NMOD
 899	@card@	CD	26	1	NMOD
 ,	,	,	27	26	P
 5ft	5ft	NN	28	26	COORD
@@ -162303,7 +162303,7 @@ and	and	CC	29	26	CC
 4	4	CD	30	31	NMOD
 slat	slat	NN	31	26	COORD
 -	-	:	32	1	P
-£	£	$	33	34	NMOD
+ï¿½	ï¿½	$	33	34	NMOD
 769	@card@	CD	34	1	OBJ
 ,	,	,	35	34	P
 3ft	3ft	JJ	36	37	NMOD
@@ -162312,7 +162312,7 @@ and	and	CC	38	34	CC
 2	2	CD	39	40	NMOD
 leather	leather	NN	40	34	COORD
 -	-	:	41	1	P
-£	£	$	42	43	NMOD
+ï¿½	ï¿½	$	42	43	NMOD
 649	@card@	CD	43	1	OBJ
 ,	,	,	44	43	P
 3ft	3ft	JJ	45	46	NMOD
@@ -162321,7 +162321,7 @@ and	and	CC	47	43	CC
 2	2	CD	48	49	NMOD
 slat	slat	NN	49	43	COORD
 -	-	:	50	1	P
-£	£	$	51	52	NMOD
+ï¿½	ï¿½	$	51	52	NMOD
 549	@card@	CD	52	54	NMOD
 New	New	NP	53	54	NMOD
 addition	addition	NN	54	1	NMOD
@@ -162355,14 +162355,14 @@ collection	collection	NN	19	16	PMOD
 of	of	IN	20	19	NMOD
 royal	royal	JJ	21	23	NMOD
 books	book	NNS	22	23	NMOD
-–	–	NN	23	20	PMOD
+ï¿½	ï¿½	NN	23	20	PMOD
 older	old	JJR	24	23	NMOD
 to	to	TO	25	29	ADV
 me	me	PP	26	25	PMOD
 ,	,	,	27	29	P
 that	that	WDT	28	29	SBJ
 is	be	VBZ	29	31	SBJ
-–	–	JJ	30	29	PRD
+ï¿½	ï¿½	JJ	30	29	PRD
 is	be	VBZ	31	0	ROOT
 Elizabeth	Elizabeth	NP	32	36	NMOD
 Longford	Longford	NP	33	36	NMOD
