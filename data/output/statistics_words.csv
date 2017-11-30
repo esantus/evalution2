@@ -2,11 +2,10 @@ stat_id,word,freq.,cap_lower,cap_upper,cap_title,cap_other
 0,and,3879,3790,10,79,0
 1,no,200,141,12,47,0
 2,executive boxes,7,7,0,0,0
-3,are,750,750,0,0,0
-4,of,3974,3943,7,22,2
-5,used to be,1,1,0,0,0
-6,the,8027,7079,13,935,0
-7,people,204,186,0,18,0
-8,People,3,0,0,3,0
-9,church,14,11,1,1,1
-10,Church,2,0,0,2,0
+3,used to be,1,1,0,0,0
+4,the,8027,7079,13,935,0
+5,dog,12,12,0,0,0
+6,animal,24,17,0,7,0
+7,People,3,0,0,3,0
+8,church,14,11,1,1,1
+9,Church,2,0,0,2,0

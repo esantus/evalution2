@@ -1,22 +1,182 @@
-pattern_id,word1,word2,freq.,type,context,frequency
-0,football,bad,3,LEMMA,football use to be before the corporate takeover - and that be no bad,1
-1,football,bad,3,LEMMA,"bad thing , say Ed Vulliamy and Brian Oliver in this special report Sunday August 3 , @card@ the Observer when Roy Keane make his remark about prawn sandwich , and those who eat them at football",1
-2,football,bad,3,LEMMA,bad old days. Promotion will bring to the world 's most glamorous football,1
-3,football,bad,3,DEP,SBJ PMOD VMOD OBJ PRD NMOD NMOD PMOD P CC SBJ COORD NMOD NMOD,1
-4,football,bad,3,DEP,NMOD PRD P ADV ROOT ROOT CC P DEP ADV NMOD NMOD PMOD P DEP ADV P DEP ROOT ROOT ADV ADV SBJ ROOT NMOD OBJ NMOD NMOD PMOD P CC AMOD SBJ NMOD OBJ ADV NMOD,1
-5,football,bad,3,DEP,NMOD NMOD PMOD SBJ NMOD VC ADV NMOD NMOD NMOD AMOD NMOD NMOD,1
-6,football,bad,3,TOKEN,football used to be before the corporate takeover - and that 's no bad,1
-7,football,bad,3,TOKEN,"bad thing , say Ed Vulliamy and Brian Oliver in this special report Sunday August 3 , 2003 The Observer When Roy Keane made his remarks about prawn sandwiches , and those who eat them at football",1
-8,football,bad,3,TOKEN,bad old days. Promotion will bring to the world 's most glamorous football,1
-9,a,army,4,LEMMA,a career in the army,1
-10,a,army,4,LEMMA,"army ( where he be part of the NATO peace-keeping troop in Kosovo ) , via a",1
-11,a,army,4,LEMMA,"army ( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a",1
-12,a,army,4,LEMMA,"army ( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which take place in the US each year ) to a",1
-13,a,army,4,DEP,NMOD PMOD ADV NMOD PMOD,1
-14,a,army,4,DEP,PMOD P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD,1
-15,a,army,4,DEP,PMOD P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD,1
-16,a,army,4,DEP,PMOD P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD NMOD NMOD PRN NMOD NMOD PMOD SBJ NMOD OBJ ADV NMOD NMOD NMOD PMOD P ROOT NMOD,1
-17,a,army,4,TOKEN,a career in the army,1
-18,a,army,4,TOKEN,"army ( where he was part of the NATO peace-keeping troops in Kosovo ) , via a",1
-19,a,army,4,TOKEN,"army ( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a",1
-20,a,army,4,TOKEN,"army ( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which takes place in the US each year ) to a",1
+pattern_id,pair_id,word1,word2,freq.,type,context,frequency
+0,0,dog,the,22,DEP,NMOD PMOD ADV,1
+1,0,dog,the,22,DEP,NMOD SBJ NMOD SBJ VMOD OBJ NMOD CC COORD OBJ ADV NMOD PMOD ADV NMOD PMOD NMOD LGS PMOD ADV,1
+2,0,dog,the,22,DEP,ADV NMOD PMOD ADV NMOD PMOD NMOD LGS PMOD ADV,1
+3,0,dog,the,22,DEP,,2
+4,0,dog,the,22,DEP,ROOT NMOD NMOD NMOD OBJ SBJ NMOD NMOD OBJ ADV SBJ NMOD,1
+5,0,dog,the,22,DEP,ADV ROOT,1
+6,0,dog,the,22,DEP,ADV ROOT NMOD OBJ SBJ NMOD,1
+7,0,dog,the,22,DEP,ADV ROOT NMOD OBJ SBJ NMOD NMOD NMOD OBJ CC COORD VC LGS NMOD PMOD NMOD,1
+8,0,dog,the,22,DEP,ROOT,1
+9,0,dog,the,22,DEP,ROOT NMOD OBJ,1
+10,0,dog,the,22,DEP,ROOT NMOD OBJ NMOD NMOD SBJ NMOD VC VC CC,1
+11,0,dog,the,22,DEP,SBJ CC NMOD NMOD COORD ROOT AMOD PRD AMOD NMOD NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD,1
+12,0,dog,the,22,DEP,SBJ CC NMOD NMOD COORD ROOT AMOD PRD AMOD NMOD NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD OBJ P ADV NMOD NMOD P NMOD,1
+13,0,dog,the,22,DEP,SBJ CC NMOD NMOD COORD ROOT AMOD PRD AMOD NMOD NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD OBJ P ADV NMOD NMOD P NMOD PRD NMOD NMOD PMOD P NMOD NMOD PRD NMOD NMOD PMOD ROOT VC VC ADV NMOD NMOD PMOD VMOD SBJ ADV VC VMOD NMOD,1
+14,0,dog,the,22,DEP,NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD,1
+15,0,dog,the,22,DEP,NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD OBJ P ADV NMOD NMOD P NMOD,1
+16,0,dog,the,22,DEP,NMOD PMOD ADV COORD P ADV NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD NMOD NMOD NMOD PMOD NMOD NMOD P NMOD NMOD P NMOD NMOD OBJ P ADV NMOD NMOD P NMOD PRD NMOD NMOD PMOD P NMOD NMOD PRD NMOD NMOD PMOD ROOT VC VC ADV NMOD NMOD PMOD VMOD SBJ ADV VC VMOD NMOD,1
+17,0,dog,the,22,DEP,P ADV NMOD NMOD P NMOD PRD NMOD NMOD PMOD P NMOD NMOD PRD NMOD NMOD PMOD ROOT VC VC ADV NMOD NMOD PMOD VMOD SBJ ADV VC VMOD NMOD SBJ NMOD PMOD ADV ADV ADV,1
+18,0,dog,the,22,DEP,NMOD NMOD PMOD P NMOD NMOD PRD NMOD NMOD PMOD ROOT VC VC ADV NMOD NMOD PMOD VMOD SBJ ADV VC VMOD NMOD SBJ NMOD PMOD ADV ADV ADV,1
+19,0,dog,the,22,DEP,NMOD PMOD ADV ADV ADV,1
+20,0,dog,the,22,DEP,NMOD NMOD NMOD PRD P SBJ COORD NMOD AMOD AMOD OBJ VMOD NMOD ADV,1
+21,0,dog,the,22,POS,VVG DT IN,1
+22,0,dog,the,22,POS,NN WDT VVZ PP TO VV CD CC JJR NNS IN JJ NN IN DT NN VVN IN PP IN,1
+23,0,dog,the,22,POS,IN JJ NN IN DT NN VVN IN PP IN,1
+24,0,dog,the,22,POS,,2
+25,0,dog,the,22,POS,VVZ DT JJ NN NN WDT VVZ DT NN WRB PP VVZ,1
+26,0,dog,the,22,POS,RB VVZ,1
+27,0,dog,the,22,POS,RB VVZ DT NN PP VVZ,1
+28,0,dog,the,22,POS,RB VVZ DT NN PP VVZ DT NN NN CC VBZ VVN IN DT NN IN,1
+29,0,dog,the,22,POS,VVZ,1
+30,0,dog,the,22,POS,VVZ DT NN,1
+31,0,dog,the,22,POS,VVZ DT NN DT JJ NNS MD VB VVN CC,1
+32,0,dog,the,22,POS,NNS CC JJ NN NN VBP RB JJ IN DT NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ,1
+33,0,dog,the,22,POS,NNS CC JJ NN NN VBP RB JJ IN DT NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ NN ) : NP CD ( JJ,1
+34,0,dog,the,22,POS,NNS CC JJ NN NN VBP RB JJ IN DT NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ NN ) : NP CD ( JJ NN IN JJ NN ) DT JJ NN IN NN NNS MD VB VVN IN CD NN NN IN PP MD VV IN JJ,1
+35,0,dog,the,22,POS,NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ,1
+36,0,dog,the,22,POS,NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ NN ) : NP CD ( JJ,1
+37,0,dog,the,22,POS,NN NN RB VVZ : VVG NP : NP : NN IN NN NN NP NP : NP : NN IN NN NN NP NP : NN CD ( JJ JJ NN ) : NP CD ( JJ NN IN JJ NN ) DT JJ NN IN NN NNS MD VB VVN IN CD NN NN IN PP MD VV IN JJ,1
+38,0,dog,the,22,POS,) : NP CD ( JJ NN IN JJ NN ) DT JJ NN IN NN NNS MD VB VVN IN CD NN NN IN PP MD VV IN JJ NNS IN PP VVP RB IN,1
+39,0,dog,the,22,POS,IN JJ NN ) DT JJ NN IN NN NNS MD VB VVN IN CD NN NN IN PP MD VV IN JJ NNS IN PP VVP RB IN,1
+40,0,dog,the,22,POS,IN PP VVP RB IN,1
+41,0,dog,the,22,POS,NN NN NN NN : PP VHP DT NP NP JJ TO VV IN,1
+42,0,dog,the,22,LEMMA,shit all over,1
+43,0,dog,the,22,LEMMA,fence which enable you to keep one or more dog in complete freedom within a perimeter define by you without,1
+44,0,dog,the,22,LEMMA,in complete freedom within a perimeter define by you without,1
+45,0,dog,the,22,LEMMA,,2
+46,0,dog,the,22,LEMMA,wear a discrete receiver collar that receive a signal when he approach,1
+47,0,dog,the,22,LEMMA,first approach,1
+48,0,dog,the,22,LEMMA,first approach the wire he enter,1
+49,0,dog,the,22,LEMMA,first approach the wire he enter the warning zone and be warn by a beep from,1
+50,0,dog,the,22,LEMMA,learn,1
+51,0,dog,the,22,LEMMA,learn the boundary,1
+52,0,dog,the,22,LEMMA,learn the boundary the electrical impulse can be reduce and,1
+53,0,dog,the,22,LEMMA,zone and electrical impulse strength are fully adjustable from the control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive,1
+54,0,dog,the,22,LEMMA,zone and electrical impulse strength are fully adjustable from the control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive dog ) -- Level 8 ( large,1
+55,0,dog,the,22,LEMMA,zone and electrical impulse strength are fully adjustable from the control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive dog ) -- Level 8 ( large dog with difficult temperament ) a unlimited number of receiver collar can be use with one perimeter wire so you can contain as many,1
+56,0,dog,the,22,LEMMA,control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive,1
+57,0,dog,the,22,LEMMA,control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive dog ) -- Level 8 ( large,1
+58,0,dog,the,22,LEMMA,control unit as follow : warn Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : level 1 ( small sensitive dog ) -- Level 8 ( large dog with difficult temperament ) a unlimited number of receiver collar can be use with one perimeter wire so you can contain as many,1
+59,0,dog,the,22,LEMMA,) -- Level 8 ( large dog with difficult temperament ) a unlimited number of receiver collar can be use with one perimeter wire so you can contain as many dog as you wish safely in,1
+60,0,dog,the,22,LEMMA,with difficult temperament ) a unlimited number of receiver collar can be use with one perimeter wire so you can contain as many dog as you wish safely in,1
+61,0,dog,the,22,LEMMA,as you wish safely in,1
+62,0,dog,the,22,LEMMA,training system please note : we have a CD ROM available to borrow on,1
+63,0,dog,the,22,TOKEN,shitting all over,1
+64,0,dog,the,22,TOKEN,fence which enables you to keep one or more dogs in complete freedom within a perimeter defined by you without,1
+65,0,dog,the,22,TOKEN,in complete freedom within a perimeter defined by you without,1
+66,0,dog,the,22,TOKEN,,2
+67,0,dog,the,22,TOKEN,wears a discrete receiver collar that receives a signal when he approaches,1
+68,0,dog,the,22,TOKEN,first approaches,1
+69,0,dog,the,22,TOKEN,first approaches the wire he enters,1
+70,0,dog,the,22,TOKEN,first approaches the wire he enters the warning zone and is warned by a beep from,1
+71,0,dog,the,22,TOKEN,learns,1
+72,0,dog,the,22,TOKEN,learns the boundary,1
+73,0,dog,the,22,TOKEN,learns the boundary the electrical impulses can be reduced and,1
+74,0,dog,the,22,TOKEN,zones and electrical impulse strength are fully adjustable from the control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive,1
+75,0,dog,the,22,TOKEN,zones and electrical impulse strength are fully adjustable from the control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive dog ) -- Level 8 ( large,1
+76,0,dog,the,22,TOKEN,zones and electrical impulse strength are fully adjustable from the control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive dog ) -- Level 8 ( large dog with difficult temperament ) An unlimited number of receiver collars can be used with one perimeter wire so you can contain as many,1
+77,0,dog,the,22,TOKEN,control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive,1
+78,0,dog,the,22,TOKEN,control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive dog ) -- Level 8 ( large,1
+79,0,dog,the,22,TOKEN,control unit as follows : Warning Zone : 6m -- 0.4m from perimeter wire Correction Zone : 1.5m -- 0.3m from perimeter wire Impulse Strength : Level 1 ( small sensitive dog ) -- Level 8 ( large dog with difficult temperament ) An unlimited number of receiver collars can be used with one perimeter wire so you can contain as many,1
+80,0,dog,the,22,TOKEN,) -- Level 8 ( large dog with difficult temperament ) An unlimited number of receiver collars can be used with one perimeter wire so you can contain as many dogs as you wish safely in,1
+81,0,dog,the,22,TOKEN,with difficult temperament ) An unlimited number of receiver collars can be used with one perimeter wire so you can contain as many dogs as you wish safely in,1
+82,0,dog,the,22,TOKEN,as you wish safely in,1
+83,0,dog,the,22,TOKEN,training system PLEASE NOTE : We have a CD ROM available to borrow on,1
+84,1,army,the,26,DEP,SBJ NMOD NMOD NMOD PMOD ROOT VC VMOD VMOD P SBJ ADV VC ADV ADV NMOD PMOD ADV NMOD,1
+85,1,army,the,26,DEP,NMOD PMOD ROOT VC VMOD VMOD P SBJ ADV VC ADV ADV NMOD PMOD ADV NMOD,1
+86,1,army,the,26,DEP,,2
+87,1,army,the,26,DEP,P ADV SBJ OBJ PRD NMOD,1
+88,1,army,the,26,DEP,P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD NMOD NMOD PRN NMOD NMOD PMOD SBJ NMOD OBJ ADV,1
+89,1,army,the,26,DEP,P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD NMOD NMOD PRN NMOD NMOD PMOD SBJ NMOD OBJ ADV NMOD NMOD NMOD PMOD P ROOT NMOD NMOD NMOD NMOD NMOD PMOD NMOD SBJ PMOD VC ADV VC SBJ VMOD OBJ ADV,1
+90,1,army,the,26,DEP,P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD NMOD NMOD PRN NMOD NMOD PMOD SBJ NMOD OBJ ADV NMOD NMOD NMOD PMOD P ROOT NMOD NMOD NMOD NMOD NMOD PMOD NMOD SBJ PMOD VC ADV VC SBJ VMOD OBJ ADV NMOD NMOD PMOD,1
+91,1,army,the,26,DEP,P ADV SBJ OBJ PRD NMOD NMOD NMOD NMOD PMOD ADV PMOD P P ADV NMOD NMOD PMOD ADV ROOT P NMOD NMOD NMOD PRN NMOD NMOD PMOD SBJ NMOD OBJ ADV NMOD NMOD NMOD PMOD P ROOT NMOD NMOD NMOD NMOD NMOD PMOD NMOD SBJ PMOD VC ADV VC SBJ VMOD OBJ ADV NMOD NMOD PMOD NMOD OBJ NMOD ADV NMOD NMOD PMOD NMOD ROOT ADV P NMOD DEP NMOD P DEP ROOT ROOT CC NMOD COORD NMOD NMOD PMOD NMOD NMOD PMOD NMOD,1
+92,1,army,the,26,DEP,SBJ ROOT ADV NMOD,1
+93,1,army,the,26,DEP,NMOD NMOD NMOD PMOD P COORD PMOD ADV NMOD NMOD NMOD PRD NMOD NMOD PMOD NMOD P ROOT NMOD PMOD ADV PMOD CC ROOT ROOT NMOD PMOD CC NMOD NMOD,1
+94,1,army,the,26,DEP,PMOD NMOD P ROOT NMOD PMOD ADV PMOD CC ROOT ROOT NMOD PMOD CC NMOD NMOD,1
+95,1,army,the,26,DEP,PMOD CC NMOD NMOD,1
+96,1,army,the,26,DEP,NMOD,4
+97,1,army,the,26,DEP,NMOD NMOD PMOD P DEP CC NMOD COORD NMOD PMOD P NMOD ADV ROOT NMOD ROOT ROOT,1
+98,1,army,the,26,DEP,SBJ ROOT ADV P DEP NMOD PMOD NMOD NMOD PMOD ADV P NMOD NMOD,1
+99,1,army,the,26,DEP,PMOD NMOD NMOD PMOD ADV P NMOD NMOD,1
+100,1,army,the,26,DEP,PMOD ADV P NMOD NMOD,1
+101,1,army,the,26,DEP,ADV VMOD SBJ PMOD ADV VMOD ADV OBJ ADV,1
+102,1,army,the,26,DEP,ADV VMOD SBJ PMOD ADV VMOD ADV OBJ ADV NMOD NMOD PMOD NMOD PMOD CC ADV CC COORD,1
+103,1,army,the,26,DEP,P,1
+104,1,army,the,26,DEP,P NMOD DEP NMOD AMOD ROOT AMOD,1
+105,1,army,the,26,DEP,NMOD NMOD NMOD OBJ NMOD PMOD CC NMOD NMOD,1
+106,1,army,the,26,POS,"NN IN DT NP NN MD VB NP NP , WP VHZ VVN RB IN DT NN IN DT",1
+107,1,army,the,26,POS,"NP NN MD VB NP NP , WP VHZ VVN RB IN DT NN IN DT",1
+108,1,army,the,26,POS,,2
+109,1,army,the,26,POS,( WRB PP VBD NN IN,1
+110,1,army,the,26,POS,"( WRB PP VBD NN IN DT NP NN NNS IN NP ) , IN DT JJ NN IN NP ( DT JJ NN NN IN JJ NN WDT VVZ NN IN",1
+111,1,army,the,26,POS,"( WRB PP VBD NN IN DT NP NN NNS IN NP ) , IN DT JJ NN IN NP ( DT JJ NN NN IN JJ NN WDT VVZ NN IN DT NP DT NN ) TO DT JJ CD NN JJ NN TO NP VHZ VBN RB VVG PP POS NN IN",1
+112,1,army,the,26,POS,"( WRB PP VBD NN IN DT NP NN NNS IN NP ) , IN DT JJ NN IN NP ( DT JJ NN NN IN JJ NN WDT VVZ NN IN DT NP DT NN ) TO DT JJ CD NN JJ NN TO NP VHZ VBN RB VVG PP POS NN IN DT NNS NN",1
+113,1,army,the,26,POS,"( WRB PP VBD NN IN DT NP NN NNS IN NP ) , IN DT JJ NN IN NP ( DT JJ NN NN IN JJ NN WDT VVZ NN IN DT NP DT NN ) TO DT JJ CD NN JJ NN TO NP VHZ VBN RB VVG PP POS NN IN DT NNS NN DT NN DT NN IN NN NNS IN NP NP , DT NN IN JJR IN NP NP CC JJ NN IN JJ NN IN JJ NNS IN",1
+114,1,army,the,26,POS,NP VVZ IN DT,1
+115,1,army,the,26,POS,"NP POS JJ NN , IN NNS VBD DT JJ NN NN IN DT NNS IN NP IN PP$ NNS IN NP CC NP TO DT NN CC DT VVG",1
+116,1,army,the,26,POS,NNS IN NP IN PP$ NNS IN NP CC NP TO DT NN CC DT VVG,1
+117,1,army,the,26,POS,NN CC DT VVG,1
+118,1,army,the,26,POS,VVG,1
+119,1,army,the,26,POS,IN,1
+120,1,army,the,26,POS,"IN DT NP , NP CC NP NNS IN NP , VVG IN NP POS NP TO",1
+121,1,army,the,26,POS,"NN VVZ WRB , IN DT NN IN DT NN NP , DT JJ",1
+122,1,army,the,26,POS,"NN IN DT NN NP , DT JJ",1
+123,1,army,the,26,POS,"NN NP , DT JJ",1
+124,1,army,the,26,POS,JJ,1
+125,1,army,the,26,POS,IN NP NP VVD RB TO VV NNS IN,1
+126,1,army,the,26,POS,IN NP NP VVD RB TO VV NNS IN DT NN NNS IN NP CC NP CC VV,1
+127,1,army,the,26,POS,",",1
+128,1,army,the,26,POS,", DT NNS DT NN RB IN",1
+129,1,army,the,26,POS,JJ NP POS NN IN NN CC DT CD,1
+130,1,army,the,26,POS,CD,1
+131,1,army,the,26,LEMMA,"headliner on the Friday night will be James Blunt , who have move swiftly from a career in the",1
+132,1,army,the,26,LEMMA,"Friday night will be James Blunt , who have move swiftly from a career in the",1
+133,1,army,the,26,LEMMA,,2
+134,1,army,the,26,LEMMA,( where he be part of,1
+135,1,army,the,26,LEMMA,"( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which take place in",1
+136,1,army,the,26,LEMMA,"( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which take place in the US each year ) to a top five debut album. ďż˝back to Bedlamďż˝ have be steadily work it 's way up",1
+137,1,army,the,26,LEMMA,"( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which take place in the US each year ) to a top five debut album. ďż˝back to Bedlamďż˝ have be steadily work it 's way up the chart ďż˝",1
+138,1,army,the,26,LEMMA,"( where he be part of the NATO peace-keeping troop in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which take place in the US each year ) to a top five debut album. ďż˝back to Bedlamďż˝ have be steadily work it 's way up the chart ďż˝ the fruit no doubt of support slot with Elton John , a appearance on ďż˝later with Jools Hollandďż˝ and regular airplay on national radio for stunning track from",1
+139,1,army,the,26,LEMMA,Hood head for a,1
+140,1,army,the,26,LEMMA,"Brownes ' new home , for century be a key battle site between the prince of Gwynedd in their stronghold in Aberffraw and Dolbadarn to the west and the invade",1
+141,1,army,the,26,LEMMA,prince of Gwynedd in their stronghold in Aberffraw and Dolbadarn to the west and the invade,1
+142,1,army,the,26,LEMMA,west and the invade,1
+143,1,army,the,26,LEMMA,invade,1
+144,1,army,the,26,LEMMA,of,1
+145,1,army,the,26,LEMMA,"of the Saxon , Norman and Plantagenet king of England , come over Offa 's Dyke to",1
+146,1,army,the,26,LEMMA,"poem describe how , as the handmaiden of the goddess Liberty , the British",1
+147,1,army,the,26,LEMMA,"handmaiden of the goddess Liberty , the British",1
+148,1,army,the,26,LEMMA,"goddess Liberty , the British",1
+149,1,army,the,26,LEMMA,British,1
+150,1,army,the,26,LEMMA,under Arthur Wellesley issue forth to join force with,1
+151,1,army,the,26,LEMMA,under Arthur Wellesley issue forth to join force with the guerrilla fighter of Spain and Portugal and wage,1
+152,1,army,the,26,LEMMA,",",1
+153,1,army,the,26,LEMMA,", the Roman this time rather than",1
+154,1,army,the,26,LEMMA,French Herald 's offer of ransom and the two,1
+155,1,army,the,26,LEMMA,two,1
+156,1,army,the,26,TOKEN,"headliner on the Friday night will be James Blunt , who has moved swiftly from a career in the",1
+157,1,army,the,26,TOKEN,"Friday night will be James Blunt , who has moved swiftly from a career in the",1
+158,1,army,the,26,TOKEN,,2
+159,1,army,the,26,TOKEN,( where he was part of,1
+160,1,army,the,26,TOKEN,"( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which takes place in",1
+161,1,army,the,26,TOKEN,"( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which takes place in the US each year ) to a top five debut album. ďż˝Back to Bedlamďż˝ has been steadily working it 's way up",1
+162,1,army,the,26,TOKEN,"( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which takes place in the US each year ) to a top five debut album. ďż˝Back to Bedlamďż˝ has been steadily working it 's way up the charts ďż˝",1
+163,1,army,the,26,TOKEN,"( where he was part of the NATO peace-keeping troops in Kosovo ) , via a thrilling performance at SXSW ( a top industry showcase for new music which takes place in the US each year ) to a top five debut album. ďż˝Back to Bedlamďż˝ has been steadily working it 's way up the charts ďż˝ the fruit no doubt of support slots with Elton John , an appearance on ďż˝Later With Jools Hollandďż˝ and regular airplay on national radio for stunning tracks from",1
+164,1,army,the,26,TOKEN,Hood heads for an,1
+165,1,army,the,26,TOKEN,"Brownes ' new home , for centuries was a key battle site between the princes of Gwynedd in their strongholds in Aberffraw and Dolbadarn to the west and the invading",1
+166,1,army,the,26,TOKEN,princes of Gwynedd in their strongholds in Aberffraw and Dolbadarn to the west and the invading,1
+167,1,army,the,26,TOKEN,west and the invading,1
+168,1,army,the,26,TOKEN,invading,1
+169,1,army,the,26,TOKEN,of,1
+170,1,army,the,26,TOKEN,"of the Saxon , Norman and Plantagenet kings of England , coming over Offa 's Dyke to",1
+171,1,army,the,26,TOKEN,"poem describes how , as the handmaiden of the goddess Liberty , the British",1
+172,1,army,the,26,TOKEN,"handmaiden of the goddess Liberty , the British",1
+173,1,army,the,26,TOKEN,"goddess Liberty , the British",1
+174,1,army,the,26,TOKEN,British,1
+175,1,army,the,26,TOKEN,under Arthur Wellesley issued forth to join forces with,1
+176,1,army,the,26,TOKEN,under Arthur Wellesley issued forth to join forces with the guerrilla fighters of Spain and Portugal and wage,1
+177,1,army,the,26,TOKEN,",",1
+178,1,army,the,26,TOKEN,", the Romans this time rather than",1
+179,1,army,the,26,TOKEN,French Herald 's offer of ransom and the two,1
+180,1,army,the,26,TOKEN,two,1
