@@ -161,7 +161,7 @@ def get_sentences(corpus_fn: str, check_corpus=False):
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence, words, mwes, statistics):
+def extract_statistics(sentence, words, statistics, mwes=None):
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
     The dictionary is strucutred as follows:
@@ -434,7 +434,7 @@ def main():
     for sentence in tqdm.tqdm(get_sentences(corpus), mininterval=0.5):
         ngram_args = (sentence, words, ngrams, mwes)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
-        stat_args = (sentence, words, mwes, statistics)
+        stat_args = (sentence, words, statistics, mwes)
         for f, args in ((extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args)):
