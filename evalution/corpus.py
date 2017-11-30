@@ -240,7 +240,9 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
                             patterns[pair][target_name][in_between] += 1
     return True
 
-def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, islemma=True, pos=True, dep=True,
+
+def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwords=False, islemma=True, pos=True,
+                   dep=True,
                    PLMI=False):
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
@@ -272,18 +274,42 @@ def extract_ngrams(sentence, wordlist, ngrams, win=2, include_stopwords=False, i
     else:
         raw_sentence = [w[field] for w in sentence]
 
-    for word in raw_sentence:
-        ngrams['word_freq'][word] += 1
+    for raw_word in raw_sentence:
+        ngrams['word_freq'][raw_word] += 1
+
     # Generates the ngrams
-    for i, word in enumerate(raw_sentence):
-        if sentence[i][field] in wordlist:
-            ngram = tuple(raw_sentence[i:i + win])
-            # TODO: refactor with defaultdict
-            if not ngram in ngrams['ngram_freq']:
+    all_tokens = [w[TOKEN] for w in sentence]
+    for i in range(0, len(raw_sentence)):
+        second_ngram_index = i + 1
+        word = sentence[i][field]
+        raw_word = raw_sentence[i]
+        is_mwe = False
+        if mwes:
+            for mwe in mwes:
+                if word == mwe[0]:
+                    joined_mwe = ' '.join(mwe)
+                    second_ngram_index += len(mwe) - 1
+                    window = ' '.join(all_tokens[i:second_ngram_index])
+                    if joined_mwe == window:
+                        word = joined_mwe
+                        raw_word = ' '.join(raw_sentence[i:second_ngram_index])
+                        is_mwe = True
+                        i += len(mwe) - 1
+                        break
+            if not is_mwe:
+                word = raw_word[LEMMA]
+        # -1 because we include the first ngram
+        end_window_index = second_ngram_index + win - 1
+        if end_window_index > len(sentence):
+            break
+        if word in wordlist or is_mwe:
+            ngram = (raw_word, *tuple(raw_sentence[second_ngram_index:end_window_index]))
+            if ngram not in ngrams['ngram_freq']:
                 ngrams['ngram_freq'][ngram] = {'freq': 0}
             ngrams['ngram_freq'][ngram]['freq'] += 1
             ngrams['tot_ngram_freq'] += 1
     return True
+
 
 def add_ngram_probability(ngrams, plmi=False):
     """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability']."""
@@ -356,7 +382,6 @@ def save_statistics(statistics, outfile_path):
     if len(statistics) != 11:
         raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
 
-    # TODO: refactor this trash.
     filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
                  for suffix in ['words', 'forms', 'posdep']]
     open_args = dict(mode='w', encoding='utf-8', newline='')
@@ -377,7 +402,6 @@ def save_statistics(statistics, outfile_path):
 
         for word, attrs in statistics.items():
             cap = attrs['cap']
-            # TODO: make cap ordered and then unpack.
             row = [word_id, word, cap['lower'], cap['upper'], cap['title'], cap['other']]
             wordf.writerow(row)
             for attr_name, attr_values in attrs.items():
@@ -396,29 +420,29 @@ def save_statistics(statistics, outfile_path):
 
 
 def main():
-    wlist = '..\data\\test\\wl.csv'
+    wlist = '..\data\\test\\wordlist.csv'
     corpus = '..\data\\test\\tiny_corpus.csv'
-    patterns_fn = '..\data\\test\\patterns.txt'
+    patterns_fn = '..\data\\test\\patterns.csv'
     ngrams, patterns, statistics = (dict() for _ in range(3))
     words, mwes = _get_wlist(wlist)
     pattern_pairs = _get_pattern_pairs(patterns_fn)
 
     logging.info('Extracting ngrams, patterns and statistics.')
     for sentence in tqdm.tqdm(get_sentences(corpus), mininterval=0.5):
-        ngram_args = (sentence, words, ngrams)
+        ngram_args = (sentence, words, ngrams, mwes)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
-        for f, args in ((extract_ngrams, ngram_args),
-                        (extract_patterns, pattern_args),
-                        (extract_statistics, stat_args)):
+        for f, args in ((extract_ngrams, ngram_args),):
+            #                    (extract_patterns, pattern_args),
+            #                    (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
-    ngrams = add_ngram_probability(ngrams)
+    # ngrams = add_ngram_probability(ngrams)
     output_dir = '..\\data\\output\\'
     save_ngrams(ngrams, output_dir + 'ngrams.csv')
-    save_patterns(patterns, output_dir + 'patterns.csv')
-    save_statistics(statistics, output_dir + 'statistics.csv')
+    # save_patterns(patterns, output_dir + 'patterns.csv')
+    # save_statistics(statistics, output_dir + 'statistics.csv')
     # pprint(patterns)
     # pprint(statistics)
     # pprint(statistics['church'])
