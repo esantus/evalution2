@@ -302,8 +302,8 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
         if mwes:
             mwe = _check_mwes(i, field, mwes, sentence)
             if mwe:
-                raw_word = ' '.join(raw_sentence[i:second_ngram_index])
                 word, second_ngram_index = mwe
+                raw_word = ' '.join(raw_sentence[i:second_ngram_index])
             else:
                 word = raw_word[LEMMA]
         # -1 because we include the first ngram
