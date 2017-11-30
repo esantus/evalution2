@@ -53,6 +53,24 @@ def _cap_type(word: str):
     return 'other'
 
 
+def _check_mwes(word_index, field, mwes, sentence):
+    """Check if any mwe is in the sentence.
+
+    Returns:
+        (str, int): a tuple containing the mwe and its position in the sentence.
+    """
+    all_tokens = [w[TOKEN] for w in sentence]
+    word = sentence[word_index][field]
+    for mwe in mwes:
+        if word == mwe[0]:
+            joined_mwe = ' '.join(mwe)
+            target_end_index = word_index + len(mwe)
+            window = ' '.join(all_tokens[word_index:target_end_index])
+            if joined_mwe == window:
+                word = joined_mwe
+                return word, target_end_index
+    return False
+
 def _get_pattern_pairs(wlist, separator="\t"):
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
 
@@ -261,6 +279,7 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
     # TODO: check if this should include stopwords
     field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
+    mwe = False
 
     if not include_stopwords:
         # TODO: why stopwords?
@@ -274,35 +293,24 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
     else:
         raw_sentence = [w[field] for w in sentence]
 
-    for raw_word in raw_sentence:
-        ngrams['word_freq'][raw_word] += 1
-
     # Generates the ngrams
-    all_tokens = [w[TOKEN] for w in sentence]
     for i in range(0, len(raw_sentence)):
         second_ngram_index = i + 1
         word = sentence[i][field]
         raw_word = raw_sentence[i]
-        is_mwe = False
+        ngrams['word_freq'][raw_word] += 1
         if mwes:
-            for mwe in mwes:
-                if word == mwe[0]:
-                    joined_mwe = ' '.join(mwe)
-                    second_ngram_index += len(mwe) - 1
-                    window = ' '.join(all_tokens[i:second_ngram_index])
-                    if joined_mwe == window:
-                        word = joined_mwe
-                        raw_word = ' '.join(raw_sentence[i:second_ngram_index])
-                        is_mwe = True
-                        i += len(mwe) - 1
-                        break
-            if not is_mwe:
+            mwe = _check_mwes(i, field, mwes, sentence)
+            if mwe:
+                raw_word = ' '.join(raw_sentence[i:second_ngram_index])
+                word, second_ngram_index = mwe
+            else:
                 word = raw_word[LEMMA]
         # -1 because we include the first ngram
         end_window_index = second_ngram_index + win - 1
         if end_window_index > len(sentence):
             break
-        if word in wordlist or is_mwe:
+        if word in wordlist or mwe:
             ngram = (raw_word, *tuple(raw_sentence[second_ngram_index:end_window_index]))
             if ngram not in ngrams['ngram_freq']:
                 ngrams['ngram_freq'][ngram] = {'freq': 0}
