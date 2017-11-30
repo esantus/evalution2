@@ -184,7 +184,9 @@ def extract_statistics(sentence, words, mwes, statistics):
             word = sentence[i][LEMMA]
         if word in words or mwe:
             if word not in statistics:
+                statistics['last_id'] = statistics.get('last_id', 0) + 1
                 statistics[word] = {}
+                statistics[word]["id"] = statistics['last_id']
                 statistics[word]["freq"] = 0
                 statistics[word]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
                 statistics[word]["norm"] = collections.Counter()
@@ -260,9 +262,8 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
                 the values are dictionary containing only the key 'freq' and the frequency of the ngram.
                 The dictionary can be further populated by add_ngram_probability().}
     """
-
     if not ngrams:
-        ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={})
+        ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={}, last_id=0)
     field = LEMMA if islemma else TOKEN
     ngrams['tot_word_freq'] += len(sentence)
     if not include_stopwords:
@@ -279,7 +280,6 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
     # Generates the ngrams
     for i in range(0, len(raw_sentence)):
         second_ngram_index = i + 1
-        word = sentence[i][field]
         raw_word = raw_sentence[i]
         ngrams['word_freq'][raw_word] += 1
         mwe = _check_mwes(i, field, mwes, sentence)
@@ -287,22 +287,27 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwor
             word, second_ngram_index = mwe
             raw_word = ' '.join(raw_sentence[i:second_ngram_index])
         else:
-            word = raw_word[LEMMA]
+            word = sentence[i][LEMMA]
         # -1 because we include the first ngram
         end_window_index = second_ngram_index + win - 1
         if end_window_index > len(sentence):
             break
         if word in wordlist or mwe:
             ngram = (raw_word, *tuple(raw_sentence[second_ngram_index:end_window_index]))
+            all_lemma = [w[LEMMA] for w in sentence]
+            ngram_lemmas = (word, *tuple(all_lemma[second_ngram_index:end_window_index]))
             if ngram not in ngrams['ngram_freq']:
-                ngrams['ngram_freq'][ngram] = {'freq': 0}
+                ngrams['last_id'] += 1
+                ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
             ngrams['ngram_freq'][ngram]['freq'] += 1
+            ngrams['ngram_freq'][ngram]['lemmas'] = ngram_lemmas
             ngrams['tot_ngram_freq'] += 1
     return True
 
 
 def add_ngram_probability(ngrams, plmi=False):
     """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability']."""
+
     # For every ngram that was identified
     for ngram in ngrams['ngram_freq']:
         # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
@@ -326,33 +331,42 @@ def add_ngram_probability(ngrams, plmi=False):
 def save_ngrams(ngrams, outfile_path, probability=True):
     """Save ngrams to a tsv file."""
 
-    if len(ngrams) != 4:
-        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
-
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
-        header = ['ngram_id', 'ngram', 'freq']
+        header = ['ngram_id', 'ngram', 'lemmas', 'freq']
         if probability:
             header.append('probability')
         ngram_writer.writerow(header)
-        for col_id, ngram_tuple in enumerate(ngrams['ngram_freq']):
-            ngram = ngrams['ngram_freq'][ngram_tuple]
-            row = [col_id, ngram_tuple, ngram['freq']]
+        for ngram, ngram_d in ngrams['ngram_freq'].items():
+            row = [ngram_d['ngram_id'], ' '.join(ngram), ' '.join(ngram_d['lemmas']), ngram_d['freq']]
             if probability:
-                row.append(ngram.get('probability', 'NA'))
+                row.append(ngram_d.get('probability', 'NA'))
             ngram_writer.writerow(row)
+    logging.info('%s saved.' % outfile_path)
+
+
+def save_ngram_stats(ngrams, statistics, outfile_path):
+    """Save a file mapping ngrams_id to word_ids"""
+
+    with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
+        ngram_writer = csv.writer(outfile)
+        header = ['ngram_id', 'word_id', 'ngram_index']
+        ngram_writer.writerow(header)
+        for _, ngram_d in ngrams['ngram_freq'].items():
+            for ngram_index, lemma in enumerate(ngram_d['lemmas']):
+                if lemma in statistics:
+                    word_id = statistics[lemma]['id']
+                    row = [ngram_d['ngram_id'], word_id, ngram_index]
+                    ngram_writer.writerow(row)
     logging.info('%s saved.' % outfile_path)
 
 
 def save_patterns(patterns, outfile_path):
     """Save patterns dictionary in a csv file."""
 
-    if len(patterns) != 2:
-        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
-
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         pattern_writer = csv.writer(outfile)
-        header = ['pattern_id', 'pair', 'pair freq.', 'type', 'context', 'frequency']
+        header = ['pattern_id', 'word1', 'word2', 'freq.', 'type', 'context', 'frequency']
         pattern_writer.writerow(header)
         col_id = 0
         for pair, ntypes in patterns.items():
@@ -360,7 +374,7 @@ def save_patterns(patterns, outfile_path):
             for ntype, contexts in ntypes.items():
                 if ntype != 'freq':
                     for context, frequency in contexts.items():
-                        row = [col_id, pair, pair_freq, ntype, context, frequency]
+                        row = [col_id, pair[0], pair[1], pair_freq, ntype, context, frequency]
                         pattern_writer.writerow(row)
                         col_id += 1
     logging.info('%s saved.' % outfile_path)
@@ -368,9 +382,6 @@ def save_patterns(patterns, outfile_path):
 
 def save_statistics(statistics, outfile_path):
     """Save statistics dictionary in a csv file."""
-
-    if len(statistics) != 11:
-        raise ValueError('@param ngrams must be a valid evalution ngram dictionary.')
 
     filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
                  for suffix in ['words', 'forms', 'posdep']]
@@ -391,6 +402,8 @@ def save_statistics(statistics, outfile_path):
         word_id, norm_id, posdep_id = (0 for _ in range(3))
 
         for word, attrs in statistics.items():
+            if word == 'last_id':
+                continue
             cap = attrs['cap']
             row = [word_id, word, cap['lower'], cap['upper'], cap['title'], cap['other']]
             wordf.writerow(row)
@@ -423,7 +436,7 @@ def main():
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
         for f, args in ((extract_ngrams, ngram_args),
-                        #                    (extract_patterns, pattern_args),
+                        (extract_patterns, pattern_args),
                         (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
@@ -431,8 +444,9 @@ def main():
     # ngrams = add_ngram_probability(ngrams)
     output_dir = '..\\data\\output\\'
     save_ngrams(ngrams, output_dir + 'ngrams.csv')
-    # save_patterns(patterns, output_dir + 'patterns.csv')
+    save_patterns(patterns, output_dir + 'patterns.csv')
     save_statistics(statistics, output_dir + 'statistics.csv')
+    save_ngram_stats(ngrams, statistics, output_dir + 'ngram_words.csv')
     # pprint(patterns)
     # pprint(statistics)
     # pprint(statistics['church'])
