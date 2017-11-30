@@ -1,1104 +1,1111 @@
-id  ,ngram                                          ,freq,probability
-0   ,"('ROOT:the-DT', 'ROOT:Observer-NP')"          ,1   ,NA
-1   ,"('CC:and-CC', ""VMOD:n't-RB"")"               ,2   ,NA
-2   ,"('PRD:people-NNS', 'PMOD:town-NN')"           ,1   ,NA
-3   ,"('CC:and-CC', 'ROOT:will-MD')"                ,1   ,NA
-4   ,"('ROOT:people-NNS', 'P:,-,')"                 ,1   ,NA
-5   ,"('CC:and-CC', 'ROOT:be-VBZ')"                 ,4   ,9.350344932803335
-6   ,"('CC:and-CC', 'VC:see-VV')"                   ,1   ,NA
-7   ,"('NMOD:the-DT', 'SBJ:necessity-NN')"          ,1   ,NA
-8   ,"('NMOD:the-DT', 'NMOD:quotation-NN')"         ,1   ,NA
-9   ,"('NMOD:the-DT', 'SBJ:volume-NN')"             ,2   ,NA
-10  ,"('OBJ:people-NNS', 'PMOD:landscape-NN')"      ,1   ,NA
-11  ,"('DEP:the-DT', 'ROOT:RMA-NP')"                ,1   ,NA
-12  ,"('NMOD:the-DT', 'SBJ:singer-NN')"             ,1   ,NA
-13  ,"('VMOD:the-DT', 'SBJ:Super-NP')"              ,1   ,NA
-14  ,"('SBJ:people-NNS', 'COORD:turn-VVD')"         ,1   ,NA
-15  ,"('PMOD:people-NNS', 'P:,-,')"                 ,6   ,5.379652575510913
-16  ,"('CC:and-CC', 'NMOD:domestic-JJ')"            ,1   ,NA
-17  ,"('PMOD:people-NNS', 'VC:ask-VVN')"            ,1   ,NA
-18  ,"('NMOD:no-DT', 'SBJ:one-NN')"                 ,4   ,11.754282520057668
-19  ,"('DEP:and-CC', 'ROOT:Frenchman-NN')"          ,1   ,NA
-20  ,"('SBJ:people-NNS', 'PRD:proud-JJ')"           ,1   ,NA
-21  ,"('SBJ:people-NNS', 'VC:see-VV')"              ,1   ,NA
-22  ,"('SBJ:people-NNS', 'SBJ:are.-JJ')"            ,1   ,NA
-23  ,"('NMOD:the-DT', 'SBJ:name-NN')"               ,1   ,NA
-24  ,"('NMOD:the-DT', 'NMOD:follow-VVG')"           ,2   ,NA
-25  ,"('NMOD:the-DT', 'ROOT:@card@-CD')"            ,1   ,NA
-26  ,"('NMOD:the-DT', 'SBJ:change-NN')"             ,1   ,NA
-27  ,"('ROOT:the-DT', 'ROOT:Green-NP')"             ,2   ,NA
-28  ,"('NMOD:the-DT', 'SBJ:singing-NN')"            ,1   ,NA
-29  ,"('CC:and-CC', 'NMOD:new-JJ')"                 ,1   ,NA
-30  ,"('NMOD:the-DT', 'SBJ:game-NN')"               ,1   ,NA
-31  ,"('NMOD:the-DT', 'NMOD:morale-boosting-NN')"   ,1   ,NA
-32  ,"('NMOD:the-DT', 'ROOT:club-NN')"              ,1   ,NA
-33  ,"('NMOD:the-DT', 'ADV:organiser-NNS')"         ,1   ,NA
-34  ,"('NMOD:the-DT', 'NMOD:UK-NP')"                ,2   ,NA
-35  ,"('NMOD:the-DT', 'ROOT:\x93nokia-NN')"         ,2   ,NA
-36  ,"('NMOD:the-DT', 'NMOD:two-CD')"               ,5   ,6.780076765051854
-37  ,"('NMOD:the-DT', 'SBJ:headliner-NN')"          ,1   ,NA
-38  ,"('NMOD:the-DT', 'SBJ:band-NN')"               ,3   ,NA
-39  ,"('PMOD:people-NNS', 'PMOD:March-NP')"         ,1   ,NA
-40  ,"('NMOD:the-DT', 'NMOD:Bolddog-NP')"           ,1   ,NA
-41  ,"('NMOD:the-DT', 'SBJ:use-NN')"                ,2   ,NA
-42  ,"('NMOD:the-DT', 'NMOD:combined-JJ')"          ,1   ,NA
-43  ,"('NMOD:the-DT', 'NMOD:bad-JJS')"              ,1   ,NA
-44  ,"('NMOD:the-DT', 'SBJ:liking-NN')"             ,1   ,NA
-45  ,"('NMOD:the-DT', 'SBJ:systematic-JJ')"         ,1   ,NA
-46  ,"('VMOD:the-DT', 'SBJ:Park-NP')"               ,1   ,NA
-47  ,"('NMOD:the-DT', 'SBJ:information-NN')"        ,3   ,NA
-48  ,"('NMOD:the-DT', 'NMOD:usual-JJ')"             ,1   ,NA
-49  ,"('NMOD:the-DT', 'SBJ:application-NN')"        ,2   ,NA
-50  ,"('NMOD:the-DT', 'SBJ:query-NN')"              ,1   ,NA
-51  ,"('NMOD:the-DT', 'NMOD:initial-JJ')"           ,1   ,NA
-52  ,"('NMOD:the-DT', 'SBJ:source-NN')"             ,1   ,NA
-53  ,"('NMOD:the-DT', 'SBJ:nameserver-NN')"         ,1   ,NA
-54  ,"('CC:and-CC', 'ADV:almost-RB')"               ,1   ,NA
-55  ,"('NMOD:the-DT', 'NMOD:Linux-NP')"             ,1   ,NA
-56  ,"('NMOD:the-DT', 'SBJ:title-NNS')"             ,1   ,NA
-57  ,"('NMOD:no-DT', 'SBJ:part-NN')"                ,1   ,NA
-58  ,"('NMOD:the-DT', 'SBJ:fee-NNS')"               ,1   ,NA
-59  ,"('NMOD:the-DT', 'NMOD:precise-JJ')"           ,1   ,NA
-60  ,"('NMOD:the-DT', 'SBJ:fact-NN')"               ,1   ,NA
-61  ,"('DEP:the-DT', 'DEP:Red-NP')"                 ,1   ,NA
-62  ,"('P:the-DT', 'DEP:Green-NP')"                 ,2   ,NA
-63  ,"('NMOD:the-DT', 'ROOT:majority-NN')"          ,2   ,NA
-64  ,"('NMOD:the-DT', 'NMOD:actual-JJ')"            ,2   ,NA
-65  ,"('NMOD:the-DT', 'NMOD:potential-JJ')"         ,1   ,NA
-66  ,"('NMOD:the-DT', 'NMOD:subsequent-JJ')"        ,1   ,NA
-67  ,"('DEP:the-DT', 'VMOD:Sparrows-NP')"           ,1   ,NA
-68  ,"('NMOD:the-DT', 'SBJ:regatta-NN')"            ,1   ,NA
-69  ,"('ROOT:and-CC', 'SBJ:Cold-NP')"               ,1   ,NA
-70  ,"('NMOD:the-DT', 'NMOD:main-JJ')"              ,5   ,7.777435320014791
-71  ,"('CC:and-CC', 'P:,-,')"                       ,3   ,NA
-72  ,"('NMOD:the-DT', 'NMOD:Vesta-NP')"             ,1   ,NA
-73  ,"('NMOD:the-DT', ""NMOD:8's-JJ"")"             ,1   ,NA
-74  ,"('NMOD:the-DT', 'SBJ:club-NNS')"              ,1   ,NA
-75  ,"('SBJ:people-NNS', 'VC:turn-VVN')"            ,1   ,NA
-76  ,"('CC:and-CC', 'P:(-(')"                       ,1   ,NA
-77  ,"('PMOD:people-NNS', 'NMOD:texted-VVD')"       ,1   ,NA
-78  ,"('CC:and-CC', 'PMOD:middle-NN')"              ,1   ,NA
-79  ,"('PMOD:people-NNS', 'NMOD:have-VHP')"         ,1   ,NA
-80  ,"('SBJ:people-NNS', 'ROOT:spend-VVP')"         ,1   ,NA
-81  ,"('SBJ:the-DT', 'ADV:Environment-NP')"         ,1   ,NA
-82  ,"('NMOD:the-DT', 'NMOD:last-JJ')"              ,3   ,NA
-83  ,"('NMOD:the-DT', 'SBJ:race-NN')"               ,1   ,NA
-84  ,"('NMOD:the-DT', 'SBJ:event-NN')"              ,2   ,NA
-85  ,"('CC:and-CC', 'NMOD:attach-VVN')"             ,1   ,NA
-86  ,"('NMOD:the-DT', 'SBJ:slug-NN')"               ,2   ,NA
-87  ,"('NMOD:the-DT', 'SBJ:website-NN')"            ,1   ,NA
-88  ,"('PMOD:people-NNS', 'PRD:busy-JJ')"           ,1   ,NA
-89  ,"('IOBJ:people-NNS', 'NMOD:old-JJ')"           ,1   ,NA
-90  ,"('NMOD:of-IN', 'PMOD:course-NN')"             ,1   ,NA
-91  ,"('NMOD:the-DT', 'SBJ:6-CD')"                  ,1   ,NA
-92  ,"('NMOD:the-DT', 'SBJ:rest-NN')"               ,1   ,NA
-93  ,"('NMOD:the-DT', 'NMOD:event-NN')"             ,1   ,NA
-94  ,"('NMOD:the-DT', 'SBJ:venue-NN')"              ,1   ,NA
-95  ,"('NMOD:no-DT', 'NMOD:copyright-NN')"          ,1   ,NA
-96  ,"('NMOD:the-DT', 'SBJ:content-NNS')"           ,1   ,NA
-97  ,"('NMOD:the-DT', 'NMOD:lifting-NN')"           ,1   ,NA
-98  ,"('NMOD:the-DT', 'SBJ:controller-NN')"         ,5   ,9.792338340557055
-99  ,"('NMOD:the-DT', 'SBJ:man-NNS')"               ,2   ,NA
-100 ,"('NMOD:the-DT', 'NMOD:rocket-NNS')"           ,1   ,NA
-101 ,"('VMOD:the-DT', 'SBJ:Hood-NP')"               ,4   ,12.265108143823658
-102 ,"('VMOD:the-DT', 'SBJ:Zero-X-NP')"             ,1   ,NA
-103 ,"('NMOD:the-DT', 'NMOD:Zero-X-NP')"            ,1   ,NA
-104 ,"('NMOD:the-DT', 'NMOD:three-CD')"             ,2   ,NA
-105 ,"('SBJ:people-NNS', 'ADV:ask-VVP')"            ,1   ,NA
-106 ,"('NMOD:the-DT', 'NMOD:next-JJ')"              ,3   ,NA
-107 ,"('NMOD:the-DT', 'PMOD:helicopter-NN')"        ,1   ,NA
-108 ,"('NMOD:the-DT', 'SBJ:vehicle-NN')"            ,2   ,NA
-109 ,"('NMOD:the-DT', 'SBJ:scientist-NNS')"         ,1   ,NA
-110 ,"('NMOD:the-DT', 'SBJ:formation-NN')"          ,1   ,NA
-111 ,"('NMOD:the-DT', 'NMOD:astronaut-NNS')"        ,1   ,NA
-112 ,"('NMOD:the-DT', 'NMOD:retro-NNS')"            ,1   ,NA
-113 ,"('NMOD:the-DT', 'NMOD:lift-VVG')"             ,1   ,NA
-114 ,"('NMOD:the-DT', 'SBJ:cable-NN')"              ,5   ,8.945040480169851
-115 ,"('NMOD:the-DT', 'NMOD:first-JJ')"             ,9   ,7.537155486457594
-116 ,"('NMOD:the-DT', 'ROOT:sequence-NNS')"         ,1   ,NA
-117 ,"('ROOT:and-CC', 'ROOT:Mysterons-NP')"         ,1   ,NA
-118 ,"('VMOD:the-DT', 'SBJ:5Ss-NP')"                ,1   ,NA
-119 ,"('ROOT:the-DT', 'ROOT:5S-NP')"                ,1   ,NA
-120 ,"('NMOD:the-DT', 'NMOD:5s-JJ')"                ,1   ,NA
-121 ,"('NMOD:the-DT', 'PRD:5s-NN')"                 ,1   ,NA
-122 ,"('NMOD:the-DT', 'NMOD:full-JJ')"              ,1   ,NA
-123 ,"('NMOD:the-DT', 'SBJ:city-NN')"               ,2   ,NA
-124 ,"('NMOD:the-DT', 'NMOD:@card@-CD')"            ,4   ,4.783092900749854
-125 ,"('NMOD:the-DT', 'NMOD:city-NN')"              ,1   ,NA
-126 ,"('NMOD:the-DT', 'NMOD:Leicester-NP')"         ,1   ,NA
-127 ,"('NMOD:the-DT', 'SBJ:settlement-NN')"         ,1   ,NA
-128 ,"('CC:and-CC', 'ROOT:admit-VVD')"              ,1   ,NA
-129 ,"('NMOD:the-DT', 'PMOD:Scientist-NP')"         ,1   ,NA
-130 ,"('ROOT:the-DT', 'ROOT:Scientist-NP')"         ,2   ,NA
-131 ,"('CC:and-CC', 'NMOD:Cancer-NP')"              ,1   ,NA
-132 ,"('NMOD:the-DT', 'SBJ:book-NN')"               ,8   ,9.058369165476854
-133 ,"('VMOD:the-DT', 'SBJ:MHF-NP')"                ,1   ,NA
-134 ,"('NMOD:the-DT', 'SBJ:manual-JJ')"             ,2   ,NA
-135 ,"('ADV:of-IN', 'SBJ:SLITS-NP')"                ,1   ,NA
-136 ,"('CC:and-CC', 'ADV:GRATINGS-NP')"             ,1   ,NA
-137 ,"('NMOD:the-DT', 'SBJ:slit-NNS')"              ,1   ,NA
-138 ,"('PMOD:people-NNS', 'NMOD:full-JJ')"          ,1   ,NA
-139 ,"('NMOD:the-DT', 'NMOD:Andy-NP')"              ,1   ,NA
-140 ,"('NMOD:the-DT', 'NMOD:Claude-NP')"            ,1   ,NA
-141 ,"('NMOD:the-DT', 'PMOD:museum-NN')"            ,1   ,NA
-142 ,"('NMOD:the-DT', 'NMOD:early-JJ')"             ,1   ,NA
-143 ,"('NMOD:the-DT', 'NMOD:slaughtered-JJ')"       ,1   ,NA
-144 ,"('NMOD:the-DT', 'NMOD:Vincent-NP')"           ,1   ,NA
-145 ,"('DEP:the-DT', 'ROOT:Warhol-NP')"             ,1   ,NA
-146 ,"('ROOT:the-DT', 'ROOT:""-``')"                ,1   ,NA
-147 ,"('NMOD:the-DT', 'NMOD:late-JJS')"             ,4   ,8.41651527930446
-148 ,"('NMOD:the-DT', 'SBJ:circumstance-NN')"       ,1   ,NA
-149 ,"('NMOD:the-DT', 'SBJ:system-NN')"             ,1   ,NA
-150 ,"('NMOD:the-DT', 'NMOD:driver-NN')"            ,1   ,NA
-151 ,"('NMOD:the-DT', 'NMOD:statement-NNS')"        ,1   ,NA
-152 ,"('NMOD:the-DT', 'SBJ:joy-NN')"                ,1   ,NA
-153 ,"('DEP:the-DT', 'ROOT:Long-NP')"               ,1   ,NA
-154 ,"('NMOD:the-DT', 'NMOD:basic-JJ')"             ,1   ,NA
-155 ,"('NMOD:the-DT', 'NMOD:uniform-JJ')"           ,1   ,NA
-156 ,"('CC:and-CC', 'NMOD:CRAFTWORK-NP')"           ,1   ,NA
-157 ,"('VMOD:the-DT', 'SBJ:DfES-NP')"               ,1   ,NA
-158 ,"('PMOD:people-NNS', 'PMOD:learn-VVG')"        ,1   ,NA
-159 ,"('NMOD:the-DT', 'SBJ:project-NN')"            ,1   ,NA
-160 ,"('OBJ:people-NNS', 'NMOD:collaborate-VV')"    ,1   ,NA
-161 ,"('OBJ:people-NNS', 'P:.-SENT')"               ,3   ,NA
-162 ,"('NMOD:the-DT', 'SBJ:theme-NN')"              ,1   ,NA
-163 ,"('NMOD:the-DT', 'SBJ:value-NN')"              ,2   ,NA
-164 ,"('NMOD:the-DT', 'SBJ:concept-NN')"            ,1   ,NA
-165 ,"('CC:and-CC', 'NMOD:numerology-NN')"          ,1   ,NA
-166 ,"('PMOD:people-NNS', 'COORD:turn-VVN')"        ,1   ,NA
-167 ,"('NMOD:the-DT', 'NMOD:processing-NN')"        ,1   ,NA
-168 ,"('PMOD:people-NNS', 'ADV:across-IN')"         ,2   ,NA
-169 ,"('SBJ:People-NP', ""NMOD:'s-POS"")"           ,1   ,NA
-170 ,"('SBJ:the-DT', 'ADV:European-NP')"            ,1   ,NA
-171 ,"('NMOD:the-DT', 'NMOD:European-JJ')"          ,2   ,NA
-172 ,"('NMOD:the-DT', 'OBJ:development-NN')"        ,1   ,NA
-173 ,"('NMOD:the-DT', 'SBJ:issue-NNS')"             ,2   ,NA
-174 ,"('VMOD:the-DT', 'SBJ:Parliament-NP')"         ,1   ,NA
-175 ,"('NMOD:the-DT', 'ADV:importance-NN')"         ,1   ,NA
-176 ,"('SBJ:the-DT', 'ADV:Eu-NP')"                  ,1   ,NA
-177 ,"('NMOD:the-DT', 'NMOD:voluntary-JJ')"         ,1   ,NA
-178 ,"('NMOD:the-DT', 'ADV:incineration-NN')"       ,1   ,NA
-179 ,"('NMOD:the-DT', 'NMOD:optimum-JJ')"           ,2   ,NA
-180 ,"('NMOD:no-DT', 'NMOD:matter-NN')"             ,1   ,NA
-181 ,"('NMOD:the-DT', 'NMOD:precautionary-JJ')"     ,1   ,NA
-182 ,"('NMOD:the-DT', 'ROOT:implementation-NN')"    ,1   ,NA
-183 ,"('NMOD:the-DT', 'NMOD:successful-JJ')"        ,1   ,NA
-184 ,"('VMOD:the-DT', 'SBJ:Commission-NP')"         ,7   ,11.343119390834866
-185 ,"('NMOD:the-DT', 'NMOD:Commission-NP')"        ,1   ,NA
-186 ,"('NMOD:the-DT', 'NMOD:PVC-NP')"               ,1   ,NA
-187 ,"('NMOD:the-DT', 'SBJ:binding-NNS')"           ,1   ,NA
-188 ,"('NMOD:the-DT', 'SBJ:pack-NN')"               ,1   ,NA
-189 ,"('NMOD:no-DT', 'NMOD:previous-JJ')"           ,1   ,NA
-190 ,"('NMOD:the-DT', 'SBJ:vessel-NN')"             ,1   ,NA
-191 ,"('NMOD:the-DT', 'NMOD:Alum-NP')"              ,1   ,NA
-192 ,"('NMOD:people-NNS', ""NMOD:'s-POS"")"         ,4   ,9.549467773454774
-193 ,"('NMOD:the-DT', 'SBJ:animal-NNS')"            ,1   ,NA
-194 ,"('SBJ:people-NNS', 'VC:feed-VVN')"            ,1   ,NA
-195 ,"('NMOD:the-DT', 'SBJ:lack-NN')"               ,1   ,NA
-196 ,"('DEP:the-DT', 'ROOT:Common-NP')"             ,1   ,NA
-197 ,"('NMOD:the-DT', 'SBJ:price-NN')"              ,1   ,NA
-198 ,"('NMOD:the-DT', 'NMOD:good-JJS')"             ,6   ,7.982229732660804
-199 ,"('NMOD:the-DT', 'NMOD:training-NN')"          ,2   ,NA
-200 ,"('ROOT:the-DT', 'VMOD:Disease-NP')"           ,1   ,NA
-201 ,"('NMOD:the-DT', 'PRN:responsibility-NNS')"    ,1   ,NA
-202 ,"('NMOD:the-DT', 'PMOD:Simsâ\x84˘-NP')"        ,1   ,NA
-203 ,"('NMOD:the-DT', 'AMOD:Godfatherâ\x84˘-NP')"   ,1   ,NA
-204 ,"('NMOD:the-DT', 'NMOD:Sims-NP')"              ,1   ,NA
-205 ,"('VMOD:the-DT', 'SBJ:Godfather-NP')"          ,1   ,NA
-206 ,"('PMOD:people-NNS', 'PMOD:taste-NNS')"        ,1   ,NA
-207 ,"('NMOD:the-DT', 'SBJ:jaw-NN')"                ,3   ,NA
-208 ,"('VMOD:the-DT', 'SBJ:Tools-NP')"              ,1   ,NA
-209 ,"('NMOD:the-DT', 'SBJ:note-NN')"               ,2   ,NA
-210 ,"('NMOD:the-DT', 'SBJ:framework-NN')"          ,3   ,NA
-211 ,"('NMOD:the-DT', 'NMOD:chemical-NN')"          ,1   ,NA
-212 ,"('NMOD:the-DT', 'NMOD:late-JJ')"              ,1   ,NA
-213 ,"('NMOD:the-DT', 'SBJ:year-NN')"               ,1   ,NA
-214 ,"('NMOD:no-DT', 'NMOD:financial-JJ')"          ,1   ,NA
-215 ,"('OBJ:people-NNS', 'PMOD:headquarters-NN')"   ,1   ,NA
-216 ,"('NMOD:the-DT', 'NMOD:tourist-NN')"           ,1   ,NA
-217 ,"('DEP:and-CC', 'PRD:many-JJ')"                ,1   ,NA
-218 ,"('SBJ:people-NNS', 'PMOD:time-NN')"           ,1   ,NA
-219 ,"('NMOD:the-DT', 'NMOD:north-western-JJ')"     ,1   ,NA
-220 ,"('NMOD:the-DT', 'NMOD:south-JJ')"             ,1   ,NA
-221 ,"('NMOD:the-DT', 'NMOD:Backpackers-NP')"       ,1   ,NA
-222 ,"('ADV:the-DT', 'ROOT:Rhythm-NP')"             ,1   ,NA
-223 ,"('NMOD:the-DT', 'NMOD:RHYTHM-NP')"            ,1   ,NA
-224 ,"('NMOD:the-DT', 'NMOD:third-JJ')"             ,2   ,NA
-225 ,"('P:the-DT', 'DEP:Wailing-NP')"               ,1   ,NA
-226 ,"('NMOD:the-DT', 'SBJ:album-NN')"              ,2   ,NA
-227 ,"('ROOT:of-IN', 'ROOT:Mine-NP')"               ,1   ,NA
-228 ,"('ROOT:the-DT', 'ROOT:Rockers-NP')"           ,1   ,NA
-229 ,"('NMOD:the-DT', 'SBJ:method-NN')"             ,1   ,NA
-230 ,"('NMOD:the-DT', 'SBJ:method-NNS')"            ,2   ,NA
-231 ,"('NMOD:the-DT', 'SBJ:installation-NN')"       ,3   ,NA
-232 ,"('NMOD:the-DT', 'SBJ:type-NN')"               ,1   ,NA
-233 ,"('NMOD:the-DT', 'NMOD:ribbon-NN')"            ,2   ,NA
-234 ,"('NMOD:the-DT', 'NMOD:red-JJ')"               ,2   ,NA
-235 ,"('NMOD:the-DT', 'SBJ:image-NN')"              ,3   ,NA
-236 ,"('NMOD:the-DT', 'ROOT:60cm-NN')"              ,1   ,NA
-237 ,"('NMOD:the-DT', 'SBJ:screw-NNS')"             ,1   ,NA
-238 ,"('NMOD:the-DT', 'NMOD:new-JJ')"               ,4   ,6.156947571394105
-239 ,"('NMOD:the-DT', 'NMOD:method-NN')"            ,1   ,NA
-240 ,"('NMOD:the-DT', 'NMOD:additional-JJ')"        ,1   ,NA
-241 ,"('NMOD:the-DT', 'NMOD:configuration-NN')"     ,1   ,NA
-242 ,"('DEP:the-DT', 'DEP:Master-NP')"              ,1   ,NA
-243 ,"('NMOD:the-DT', 'NMOD:Cap-NP')"               ,1   ,NA
-244 ,"('NMOD:the-DT', 'NMOD:master-NN')"            ,1   ,NA
-245 ,"('NMOD:the-DT', 'NMOD:boot-NN')"              ,3   ,NA
-246 ,"('SBJ:the-DT', 'ROOT:diagram-VVZ')"           ,1   ,NA
-247 ,"('NMOD:the-DT', 'NMOD:power-NN')"             ,2   ,NA
-248 ,"('NMOD:the-DT', 'SBJ:ridge-NNS')"             ,1   ,NA
-249 ,"('NMOD:the-DT', 'NMOD:middle-JJ')"            ,1   ,NA
-250 ,"('NMOD:the-DT', 'SBJ:side-NN')"               ,3   ,NA
-251 ,"('NMOD:the-DT', 'ROOT:figure-NN')"            ,1   ,NA
-252 ,"('NMOD:the-DT', 'NMOD:early-JJR')"            ,1   ,NA
-253 ,"('CC:and-CC', 'PRD:page-NNS')"                ,1   ,NA
-254 ,"('NMOD:the-DT', 'NMOD:connection-NN')"        ,1   ,NA
-255 ,"('NMOD:the-DT', 'SBJ:drive-NN')"              ,1   ,NA
-256 ,"('NMOD:the-DT', 'SBJ:mode-NNS')"              ,1   ,NA
-257 ,"('NMOD:the-DT', 'ROOT:use-NN')"               ,1   ,NA
-258 ,"('NMOD:the-DT', 'SBJ:level-NNS')"             ,1   ,NA
-259 ,"('DEP:and-CC', 'VMOD:since-IN')"              ,1   ,NA
-260 ,"('VMOD:the-DT', 'SBJ:FDD-NP')"                ,1   ,NA
-261 ,"('NMOD:the-DT', 'SBJ:end-NN')"                ,1   ,NA
-262 ,"('VMOD:the-DT', 'SBJ:PSU-NP')"                ,1   ,NA
-263 ,"('ROOT:and-CC', 'NMOD:sound-VVZ')"            ,1   ,NA
-264 ,"('NMOD:the-DT', 'NMOD:call-NN')"              ,1   ,NA
-265 ,"('NMOD:no-DT', 'NMOD:news-NN')"               ,1   ,NA
-266 ,"('NMOD:the-DT', 'SBJ:monitor-NNS')"           ,1   ,NA
-267 ,"('NMOD:the-DT', 'NMOD:Apprentice-NP')"        ,1   ,NA
-268 ,"('SBJ:people-NNS', 'ROOT:would-MD')"          ,1   ,NA
-269 ,"('DEP:the-DT', 'SBJ:Apprentice-NP')"          ,1   ,NA
-270 ,"('VMOD:the-DT', 'SBJ:Guardian-NP')"           ,1   ,NA
-271 ,"('PMOD:people-NNS', 'NMOD:would-MD')"         ,1   ,NA
-272 ,"('ADV:of-IN', 'ROOT:Love-NP')"                ,1   ,NA
-273 ,"('VMOD:the-DT', 'SBJ:Angels-NPS')"            ,1   ,NA
-274 ,"('NMOD:the-DT', 'NMOD:title-NN')"             ,1   ,NA
-275 ,"('NMOD:the-DT', 'SBJ:simplicity-NN')"         ,1   ,NA
-276 ,"('VMOD:of-IN', 'VMOD:My-NP')"                 ,1   ,NA
-277 ,"('NMOD:the-DT', 'NMOD:gentle-JJ')"            ,1   ,NA
-278 ,"('VMOD:the-DT', 'SBJ:Act-NP')"                ,1   ,NA
-279 ,"('NMOD:no-DT', 'NMOD:more-JJR')"              ,1   ,NA
-280 ,"('AMOD:no-RB', 'VMOD:more-JJR')"              ,1   ,NA
-281 ,"('NMOD:the-DT', 'NMOD:bluesy-NN')"            ,1   ,NA
-282 ,"('NMOD:the-DT', 'NMOD:final-JJ')"             ,1   ,NA
-283 ,"('NMOD:the-DT', 'SBJ:song-NN')"               ,1   ,NA
-284 ,"('CC:and-CC', 'ROOT:remember-VV')"            ,1   ,NA
-285 ,"('CC:and-CC', 'VC:get-VV')"                   ,2   ,NA
-286 ,"('PMOD:people-NNS', 'VC:visit-VVN')"          ,1   ,NA
-287 ,"('SBJ:people-NNS', 'OBJ:attend-VVP')"         ,1   ,NA
-288 ,"('VMOD:the-DT', 'SBJ:Club-NP')"               ,1   ,NA
-289 ,"('DEP:the-DT', 'ROOT:Croquet-NP')"            ,1   ,NA
-290 ,"('NMOD:the-DT', 'SBJ:follow-VVG')"            ,3   ,NA
-291 ,"('NMOD:the-DT', 'SBJ:station-NN')"            ,2   ,NA
-292 ,"('PMOD:people-NNS', 'ROOT:.-SENT')"           ,5   ,6.5310171608679894
-293 ,"('ROOT:no-RB', 'P:.-SENT')"                   ,1   ,NA
-294 ,"('NMOD:the-DT', 'NMOD:man-NNS')"              ,1   ,NA
-295 ,"('PMOD:people-NNS', 'VMOD:Sport-NP')"         ,1   ,NA
-296 ,"('NMOD:the-DT', 'OBJ:way-NN')"                ,1   ,NA
-297 ,"('NMOD:of-IN', 'NMOD:Government-NP')"         ,1   ,NA
-298 ,"('NMOD:the-DT', 'SBJ:heart-NN')"              ,1   ,NA
-299 ,"('PRD:of-IN', 'NMOD:particular-JJ')"          ,1   ,NA
-300 ,"('PMOD:people-NNS', 'NMOD:kill-VVN')"         ,1   ,NA
-301 ,"('PMOD:people-NNS', 'NMOD:injure-VVN')"       ,2   ,NA
-302 ,"('SBJ:people-NNS', 'VC:kill-VVN')"            ,1   ,NA
-303 ,"('NMOD:the-DT', 'SBJ:force-NNS')"             ,1   ,NA
-304 ,"('NMOD:the-DT', 'NMOD:great-JJS')"            ,1   ,NA
-305 ,"('NMOD:the-DT', 'SBJ:threat-NN')"             ,1   ,NA
-306 ,"('NMOD:the-DT', 'ROOT:policy-NNS')"           ,1   ,NA
-307 ,"('NMOD:the-DT', 'SBJ:government-NN')"         ,2   ,NA
-308 ,"('VMOD:the-DT', 'SBJ:UK-NP')"                 ,2   ,NA
-309 ,"('ROOT:the-DT', 'ROOT:Funeralcare-NP')"       ,1   ,NA
-310 ,"('DEP:the-DT', 'P:UNMUTUAL-NP')"              ,1   ,NA
-311 ,"('CC:and-CC', 'SBJ:director-NN')"             ,1   ,NA
-312 ,"('NMOD:the-DT', 'NMOD:jukebox-NN')"           ,1   ,NA
-313 ,"('NMOD:the-DT', 'NMOD:railway-NN')"           ,1   ,NA
-314 ,"('PMOD:people-NNS', 'PMOD:diabetes-NN')"      ,2   ,NA
-315 ,"('COORD:people-NNS', 'ADV:also-RB')"          ,1   ,NA
-316 ,"('NMOD:people-NNS', 'VC:take-VVN')"           ,1   ,NA
-317 ,"('NMOD:the-DT', 'SBJ:safety-NN')"             ,1   ,NA
-318 ,"('OBJ:people-NNS', 'NMOD:different-JJ')"      ,1   ,NA
-319 ,"('SBJ:people-NNS', 'NMOD:use-VVG')"           ,1   ,NA
-320 ,"('NMOD:the-DT', 'NMOD:side-NN')"              ,1   ,NA
-321 ,"('NMOD:the-DT', 'NMOD:herbal-JJ')"            ,1   ,NA
-322 ,"('NMOD:the-DT', 'SBJ:srip-NN')"               ,1   ,NA
-323 ,"('COORD:people-NNS', 'PMOD:opportunity-NNS')" ,1   ,NA
-324 ,"('DEP:the-DT', 'ROOT:Internet-NP')"           ,1   ,NA
-325 ,"('NMOD:the-DT', 'NMOD:monthly-JJ')"           ,1   ,NA
-326 ,"('P:the-DT', 'DEP:Editor-NP')"                ,1   ,NA
-327 ,"('P:the-DT', 'DEP:WHEELWRIGHTS-NP')"          ,1   ,NA
-328 ,"('SBJ:Church-NP', 'ADV:College-NP')"          ,1   ,NA
-329 ,"('NMOD:the-DT', 'NMOD:Claremont-NP')"         ,1   ,NA
-330 ,"('ROOT:the-DT', 'VMOD:Claremont-NP')"         ,1   ,NA
-331 ,"('ADV:people-NNS', 'SBJ:age-NN')"             ,1   ,NA
-332 ,"('CC:and-CC', 'P:.-SENT')"                    ,1   ,NA
-333 ,"('NMOD:the-DT', 'SBJ:site-NN')"               ,2   ,NA
-334 ,"('NMOD:the-DT', 'SBJ:feature-NN')"            ,1   ,NA
-335 ,"('VMOD:the-DT', 'VMOD:Poetry-NP')"            ,1   ,NA
-336 ,"('NMOD:the-DT', 'NMOD:winning-JJ')"           ,1   ,NA
-337 ,"('NMOD:the-DT', 'PMOD:Rialto-NP')"            ,1   ,NA
-338 ,"('PMOD:people-NNS', 'NMOD:age-VVN')"          ,1   ,NA
-339 ,"('PMOD:people-NNS', 'NMOD:affect-VVN')"       ,1   ,NA
-340 ,"('NMOD:the-DT', 'NMOD:entry-NN')"             ,1   ,NA
-341 ,"('NMOD:the-DT', 'NMOD:Strike-NP')"            ,2   ,NA
-342 ,"('NMOD:the-DT', 'SBJ:team-NN')"               ,2   ,NA
-343 ,"('NMOD:the-DT', 'NMOD:figure-NNS')"           ,1   ,NA
-344 ,"('NMOD:the-DT', 'SBJ:provision-NN')"          ,1   ,NA
-345 ,"('VMOD:the-DT', 'SBJ:Goldfinch-NP')"          ,1   ,NA
-346 ,"('NMOD:the-DT', 'SBJ:species-NN')"            ,1   ,NA
-347 ,"('NMOD:the-DT', 'SBJ:bird-NNS')"              ,1   ,NA
-348 ,"('SBJ:people-NNS', 'SBJ:put-VVG')"            ,1   ,NA
-349 ,"('P:the-DT', 'DEP:Nunnery-NP')"               ,1   ,NA
-350 ,"('NMOD:the-DT', 'NMOD:entire-JJ')"            ,2   ,NA
-351 ,"('NMOD:the-DT', 'SBJ:scheme-NN')"             ,1   ,NA
-352 ,"('SBJ:people-NNS', 'COORD:other-NNS')"        ,1   ,NA
-353 ,"('NMOD:the-DT', 'SBJ:aim-NN')"                ,1   ,NA
-354 ,"('PMOD:people-NNS', 'PMOD:possible-JJ')"      ,1   ,NA
-355 ,"('NMOD:the-DT', 'NMOD:public-JJ')"            ,1   ,NA
-356 ,"('NMOD:the-DT', 'NMOD:valley-NN')"            ,1   ,NA
-357 ,"('NMOD:the-DT', 'ROOT:worldâ\x80\x99s-NN')"   ,1   ,NA
-358 ,"('NMOD:the-DT', 'NMOD:research-NN')"          ,2   ,NA
-359 ,"('NMOD:the-DT', 'NMOD:result-VVG')"           ,1   ,NA
-360 ,"('NMOD:the-DT', 'SBJ:company-NN')"            ,1   ,NA
-361 ,"('NMOD:the-DT', 'ROOT:community-NN')"         ,1   ,NA
-362 ,"('NMOD:the-DT', 'SBJ:community-NN')"          ,1   ,NA
-363 ,"('NMOD:the-DT', 'NMOD:community-NN')"         ,1   ,NA
-364 ,"('NMOD:the-DT', 'SBJ:plan-NN')"               ,2   ,NA
-365 ,"('NMOD:the-DT', 'NMOD:contingency-NN')"       ,1   ,NA
-366 ,"('NMOD:the-DT', 'NMOD:Welsh-JJ')"             ,1   ,NA
-367 ,"('NMOD:the-DT', 'SBJ:latter-NN')"             ,1   ,NA
-368 ,"('NMOD:the-DT', 'PMOD:Famine-NP')"            ,1   ,NA
-369 ,"('NMOD:the-DT', 'ROOT:work-NN')"              ,1   ,NA
-370 ,"('PMOD:people-NNS', 'PMOD:hometown-NNS')"     ,1   ,NA
-371 ,"('ADV:of-IN', 'NMOD:5-CD')"                   ,1   ,NA
-372 ,"('NMOD:the-DT', 'SBJ:majority-NN')"           ,2   ,NA
-373 ,"('NMOD:the-DT', 'SBJ:survey-NN')"             ,1   ,NA
-374 ,"('NMOD:the-DT', 'NMOD:FRS-NP')"               ,1   ,NA
-375 ,"('NMOD:the-DT', 'NMOD:vulnerable-JJ')"        ,1   ,NA
-376 ,"('VMOD:the-DT', 'SBJ:NCFSC-NP')"              ,1   ,NA
-377 ,"('ROOT:the-DT', 'ROOT:Philharmonic-NP')"      ,1   ,NA
-378 ,"('CC:and-CC', 'SBJ:series-NN')"               ,1   ,NA
-379 ,"('DEP:the-DT', 'ROOT:Mersey-NP')"             ,1   ,NA
-380 ,"('NMOD:the-DT', 'SBJ:text-NN')"               ,1   ,NA
-381 ,"('CC:and-CC', 'SBJ:cost-NNS')"                ,1   ,NA
-382 ,"('NMOD:the-DT', 'SBJ:dog-NN')"                ,1   ,NA
-383 ,"('NMOD:the-DT', 'SBJ:zone-NNS')"              ,1   ,NA
-384 ,"('NMOD:the-DT', 'SBJ:response-NN')"           ,1   ,NA
-385 ,"('PMOD:people-NNS', 'NMOD:wish-VVD')"         ,1   ,NA
-386 ,"('NMOD:the-DT', 'ROOT:planning-NN')"          ,1   ,NA
-387 ,"('NMOD:the-DT', 'SBJ:second-NN')"             ,1   ,NA
-388 ,"('PMOD:people-NNS', 'PMOD:use-NN')"           ,1   ,NA
-389 ,"('PMOD:people-NNS', 'P:.-SENT')"              ,2   ,NA
-390 ,"('SBJ:people-NNS', 'NMOD:live-VVP')"          ,2   ,NA
-391 ,"('NMOD:the-DT', 'NMOD:existing-JJ')"          ,1   ,NA
-392 ,"('PMOD:people-NNS', 'SBJ:Britain-NP')"        ,1   ,NA
-393 ,"('PMOD:people-NNS', 'NMOD:pass-VVP')"         ,1   ,NA
-394 ,"('NMOD:the-DT', 'SBJ:main-JJ')"               ,2   ,NA
-395 ,"('PMOD:people-NNS', 'PMOD:past-NN')"          ,1   ,NA
-396 ,"('SBJ:people-NNS', 'ADV:live-VVD')"           ,1   ,NA
-397 ,"('NMOD:the-DT', 'NMOD:knowledgeable-JJ')"     ,1   ,NA
-398 ,"('DEP:the-DT', 'ROOT:European-NP')"           ,1   ,NA
-399 ,"('NMOD:the-DT', 'NMOD:archaeological-JJ')"    ,2   ,NA
-400 ,"('NMOD:the-DT', 'NMOD:prime-JJ')"             ,1   ,NA
-401 ,"('COORD:church-NNS', 'COORD:trackways-NNS')"  ,1   ,NA
-402 ,"('ROOT:of-IN', 'PMOD:twelve-NN')"             ,1   ,NA
-403 ,"('NMOD:the-DT', 'SBJ:focus-NN')"              ,1   ,NA
-404 ,"('SBJ:people-NNS', 'ROOT:may-MD')"            ,1   ,NA
-405 ,"('PRD:of-IN', 'NMOD:equal-JJ')"               ,1   ,NA
-406 ,"('NMOD:the-DT', 'NMOD:visible-JJ')"           ,1   ,NA
-407 ,"('PMOD:people-NNS', 'NMOD:live-VVP')"         ,1   ,NA
-408 ,"('NMOD:the-DT', 'ROOT:place-NNS')"            ,1   ,NA
-409 ,"('NMOD:the-DT', 'SBJ:programme-NN')"          ,1   ,NA
-410 ,"('NMOD:the-DT', 'SBJ:effectiveness-NN')"      ,1   ,NA
-411 ,"('PMOD:people-NNS', 'OBJ:time-depth-NN')"     ,1   ,NA
-412 ,"('OBJ:people-NNS', 'ADV:much-RB')"            ,1   ,NA
-413 ,"('NMOD:the-DT', 'NMOD:interest-NN')"          ,2   ,NA
-414 ,"('NMOD:the-DT', 'SBJ:asset-NN')"              ,1   ,NA
-415 ,"('ROOT:and-CC', 'ROOT:snow-VVZ')"             ,1   ,NA
-416 ,"('NMOD:the-DT', 'SBJ:sky-NN')"                ,1   ,NA
-417 ,"('PMOD:people-NNS', 'ADV:take-VVG')"          ,1   ,NA
-418 ,"('NMOD:the-DT', 'SBJ:trailer-NN')"            ,1   ,NA
-419 ,"('SBJ:people-NNS', 'VC:hear-VV')"             ,1   ,NA
-420 ,"('NMOD:the-DT', 'SBJ:character-NNS')"         ,1   ,NA
-421 ,"('P:and-CC', 'DEP:INFLUENCE-NP')"             ,1   ,NA
-422 ,"('P:and-CC', 'DEP:CONSOLIDATION-NP')"         ,1   ,NA
-423 ,"('ROOT:of-IN', 'ROOT:Control-NP')"            ,1   ,NA
-424 ,"('NMOD:the-DT', 'SBJ:following-NN')"          ,2   ,NA
-425 ,"('CC:and-CC', 'SBJ:I-PP')"                    ,2   ,NA
-426 ,"('NMOD:the-DT', 'SBJ:payment-NNS')"           ,1   ,NA
-427 ,"('NMOD:the-DT', 'NMOD:membership-NN')"        ,1   ,NA
-428 ,"('NMOD:the-DT', 'NMOD:secret-JJ')"            ,1   ,NA
-429 ,"('NMOD:the-DT', 'SBJ:purpose-NN')"            ,3   ,NA
-430 ,"('PMOD:people-NNS', 'NMOD:Jewish-JJ')"        ,2   ,NA
-431 ,"('NMOD:the-DT', 'SBJ:organization-NN')"       ,1   ,NA
-432 ,"('PMOD:people-NNS', 'SBJ:I-PP')"              ,1   ,NA
-433 ,"('OBJ:people-NNS', 'PMOD:power-NN')"          ,1   ,NA
-434 ,"('ROOT:the-DT', 'ROOT:Austrian-NP')"          ,1   ,NA
-435 ,"('NMOD:the-DT', 'ROOT:effect-NN')"            ,1   ,NA
-436 ,"('NMOD:the-DT', 'NMOD:former-JJ')"            ,1   ,NA
-437 ,"('NMOD:the-DT', 'SBJ:institution-NN')"        ,1   ,NA
-438 ,"('NMOD:the-DT', 'ADV:defendant-NN')"          ,1   ,NA
-439 ,"('VMOD:the-DT', 'SBJ:Austria-NP')"            ,1   ,NA
-440 ,"('NMOD:the-DT', 'ROOT:leadership-NN')"        ,1   ,NA
-441 ,"('PMOD:church-NN', 'P:,-,')"                  ,5   ,7.9699197409567395
-442 ,"('NMOD:the-DT', 'NMOD:slight-JJS')"           ,1   ,NA
-443 ,"('VMOD:the-DT', 'SBJ:Fuehrer-NP')"            ,1   ,NA
-444 ,"('SBJ:people-NNS', 'VC:solve-VV')"            ,1   ,NA
-445 ,"('NMOD:the-DT', 'NMOD:subversive-JJ')"        ,1   ,NA
-446 ,"('NMOD:the-DT', 'SBJ:result-NN')"             ,1   ,NA
-447 ,"('NMOD:the-DT', 'ROOT:reason-NN')"            ,1   ,NA
-448 ,"('SBJ:people-NNS', 'VC:vote-VV')"             ,1   ,NA
-449 ,"('SBJ:people-NNS', 'VC:allow-VVN')"           ,1   ,NA
-450 ,"('SBJ:people-NNS', 'OBJ:vote-VV')"            ,1   ,NA
-451 ,"('SBJ:people-NNS', 'VC:stand-VV')"            ,1   ,NA
-452 ,"('DEP:the-DT', 'VMOD:Green-NP')"              ,1   ,NA
-453 ,"('SBJ:people-NNS', 'PRD:able-JJ')"            ,2   ,NA
-454 ,"('NMOD:the-DT', 'SBJ:document-NNS')"          ,2   ,NA
-455 ,"('NMOD:the-DT', 'P:,-,')"                     ,1   ,NA
-456 ,"('VMOD:the-DT', 'VMOD:Community-NP')"         ,1   ,NA
-457 ,"('VMOD:the-DT', 'SBJ:Plan-NP')"               ,1   ,NA
-458 ,"('NMOD:the-DT', 'SBJ:priority-NNS')"          ,1   ,NA
-459 ,"('PMOD:people-NNS', 'NMOD:partner-NN')"       ,1   ,NA
-460 ,"('NMOD:the-DT', 'ROOT:European-JJ')"          ,1   ,NA
-461 ,"('NMOD:the-DT', 'SBJ:court-NN')"              ,1   ,NA
-462 ,"('SBJ:people-NNS', 'PRD:treat-VVP')"          ,1   ,NA
-463 ,"('NMOD:the-DT', 'SBJ:move-NN')"               ,1   ,NA
-464 ,"('SBJ:people-NNS', 'NMOD:say-VVP')"           ,1   ,NA
-465 ,"('VMOD:no-DT', 'VMOD:Less-NP')"               ,1   ,NA
-466 ,"('PMOD:people-NNS', 'NMOD:oppose-VVP')"       ,1   ,NA
-467 ,"('OBJ:people-NNS', 'NMOD:oppose-VVP')"        ,1   ,NA
-468 ,"('P:the-DT', 'DEP:Times-NP')"                 ,1   ,NA
-469 ,"('NMOD:the-DT', 'NMOD:Cambodian-JJ')"         ,1   ,NA
-470 ,"('PMOD:people-NNS', 'ADV:travel-VV')"         ,1   ,NA
-471 ,"('P:the-DT', 'DEP:Guardian-NP')"              ,1   ,NA
-472 ,"('NMOD:the-DT', 'SBJ:law-NN')"                ,1   ,NA
-473 ,"('DEP:the-DT', 'ROOT:Planned-NP')"            ,1   ,NA
-474 ,"('DEP:the-DT', 'ROOT:American-NP')"           ,1   ,NA
-475 ,"('NMOD:the-DT', 'SBJ:case-NN')"               ,2   ,NA
-476 ,"('NMOD:the-DT', 'NMOD:Catholic-JJ')"          ,1   ,NA
-477 ,"('DEP:the-DT', 'P:St-NP')"                    ,1   ,NA
-478 ,"('P:the-DT', 'DEP:Republican-NP')"            ,1   ,NA
-479 ,"('ROOT:the-DT', 'VMOD:Blessed-NP')"           ,1   ,NA
-480 ,"('ROOT:the-DT', 'ROOT:Welsh-NP')"             ,1   ,NA
-481 ,"('NMOD:the-DT', 'SBJ:reliability-NN')"        ,1   ,NA
-482 ,"('NMOD:the-DT', 'NMOD:site-NN')"              ,1   ,NA
-483 ,"('NMOD:the-DT', 'SBJ:energy-NN')"             ,2   ,NA
-484 ,"('NMOD:the-DT', 'SBJ:direction-NN')"          ,1   ,NA
-485 ,"('NMOD:the-DT', 'SBJ:year-NNS')"              ,2   ,NA
-486 ,"('NMOD:the-DT', 'NMOD:reptilian-JJ')"         ,2   ,NA
-487 ,"('NMOD:the-DT', 'NMOD:old-JJ')"               ,5   ,7.692277511674484
-488 ,"('NMOD:the-DT', 'NMOD:original-JJ')"          ,1   ,NA
-489 ,"('NMOD:the-DT', 'NMOD:Tai-NP')"               ,1   ,NA
-490 ,"('NMOD:the-DT', 'SBJ:population-NN')"         ,1   ,NA
-491 ,"('NMOD:the-DT', 'NMOD:average-JJ')"           ,1   ,NA
-492 ,"('DEP:the-DT', 'DEP:new-JJ')"                 ,1   ,NA
-493 ,"('VMOD:the-DT', 'VMOD:Hon.-NP')"              ,1   ,NA
-494 ,"('NMOD:no-DT', 'NMOD:suitable-JJ')"           ,1   ,NA
-495 ,"('NMOD:the-DT', 'SBJ:brick-NNS')"             ,1   ,NA
-496 ,"('NMOD:the-DT', 'SBJ:building-NN')"           ,2   ,NA
-497 ,"('NMOD:the-DT', 'SBJ:workhouse-NN')"          ,1   ,NA
-498 ,"('NMOD:the-DT', 'ROOT:history-NN')"           ,2   ,NA
-499 ,"('NMOD:the-DT', 'NMOD:present-JJ')"           ,1   ,NA
-500 ,"('NMOD:the-DT', 'SBJ:scope-NN')"              ,1   ,NA
-501 ,"('NMOD:the-DT', 'SBJ:matrix-NN')"             ,1   ,NA
-502 ,"('NMOD:the-DT', 'NMOD:remaining-JJ')"         ,1   ,NA
-503 ,"('ROOT:the-DT', 'ROOT:Usability-NP')"         ,1   ,NA
-504 ,"('NMOD:the-DT', 'SBJ:other-NNS')"             ,2   ,NA
-505 ,"('NMOD:the-DT', 'NMOD:insuremythings.com-NN')",2   ,NA
-506 ,"('OBJ:people-NNS', 'NMOD:base-VVN')"          ,1   ,NA
-507 ,"('ROOT:the-DT', 'ROOT:Connect-NP')"           ,1   ,NA
-508 ,"('COORD:people-NNS', 'NMOD:support-VVP')"     ,1   ,NA
-509 ,"('NMOD:the-DT', 'NMOD:admission-NN')"         ,1   ,NA
-510 ,"('DEP:the-DT', 'P:National-NP')"              ,1   ,NA
-511 ,"('NMOD:the-DT', 'NMOD:evocative-JJ')"         ,1   ,NA
-512 ,"('NMOD:the-DT', 'SBJ:@card@-CD')"             ,2   ,NA
-513 ,"('NMOD:the-DT', 'NMOD:midnight-NN')"          ,1   ,NA
-514 ,"('ROOT:people-NNS', ""NMOD:'s-POS"")"         ,1   ,NA
-515 ,"('ADV:of-IN', 'PMOD:course-NN')"              ,8   ,12.816425128944386
-516 ,"('VMOD:the-DT', 'VMOD:Green-NP')"             ,1   ,NA
-517 ,"('CC:and-CC', 'NMOD:first-class-JJ')"         ,1   ,NA
-518 ,"('CC:and-CC', 'NMOD:child-NNS')"              ,1   ,NA
-519 ,"('CC:and-CC', 'SBJ:Peter-NP')"                ,1   ,NA
-520 ,"('CC:and-CC', 'VMOD:like-IN')"                ,1   ,NA
-521 ,"('CC:and-CC', 'ADV:know-VVD')"                ,1   ,NA
-522 ,"('DEP:and-CC', 'PMOD:hurry-NN')"              ,1   ,NA
-523 ,"('NMOD:the-DT', 'ROOT:beautifullest-JJS')"    ,1   ,NA
-524 ,"('CC:and-CC', 'PMOD:coal-NNS')"               ,1   ,NA
-525 ,"('CC:and-CC', 'ROOT:go-VVD')"                 ,1   ,NA
-526 ,"('SBJ:people-NNS', 'NMOD:high-JJR')"          ,1   ,NA
-527 ,"('NMOD:the-DT', 'SBJ:train-NN')"              ,1   ,NA
-528 ,"('CC:and-CC', 'ROOT:know-VVP')"               ,1   ,NA
-529 ,"('DEP:and-CC', 'ROOT:use-VVD')"               ,1   ,NA
-530 ,"('CC:and-CC', 'SBJ:train-NN')"                ,1   ,NA
-531 ,"('SBJ:the-DT', 'ADV:Station-NP')"             ,1   ,NA
-532 ,"('NMOD:no-DT', 'SBJ:\x97-NN')"                ,1   ,NA
-533 ,"('SBJ:people-NNS', 'VC:leave-VV')"            ,1   ,NA
-534 ,"('CC:and-CC', 'SBJ:Mother-NP')"               ,1   ,NA
-535 ,"('ROOT:of-IN', 'PMOD:course-NN')"             ,2   ,NA
-536 ,"('SBJ:people-NNS', 'VC:live-VVN')"            ,1   ,NA
-537 ,"('DEP:and-CC', 'VMOD:Mrs.-NP')"               ,1   ,NA
-538 ,"('CC:and-CC', 'ADV:presently-RB')"            ,1   ,NA
-539 ,"('CC:and-CC', 'ADV:later-RBR')"               ,1   ,NA
-540 ,"('CC:and-CC', 'ROOT:wake-VVD')"               ,1   ,NA
-541 ,"('CC:and-CC', 'SBJ:Bobbie-NP')"               ,1   ,NA
-542 ,"('ADV:no-RB', 'P:,-,')"                       ,5   ,7.6334475043355265
-543 ,"('CC:and-CC', 'VMOD:Peter-NP')"               ,1   ,NA
-544 ,"('CC:and-CC', 'VC:point-VVG')"                ,1   ,NA
-545 ,"('DEP:and-CC', 'NMOD:old-JJ')"                ,1   ,NA
-546 ,"('COORD:people-NNS', 'PMOD:train-NN')"        ,1   ,NA
-547 ,"('SBJ:people-NNS', 'VC:look-VV')"             ,1   ,NA
-548 ,"('NMOD:the-DT', 'ADV:Times-NP')"              ,1   ,NA
-549 ,"('NMOD:no-DT', 'SBJ:offence-NN')"             ,1   ,NA
-550 ,"('CC:and-CC', 'ADV:say-VVZ')"                 ,1   ,NA
-551 ,"('NMOD:the-DT', 'SBJ:letter-NN')"             ,1   ,NA
-552 ,"('CC:and-CC', 'ROOT:sweetbrier-NN')"          ,1   ,NA
-553 ,"('NMOD:the-DT', 'SBJ:accommodation-NN')"      ,1   ,NA
-554 ,"('NMOD:the-DT', 'SBJ:property-NN')"           ,1   ,NA
-555 ,"('NMOD:the-DT', 'PMOD:production-NN')"        ,1   ,NA
-556 ,"('NMOD:the-DT', 'SBJ:activity-NN')"           ,1   ,NA
-557 ,"('NMOD:the-DT', 'ROOT:way-NN')"               ,2   ,NA
-558 ,"('NMOD:the-DT', 'NMOD:trumpet-NN')"           ,1   ,NA
-559 ,"('CC:and-CC', 'NMOD:first-JJ')"               ,1   ,NA
-560 ,"('P:and-CC', 'DEP:yet-RB')"                   ,1   ,NA
-561 ,"('NMOD:the-DT', 'SBJ:poem-NN')"               ,2   ,NA
-562 ,"('CC:and-CC', 'ADV:like-IN')"                 ,1   ,NA
-563 ,"('CC:and-CC', 'PMOD:tomb-NNS')"               ,1   ,NA
-564 ,"('NMOD:the-DT', 'SBJ:desecrator-NN')"         ,1   ,NA
-565 ,"('NMOD:the-DT', 'OBJ:bolt-NN')"               ,1   ,NA
-566 ,"('AMOD:of-IN', 'SBJ:mortal-NNS')"             ,1   ,NA
-567 ,"('CC:and-CC', 'ROOT:shall-MD')"               ,1   ,NA
-568 ,"('NMOD:the-DT', 'OBJ:soul-NN')"               ,1   ,NA
-569 ,"('NMOD:the-DT', 'SBJ:patriot-arm-NN')"        ,1   ,NA
-570 ,"('NMOD:the-DT', 'NMOD:sword-NN')"             ,1   ,NA
-571 ,"('NMOD:the-DT', 'ROOT:reign-NN')"             ,1   ,NA
-572 ,"('CC:and-CC', 'NMOD:bid-NN')"                 ,1   ,NA
-573 ,"('NMOD:the-DT', 'SBJ:\x91demon-breath-NN')"   ,1   ,NA
-574 ,"('CC:and-CC', 'VMOD:might-MD')"               ,1   ,NA
-575 ,"('VMOD:the-DT', 'SBJ:Ascension-NP')"          ,1   ,NA
-576 ,"('DEP:the-DT', 'P:Cape-NP')"                  ,1   ,NA
-577 ,"('DEP:and-CC', 'AMOD:yet-RB')"                ,1   ,NA
-578 ,"('CC:and-CC', 'PMOD:yet-RB')"                 ,1   ,NA
-579 ,"('NMOD:the-DT', 'OBJ:land-NN')"               ,1   ,NA
-580 ,"('NMOD:the-DT', 'SBJ:poet-NN')"               ,1   ,NA
-581 ,"('CC:and-CC', 'DEP:Welsh-NP')"                ,1   ,NA
-582 ,"('NMOD:the-DT', 'SBJ:Roman-NNS')"             ,1   ,NA
-583 ,"('NMOD:the-DT', 'NMOD:burning-NN')"           ,1   ,NA
-584 ,"('NMOD:the-DT', 'SBJ:soul-NN')"               ,1   ,NA
-585 ,"('NMOD:the-DT', 'ROOT:Saxon-NP')"             ,1   ,NA
-586 ,"('P:the-DT', 'DEP:Literary-NP')"              ,1   ,NA
-587 ,"('NMOD:the-DT', 'ROOT:Sceptic-JJ')"           ,1   ,NA
-588 ,"('DEP:the-DT', 'ROOT:Siege-NP')"              ,1   ,NA
-589 ,"('DEP:the-DT', 'DEP:last-JJ')"                ,1   ,NA
-590 ,"('DEP:the-DT', 'ROOT:Vespers-NP')"            ,1   ,NA
-591 ,"('DEP:the-DT', 'DEP:Sister-NP')"              ,1   ,NA
-592 ,"('NMOD:the-DT', 'SBJ:material-NN')"           ,1   ,NA
-593 ,"('NMOD:the-DT', 'NMOD:change-VVG')"           ,1   ,NA
-594 ,"('NMOD:the-DT', 'SBJ:cost-NN')"               ,2   ,NA
-595 ,"('NMOD:the-DT', 'NMOD:2-CD')"                 ,2   ,NA
-596 ,"('NMOD:the-DT', 'SBJ:season-NN')"             ,1   ,NA
-597 ,"('NMOD:the-DT', 'SBJ:thought-NN')"            ,1   ,NA
-598 ,"('PMOD:people-NNS', 'COORD:read-VVG')"        ,1   ,NA
-599 ,"('PMOD:people-NNS', 'PMOD:treatment-NN')"     ,1   ,NA
-600 ,"('NMOD:the-DT', 'SBJ:surge-NN')"              ,1   ,NA
-601 ,"('ADV:no-RB', 'SBJ:I-PP')"                    ,1   ,NA
-602 ,"('NMOD:the-DT', 'SBJ:vibrate-VVG')"           ,1   ,NA
-603 ,"('PRD:people-NNS', 'PMOD:side-NN')"           ,1   ,NA
-604 ,"('NMOD:the-DT', 'SBJ:medallion-NN')"          ,2   ,NA
-605 ,"('SBJ:people-NNS', 'OBJ:put-VVD')"            ,1   ,NA
-606 ,"('NMOD:the-DT', 'SBJ:feeling-NN')"            ,1   ,NA
-607 ,"('NMOD:the-DT', 'SBJ:love-NN')"               ,1   ,NA
-608 ,"('NMOD:no-DT', 'SBJ:sugar-NN')"               ,1   ,NA
-609 ,"('VMOD:the-DT', 'SBJ:SWP-NP')"                ,1   ,NA
-610 ,"('NMOD:the-DT', 'P:""-``')"                   ,1   ,NA
-611 ,"('NMOD:the-DT', 'NMOD:Nineham-NP')"           ,1   ,NA
-612 ,"('OBJ:people-NNS', 'PMOD:poverty-NN')"        ,1   ,NA
-613 ,"('PMOD:people-NNS', 'ADV:take-VV')"           ,2   ,NA
-614 ,"('NMOD:the-DT', 'SBJ:job-NN')"                ,1   ,NA
-615 ,"('VMOD:the-DT', 'SBJ:Times-NP')"              ,1   ,NA
-616 ,"('NMOD:the-DT', 'SBJ:growth-NN')"             ,1   ,NA
-617 ,"('OBJ:people-NNS', 'P::-:')"                  ,1   ,NA
-618 ,"('NMOD:the-DT', 'ROOT:dissenter-NNS')"        ,1   ,NA
-619 ,"('NMOD:church-NN', 'COORD:school-NNS')"       ,1   ,NA
-620 ,"('NMOD:church-NN', 'OBJ:school-NNS')"         ,1   ,NA
-621 ,"('NMOD:the-DT', 'SBJ:regimentation-NN')"      ,1   ,NA
-622 ,"('NMOD:the-DT', 'NMOD:robotic-JJ')"           ,1   ,NA
-623 ,"('NMOD:the-DT', 'NMOD:work-VVG')"             ,1   ,NA
-624 ,"('NMOD:the-DT', 'NMOD:town-NN')"              ,1   ,NA
-625 ,"('NMOD:the-DT', 'ROOT:attempt-NN')"           ,1   ,NA
-626 ,"('NMOD:the-DT', 'SBJ:act-NN')"                ,1   ,NA
-627 ,"('SBJ:the-DT', 'ADV:Edinburgh-NP')"           ,1   ,NA
-628 ,"('NMOD:the-DT', 'OBJ:claim-NN')"              ,1   ,NA
-629 ,"('NMOD:the-DT', 'NMOD:temperance-NN')"        ,1   ,NA
-630 ,"('NMOD:the-DT', 'NMOD:Socialist-NP')"         ,1   ,NA
-631 ,"('CC:and-CC', 'NMOD:personal-JJ')"            ,1   ,NA
-632 ,"('NMOD:the-DT', 'ROOT:first-JJ')"             ,1   ,NA
-633 ,"('NMOD:the-DT', 'VMOD:decade-NN')"            ,1   ,NA
-634 ,"('NMOD:the-DT', 'NMOD:ruling-NN')"            ,1   ,NA
-635 ,"('NMOD:people-NNS', 'ROOT:would-MD')"         ,1   ,NA
-636 ,"('AMOD:of-IN', 'PMOD:course-NN')"             ,1   ,NA
-637 ,"('NMOD:the-DT', 'ROOT:peril-NNS')"            ,1   ,NA
-638 ,"('NMOD:the-DT', 'SBJ:leader-NNS')"            ,1   ,NA
-639 ,"('NMOD:the-DT', 'SBJ:right-NN')"              ,1   ,NA
-640 ,"('ROOT:church-NN', 'P:--:')"                  ,1   ,NA
-641 ,"('NMOD:the-DT', 'SBJ:church-NN')"             ,1   ,NA
-642 ,"('SBJ:church-NN', 'ROOT:could-MD')"           ,1   ,NA
-643 ,"('NMOD:the-DT', 'SBJ:advantage-NNS')"         ,1   ,NA
-644 ,"('NMOD:the-DT', 'NMOD:abject-JJ')"            ,1   ,NA
-645 ,"('NMOD:the-DT', 'NMOD:terrifying-JJ')"        ,1   ,NA
-646 ,"('NMOD:the-DT', 'ROOT:circumstance-NNS')"     ,1   ,NA
-647 ,"('NMOD:the-DT', 'SBJ:crime-NN')"              ,1   ,NA
-648 ,"('NMOD:the-DT', 'NMOD:grow-VVG')"             ,1   ,NA
-649 ,"('SBJ:people-NNS', 'OBJ:download-NN')"        ,1   ,NA
-650 ,"('PMOD:people-NNS', 'PMOD:Ireland-NP')"       ,1   ,NA
-651 ,"('CC:and-CC', 'NMOD:Kings-NP')"               ,1   ,NA
-652 ,"('DEP:of-IN', 'P:the-DT')"                    ,2   ,NA
-653 ,"('P:the-DT', 'DEP:SIXTEENTH-NP')"             ,1   ,NA
-654 ,"('P:the-DT', 'DEP:Assembly-NP')"              ,1   ,NA
-655 ,"('DEP:the-DT', 'DEP:Speaker-NP')"             ,1   ,NA
-656 ,"('NMOD:the-DT', 'PMOD:chair-NN')"             ,1   ,NA
-657 ,"('DEP:the-DT', 'P:Speaker-NP')"               ,1   ,NA
-658 ,"('NMOD:the-DT', 'SBJ:minute-NNS')"            ,1   ,NA
-659 ,"('VMOD:the-DT', 'SBJ:Speaker-NP')"            ,2   ,NA
-660 ,"('ROOT:the-DT', 'ROOT:Committee-NP')"         ,1   ,NA
-661 ,"('CC:and-CC', 'NMOD:ALLOWANCES-NP')"          ,1   ,NA
-662 ,"('NMOD:the-DT', 'SBJ:proposal-NN')"           ,3   ,NA
-663 ,"('NMOD:the-DT', 'COORD:presentation-NN')"     ,1   ,NA
-664 ,"('DEP:the-DT', 'SBJ:Speaker-NP')"             ,1   ,NA
-665 ,"('VMOD:the-DT', 'VMOD:Home-NP')"              ,1   ,NA
-666 ,"('SBJ:people-NNS', 'ADV:could-MD')"           ,1   ,NA
-667 ,"('SBJ:people-NNS', 'VC:apply-VVN')"           ,1   ,NA
-668 ,"('NMOD:the-DT', 'SBJ:situation-NN')"          ,2   ,NA
-669 ,"('SBJ:people-NNS', 'PMOD:flee-VVG')"          ,1   ,NA
-670 ,"('PRN:people-NNS', 'ROOT:SA-NP')"             ,1   ,NA
-671 ,"('NMOD:the-DT', 'PMOD:sex-NN')"               ,1   ,NA
-672 ,"('SBJ:people-NNS', 'P:.-SENT')"               ,1   ,NA
-673 ,"('NMOD:the-DT', 'SBJ:manager-NN')"            ,1   ,NA
-674 ,"('PMOD:people-NNS', 'NMOD:like-IN')"          ,1   ,NA
-675 ,"('SBJ:the-DT', 'ROOT:depart-VVD')"            ,1   ,NA
-676 ,"('NMOD:the-DT', 'SBJ:library-NN')"            ,1   ,NA
-677 ,"('NMOD:the-DT', 'SBJ:report-NN')"             ,4   ,8.796004901009363
-678 ,"('NMOD:the-DT', 'SBJ:effect-NNS')"            ,1   ,NA
-679 ,"('ROOT:people-NNS', 'NMOD:certain-JJ')"       ,1   ,NA
-680 ,"('NMOD:the-DT', 'SBJ:island-NNS')"            ,1   ,NA
-681 ,"('PMOD:people-NNS', 'NMOD:live-VV')"          ,1   ,NA
-682 ,"('NMOD:the-DT', 'SBJ:problem-NN')"            ,2   ,NA
-683 ,"('NMOD:no-DT', 'NMOD:send-VVG')"              ,1   ,NA
-684 ,"('DEP:and-CC', 'ROOT:thought-NNS')"           ,1   ,NA
-685 ,"('ROOT:and-CC', 'SBJ:RESPONSIBILITIES-NP')"   ,1   ,NA
-686 ,"('NMOD:the-DT', 'SBJ:postholder-NN')"         ,2   ,NA
-687 ,"('ADV:the-DT', 'SBJ:ITNTO-NP')"               ,1   ,NA
-688 ,"('NMOD:the-DT', 'NMOD:effective-JJ')"         ,1   ,NA
-689 ,"('NMOD:the-DT', 'NMOD:ITNTO-NP')"             ,1   ,NA
-690 ,"('NMOD:the-DT', 'NMOD:Avenue-NP')"            ,1   ,NA
-691 ,"('DEP:the-DT', 'ROOT:Crown-NP')"              ,1   ,NA
-692 ,"('NMOD:the-DT', 'NMOD:world-NN')"             ,1   ,NA
-693 ,"('CC:and-CC', 'NMOD:psychological-JJ')"       ,1   ,NA
-694 ,"('SBJ:people-NNS', 'ROOT:want-VVP')"          ,2   ,NA
-695 ,"('SBJ:people-NNS', 'OBJ:reach-VV')"           ,1   ,NA
-696 ,"('NMOD:the-DT', 'SBJ:trend-NN')"              ,1   ,NA
-697 ,"('NMOD:people-NNS', 'PMOD:business-NN')"      ,1   ,NA
-698 ,"('NMOD:the-DT', 'SBJ:detail-NN')"             ,1   ,NA
-699 ,"('NMOD:the-DT', 'ADV:procedure-NN')"          ,1   ,NA
-700 ,"('NMOD:the-DT', 'SBJ:appeal-NN')"             ,2   ,NA
-701 ,"('ROOT:the-DT', 'ROOT:Admiral-NP')"           ,1   ,NA
-702 ,"('NMOD:the-DT', 'SBJ:plot-NN')"               ,1   ,NA
-703 ,"('NMOD:the-DT', 'SBJ:presentation-NN')"       ,1   ,NA
-704 ,"('NMOD:the-DT', 'SBJ:ban-NN')"                ,1   ,NA
-705 ,"('NMOD:the-DT', 'NMOD:Brazilian-JJ')"         ,1   ,NA
-706 ,"('NMOD:the-DT', 'NMOD:mahogany-NN')"          ,1   ,NA
-707 ,"('NMOD:the-DT', 'NMOD:illegal-JJ')"           ,1   ,NA
-708 ,"('NMOD:the-DT', 'SBJ:threat-NNS')"            ,1   ,NA
-709 ,"('NMOD:the-DT', 'NMOD:zebra-NN')"             ,1   ,NA
-710 ,"('NMOD:the-DT', 'NMOD:front-JJ')"             ,1   ,NA
-711 ,"('NMOD:the-DT', 'SBJ:retina-NN')"             ,1   ,NA
-712 ,"('NMOD:the-DT', 'NMOD:6-CD')"                 ,1   ,NA
-713 ,"('NMOD:the-DT', 'SBJ:male-NNS')"              ,1   ,NA
-714 ,"('NMOD:the-DT', 'SBJ:pedipalp-NNS')"          ,1   ,NA
-715 ,"('NMOD:the-DT', 'SBJ:spider-NN')"             ,1   ,NA
-716 ,"('NMOD:the-DT', 'NMOD:male-JJ')"              ,1   ,NA
-717 ,"('NMOD:the-DT', 'SBJ:male-NN')"               ,1   ,NA
-718 ,"('NMOD:the-DT', 'SBJ:image-NNS')"             ,1   ,NA
-719 ,"('CC:and-CC', 'SBJ:Wanda-NP')"                ,1   ,NA
-720 ,"('DEP:the-DT', 'DEP:King-NP')"                ,1   ,NA
-721 ,"('VMOD:the-DT', 'VMOD:English-NP')"           ,1   ,NA
-722 ,"('NMOD:the-DT', 'VMOD:young-JJ')"             ,1   ,NA
-723 ,"('DEP:the-DT', ""ROOT:'-POS"")"               ,1   ,NA
-724 ,"('NMOD:the-DT', 'NMOD:ideal-JJ')"             ,1   ,NA
-725 ,"('NMOD:the-DT', 'NMOD:heavy-JJ')"             ,1   ,NA
-726 ,"('SBJ:people-NNS', 'PMOD:enter-VVG')"         ,1   ,NA
-727 ,"('SBJ:the-DT', 'P:""-``')"                    ,2   ,NA
-728 ,"('NMOD:the-DT', 'NMOD:Author-NP')"            ,1   ,NA
-729 ,"('DEP:Church-NP', 'ROOT:Chairs-NP')"          ,1   ,NA
-730 ,"('NMOD:church-NN', 'PMOD:chair-NNS')"         ,1   ,NA
-731 ,"('NMOD:church-NN', 'COORD:seating-NN')"       ,1   ,NA
-732 ,"('NMOD:no-DT', 'ADV:theory-NN')"              ,1   ,NA
-733 ,"('NMOD:no-DT', 'ROOT:stress-NN')"             ,1   ,NA
-734 ,"('VMOD:the-DT', 'VMOD:bad-JJR')"              ,1   ,NA
-735 ,"('NMOD:no-DT', 'ROOT:@card@-CD')"             ,1   ,NA
-736 ,"('NMOD:the-DT', 'NMOD:publicity-NN')"         ,1   ,NA
-737 ,"('NMOD:the-DT', 'ROOT:loco-NNS')"             ,1   ,NA
-738 ,"('NMOD:the-DT', 'SBJ:school-NNS')"            ,1   ,NA
-739 ,"('NMOD:the-DT', 'PMOD:information-NN')"       ,1   ,NA
-740 ,"('NMOD:the-DT', 'PMOD:facility-NNS')"         ,1   ,NA
-741 ,"('NMOD:the-DT', 'AMOD:vertically-RB')"        ,1   ,NA
-742 ,"('NMOD:the-DT', 'NMOD:unique-JJ')"            ,1   ,NA
-743 ,"('DEP:the-DT', 'ROOT:New-NP')"                ,1   ,NA
-744 ,"('NMOD:the-DT', 'SBJ:chapter-NNS')"           ,1   ,NA
-745 ,"('PMOD:church-NNS', 'PMOD:Harlem-NP')"        ,1   ,NA
-746 ,"('NMOD:the-DT', 'SBJ:morrisons-NNS')"         ,1   ,NA
-747 ,"('VMOD:the-DT', 'VMOD:Graduate-NP')"          ,1   ,NA
-748 ,"('VMOD:the-DT', 'SBJ:School-NP')"             ,1   ,NA
-749 ,"('NMOD:the-DT', 'NMOD:cartographic-JJ')"      ,1   ,NA
-750 ,"('SBJ:people-NNS', 'P:,-,')"                  ,1   ,NA
-751 ,"('VMOD:the-DT', 'VMOD:Round-NP')"             ,1   ,NA
-752 ,"('PMOD:people-NNS', 'NMOD:build-VVP')"        ,1   ,NA
-753 ,"('NMOD:the-DT', 'SBJ:wood-NN')"               ,1   ,NA
-754 ,"('NMOD:no-DT', 'SBJ:force-NN')"               ,1   ,NA
-755 ,"('NMOD:the-DT', 'SBJ:wood-NNS')"              ,1   ,NA
-756 ,"('NMOD:the-DT', 'SBJ:area-NN')"               ,1   ,NA
-757 ,"('PMOD:people-NNS', 'COORD:creature-NNS')"    ,1   ,NA
-758 ,"('NMOD:the-DT', 'SBJ:drover-NNS')"            ,1   ,NA
-759 ,"('NMOD:the-DT', 'SBJ:house-NN')"              ,1   ,NA
-760 ,"('NMOD:the-DT', 'ADV:post-NNS')"              ,1   ,NA
-761 ,"('NMOD:the-DT', 'NMOD:green-JJ')"             ,1   ,NA
-762 ,"('SBJ:people-NNS', 'ROOT:work-VVD')"          ,1   ,NA
-763 ,"('NMOD:no-DT', 'NMOD:planning-NN')"           ,1   ,NA
-764 ,"('NMOD:the-DT', 'NMOD:46-year-old-JJ')"       ,1   ,NA
-765 ,"('NMOD:the-DT', 'NMOD:4-pound-JJ')"           ,1   ,NA
-766 ,"('DEP:of-IN', 'NMOD:wachovia-NN')"            ,1   ,NA
-767 ,"('NMOD:the-DT', 'NMOD:language-NNS')"         ,1   ,NA
-768 ,"('NMOD:the-DT', 'DEP:history-NN')"            ,1   ,NA
-769 ,"('VMOD:the-DT', 'SBJ:English-NP')"            ,1   ,NA
-770 ,"('NMOD:the-DT', 'NMOD:English-JJ')"           ,1   ,NA
-771 ,"('DEP:the-DT', 'VMOD:real-JJ')"               ,1   ,NA
-772 ,"('NMOD:the-DT', 'SBJ:French-NNS')"            ,1   ,NA
-773 ,"('VMOD:the-DT', 'VMOD:Language-NP')"          ,1   ,NA
-774 ,"('ROOT:people-NNS', 'P:?-SENT')"              ,1   ,NA
-775 ,"('NMOD:the-DT', 'NMOD:sting-NN')"             ,1   ,NA
-776 ,"('NMOD:the-DT', 'NMOD:art-NN')"               ,1   ,NA
-777 ,"('NMOD:the-DT', 'NMOD:propose-VVN')"          ,1   ,NA
-778 ,"('NMOD:the-DT', 'SBJ:merger-NN')"             ,1   ,NA
-779 ,"('NMOD:the-DT', 'ROOT:party-NNS')"            ,1   ,NA
-780 ,"('NMOD:the-DT', 'NMOD:gross-JJ')"             ,1   ,NA
-781 ,"('NMOD:the-DT', 'SBJ:party-NNS')"             ,2   ,NA
-782 ,"('NMOD:the-DT', 'NMOD:primary-JJ')"           ,2   ,NA
-783 ,"('NMOD:the-DT', 'ROOT:change-NNS')"           ,1   ,NA
-784 ,"('NMOD:the-DT', 'SBJ:property-NNS')"          ,1   ,NA
-785 ,"('NMOD:the-DT', 'NMOD:party-NNS')"            ,1   ,NA
-786 ,"('NMOD:the-DT', 'ROOT:fact-NN')"              ,1   ,NA
-787 ,"('NMOD:the-DT', 'NMOD:large-JJS')"            ,1   ,NA
-788 ,"('NMOD:no-DT', 'NMOD:significant-JJ')"        ,1   ,NA
-789 ,"('OBJ:people-NNS', 'P:--:')"                  ,1   ,NA
-790 ,"('NMOD:the-DT', 'SBJ:paper-NN')"              ,3   ,NA
-791 ,"('NMOD:the-DT', 'SBJ:study-NN')"              ,3   ,NA
-792 ,"('NMOD:the-DT', 'ROOT:importance-NN')"        ,2   ,NA
-793 ,"('NMOD:the-DT', 'NMOD:paper-NN')"             ,1   ,NA
-794 ,"('VMOD:the-DT', 'SBJ:White-NP')"              ,1   ,NA
-795 ,"('VMOD:the-DT', 'VMOD:White-NP')"             ,1   ,NA
-796 ,"('NMOD:the-DT', 'SBJ:author-NN')"             ,1   ,NA
-797 ,"('NMOD:the-DT', 'NMOD:policy-NN')"            ,1   ,NA
-798 ,"('NMOD:the-DT', 'NMOD:transition-NN')"        ,1   ,NA
-799 ,"('NMOD:the-DT', 'NMOD:project-NN')"           ,1   ,NA
-800 ,"('PMOD:people-NNS', 'COORD:impact-NN')"       ,1   ,NA
-801 ,"('NMOD:the-DT', 'SBJ:role-NN')"               ,1   ,NA
-802 ,"('PMOD:people-NNS', 'COORD:increase-VV')"     ,1   ,NA
-803 ,"('NMOD:the-DT', 'SBJ:finding-NNS')"           ,2   ,NA
-804 ,"('NMOD:the-DT', 'NMOD:brewery-NN')"           ,1   ,NA
-805 ,"('NMOD:the-DT', 'COORD:whole-NN')"            ,1   ,NA
-806 ,"('NMOD:the-DT', 'ROOT:premise-NNS')"          ,1   ,NA
-807 ,"('NMOD:the-DT', 'SBJ:entrance-NN')"           ,1   ,NA
-808 ,"('DEP:the-DT', 'VMOD:Three-NP')"              ,1   ,NA
-809 ,"('NMOD:the-DT', 'SBJ:brother-NNS')"           ,1   ,NA
-810 ,"('SBJ:the-DT', 'VMOD:Home-NP')"               ,1   ,NA
-811 ,"('NMOD:the-DT', 'NMOD:revise-VVN')"           ,1   ,NA
-812 ,"('NMOD:the-DT', 'SBJ:leaflet-NN')"            ,1   ,NA
-813 ,"('NMOD:the-DT', 'SBJ:campaign-NN')"           ,1   ,NA
-814 ,"('NMOD:the-DT', 'SBJ:presence-NN')"           ,1   ,NA
-815 ,"('NMOD:the-DT', 'SBJ:elderly-JJ')"            ,1   ,NA
-816 ,"('NMOD:the-DT', 'SBJ:procedure-NN')"          ,1   ,NA
-817 ,"('NMOD:the-DT', 'NMOD:small-JJ')"             ,1   ,NA
-818 ,"('NMOD:the-DT', 'NMOD:fibreoptic-JJ')"        ,1   ,NA
-819 ,"('NMOD:the-DT', 'NMOD:important-JJ')"         ,1   ,NA
-820 ,"('NMOD:no-DT', 'NMOD:Tuner-NP')"              ,2   ,NA
-821 ,"('NMOD:no-DT', 'NMOD:DVB-T-NP')"              ,2   ,NA
-822 ,"('NMOD:no-DT', 'NMOD:Hauppauge-NP')"          ,1   ,NA
-823 ,"('VMOD:no-DT', 'VMOD:Hauppauge-NP')"          ,2   ,NA
-824 ,"('DEP:no-DT', 'DEP:Hauppauge-NP')"            ,8   ,14.115708113074648
-825 ,"('DEP:no-DT', 'DEP:Analogue-NP')"             ,1   ,NA
-826 ,"('SBJ:people-NNS', 'VC:report-VVN')"          ,1   ,NA
-827 ,"('DEP:no-DT', 'AMOD:Digital-NP')"             ,1   ,NA
-828 ,"('DEP:no-DT', 'DEP:Digital-NP')"              ,1   ,NA
-829 ,"('NMOD:the-DT', 'NMOD:easy-JJS')"             ,1   ,NA
-830 ,"('NMOD:the-DT', 'NMOD:DVB-T-NP')"             ,1   ,NA
-831 ,"('NMOD:no-DT', 'SBJ:channel-NNS')"            ,1   ,NA
-832 ,"('PMOD:people-NNS', 'P:""-``')"               ,2   ,NA
-833 ,"('PMOD:people-NNS', 'NMOD:set-VVN')"          ,1   ,NA
-834 ,"('OBJ:people-NNS', 'NMOD:electrical-JJ')"     ,1   ,NA
-835 ,"('NMOD:the-DT', 'ROOT:nvidia-NN')"            ,1   ,NA
-836 ,"('NMOD:the-DT', 'NMOD:hire-NN')"              ,1   ,NA
-837 ,"('NMOD:the-DT', 'SBJ:countryside-NN')"        ,1   ,NA
-838 ,"('NMOD:the-DT', 'PMOD:falcon-NN')"            ,1   ,NA
-839 ,"('NMOD:the-DT', 'SBJ:village-NN')"            ,1   ,NA
-840 ,"('DEP:the-DT', 'ROOT:Bridge-NP')"             ,1   ,NA
-841 ,"('NMOD:the-DT', 'SBJ:weather-NN')"            ,1   ,NA
-842 ,"('NMOD:the-DT', 'SBJ:hay-NN')"                ,1   ,NA
-843 ,"('VMOD:the-DT', 'P:""-\'\'')"                 ,1   ,NA
-844 ,"('NMOD:the-DT', 'SBJ:local-NNS')"             ,1   ,NA
-845 ,"('CC:and-CC', 'SBJ:GOSLINGS-NP')"             ,1   ,NA
-846 ,"('VMOD:the-DT', 'SBJ:Nene-NP')"               ,1   ,NA
-847 ,"('ROOT:the-DT', 'ROOT:Wash-NP')"              ,1   ,NA
-848 ,"('ROOT:the-DT', 'ROOT:Middle-NP')"            ,2   ,NA
-849 ,"('NMOD:the-DT', 'SBJ:scenery-NN')"            ,1   ,NA
-850 ,"('NMOD:the-DT', 'SBJ:trouble-NN')"            ,1   ,NA
-851 ,"('NMOD:the-DT', 'SBJ:cathedral-NN')"          ,1   ,NA
-852 ,"('P:the-DT', 'DEP:Wash-NP')"                  ,1   ,NA
-853 ,"('NMOD:the-DT', 'SBJ:sign-NN')"               ,1   ,NA
-854 ,"('NMOD:no-DT', 'ROOT:entry-NN')"              ,1   ,NA
-855 ,"('PMOD:people-NNS', 'OBJ:miss-VVP')"          ,1   ,NA
-856 ,"('VMOD:the-DT', 'SBJ:Ouse-NP')"               ,1   ,NA
-857 ,"('CC:and-CC', 'NMOD:one-CD')"                 ,1   ,NA
-858 ,"('NMOD:the-DT', 'NMOD:Middle-NP')"            ,1   ,NA
-859 ,"('SBJ:people-NNS', ""VMOD:n't-RB"")"          ,1   ,NA
-860 ,"('CC:and-CC', 'PRD:shall-MD')"                ,1   ,NA
-861 ,"('VMOD:the-DT', 'SBJ:TUC-NP')"                ,1   ,NA
-862 ,"('OBJ:people-NNS', 'PMOD:tackle-VVG')"        ,1   ,NA
-863 ,"('NMOD:the-DT', 'NMOD:role-NN')"              ,2   ,NA
-864 ,"('SBJ:people-NNS', 'OBJ:get-VVP')"            ,1   ,NA
-865 ,"('NMOD:the-DT', 'SBJ:spider-NNS')"            ,1   ,NA
-866 ,"('NMOD:the-DT', 'SBJ:result-NNS')"            ,1   ,NA
-867 ,"('NMOD:the-DT', 'SBJ:reason-NN')"             ,2   ,NA
-868 ,"('NMOD:Church-NP', ""NMOD:'s-POS"")"          ,1   ,NA
-869 ,"('NMOD:the-DT', 'ROOT:arrival-NN')"           ,1   ,NA
-870 ,"('NMOD:the-DT', 'NMOD:King-NP')"              ,1   ,NA
-871 ,"('NMOD:the-DT', 'ADV:French-JJ')"             ,1   ,NA
-872 ,"('VMOD:the-DT', 'SBJ:Structure-NP')"          ,1   ,NA
-873 ,"('NMOD:the-DT', 'NMOD:Encyclopaedia-NP')"     ,1   ,NA
-874 ,"('NMOD:the-DT', 'NMOD:human-JJ')"             ,1   ,NA
-875 ,"('NMOD:the-DT', 'NMOD:vermiform-JJ')"         ,1   ,NA
-876 ,"('NMOD:the-DT', 'SBJ:appendix-NN')"           ,1   ,NA
-877 ,"('NMOD:the-DT', 'NMOD:market-NN')"            ,1   ,NA
-878 ,"('NMOD:the-DT', 'ROOT:godfather-NNS')"        ,1   ,NA
-879 ,"('NMOD:the-DT', 'NMOD:downward-JJ')"          ,1   ,NA
-880 ,"('SBJ:people-NNS', 'COORD:donate-VV')"        ,1   ,NA
-881 ,"('SBJ:people-NNS', 'ADV:donate-VVP')"         ,1   ,NA
-882 ,"('DEP:the-DT', 'DEP:rich-JJR')"               ,1   ,NA
-883 ,"('SBJ:people-NNS', 'ROOT:give-VVP')"          ,1   ,NA
-884 ,"('SBJ:people-NNS', 'VC:struggle-VVG')"        ,1   ,NA
-885 ,"('NMOD:the-DT', 'SBJ:world-NN')"              ,1   ,NA
-886 ,"('DEP:people-NNS', 'NMOD:regional-JJ')"       ,1   ,NA
-887 ,"('SBJ:people-NNS', 'OBJ:find-VVP')"           ,2   ,NA
-888 ,"('SBJ:people-NNS', 'ROOT:open-VVD')"          ,1   ,NA
-889 ,"('NMOD:the-DT', 'SBJ:charity-NN')"            ,4   ,8.96305898567253
-890 ,"('NMOD:the-DT', 'NMOD:charity-NN')"           ,1   ,NA
-891 ,"('OBJ:people-NNS', 'NMOD:significant-JJ')"    ,1   ,NA
-892 ,"('OBJ:people-NNS', 'PMOD:constituency-NN')"   ,1   ,NA
-893 ,"('NMOD:people-NNS', 'SBJ:adviser-NNS')"       ,2   ,NA
-894 ,"('NMOD:the-DT', 'NMOD:tomorrow-NN')"          ,1   ,NA
-895 ,"('PMOD:people-NNS', 'PMOD:Hastings-NP')"      ,1   ,NA
-896 ,"('SBJ:people-NNS', 'NMOD:successful-JJ')"     ,1   ,NA
-897 ,"('NMOD:the-DT', 'NMOD:professional-JJ')"      ,1   ,NA
-898 ,"('SBJ:people-NNS', 'COORD:reflect-VVP')"      ,1   ,NA
-899 ,"('PMOD:people-NNS', 'SBJ:Wales-NP')"          ,1   ,NA
-900 ,"('PMOD:people-NNS', 'PMOD:Wales-NP')"         ,1   ,NA
-901 ,"('NMOD:the-DT', 'SBJ:art-NNS')"               ,1   ,NA
-902 ,"('SBJ:people-NNS', 'OBJ:change-VV')"          ,1   ,NA
-903 ,"('COORD:people-NNS', 'NMOD:learn-VVG')"       ,1   ,NA
-904 ,"('NMOD:the-DT', 'NMOD:annual-JJ')"            ,1   ,NA
-905 ,"('COORD:people-NNS', 'PMOD:art-NNS')"         ,1   ,NA
-906 ,"('VMOD:the-DT', 'VMOD:Social-NP')"            ,1   ,NA
-907 ,"('NMOD:the-DT', 'SBJ:choice-NN')"             ,2   ,NA
-908 ,"('DEP:the-DT', 'DEP:DEGREES-NP')"             ,1   ,NA
-909 ,"('P:of-IN', 'DEP:the-DT')"                    ,1   ,NA
-910 ,"('DEP:the-DT', 'P:FACULTY-NP')"               ,1   ,NA
-911 ,"('NMOD:the-DT', 'NMOD:Ma-NP')"                ,1   ,NA
-912 ,"('NMOD:the-DT', 'NMOD:principal-JJ')"         ,1   ,NA
-913 ,"('NMOD:the-DT', 'NMOD:ma-NN')"                ,1   ,NA
-914 ,"('NMOD:the-DT', 'NMOD:Honours-NP')"           ,1   ,NA
-915 ,"('NMOD:the-DT', 'NMOD:three-year-JJ')"        ,1   ,NA
-916 ,"('VMOD:the-DT', 'SBJ:Faculty-NP')"            ,2   ,NA
-917 ,"('NMOD:the-DT', 'NMOD:Faculty-NP')"           ,1   ,NA
-918 ,"('NMOD:the-DT', 'NMOD:appropriate-JJ')"       ,1   ,NA
-919 ,"('SBJ:people-NNS', 'OBJ:terminal-NN')"        ,1   ,NA
-920 ,"('SBJ:people-NNS', 'VC:go-VV')"               ,1   ,NA
-921 ,"('NMOD:the-DT', 'NMOD:hospice-NN')"           ,1   ,NA
-922 ,"('IOBJ:people-NNS', 'NMOD:painful-JJ')"       ,1   ,NA
-923 ,"('SBJ:people-NNS', 'NMOD:come-VVP')"          ,1   ,NA
-924 ,"('NMOD:the-DT', 'NMOD:modern-JJ')"            ,1   ,NA
-925 ,"('NMOD:the-DT', 'ADV:staff-NN')"              ,1   ,NA
-926 ,"('NMOD:the-DT', 'SBJ:atmosphere-NN')"         ,2   ,NA
-927 ,"('SBJ:people-NNS', 'PRD:ill-JJ')"             ,1   ,NA
-928 ,"('ROOT:the-DT', 'VMOD:Department-NP')"        ,1   ,NA
-929 ,"('NMOD:the-DT', 'NMOD:standard-JJ')"          ,1   ,NA
-930 ,"('DEP:the-DT', 'VMOD:Information-NP')"        ,1   ,NA
-931 ,"('ROOT:the-DT', 'VMOD:Kitchen-NP')"           ,1   ,NA
-932 ,"('DEP:and-CC', 'SBJ:Jas-NP')"                 ,1   ,NA
-933 ,"('PMOD:people-NNS', 'VMOD:like-IN')"          ,1   ,NA
-934 ,"('SBJ:people-NNS', 'COORD:like-VVP')"         ,1   ,NA
-935 ,"('NMOD:the-DT', 'NMOD:Basics-NP')"            ,1   ,NA
-936 ,"('NMOD:the-DT', 'NMOD:colour-NN')"            ,1   ,NA
-937 ,"('DEP:the-DT', 'DEP:Basics-NP')"              ,1   ,NA
-938 ,"('NMOD:the-DT', 'SBJ:z-1-NN')"                ,1   ,NA
-939 ,"('NMOD:the-DT', 'SBJ:design-NN')"             ,2   ,NA
-940 ,"('ROOT:the-DT', 'VMOD:Z-1-NP')"               ,1   ,NA
-941 ,"('NMOD:the-DT', 'SBJ:disorder-NN')"           ,1   ,NA
-942 ,"('NMOD:the-DT', 'SBJ:area-NNS')"              ,1   ,NA
-943 ,"('NMOD:the-DT', 'SBJ:blister-NNS')"           ,1   ,NA
-944 ,"('NMOD:the-DT', 'SBJ:virus-NN')"              ,3   ,NA
-945 ,"('SBJ:people-NNS', 'VC:come-VVN')"            ,1   ,NA
-946 ,"('SBJ:people-NNS', 'NMOD:mild-JJ')"           ,1   ,NA
-947 ,"('NMOD:the-DT', 'SBJ:sore-NNS')"              ,2   ,NA
-948 ,"('PMOD:people-NNS', 'NMOD:HSV-NP')"           ,1   ,NA
-949 ,"('NMOD:the-DT', 'SBJ:infection-NN')"          ,1   ,NA
-950 ,"('NMOD:the-DT', 'NMOD:body-NN')"              ,1   ,NA
-951 ,"('NMOD:the-DT', 'SBJ:factor-NNS')"            ,1   ,NA
-952 ,"('NMOD:the-DT', 'SBJ:treatment-NN')"          ,1   ,NA
-953 ,"('NMOD:the-DT', 'SBJ:development-NN')"        ,1   ,NA
-954 ,"('SBJ:people-NNS', 'OBJ:reactivation-NNS')"   ,1   ,NA
-955 ,"('NMOD:the-DT', 'SBJ:review-NN')"             ,1   ,NA
-956 ,"('NMOD:the-DT', 'NMOD:American-JJ')"          ,1   ,NA
-957 ,"('NMOD:the-DT', 'NMOD:subscription-NN')"      ,1   ,NA
-958 ,"('NMOD:the-DT', 'NMOD:book-NNS')"             ,1   ,NA
-959 ,"('NMOD:the-DT', 'SBJ:contractor-NN')"         ,1   ,NA
-960 ,"('DEP:the-DT', 'SBJ:new-JJ')"                 ,1   ,NA
-961 ,"('NMOD:the-DT', 'NMOD:advance-NN')"           ,1   ,NA
-962 ,"('NMOD:the-DT', 'SBJ:block-NN')"              ,1   ,NA
-963 ,"('VMOD:the-DT', 'VMOD:relocate-VVN')"         ,1   ,NA
-964 ,"('NMOD:the-DT', 'SBJ:facility-NN')"           ,1   ,NA
-965 ,"('COORD:people-NNS', 'PRD:enthusiastic-JJ')"  ,1   ,NA
-966 ,"('PMOD:people-NNS', 'ROOT:meet-VVD')"         ,1   ,NA
-967 ,"('SBJ:people-NNS', 'OBJ:respond-VVG')"        ,1   ,NA
-968 ,"('NMOD:the-DT', 'SBJ:school,population-NN')"  ,1   ,NA
-969 ,"('NMOD:the-DT', 'NMOD:S4-NP')"                ,1   ,NA
-970 ,"('DEP:the-DT', 'VMOD:Scriptwriters-NP')"      ,1   ,NA
-971 ,"('NMOD:the-DT', 'NMOD:name-NNS')"             ,1   ,NA
-972 ,"('NMOD:the-DT', 'NMOD:Scriptwriters-NP')"     ,1   ,NA
-973 ,"('NMOD:the-DT', 'NMOD:six-CD')"               ,1   ,NA
-974 ,"('NMOD:the-DT', 'NMOD:film4-JJ')"             ,1   ,NA
-975 ,"('NMOD:the-DT', 'NMOD:dreaded-JJ')"           ,1   ,NA
-976 ,"('NMOD:the-DT', 'SBJ:template-NN')"           ,1   ,NA
-977 ,"('NMOD:the-DT', 'PMOD:complete-JJ')"          ,1   ,NA
-978 ,"('P:the-DT', 'ROOT:House-NP')"                ,1   ,NA
-979 ,"('NMOD:the-DT', 'NMOD:parent-NNS')"           ,1   ,NA
-980 ,"('CC:and-CC', 'SBJ:Dante-NP')"                ,1   ,NA
-981 ,"('NMOD:the-DT', 'SBJ:music-NN')"              ,1   ,NA
-982 ,"('DEP:the-DT', 'P:Dome-NP')"                  ,1   ,NA
-983 ,"('NMOD:the-DT', 'NMOD:Rave-NP')"              ,1   ,NA
-984 ,"('NMOD:the-DT', 'SBJ:scene-NN')"              ,1   ,NA
-985 ,"('NMOD:the-DT', 'SBJ:remit-NN')"              ,1   ,NA
-986 ,"('DEP:the-DT', 'VMOD:Moray-NP')"              ,1   ,NA
-987 ,"('NMOD:the-DT', 'SBJ:group-NN')"              ,1   ,NA
-988 ,"('NMOD:People-NP', ""NMOD:'s-POS"")"          ,1   ,NA
-989 ,"('P:People-NP', ""NMOD:'s-POS"")"             ,1   ,NA
-990 ,"('PMOD:people-NNS', 'P:Depression-NP')"       ,1   ,NA
-991 ,"('NMOD:the-DT', 'NMOD:new-JJR')"              ,1   ,NA
-992 ,"('VMOD:the-DT', 'VMOD:Cat-NP')"               ,1   ,NA
-993 ,"('NMOD:the-DT', 'NMOD:direct-JJ')"            ,1   ,NA
-994 ,"('NMOD:the-DT', 'NMOD:Internet-NN')"          ,1   ,NA
-995 ,"('NMOD:the-DT', 'SBJ:prosecution-NN')"        ,1   ,NA
-996 ,"('NMOD:the-DT', 'SBJ:time-NN')"               ,1   ,NA
-997 ,"('NMOD:the-DT', 'NMOD:threshold-NN')"         ,1   ,NA
-998 ,"('NMOD:the-DT', 'SBJ:competition-NN')"        ,1   ,NA
-999 ,"('SBJ:people-NNS', 'OBJ:would-MD')"           ,1   ,NA
-1000,"('NMOD:the-DT', 'SBJ:nature-NN')"             ,1   ,NA
-1001,"('SBJ:people-NNS', 'COORD:complain-VVD')"     ,1   ,NA
-1002,"('NMOD:the-DT', 'NMOD:anti-trust-NN')"        ,2   ,NA
-1003,"('NMOD:no-DT', 'SBJ:company-NN')"             ,1   ,NA
-1004,"('CC:and-CC', 'NMOD:product-NNS')"            ,1   ,NA
-1005,"('NMOD:the-DT', 'NMOD:HTML-NP')"              ,1   ,NA
-1006,"('NMOD:the-DT', 'NMOD:addon-NN')"             ,1   ,NA
-1007,"('SBJ:people-NNS', 'ROOT:hate-VVP')"          ,1   ,NA
-1008,"('ROOT:people-NNS', 'SBJ:I-PP')"              ,1   ,NA
-1009,"('NMOD:no-DT', 'SBJ:zone-NNS')"               ,1   ,NA
-1010,"('NMOD:the-DT', 'SBJ:awnser-NN')"             ,1   ,NA
-1011,"('NMOD:the-DT', 'NMOD:big-JJ')"               ,1   ,NA
-1012,"('PMOD:people-NNS', 'NMOD:make-VVD')"         ,1   ,NA
-1013,"('PMOD:people-NNS', 'VC:work-VVG')"           ,1   ,NA
-1014,"('DEP:the-DT', 'VMOD:KDE-NP')"                ,1   ,NA
-1015,"('NMOD:the-DT', 'SBJ:developer-NNS')"         ,1   ,NA
-1016,"('ADV:no-RB', 'ROOT:tab-VVD')"                ,1   ,NA
-1017,"('NMOD:no-DT', 'NMOD:extension-NNS')"         ,1   ,NA
-1018,"('NMOD:no-DT', 'SBJ:theme-NNS')"              ,1   ,NA
-1019,"('NMOD:no-DT', 'NMOD:Security-NP')"           ,1   ,NA
-1020,"('PMOD:people-NNS', 'NMOD:use-VVG')"          ,1   ,NA
-1021,"('SBJ:people-NNS', 'VC:hear-VVN')"            ,1   ,NA
-1022,"('PMOD:people-NNS', 'NMOD:want-VVP')"         ,1   ,NA
-1023,"('NMOD:the-DT', 'SBJ:product-NN')"            ,1   ,NA
-1024,"('NMOD:the-DT', 'SBJ:comfort-NN')"            ,1   ,NA
-1025,"('SBJ:people-NNS', 'COORD:please-VV')"        ,1   ,NA
-1026,"('OBJ:people-NNS', 'VC:enhance-VV')"          ,1   ,NA
-1027,"('DEP:the-DT', 'P:School-NP')"                ,1   ,NA
-1028,"('NMOD:the-DT', 'ROOT:beginning-NNS')"        ,1   ,NA
-1029,"('NMOD:the-DT', 'NMOD:racist-NN')"            ,1   ,NA
-1030,"('NMOD:the-DT', 'SBJ:conceptualisation-NN')"  ,1   ,NA
-1031,"('NMOD:the-DT', 'SBJ:essay-NN')"              ,3   ,NA
-1032,"('NMOD:the-DT', 'SBJ:aspect-NN')"             ,1   ,NA
-1033,"('NMOD:the-DT', 'SBJ:appendice-NNS')"         ,1   ,NA
-1034,"('NMOD:the-DT', 'NMOD:make-VVG')"             ,1   ,NA
-1035,"('ROOT:people-NNS', 'P:.-SENT')"              ,1   ,NA
-1036,"('ROOT:the-DT', 'ROOT:National-NP')"          ,1   ,NA
-1037,"('ROOT:the-DT', 'ROOT:Associated-NP')"        ,1   ,NA
-1038,"('NMOD:the-DT', 'NMOD:University-NP')"        ,1   ,NA
-1039,"('NMOD:the-DT', 'NMOD:perfect-JJ')"           ,1   ,NA
-1040,"('PMOD:people-NNS', 'NMOD:could-MD')"         ,1   ,NA
-1041,"('CC:and-CC', 'NMOD:whole-JJ')"               ,1   ,NA
-1042,"('NMOD:the-DT', 'NMOD:friendly-JJ')"          ,1   ,NA
-1043,"('OBJ:people-NNS', 'OBJ:concern-NNS')"        ,1   ,NA
-1044,"('SBJ:the-DT', 'ADV:Turks-NPS')"              ,1   ,NA
-1045,"('DEP:the-DT', 'SBJ:Nazis-NPS')"              ,1   ,NA
-1046,"('CC:and-CC', 'NMOD:Iranian-JJ')"             ,1   ,NA
-1047,"('NMOD:no-DT', 'NMOD:fresh-JJ')"              ,1   ,NA
-1048,"('PMOD:people-NNS', 'VMOD:simply-RB')"        ,1   ,NA
-1049,"('NMOD:the-DT', 'SBJ:response-NNS')"          ,1   ,NA
-1050,"('NMOD:the-DT', 'SBJ:consultation-NN')"       ,1   ,NA
-1051,"('NMOD:the-DT', 'NMOD:government-NN')"        ,1   ,NA
-1052,"('VMOD:the-DT', 'SBJ:Department-NP')"         ,1   ,NA
-1053,"('NMOD:the-DT', 'SBJ:member-NNS')"            ,1   ,NA
-1054,"('NMOD:the-DT', 'SBJ:link-NNS')"              ,1   ,NA
-1055,"('NMOD:the-DT', 'SBJ:comparison-NN')"         ,1   ,NA
-1056,"('SBJ:no-DT', 'ROOT:remain-VVZ')"             ,1   ,NA
-1057,"('NMOD:the-DT', 'SBJ:line-NN')"               ,1   ,NA
-1058,"('NMOD:the-DT', 'SBJ:popularity-NN')"         ,1   ,NA
-1059,"('NMOD:the-DT', 'NMOD:long-JJ')"              ,1   ,NA
-1060,"('IOBJ:people-NNS', 'NMOD:initial-JJ')"       ,1   ,NA
-1061,"('SBJ:people-NNS', 'OBJ:use-VV')"             ,1   ,NA
-1062,"('DEP:people-NNS', 'COORD:region-NNS')"       ,1   ,NA
-1063,"('PMOD:people-NNS', 'NMOD:regional-JJ')"      ,1   ,NA
-1064,"('NMOD:the-DT', 'COORD:facilitator-NN')"      ,1   ,NA
-1065,"('NMOD:the-DT', 'NMOD:\x91distanced-JJ')"     ,1   ,NA
-1066,"('NMOD:the-DT', 'NMOD:micro-dynamics-NN')"    ,1   ,NA
-1067,"('NMOD:the-DT', 'NMOD:viability-NN')"         ,1   ,NA
-1068,"('NMOD:the-DT', 'COORD:role-NN')"             ,2   ,NA
-1069,"('NMOD:the-DT', 'ADV:relationship-NN')"       ,1   ,NA
-1070,"('DEP:the-DT', 'DEP:Andalusian-NP')"          ,1   ,NA
-1071,"('NMOD:the-DT', 'ROOT:link-NN')"              ,1   ,NA
-1072,"('DEP:the-DT', 'DEP:Social-NP')"              ,1   ,NA
-1073,"('NMOD:the-DT', 'NMOD:case-NN')"              ,4   ,8.96305898567253
-1074,"('ROOT:of-IN', 'NMOD:Farm-NP')"               ,1   ,NA
-1075,"('NMOD:the-DT', 'COORD:ict-NN')"              ,1   ,NA
-1076,"('NMOD:the-DT', 'COORD:geography-NN')"        ,1   ,NA
-1077,"('NMOD:the-DT', 'ROOT:analysis-NN')"          ,1   ,NA
-1078,"('NMOD:the-DT', 'COORD:future-NN')"           ,1   ,NA
-1079,"('NMOD:the-DT', 'OBJ:case-NN')"               ,1   ,NA
-1080,"('SBJ:of-NNS', 'NMOD:r&d-based-JJ')"          ,1   ,NA
-1081,"('NMOD:of-NNS', 'NMOD:European-JJ')"          ,1   ,NA
-1082,"('NMOD:the-DT', 'DEP:effects-NN')"            ,1   ,NA
-1083,"('NMOD:the-DT', 'NMOD:regional-JJ')"          ,2   ,NA
-1084,"('DEP:the-DT', 'DEP:Industrial-NP')"          ,1   ,NA
-1085,"('NMOD:the-DT', 'ADV:case-NN')"               ,1   ,NA
-1086,"('NMOD:the-DT', 'ROOT:German-JJ')"            ,1   ,NA
-1087,"('NMOD:the-DT', 'PMOD:evidence-NN')"          ,1   ,NA
-1088,"('ROOT:and-CC', 'ROOT:Growth-NP')"            ,1   ,NA
-1089,"('ROOT:of-IN', 'ROOT:Accession-NP')"          ,1   ,NA
-1090,"('NMOD:the-DT', 'ROOT:measure-NN')"           ,1   ,NA
-1091,"('ROOT:the-DT', 'DEP:Regional-NP')"           ,1   ,NA
-1092,"('NMOD:the-DT', 'COORD:case-NN')"             ,1   ,NA
-1093,"('NMOD:the-DT', 'ADV:role-NN')"               ,1   ,NA
-1094,"('NMOD:the-DT', 'NMOD:path-NN')"              ,1   ,NA
-1095,"('NMOD:the-DT', 'NMOD:evolution-NN')"         ,1   ,NA
-1096,"('NMOD:the-DT', 'ROOT:pitfall-NNS')"          ,1   ,NA
-1097,"('DEP:the-DT', 'ROOT:Role-NP')"               ,1   ,NA
-1098,"('PMOD:people-NNS', 'PMOD:era-NN')"           ,1   ,NA
-1099,"('ROOT:the-DT', 'ROOT:Regional-NP')"          ,1   ,NA
-1100,"('NMOD:the-DT', 'SBJ:Mexican-JJ')"            ,3   ,NA
-1101,"('DEP:the-DT', 'ROOT:Royal-NP')"              ,1   ,NA
-1102,"('NMOD:the-DT', 'NMOD:poor-JJ')"              ,1   ,NA
+ngram_id,ngram,lemmas,freq,probability
+0,NMOD:executive-JJ COORD:box-NNS ROOT:.-SENT,executive boxes .,1,NA
+1,ROOT:the-DT ROOT:Observer-NP,the Observer,1,NA
+2,NMOD:executive-NN PMOD:box-NNS NMOD:Manchester-NP,executive boxes Manchester,1,NA
+3,NMOD:executive-JJ PMOD:box-NNS PMOD:away-RB,executive boxes away,1,NA
+4,CC:and-CC VMOD:n't-RB,and n't,2,NA
+5,PRD:people-NNS PMOD:town-NN,people town,1,NA
+6,CC:and-CC ROOT:will-MD,and will,1,NA
+7,NMOD:executive-JJ PMOD:box-NNS NMOD:Premiership-NP,executive boxes Premiership,1,NA
+8,"NMOD:executive-JJ NMOD:box-NNS P:,-,","executive boxes ,",1,NA
+9,"ROOT:people-NNS P:,-,","people ,",1,NA
+10,CC:and-CC ROOT:be-VBZ,and be,4,NA
+11,CC:and-CC VC:see-VV,and see,1,NA
+12,NMOD:the-DT SBJ:necessity-NN,the necessity,1,NA
+13,NMOD:the-DT NMOD:quotation-NN,the quotation,1,NA
+14,NMOD:the-DT SBJ:volume-NN,the volume,2,NA
+15,OBJ:people-NNS PMOD:landscape-NN,people landscape,1,NA
+16,DEP:the-DT ROOT:RMA-NP,the RMA,1,NA
+17,NMOD:the-DT SBJ:singer-NN,the singer,1,NA
+18,VMOD:the-DT SBJ:Super-NP,the Super,1,NA
+19,SBJ:people-NNS COORD:turn-VVD,people turn,1,NA
+20,"PMOD:people-NNS P:,-,","people ,",6,NA
+21,CC:and-CC NMOD:domestic-JJ,and domestic,1,NA
+22,PMOD:people-NNS VC:ask-VVN,people ask,1,NA
+23,NMOD:no-DT SBJ:one-NN,no one,4,NA
+24,DEP:and-CC ROOT:Frenchman-NN,and Frenchman,1,NA
+25,SBJ:people-NNS PRD:proud-JJ,people proud,1,NA
+26,SBJ:people-NNS VC:see-VV,people see,1,NA
+27,SBJ:people-NNS SBJ:are.-JJ,people are.,1,NA
+28,NMOD:the-DT SBJ:name-NN,the name,1,NA
+29,NMOD:the-DT NMOD:follow-VVG,the follow,2,NA
+30,NMOD:the-DT ROOT:@card@-CD,the @card@,1,NA
+31,NMOD:the-DT SBJ:change-NN,the change,1,NA
+32,ROOT:the-DT ROOT:Green-NP,the Green,2,NA
+33,"NMOD:executive-JJ OBJ:box-NNS P:,-,","executive boxes ,",1,NA
+34,NMOD:the-DT SBJ:singing-NN,the singing,1,NA
+35,CC:and-CC NMOD:new-JJ,and new,1,NA
+36,NMOD:the-DT SBJ:game-NN,the game,1,NA
+37,NMOD:executive-JJ PMOD:box-NNS P:.-SENT,executive boxes .,1,NA
+38,NMOD:the-DT NMOD:morale-boosting-NN,the morale-boosting,1,NA
+39,NMOD:the-DT ROOT:club-NN,the club,1,NA
+40,NMOD:the-DT ADV:organiser-NNS,the organiser,1,NA
+41,NMOD:the-DT NMOD:UK-NP,the UK,2,NA
+42,NMOD:the-DT ROOT:ďż˝nokia-NN,the ďż˝nokia,2,NA
+43,NMOD:the-DT NMOD:two-CD,the two,5,NA
+44,NMOD:the-DT SBJ:headliner-NN,the headliner,1,NA
+45,NMOD:the-DT SBJ:band-NN,the band,3,NA
+46,PMOD:people-NNS PMOD:March-NP,people March,1,NA
+47,NMOD:the-DT NMOD:Bolddog-NP,the Bolddog,1,NA
+48,NMOD:the-DT SBJ:use-NN,the use,2,NA
+49,NMOD:the-DT NMOD:combined-JJ,the combined,1,NA
+50,NMOD:the-DT NMOD:bad-JJS,the bad,1,NA
+51,NMOD:the-DT SBJ:liking-NN,the liking,1,NA
+52,NMOD:the-DT SBJ:systematic-JJ,the systematic,1,NA
+53,VMOD:the-DT SBJ:Park-NP,the Park,1,NA
+54,NMOD:the-DT SBJ:information-NN,the information,3,NA
+55,NMOD:the-DT NMOD:usual-JJ,the usual,1,NA
+56,NMOD:the-DT SBJ:application-NN,the application,2,NA
+57,NMOD:the-DT SBJ:query-NN,the query,1,NA
+58,NMOD:the-DT NMOD:initial-JJ,the initial,1,NA
+59,NMOD:the-DT SBJ:source-NN,the source,1,NA
+60,NMOD:the-DT SBJ:nameserver-NN,the nameserver,1,NA
+61,CC:and-CC ADV:almost-RB,and almost,1,NA
+62,NMOD:the-DT NMOD:Linux-NP,the Linux,1,NA
+63,NMOD:the-DT SBJ:title-NNS,the title,1,NA
+64,NMOD:no-DT SBJ:part-NN,no part,1,NA
+65,NMOD:the-DT SBJ:fee-NNS,the fee,1,NA
+66,NMOD:the-DT NMOD:precise-JJ,the precise,1,NA
+67,NMOD:the-DT SBJ:fact-NN,the fact,1,NA
+68,DEP:the-DT DEP:Red-NP,the Red,1,NA
+69,P:the-DT DEP:Green-NP,the Green,2,NA
+70,NMOD:the-DT ROOT:majority-NN,the majority,2,NA
+71,NMOD:the-DT NMOD:actual-JJ,the actual,2,NA
+72,NMOD:the-DT NMOD:potential-JJ,the potential,1,NA
+73,NMOD:the-DT NMOD:subsequent-JJ,the subsequent,1,NA
+74,DEP:the-DT VMOD:Sparrows-NP,the Sparrows,1,NA
+75,NMOD:the-DT SBJ:regatta-NN,the regatta,1,NA
+76,ROOT:and-CC SBJ:Cold-NP,and Cold,1,NA
+77,NMOD:the-DT NMOD:main-JJ,the main,5,NA
+78,"CC:and-CC P:,-,","and ,",3,NA
+79,NMOD:the-DT NMOD:Vesta-NP,the Vesta,1,NA
+80,NMOD:the-DT NMOD:8's-JJ,the 8's,1,NA
+81,NMOD:the-DT SBJ:club-NNS,the club,1,NA
+82,SBJ:people-NNS VC:turn-VVN,people turn,1,NA
+83,CC:and-CC P:(-(,and (,1,NA
+84,PMOD:people-NNS NMOD:texted-VVD,people texted,1,NA
+85,CC:and-CC PMOD:middle-NN,and middle,1,NA
+86,PMOD:people-NNS NMOD:have-VHP,people have,1,NA
+87,SBJ:people-NNS ROOT:spend-VVP,people spend,1,NA
+88,SBJ:the-DT ADV:Environment-NP,the Environment,1,NA
+89,NMOD:the-DT NMOD:last-JJ,the last,3,NA
+90,NMOD:the-DT SBJ:race-NN,the race,1,NA
+91,NMOD:the-DT SBJ:event-NN,the event,2,NA
+92,CC:and-CC NMOD:attach-VVN,and attach,1,NA
+93,NMOD:the-DT SBJ:slug-NN,the slug,2,NA
+94,NMOD:the-DT SBJ:website-NN,the website,1,NA
+95,PMOD:people-NNS PRD:busy-JJ,people busy,1,NA
+96,IOBJ:people-NNS NMOD:old-JJ,people old,1,NA
+97,NMOD:of-IN PMOD:course-NN,of course,1,NA
+98,NMOD:the-DT SBJ:6-CD,the 6,1,NA
+99,NMOD:the-DT SBJ:rest-NN,the rest,1,NA
+100,NMOD:the-DT NMOD:event-NN,the event,1,NA
+101,NMOD:the-DT SBJ:venue-NN,the venue,1,NA
+102,NMOD:no-DT NMOD:copyright-NN,no copyright,1,NA
+103,NMOD:the-DT SBJ:content-NNS,the content,1,NA
+104,NMOD:the-DT NMOD:lifting-NN,the lifting,1,NA
+105,NMOD:the-DT SBJ:controller-NN,the controller,5,NA
+106,NMOD:the-DT SBJ:man-NNS,the man,2,NA
+107,NMOD:the-DT NMOD:rocket-NNS,the rocket,1,NA
+108,VMOD:the-DT SBJ:Hood-NP,the Hood,4,NA
+109,VMOD:the-DT SBJ:Zero-X-NP,the Zero-X,1,NA
+110,NMOD:the-DT NMOD:Zero-X-NP,the Zero-X,1,NA
+111,NMOD:the-DT NMOD:three-CD,the three,2,NA
+112,SBJ:people-NNS ADV:ask-VVP,people ask,1,NA
+113,NMOD:the-DT NMOD:next-JJ,the next,3,NA
+114,NMOD:the-DT PMOD:helicopter-NN,the helicopter,1,NA
+115,NMOD:the-DT SBJ:vehicle-NN,the vehicle,2,NA
+116,NMOD:the-DT SBJ:scientist-NNS,the scientist,1,NA
+117,NMOD:the-DT SBJ:formation-NN,the formation,1,NA
+118,NMOD:the-DT NMOD:astronaut-NNS,the astronaut,1,NA
+119,NMOD:the-DT NMOD:retro-NNS,the retro,1,NA
+120,NMOD:the-DT NMOD:lift-VVG,the lift,1,NA
+121,NMOD:the-DT SBJ:cable-NN,the cable,5,NA
+122,NMOD:the-DT NMOD:first-JJ,the first,9,NA
+123,NMOD:the-DT ROOT:sequence-NNS,the sequence,1,NA
+124,ROOT:and-CC ROOT:Mysterons-NP,and Mysterons,1,NA
+125,VMOD:the-DT SBJ:5Ss-NP,the 5Ss,1,NA
+126,ROOT:the-DT ROOT:5S-NP,the 5S,1,NA
+127,NMOD:the-DT NMOD:5s-JJ,the 5s,1,NA
+128,NMOD:the-DT PRD:5s-NN,the 5s,1,NA
+129,NMOD:the-DT NMOD:full-JJ,the full,1,NA
+130,NMOD:the-DT SBJ:city-NN,the city,2,NA
+131,NMOD:the-DT NMOD:@card@-CD,the @card@,4,NA
+132,NMOD:the-DT NMOD:city-NN,the city,1,NA
+133,NMOD:the-DT NMOD:Leicester-NP,the Leicester,1,NA
+134,NMOD:the-DT SBJ:settlement-NN,the settlement,1,NA
+135,CC:and-CC ROOT:admit-VVD,and admit,1,NA
+136,NMOD:the-DT PMOD:Scientist-NP,the Scientist,1,NA
+137,ROOT:the-DT ROOT:Scientist-NP,the Scientist,2,NA
+138,CC:and-CC NMOD:Cancer-NP,and Cancer,1,NA
+139,NMOD:the-DT SBJ:book-NN,the book,8,NA
+140,VMOD:the-DT SBJ:MHF-NP,the MHF,1,NA
+141,NMOD:the-DT SBJ:manual-JJ,the manual,2,NA
+142,ADV:of-IN SBJ:SLITS-NP,of SLITS,1,NA
+143,CC:and-CC ADV:GRATINGS-NP,and GRATINGS,1,NA
+144,NMOD:the-DT SBJ:slit-NNS,the slit,1,NA
+145,PMOD:people-NNS NMOD:full-JJ,people full,1,NA
+146,NMOD:the-DT NMOD:Andy-NP,the Andy,1,NA
+147,NMOD:the-DT NMOD:Claude-NP,the Claude,1,NA
+148,NMOD:the-DT PMOD:museum-NN,the museum,1,NA
+149,NMOD:the-DT NMOD:early-JJ,the early,1,NA
+150,NMOD:the-DT NMOD:slaughtered-JJ,the slaughtered,1,NA
+151,NMOD:the-DT NMOD:Vincent-NP,the Vincent,1,NA
+152,DEP:the-DT ROOT:Warhol-NP,the Warhol,1,NA
+153,"ROOT:the-DT ROOT:""-``","the """,1,NA
+154,NMOD:the-DT NMOD:late-JJS,the late,4,NA
+155,NMOD:the-DT SBJ:circumstance-NN,the circumstance,1,NA
+156,NMOD:the-DT SBJ:system-NN,the system,1,NA
+157,NMOD:the-DT NMOD:driver-NN,the driver,1,NA
+158,NMOD:the-DT NMOD:statement-NNS,the statement,1,NA
+159,NMOD:the-DT SBJ:joy-NN,the joy,1,NA
+160,DEP:the-DT ROOT:Long-NP,the Long,1,NA
+161,NMOD:the-DT NMOD:basic-JJ,the basic,1,NA
+162,NMOD:the-DT NMOD:uniform-JJ,the uniform,1,NA
+163,CC:and-CC NMOD:CRAFTWORK-NP,and CRAFTWORK,1,NA
+164,VMOD:the-DT SBJ:DfES-NP,the DfES,1,NA
+165,PMOD:people-NNS PMOD:learn-VVG,people learn,1,NA
+166,NMOD:the-DT SBJ:project-NN,the project,1,NA
+167,OBJ:people-NNS NMOD:collaborate-VV,people collaborate,1,NA
+168,OBJ:people-NNS P:.-SENT,people .,3,NA
+169,NMOD:the-DT SBJ:theme-NN,the theme,1,NA
+170,NMOD:the-DT SBJ:value-NN,the value,2,NA
+171,NMOD:the-DT SBJ:concept-NN,the concept,1,NA
+172,CC:and-CC NMOD:numerology-NN,and numerology,1,NA
+173,PMOD:people-NNS COORD:turn-VVN,people turn,1,NA
+174,NMOD:the-DT NMOD:processing-NN,the processing,1,NA
+175,PMOD:people-NNS ADV:across-IN,people across,2,NA
+176,SBJ:People-NP NMOD:'s-POS,People 's,1,NA
+177,SBJ:the-DT ADV:European-NP,the European,1,NA
+178,NMOD:the-DT NMOD:European-JJ,the European,2,NA
+179,NMOD:the-DT OBJ:development-NN,the development,1,NA
+180,NMOD:the-DT SBJ:issue-NNS,the issue,2,NA
+181,VMOD:the-DT SBJ:Parliament-NP,the Parliament,1,NA
+182,NMOD:the-DT ADV:importance-NN,the importance,1,NA
+183,SBJ:the-DT ADV:Eu-NP,the Eu,1,NA
+184,NMOD:the-DT NMOD:voluntary-JJ,the voluntary,1,NA
+185,NMOD:the-DT ADV:incineration-NN,the incineration,1,NA
+186,NMOD:the-DT NMOD:optimum-JJ,the optimum,2,NA
+187,NMOD:no-DT NMOD:matter-NN,no matter,1,NA
+188,NMOD:the-DT NMOD:precautionary-JJ,the precautionary,1,NA
+189,NMOD:the-DT ROOT:implementation-NN,the implementation,1,NA
+190,NMOD:the-DT NMOD:successful-JJ,the successful,1,NA
+191,VMOD:the-DT SBJ:Commission-NP,the Commission,7,NA
+192,NMOD:the-DT NMOD:Commission-NP,the Commission,1,NA
+193,NMOD:the-DT NMOD:PVC-NP,the PVC,1,NA
+194,NMOD:the-DT SBJ:binding-NNS,the binding,1,NA
+195,NMOD:the-DT SBJ:pack-NN,the pack,1,NA
+196,NMOD:no-DT NMOD:previous-JJ,no previous,1,NA
+197,NMOD:the-DT SBJ:vessel-NN,the vessel,1,NA
+198,NMOD:the-DT NMOD:Alum-NP,the Alum,1,NA
+199,NMOD:people-NNS NMOD:'s-POS,people 's,4,NA
+200,NMOD:the-DT SBJ:animal-NNS,the animal,1,NA
+201,SBJ:people-NNS VC:feed-VVN,people feed,1,NA
+202,NMOD:the-DT SBJ:lack-NN,the lack,1,NA
+203,DEP:the-DT ROOT:Common-NP,the Common,1,NA
+204,NMOD:the-DT SBJ:price-NN,the price,1,NA
+205,NMOD:the-DT NMOD:good-JJS,the good,6,NA
+206,NMOD:the-DT NMOD:training-NN,the training,2,NA
+207,ROOT:the-DT VMOD:Disease-NP,the Disease,1,NA
+208,NMOD:the-DT PRN:responsibility-NNS,the responsibility,1,NA
+209,NMOD:the-DT PMOD:Simsâ˘-NP,the Simsâ˘,1,NA
+210,NMOD:the-DT AMOD:Godfatherâ˘-NP,the Godfatherâ˘,1,NA
+211,NMOD:the-DT NMOD:Sims-NP,the Sims,1,NA
+212,VMOD:the-DT SBJ:Godfather-NP,the Godfather,1,NA
+213,PMOD:people-NNS PMOD:taste-NNS,people taste,1,NA
+214,NMOD:the-DT SBJ:jaw-NN,the jaw,3,NA
+215,VMOD:the-DT SBJ:Tools-NP,the Tools,1,NA
+216,NMOD:the-DT SBJ:note-NN,the note,2,NA
+217,NMOD:the-DT SBJ:framework-NN,the framework,3,NA
+218,NMOD:the-DT NMOD:chemical-NN,the chemical,1,NA
+219,NMOD:the-DT NMOD:late-JJ,the late,1,NA
+220,NMOD:the-DT SBJ:year-NN,the year,1,NA
+221,NMOD:no-DT NMOD:financial-JJ,no financial,1,NA
+222,OBJ:people-NNS PMOD:headquarters-NN,people headquarters,1,NA
+223,NMOD:the-DT NMOD:tourist-NN,the tourist,1,NA
+224,DEP:and-CC PRD:many-JJ,and many,1,NA
+225,SBJ:people-NNS PMOD:time-NN,people time,1,NA
+226,NMOD:the-DT NMOD:north-western-JJ,the north-western,1,NA
+227,NMOD:the-DT NMOD:south-JJ,the south,1,NA
+228,NMOD:the-DT NMOD:Backpackers-NP,the Backpackers,1,NA
+229,ADV:the-DT ROOT:Rhythm-NP,the Rhythm,1,NA
+230,NMOD:the-DT NMOD:RHYTHM-NP,the RHYTHM,1,NA
+231,NMOD:the-DT NMOD:third-JJ,the third,2,NA
+232,P:the-DT DEP:Wailing-NP,the Wailing,1,NA
+233,NMOD:the-DT SBJ:album-NN,the album,2,NA
+234,ROOT:of-IN ROOT:Mine-NP,of Mine,1,NA
+235,ROOT:the-DT ROOT:Rockers-NP,the Rockers,1,NA
+236,NMOD:the-DT SBJ:method-NN,the method,1,NA
+237,NMOD:the-DT SBJ:method-NNS,the method,2,NA
+238,NMOD:the-DT SBJ:installation-NN,the installation,3,NA
+239,NMOD:the-DT SBJ:type-NN,the type,1,NA
+240,NMOD:the-DT NMOD:ribbon-NN,the ribbon,2,NA
+241,NMOD:the-DT NMOD:red-JJ,the red,2,NA
+242,NMOD:the-DT SBJ:image-NN,the image,3,NA
+243,NMOD:the-DT ROOT:60cm-NN,the 60cm,1,NA
+244,NMOD:the-DT SBJ:screw-NNS,the screw,1,NA
+245,NMOD:the-DT NMOD:new-JJ,the new,4,NA
+246,NMOD:the-DT NMOD:method-NN,the method,1,NA
+247,NMOD:the-DT NMOD:additional-JJ,the additional,1,NA
+248,NMOD:the-DT NMOD:configuration-NN,the configuration,1,NA
+249,DEP:the-DT DEP:Master-NP,the Master,1,NA
+250,NMOD:the-DT NMOD:Cap-NP,the Cap,1,NA
+251,NMOD:the-DT NMOD:master-NN,the master,1,NA
+252,NMOD:the-DT NMOD:boot-NN,the boot,3,NA
+253,SBJ:the-DT ROOT:diagram-VVZ,the diagram,1,NA
+254,NMOD:the-DT NMOD:power-NN,the power,2,NA
+255,NMOD:the-DT SBJ:ridge-NNS,the ridge,1,NA
+256,NMOD:the-DT NMOD:middle-JJ,the middle,1,NA
+257,NMOD:the-DT SBJ:side-NN,the side,3,NA
+258,NMOD:the-DT ROOT:figure-NN,the figure,1,NA
+259,NMOD:the-DT NMOD:early-JJR,the early,1,NA
+260,CC:and-CC PRD:page-NNS,and page,1,NA
+261,NMOD:the-DT NMOD:connection-NN,the connection,1,NA
+262,NMOD:the-DT SBJ:drive-NN,the drive,1,NA
+263,NMOD:the-DT SBJ:mode-NNS,the mode,1,NA
+264,NMOD:the-DT ROOT:use-NN,the use,1,NA
+265,NMOD:the-DT SBJ:level-NNS,the level,1,NA
+266,DEP:and-CC VMOD:since-IN,and since,1,NA
+267,VMOD:the-DT SBJ:FDD-NP,the FDD,1,NA
+268,NMOD:the-DT SBJ:end-NN,the end,1,NA
+269,VMOD:the-DT SBJ:PSU-NP,the PSU,1,NA
+270,ROOT:and-CC NMOD:sound-VVZ,and sound,1,NA
+271,NMOD:the-DT NMOD:call-NN,the call,1,NA
+272,NMOD:no-DT NMOD:news-NN,no news,1,NA
+273,NMOD:the-DT SBJ:monitor-NNS,the monitor,1,NA
+274,NMOD:the-DT NMOD:Apprentice-NP,the Apprentice,1,NA
+275,SBJ:people-NNS ROOT:would-MD,people would,1,NA
+276,DEP:the-DT SBJ:Apprentice-NP,the Apprentice,1,NA
+277,VMOD:the-DT SBJ:Guardian-NP,the Guardian,1,NA
+278,PMOD:people-NNS NMOD:would-MD,people would,1,NA
+279,ADV:of-IN ROOT:Love-NP,of Love,1,NA
+280,VMOD:the-DT SBJ:Angels-NPS,the Angels,1,NA
+281,NMOD:the-DT NMOD:title-NN,the title,1,NA
+282,NMOD:the-DT SBJ:simplicity-NN,the simplicity,1,NA
+283,VMOD:of-IN VMOD:My-NP,of My,1,NA
+284,NMOD:the-DT NMOD:gentle-JJ,the gentle,1,NA
+285,VMOD:the-DT SBJ:Act-NP,the Act,1,NA
+286,NMOD:no-DT NMOD:more-JJR,no more,1,NA
+287,AMOD:no-RB VMOD:more-JJR,no more,1,NA
+288,NMOD:the-DT NMOD:bluesy-NN,the bluesy,1,NA
+289,NMOD:the-DT NMOD:final-JJ,the final,1,NA
+290,NMOD:the-DT SBJ:song-NN,the song,1,NA
+291,CC:and-CC ROOT:remember-VV,and remember,1,NA
+292,CC:and-CC VC:get-VV,and get,2,NA
+293,PMOD:people-NNS VC:visit-VVN,people visit,1,NA
+294,SBJ:people-NNS OBJ:attend-VVP,people attend,1,NA
+295,VMOD:the-DT SBJ:Club-NP,the Club,1,NA
+296,DEP:the-DT ROOT:Croquet-NP,the Croquet,1,NA
+297,NMOD:the-DT SBJ:follow-VVG,the follow,3,NA
+298,NMOD:the-DT SBJ:station-NN,the station,2,NA
+299,PMOD:people-NNS ROOT:.-SENT,people .,5,NA
+300,ROOT:no-RB P:.-SENT,no .,1,NA
+301,NMOD:the-DT NMOD:man-NNS,the man,1,NA
+302,PMOD:people-NNS VMOD:Sport-NP,people Sport,1,NA
+303,NMOD:the-DT OBJ:way-NN,the way,1,NA
+304,NMOD:of-IN NMOD:Government-NP,of Government,1,NA
+305,NMOD:the-DT SBJ:heart-NN,the heart,1,NA
+306,PRD:of-IN NMOD:particular-JJ,of particular,1,NA
+307,PMOD:people-NNS NMOD:kill-VVN,people kill,1,NA
+308,PMOD:people-NNS NMOD:injure-VVN,people injure,2,NA
+309,SBJ:people-NNS VC:kill-VVN,people kill,1,NA
+310,NMOD:the-DT SBJ:force-NNS,the force,1,NA
+311,NMOD:the-DT NMOD:great-JJS,the great,1,NA
+312,NMOD:the-DT SBJ:threat-NN,the threat,1,NA
+313,NMOD:the-DT ROOT:policy-NNS,the policy,1,NA
+314,NMOD:the-DT SBJ:government-NN,the government,2,NA
+315,VMOD:the-DT SBJ:UK-NP,the UK,2,NA
+316,ROOT:the-DT ROOT:Funeralcare-NP,the Funeralcare,1,NA
+317,DEP:the-DT P:UNMUTUAL-NP,the UNMUTUAL,1,NA
+318,CC:and-CC SBJ:director-NN,and director,1,NA
+319,NMOD:the-DT NMOD:jukebox-NN,the jukebox,1,NA
+320,NMOD:the-DT NMOD:railway-NN,the railway,1,NA
+321,PMOD:people-NNS PMOD:diabetes-NN,people diabetes,2,NA
+322,COORD:people-NNS ADV:also-RB,people also,1,NA
+323,NMOD:people-NNS VC:take-VVN,people take,1,NA
+324,NMOD:the-DT SBJ:safety-NN,the safety,1,NA
+325,OBJ:people-NNS NMOD:different-JJ,people different,1,NA
+326,SBJ:people-NNS NMOD:use-VVG,people use,1,NA
+327,NMOD:the-DT NMOD:side-NN,the side,1,NA
+328,NMOD:the-DT NMOD:herbal-JJ,the herbal,1,NA
+329,NMOD:the-DT SBJ:srip-NN,the srip,1,NA
+330,COORD:people-NNS PMOD:opportunity-NNS,people opportunity,1,NA
+331,DEP:the-DT ROOT:Internet-NP,the Internet,1,NA
+332,NMOD:the-DT NMOD:monthly-JJ,the monthly,1,NA
+333,P:the-DT DEP:Editor-NP,the Editor,1,NA
+334,P:the-DT DEP:WHEELWRIGHTS-NP,the WHEELWRIGHTS,1,NA
+335,SBJ:church-NP ADV:College-NP,church College,1,NA
+336,NMOD:the-DT NMOD:Claremont-NP,the Claremont,1,NA
+337,ROOT:the-DT VMOD:Claremont-NP,the Claremont,1,NA
+338,ADV:people-NNS SBJ:age-NN,people age,1,NA
+339,CC:and-CC P:.-SENT,and .,1,NA
+340,NMOD:the-DT SBJ:site-NN,the site,2,NA
+341,NMOD:the-DT SBJ:feature-NN,the feature,1,NA
+342,VMOD:the-DT VMOD:Poetry-NP,the Poetry,1,NA
+343,NMOD:the-DT NMOD:winning-JJ,the winning,1,NA
+344,NMOD:the-DT PMOD:Rialto-NP,the Rialto,1,NA
+345,PMOD:people-NNS NMOD:age-VVN,people age,1,NA
+346,PMOD:people-NNS NMOD:affect-VVN,people affect,1,NA
+347,NMOD:the-DT NMOD:entry-NN,the entry,1,NA
+348,NMOD:the-DT NMOD:Strike-NP,the Strike,2,NA
+349,NMOD:the-DT SBJ:team-NN,the team,2,NA
+350,NMOD:the-DT NMOD:figure-NNS,the figure,1,NA
+351,NMOD:the-DT SBJ:provision-NN,the provision,1,NA
+352,VMOD:the-DT SBJ:Goldfinch-NP,the Goldfinch,1,NA
+353,NMOD:the-DT SBJ:species-NN,the species,1,NA
+354,NMOD:the-DT SBJ:bird-NNS,the bird,1,NA
+355,SBJ:people-NNS SBJ:put-VVG,people put,1,NA
+356,P:the-DT DEP:Nunnery-NP,the Nunnery,1,NA
+357,NMOD:the-DT NMOD:entire-JJ,the entire,2,NA
+358,NMOD:the-DT SBJ:scheme-NN,the scheme,1,NA
+359,SBJ:people-NNS COORD:other-NNS,people other,1,NA
+360,NMOD:the-DT SBJ:aim-NN,the aim,1,NA
+361,PMOD:people-NNS PMOD:possible-JJ,people possible,1,NA
+362,NMOD:the-DT NMOD:public-JJ,the public,1,NA
+363,NMOD:the-DT NMOD:valley-NN,the valley,1,NA
+364,NMOD:the-DT ROOT:worldâs-NN,the worldâs,1,NA
+365,NMOD:the-DT NMOD:research-NN,the research,2,NA
+366,NMOD:the-DT NMOD:result-VVG,the result,1,NA
+367,NMOD:the-DT SBJ:company-NN,the company,1,NA
+368,NMOD:the-DT ROOT:community-NN,the community,1,NA
+369,NMOD:the-DT SBJ:community-NN,the community,1,NA
+370,NMOD:the-DT NMOD:community-NN,the community,1,NA
+371,NMOD:the-DT SBJ:plan-NN,the plan,2,NA
+372,NMOD:the-DT NMOD:contingency-NN,the contingency,1,NA
+373,NMOD:the-DT NMOD:Welsh-JJ,the Welsh,1,NA
+374,NMOD:the-DT SBJ:latter-NN,the latter,1,NA
+375,NMOD:the-DT PMOD:Famine-NP,the Famine,1,NA
+376,NMOD:the-DT ROOT:work-NN,the work,1,NA
+377,PMOD:people-NNS PMOD:hometown-NNS,people hometown,1,NA
+378,ADV:of-IN NMOD:5-CD,of 5,1,NA
+379,NMOD:the-DT SBJ:majority-NN,the majority,2,NA
+380,NMOD:the-DT SBJ:survey-NN,the survey,1,NA
+381,NMOD:the-DT NMOD:FRS-NP,the FRS,1,NA
+382,NMOD:the-DT NMOD:vulnerable-JJ,the vulnerable,1,NA
+383,VMOD:the-DT SBJ:NCFSC-NP,the NCFSC,1,NA
+384,ROOT:the-DT ROOT:Philharmonic-NP,the Philharmonic,1,NA
+385,CC:and-CC SBJ:series-NN,and series,1,NA
+386,DEP:the-DT ROOT:Mersey-NP,the Mersey,1,NA
+387,NMOD:the-DT SBJ:text-NN,the text,1,NA
+388,CC:and-CC SBJ:cost-NNS,and cost,1,NA
+389,NMOD:the-DT SBJ:dog-NN,the dog,1,NA
+390,NMOD:the-DT SBJ:zone-NNS,the zone,1,NA
+391,NMOD:the-DT SBJ:response-NN,the response,1,NA
+392,PMOD:people-NNS NMOD:wish-VVD,people wish,1,NA
+393,NMOD:the-DT ROOT:planning-NN,the planning,1,NA
+394,NMOD:the-DT SBJ:second-NN,the second,1,NA
+395,PMOD:people-NNS PMOD:use-NN,people use,1,NA
+396,PMOD:people-NNS P:.-SENT,people .,2,NA
+397,SBJ:people-NNS NMOD:live-VVP,people live,2,NA
+398,NMOD:the-DT NMOD:existing-JJ,the existing,1,NA
+399,PMOD:people-NNS SBJ:Britain-NP,people Britain,1,NA
+400,PMOD:people-NNS NMOD:pass-VVP,people pass,1,NA
+401,NMOD:the-DT SBJ:main-JJ,the main,2,NA
+402,PMOD:people-NNS PMOD:past-NN,people past,1,NA
+403,SBJ:people-NNS ADV:live-VVD,people live,1,NA
+404,NMOD:the-DT NMOD:knowledgeable-JJ,the knowledgeable,1,NA
+405,DEP:the-DT ROOT:European-NP,the European,1,NA
+406,NMOD:the-DT NMOD:archaeological-JJ,the archaeological,2,NA
+407,NMOD:the-DT NMOD:prime-JJ,the prime,1,NA
+408,COORD:church-NNS COORD:trackways-NNS,church trackways,1,NA
+409,ROOT:of-IN PMOD:twelve-NN,of twelve,1,NA
+410,NMOD:the-DT SBJ:focus-NN,the focus,1,NA
+411,SBJ:people-NNS ROOT:may-MD,people may,1,NA
+412,PRD:of-IN NMOD:equal-JJ,of equal,1,NA
+413,NMOD:the-DT NMOD:visible-JJ,the visible,1,NA
+414,PMOD:people-NNS NMOD:live-VVP,people live,1,NA
+415,NMOD:the-DT ROOT:place-NNS,the place,1,NA
+416,NMOD:the-DT SBJ:programme-NN,the programme,1,NA
+417,NMOD:the-DT SBJ:effectiveness-NN,the effectiveness,1,NA
+418,PMOD:people-NNS OBJ:time-depth-NN,people time-depth,1,NA
+419,OBJ:people-NNS ADV:much-RB,people much,1,NA
+420,NMOD:the-DT NMOD:interest-NN,the interest,2,NA
+421,NMOD:the-DT SBJ:asset-NN,the asset,1,NA
+422,ROOT:and-CC ROOT:snow-VVZ,and snow,1,NA
+423,NMOD:the-DT SBJ:sky-NN,the sky,1,NA
+424,PMOD:people-NNS ADV:take-VVG,people take,1,NA
+425,NMOD:the-DT SBJ:trailer-NN,the trailer,1,NA
+426,SBJ:people-NNS VC:hear-VV,people hear,1,NA
+427,NMOD:the-DT SBJ:character-NNS,the character,1,NA
+428,P:and-CC DEP:INFLUENCE-NP,and INFLUENCE,1,NA
+429,P:and-CC DEP:CONSOLIDATION-NP,and CONSOLIDATION,1,NA
+430,ROOT:of-IN ROOT:Control-NP,of Control,1,NA
+431,NMOD:the-DT SBJ:following-NN,the following,2,NA
+432,CC:and-CC SBJ:I-PP,and I,2,NA
+433,NMOD:the-DT SBJ:payment-NNS,the payment,1,NA
+434,NMOD:the-DT NMOD:membership-NN,the membership,1,NA
+435,NMOD:the-DT NMOD:secret-JJ,the secret,1,NA
+436,NMOD:the-DT SBJ:purpose-NN,the purpose,3,NA
+437,PMOD:people-NNS NMOD:Jewish-JJ,people Jewish,2,NA
+438,NMOD:the-DT SBJ:organization-NN,the organization,1,NA
+439,PMOD:people-NNS SBJ:I-PP,people I,1,NA
+440,OBJ:people-NNS PMOD:power-NN,people power,1,NA
+441,ROOT:the-DT ROOT:Austrian-NP,the Austrian,1,NA
+442,NMOD:the-DT ROOT:effect-NN,the effect,1,NA
+443,NMOD:the-DT NMOD:former-JJ,the former,1,NA
+444,NMOD:the-DT SBJ:institution-NN,the institution,1,NA
+445,NMOD:the-DT ADV:defendant-NN,the defendant,1,NA
+446,VMOD:the-DT SBJ:Austria-NP,the Austria,1,NA
+447,NMOD:the-DT ROOT:leadership-NN,the leadership,1,NA
+448,"PMOD:church-NN P:,-,","church ,",5,NA
+449,NMOD:the-DT NMOD:slight-JJS,the slight,1,NA
+450,VMOD:the-DT SBJ:Fuehrer-NP,the Fuehrer,1,NA
+451,SBJ:people-NNS VC:solve-VV,people solve,1,NA
+452,NMOD:the-DT NMOD:subversive-JJ,the subversive,1,NA
+453,NMOD:the-DT SBJ:result-NN,the result,1,NA
+454,NMOD:the-DT ROOT:reason-NN,the reason,1,NA
+455,SBJ:people-NNS VC:vote-VV,people vote,1,NA
+456,SBJ:people-NNS VC:allow-VVN,people allow,1,NA
+457,SBJ:people-NNS OBJ:vote-VV,people vote,1,NA
+458,SBJ:people-NNS VC:stand-VV,people stand,1,NA
+459,DEP:the-DT VMOD:Green-NP,the Green,1,NA
+460,SBJ:people-NNS PRD:able-JJ,people able,2,NA
+461,NMOD:the-DT SBJ:document-NNS,the document,2,NA
+462,"NMOD:the-DT P:,-,","the ,",1,NA
+463,VMOD:the-DT VMOD:Community-NP,the Community,1,NA
+464,VMOD:the-DT SBJ:Plan-NP,the Plan,1,NA
+465,NMOD:the-DT SBJ:priority-NNS,the priority,1,NA
+466,PMOD:people-NNS NMOD:partner-NN,people partner,1,NA
+467,NMOD:the-DT ROOT:European-JJ,the European,1,NA
+468,NMOD:the-DT SBJ:court-NN,the court,1,NA
+469,SBJ:people-NNS PRD:treat-VVP,people treat,1,NA
+470,NMOD:the-DT SBJ:move-NN,the move,1,NA
+471,SBJ:people-NNS NMOD:say-VVP,people say,1,NA
+472,VMOD:no-DT VMOD:Less-NP,no Less,1,NA
+473,PMOD:people-NNS NMOD:oppose-VVP,people oppose,1,NA
+474,OBJ:people-NNS NMOD:oppose-VVP,people oppose,1,NA
+475,P:the-DT DEP:Times-NP,the Times,1,NA
+476,NMOD:the-DT NMOD:Cambodian-JJ,the Cambodian,1,NA
+477,PMOD:people-NNS ADV:travel-VV,people travel,1,NA
+478,P:the-DT DEP:Guardian-NP,the Guardian,1,NA
+479,NMOD:the-DT SBJ:law-NN,the law,1,NA
+480,DEP:the-DT ROOT:Planned-NP,the Planned,1,NA
+481,DEP:the-DT ROOT:American-NP,the American,1,NA
+482,NMOD:the-DT SBJ:case-NN,the case,2,NA
+483,NMOD:the-DT NMOD:Catholic-JJ,the Catholic,1,NA
+484,DEP:the-DT P:St-NP,the St,1,NA
+485,P:the-DT DEP:Republican-NP,the Republican,1,NA
+486,ROOT:the-DT VMOD:Blessed-NP,the Blessed,1,NA
+487,ROOT:the-DT ROOT:Welsh-NP,the Welsh,1,NA
+488,NMOD:the-DT SBJ:reliability-NN,the reliability,1,NA
+489,NMOD:the-DT NMOD:site-NN,the site,1,NA
+490,NMOD:the-DT SBJ:energy-NN,the energy,2,NA
+491,NMOD:the-DT SBJ:direction-NN,the direction,1,NA
+492,NMOD:the-DT SBJ:year-NNS,the year,2,NA
+493,NMOD:the-DT NMOD:reptilian-JJ,the reptilian,2,NA
+494,NMOD:the-DT NMOD:old-JJ,the old,5,NA
+495,NMOD:the-DT NMOD:original-JJ,the original,1,NA
+496,NMOD:the-DT NMOD:Tai-NP,the Tai,1,NA
+497,NMOD:the-DT SBJ:population-NN,the population,1,NA
+498,NMOD:the-DT NMOD:average-JJ,the average,1,NA
+499,DEP:the-DT DEP:new-JJ,the new,1,NA
+500,VMOD:the-DT VMOD:Hon.-NP,the Hon.,1,NA
+501,NMOD:no-DT NMOD:suitable-JJ,no suitable,1,NA
+502,NMOD:the-DT SBJ:brick-NNS,the brick,1,NA
+503,NMOD:the-DT SBJ:building-NN,the building,2,NA
+504,NMOD:the-DT SBJ:workhouse-NN,the workhouse,1,NA
+505,NMOD:the-DT ROOT:history-NN,the history,2,NA
+506,NMOD:the-DT NMOD:present-JJ,the present,1,NA
+507,NMOD:the-DT SBJ:scope-NN,the scope,1,NA
+508,NMOD:the-DT SBJ:matrix-NN,the matrix,1,NA
+509,NMOD:the-DT NMOD:remaining-JJ,the remaining,1,NA
+510,ROOT:the-DT ROOT:Usability-NP,the Usability,1,NA
+511,NMOD:the-DT SBJ:other-NNS,the other,2,NA
+512,NMOD:the-DT NMOD:insuremythings.com-NN,the insuremythings.com,2,NA
+513,OBJ:people-NNS NMOD:base-VVN,people base,1,NA
+514,ROOT:the-DT ROOT:Connect-NP,the Connect,1,NA
+515,COORD:people-NNS NMOD:support-VVP,people support,1,NA
+516,NMOD:the-DT NMOD:admission-NN,the admission,1,NA
+517,DEP:the-DT P:National-NP,the National,1,NA
+518,NMOD:the-DT NMOD:evocative-JJ,the evocative,1,NA
+519,NMOD:the-DT SBJ:@card@-CD,the @card@,2,NA
+520,NMOD:the-DT NMOD:midnight-NN,the midnight,1,NA
+521,ROOT:people-NNS NMOD:'s-POS,people 's,1,NA
+522,ADV:of-IN PMOD:course-NN,of course,8,NA
+523,VMOD:the-DT VMOD:Green-NP,the Green,1,NA
+524,CC:and-CC NMOD:first-class-JJ,and first-class,1,NA
+525,CC:and-CC NMOD:child-NNS,and child,1,NA
+526,CC:and-CC SBJ:Peter-NP,and Peter,1,NA
+527,CC:and-CC VMOD:like-IN,and like,1,NA
+528,CC:and-CC ADV:know-VVD,and know,1,NA
+529,DEP:and-CC PMOD:hurry-NN,and hurry,1,NA
+530,NMOD:the-DT ROOT:beautifullest-JJS,the beautifullest,1,NA
+531,CC:and-CC PMOD:coal-NNS,and coal,1,NA
+532,CC:and-CC ROOT:go-VVD,and go,1,NA
+533,SBJ:people-NNS NMOD:high-JJR,people high,1,NA
+534,NMOD:the-DT SBJ:train-NN,the train,1,NA
+535,CC:and-CC ROOT:know-VVP,and know,1,NA
+536,DEP:and-CC ROOT:use-VVD,and use,1,NA
+537,CC:and-CC SBJ:train-NN,and train,1,NA
+538,SBJ:the-DT ADV:Station-NP,the Station,1,NA
+539,NMOD:no-DT SBJ:ďż˝-NN,no ďż˝,1,NA
+540,SBJ:people-NNS VC:leave-VV,people leave,1,NA
+541,CC:and-CC SBJ:Mother-NP,and Mother,1,NA
+542,ROOT:of-IN PMOD:course-NN,of course,2,NA
+543,SBJ:people-NNS VC:live-VVN,people live,1,NA
+544,DEP:and-CC VMOD:Mrs.-NP,and Mrs.,1,NA
+545,CC:and-CC ADV:presently-RB,and presently,1,NA
+546,CC:and-CC ADV:later-RBR,and later,1,NA
+547,CC:and-CC ROOT:wake-VVD,and wake,1,NA
+548,CC:and-CC SBJ:Bobbie-NP,and Bobbie,1,NA
+549,"ADV:no-RB P:,-,","no ,",5,NA
+550,CC:and-CC VMOD:Peter-NP,and Peter,1,NA
+551,CC:and-CC VC:point-VVG,and point,1,NA
+552,DEP:and-CC NMOD:old-JJ,and old,1,NA
+553,COORD:people-NNS PMOD:train-NN,people train,1,NA
+554,SBJ:people-NNS VC:look-VV,people look,1,NA
+555,NMOD:the-DT ADV:Times-NP,the Times,1,NA
+556,NMOD:no-DT SBJ:offence-NN,no offence,1,NA
+557,CC:and-CC ADV:say-VVZ,and say,1,NA
+558,NMOD:the-DT SBJ:letter-NN,the letter,1,NA
+559,CC:and-CC ROOT:sweetbrier-NN,and sweetbrier,1,NA
+560,NMOD:the-DT SBJ:accommodation-NN,the accommodation,1,NA
+561,NMOD:the-DT SBJ:property-NN,the property,1,NA
+562,NMOD:the-DT PMOD:production-NN,the production,1,NA
+563,NMOD:the-DT SBJ:activity-NN,the activity,1,NA
+564,NMOD:the-DT ROOT:way-NN,the way,2,NA
+565,NMOD:the-DT NMOD:trumpet-NN,the trumpet,1,NA
+566,CC:and-CC NMOD:first-JJ,and first,1,NA
+567,P:and-CC DEP:yet-RB,and yet,1,NA
+568,NMOD:the-DT SBJ:poem-NN,the poem,2,NA
+569,CC:and-CC ADV:like-IN,and like,1,NA
+570,CC:and-CC PMOD:tomb-NNS,and tomb,1,NA
+571,NMOD:the-DT SBJ:desecrator-NN,the desecrator,1,NA
+572,NMOD:the-DT OBJ:bolt-NN,the bolt,1,NA
+573,AMOD:of-IN SBJ:mortal-NNS,of mortal,1,NA
+574,CC:and-CC ROOT:shall-MD,and shall,1,NA
+575,NMOD:the-DT OBJ:soul-NN,the soul,1,NA
+576,NMOD:the-DT SBJ:patriot-arm-NN,the patriot-arm,1,NA
+577,NMOD:the-DT NMOD:sword-NN,the sword,1,NA
+578,NMOD:the-DT ROOT:reign-NN,the reign,1,NA
+579,CC:and-CC NMOD:bid-NN,and bid,1,NA
+580,NMOD:the-DT SBJ:ďż˝demon-breath-NN,the ďż˝demon-breath,1,NA
+581,CC:and-CC VMOD:might-MD,and might,1,NA
+582,VMOD:the-DT SBJ:Ascension-NP,the Ascension,1,NA
+583,DEP:the-DT P:Cape-NP,the Cape,1,NA
+584,DEP:and-CC AMOD:yet-RB,and yet,1,NA
+585,CC:and-CC PMOD:yet-RB,and yet,1,NA
+586,NMOD:the-DT OBJ:land-NN,the land,1,NA
+587,NMOD:the-DT SBJ:poet-NN,the poet,1,NA
+588,CC:and-CC DEP:Welsh-NP,and Welsh,1,NA
+589,NMOD:the-DT SBJ:Roman-NNS,the Roman,1,NA
+590,NMOD:the-DT NMOD:burning-NN,the burning,1,NA
+591,NMOD:the-DT SBJ:soul-NN,the soul,1,NA
+592,NMOD:the-DT ROOT:Saxon-NP,the Saxon,1,NA
+593,P:the-DT DEP:Literary-NP,the Literary,1,NA
+594,NMOD:the-DT ROOT:Sceptic-JJ,the Sceptic,1,NA
+595,DEP:the-DT ROOT:Siege-NP,the Siege,1,NA
+596,DEP:the-DT DEP:last-JJ,the last,1,NA
+597,DEP:the-DT ROOT:Vespers-NP,the Vespers,1,NA
+598,DEP:the-DT DEP:Sister-NP,the Sister,1,NA
+599,NMOD:the-DT SBJ:material-NN,the material,1,NA
+600,NMOD:the-DT NMOD:change-VVG,the change,1,NA
+601,NMOD:the-DT SBJ:cost-NN,the cost,2,NA
+602,NMOD:the-DT NMOD:2-CD,the 2,2,NA
+603,NMOD:the-DT SBJ:season-NN,the season,1,NA
+604,NMOD:the-DT SBJ:thought-NN,the thought,1,NA
+605,PMOD:people-NNS COORD:read-VVG,people read,1,NA
+606,PMOD:people-NNS PMOD:treatment-NN,people treatment,1,NA
+607,NMOD:the-DT SBJ:surge-NN,the surge,1,NA
+608,ADV:no-RB SBJ:I-PP,no I,1,NA
+609,NMOD:the-DT SBJ:vibrate-VVG,the vibrate,1,NA
+610,PRD:people-NNS PMOD:side-NN,people side,1,NA
+611,NMOD:the-DT SBJ:medallion-NN,the medallion,2,NA
+612,SBJ:people-NNS OBJ:put-VVD,people put,1,NA
+613,NMOD:the-DT SBJ:feeling-NN,the feeling,1,NA
+614,NMOD:the-DT SBJ:love-NN,the love,1,NA
+615,NMOD:no-DT SBJ:sugar-NN,no sugar,1,NA
+616,VMOD:the-DT SBJ:SWP-NP,the SWP,1,NA
+617,"NMOD:the-DT P:""-``","the """,1,NA
+618,NMOD:the-DT NMOD:Nineham-NP,the Nineham,1,NA
+619,OBJ:people-NNS PMOD:poverty-NN,people poverty,1,NA
+620,PMOD:people-NNS ADV:take-VV,people take,2,NA
+621,NMOD:the-DT SBJ:job-NN,the job,1,NA
+622,VMOD:the-DT SBJ:Times-NP,the Times,1,NA
+623,NMOD:the-DT SBJ:growth-NN,the growth,1,NA
+624,OBJ:people-NNS P::-:,people :,1,NA
+625,NMOD:the-DT ROOT:dissenter-NNS,the dissenter,1,NA
+626,NMOD:church-NN COORD:school-NNS,church school,1,NA
+627,NMOD:church-NN OBJ:school-NNS,church school,1,NA
+628,NMOD:the-DT SBJ:regimentation-NN,the regimentation,1,NA
+629,NMOD:the-DT NMOD:robotic-JJ,the robotic,1,NA
+630,NMOD:the-DT NMOD:work-VVG,the work,1,NA
+631,NMOD:the-DT NMOD:town-NN,the town,1,NA
+632,NMOD:the-DT ROOT:attempt-NN,the attempt,1,NA
+633,NMOD:the-DT SBJ:act-NN,the act,1,NA
+634,SBJ:the-DT ADV:Edinburgh-NP,the Edinburgh,1,NA
+635,NMOD:the-DT OBJ:claim-NN,the claim,1,NA
+636,NMOD:the-DT NMOD:temperance-NN,the temperance,1,NA
+637,NMOD:the-DT NMOD:Socialist-NP,the Socialist,1,NA
+638,CC:and-CC NMOD:personal-JJ,and personal,1,NA
+639,NMOD:the-DT ROOT:first-JJ,the first,1,NA
+640,NMOD:the-DT VMOD:decade-NN,the decade,1,NA
+641,NMOD:the-DT NMOD:ruling-NN,the ruling,1,NA
+642,NMOD:people-NNS ROOT:would-MD,people would,1,NA
+643,AMOD:of-IN PMOD:course-NN,of course,1,NA
+644,NMOD:the-DT ROOT:peril-NNS,the peril,1,NA
+645,NMOD:the-DT SBJ:leader-NNS,the leader,1,NA
+646,NMOD:the-DT SBJ:right-NN,the right,1,NA
+647,ROOT:church-NN P:--:,church -,1,NA
+648,NMOD:the-DT SBJ:church-NN,the church,1,NA
+649,SBJ:church-NN ROOT:could-MD,church could,1,NA
+650,NMOD:the-DT SBJ:advantage-NNS,the advantage,1,NA
+651,NMOD:the-DT NMOD:abject-JJ,the abject,1,NA
+652,NMOD:the-DT NMOD:terrifying-JJ,the terrifying,1,NA
+653,NMOD:the-DT ROOT:circumstance-NNS,the circumstance,1,NA
+654,NMOD:the-DT SBJ:crime-NN,the crime,1,NA
+655,NMOD:the-DT NMOD:grow-VVG,the grow,1,NA
+656,SBJ:people-NNS OBJ:download-NN,people download,1,NA
+657,PMOD:people-NNS PMOD:Ireland-NP,people Ireland,1,NA
+658,CC:and-CC NMOD:Kings-NP,and Kings,1,NA
+659,DEP:of-IN P:the-DT,of the,2,NA
+660,P:the-DT DEP:SIXTEENTH-NP,the SIXTEENTH,1,NA
+661,P:the-DT DEP:Assembly-NP,the Assembly,1,NA
+662,DEP:the-DT DEP:Speaker-NP,the Speaker,1,NA
+663,NMOD:the-DT PMOD:chair-NN,the chair,1,NA
+664,DEP:the-DT P:Speaker-NP,the Speaker,1,NA
+665,NMOD:the-DT SBJ:minute-NNS,the minute,1,NA
+666,VMOD:the-DT SBJ:Speaker-NP,the Speaker,2,NA
+667,ROOT:the-DT ROOT:Committee-NP,the Committee,1,NA
+668,CC:and-CC NMOD:ALLOWANCES-NP,and ALLOWANCES,1,NA
+669,NMOD:the-DT SBJ:proposal-NN,the proposal,3,NA
+670,NMOD:the-DT COORD:presentation-NN,the presentation,1,NA
+671,DEP:the-DT SBJ:Speaker-NP,the Speaker,1,NA
+672,VMOD:the-DT VMOD:Home-NP,the Home,1,NA
+673,SBJ:people-NNS ADV:could-MD,people could,1,NA
+674,SBJ:people-NNS VC:apply-VVN,people apply,1,NA
+675,NMOD:the-DT SBJ:situation-NN,the situation,2,NA
+676,SBJ:people-NNS PMOD:flee-VVG,people flee,1,NA
+677,PRN:people-NNS ROOT:SA-NP,people SA,1,NA
+678,NMOD:the-DT PMOD:sex-NN,the sex,1,NA
+679,SBJ:people-NNS P:.-SENT,people .,1,NA
+680,NMOD:the-DT SBJ:manager-NN,the manager,1,NA
+681,PMOD:people-NNS NMOD:like-IN,people like,1,NA
+682,SBJ:the-DT ROOT:depart-VVD,the depart,1,NA
+683,NMOD:the-DT SBJ:library-NN,the library,1,NA
+684,NMOD:the-DT SBJ:report-NN,the report,4,NA
+685,NMOD:the-DT SBJ:effect-NNS,the effect,1,NA
+686,ROOT:people-NNS NMOD:certain-JJ,people certain,1,NA
+687,NMOD:the-DT SBJ:island-NNS,the island,1,NA
+688,PMOD:people-NNS NMOD:live-VV,people live,1,NA
+689,NMOD:the-DT SBJ:problem-NN,the problem,2,NA
+690,NMOD:no-DT NMOD:send-VVG,no send,1,NA
+691,DEP:and-CC ROOT:thought-NNS,and thought,1,NA
+692,ROOT:and-CC SBJ:RESPONSIBILITIES-NP,and RESPONSIBILITIES,1,NA
+693,NMOD:the-DT SBJ:postholder-NN,the postholder,2,NA
+694,ADV:the-DT SBJ:ITNTO-NP,the ITNTO,1,NA
+695,NMOD:the-DT NMOD:effective-JJ,the effective,1,NA
+696,NMOD:the-DT NMOD:ITNTO-NP,the ITNTO,1,NA
+697,NMOD:the-DT NMOD:Avenue-NP,the Avenue,1,NA
+698,DEP:the-DT ROOT:Crown-NP,the Crown,1,NA
+699,NMOD:the-DT NMOD:world-NN,the world,1,NA
+700,CC:and-CC NMOD:psychological-JJ,and psychological,1,NA
+701,SBJ:people-NNS ROOT:want-VVP,people want,2,NA
+702,SBJ:people-NNS OBJ:reach-VV,people reach,1,NA
+703,NMOD:the-DT SBJ:trend-NN,the trend,1,NA
+704,NMOD:people-NNS PMOD:business-NN,people business,1,NA
+705,NMOD:the-DT SBJ:detail-NN,the detail,1,NA
+706,NMOD:the-DT ADV:procedure-NN,the procedure,1,NA
+707,NMOD:the-DT SBJ:appeal-NN,the appeal,2,NA
+708,ROOT:the-DT ROOT:Admiral-NP,the Admiral,1,NA
+709,NMOD:the-DT SBJ:plot-NN,the plot,1,NA
+710,NMOD:the-DT SBJ:presentation-NN,the presentation,1,NA
+711,NMOD:the-DT SBJ:ban-NN,the ban,1,NA
+712,NMOD:the-DT NMOD:Brazilian-JJ,the Brazilian,1,NA
+713,NMOD:the-DT NMOD:mahogany-NN,the mahogany,1,NA
+714,NMOD:the-DT NMOD:illegal-JJ,the illegal,1,NA
+715,NMOD:the-DT SBJ:threat-NNS,the threat,1,NA
+716,NMOD:the-DT NMOD:zebra-NN,the zebra,1,NA
+717,NMOD:the-DT NMOD:front-JJ,the front,1,NA
+718,NMOD:the-DT SBJ:retina-NN,the retina,1,NA
+719,NMOD:the-DT NMOD:6-CD,the 6,1,NA
+720,NMOD:the-DT SBJ:male-NNS,the male,1,NA
+721,NMOD:the-DT SBJ:pedipalp-NNS,the pedipalp,1,NA
+722,NMOD:the-DT SBJ:spider-NN,the spider,1,NA
+723,NMOD:the-DT NMOD:male-JJ,the male,1,NA
+724,NMOD:the-DT SBJ:male-NN,the male,1,NA
+725,NMOD:the-DT SBJ:image-NNS,the image,1,NA
+726,CC:and-CC SBJ:Wanda-NP,and Wanda,1,NA
+727,DEP:the-DT DEP:King-NP,the King,1,NA
+728,VMOD:the-DT VMOD:English-NP,the English,1,NA
+729,NMOD:the-DT VMOD:young-JJ,the young,1,NA
+730,DEP:the-DT ROOT:'-POS,the ',1,NA
+731,NMOD:the-DT NMOD:ideal-JJ,the ideal,1,NA
+732,NMOD:the-DT NMOD:heavy-JJ,the heavy,1,NA
+733,SBJ:people-NNS PMOD:enter-VVG,people enter,1,NA
+734,"SBJ:the-DT P:""-``","the """,2,NA
+735,NMOD:the-DT NMOD:Author-NP,the Author,1,NA
+736,DEP:Church-NP ROOT:Chairs-NP,Church Chairs,1,NA
+737,NMOD:church-NN PMOD:chair-NNS,church chair,1,NA
+738,NMOD:church-NN COORD:seating-NN,church seating,1,NA
+739,NMOD:no-DT ADV:theory-NN,no theory,1,NA
+740,NMOD:no-DT ROOT:stress-NN,no stress,1,NA
+741,VMOD:the-DT VMOD:bad-JJR,the bad,1,NA
+742,NMOD:no-DT ROOT:@card@-CD,no @card@,1,NA
+743,NMOD:the-DT NMOD:publicity-NN,the publicity,1,NA
+744,NMOD:the-DT ROOT:loco-NNS,the loco,1,NA
+745,NMOD:the-DT SBJ:school-NNS,the school,1,NA
+746,NMOD:the-DT PMOD:information-NN,the information,1,NA
+747,NMOD:the-DT PMOD:facility-NNS,the facility,1,NA
+748,NMOD:the-DT AMOD:vertically-RB,the vertically,1,NA
+749,NMOD:the-DT NMOD:unique-JJ,the unique,1,NA
+750,DEP:the-DT ROOT:New-NP,the New,1,NA
+751,NMOD:the-DT SBJ:chapter-NNS,the chapter,1,NA
+752,PMOD:church-NNS PMOD:Harlem-NP,church Harlem,1,NA
+753,NMOD:the-DT SBJ:morrisons-NNS,the morrisons,1,NA
+754,VMOD:the-DT VMOD:Graduate-NP,the Graduate,1,NA
+755,VMOD:the-DT SBJ:School-NP,the School,1,NA
+756,NMOD:the-DT NMOD:cartographic-JJ,the cartographic,1,NA
+757,"SBJ:people-NNS P:,-,","people ,",1,NA
+758,VMOD:the-DT VMOD:Round-NP,the Round,1,NA
+759,PMOD:people-NNS NMOD:build-VVP,people build,1,NA
+760,NMOD:the-DT SBJ:wood-NN,the wood,1,NA
+761,NMOD:no-DT SBJ:force-NN,no force,1,NA
+762,NMOD:the-DT SBJ:wood-NNS,the wood,1,NA
+763,NMOD:the-DT SBJ:area-NN,the area,1,NA
+764,PMOD:people-NNS COORD:creature-NNS,people creature,1,NA
+765,NMOD:the-DT SBJ:drover-NNS,the drover,1,NA
+766,NMOD:the-DT SBJ:house-NN,the house,1,NA
+767,NMOD:the-DT ADV:post-NNS,the post,1,NA
+768,NMOD:the-DT NMOD:green-JJ,the green,1,NA
+769,SBJ:people-NNS ROOT:work-VVD,people work,1,NA
+770,NMOD:no-DT NMOD:planning-NN,no planning,1,NA
+771,NMOD:the-DT NMOD:46-year-old-JJ,the 46-year-old,1,NA
+772,NMOD:the-DT NMOD:4-pound-JJ,the 4-pound,1,NA
+773,DEP:of-IN NMOD:wachovia-NN,of wachovia,1,NA
+774,NMOD:the-DT NMOD:language-NNS,the language,1,NA
+775,NMOD:the-DT DEP:history-NN,the history,1,NA
+776,VMOD:the-DT SBJ:English-NP,the English,1,NA
+777,NMOD:the-DT NMOD:English-JJ,the English,1,NA
+778,DEP:the-DT VMOD:real-JJ,the real,1,NA
+779,NMOD:the-DT SBJ:French-NNS,the French,1,NA
+780,VMOD:the-DT VMOD:Language-NP,the Language,1,NA
+781,ROOT:people-NNS P:?-SENT,people ?,1,NA
+782,NMOD:the-DT NMOD:sting-NN,the sting,1,NA
+783,NMOD:the-DT NMOD:art-NN,the art,1,NA
+784,NMOD:the-DT NMOD:propose-VVN,the propose,1,NA
+785,NMOD:the-DT SBJ:merger-NN,the merger,1,NA
+786,NMOD:the-DT ROOT:party-NNS,the party,1,NA
+787,NMOD:the-DT NMOD:gross-JJ,the gross,1,NA
+788,NMOD:the-DT SBJ:party-NNS,the party,2,NA
+789,NMOD:the-DT NMOD:primary-JJ,the primary,2,NA
+790,NMOD:the-DT ROOT:change-NNS,the change,1,NA
+791,NMOD:the-DT SBJ:property-NNS,the property,1,NA
+792,NMOD:the-DT NMOD:party-NNS,the party,1,NA
+793,NMOD:the-DT ROOT:fact-NN,the fact,1,NA
+794,NMOD:the-DT NMOD:large-JJS,the large,1,NA
+795,NMOD:no-DT NMOD:significant-JJ,no significant,1,NA
+796,OBJ:people-NNS P:--:,people -,1,NA
+797,NMOD:the-DT SBJ:paper-NN,the paper,3,NA
+798,NMOD:the-DT SBJ:study-NN,the study,3,NA
+799,NMOD:the-DT ROOT:importance-NN,the importance,2,NA
+800,NMOD:the-DT NMOD:paper-NN,the paper,1,NA
+801,VMOD:the-DT SBJ:White-NP,the White,1,NA
+802,VMOD:the-DT VMOD:White-NP,the White,1,NA
+803,NMOD:the-DT SBJ:author-NN,the author,1,NA
+804,NMOD:the-DT NMOD:policy-NN,the policy,1,NA
+805,NMOD:the-DT NMOD:transition-NN,the transition,1,NA
+806,NMOD:the-DT NMOD:project-NN,the project,1,NA
+807,PMOD:people-NNS COORD:impact-NN,people impact,1,NA
+808,NMOD:the-DT SBJ:role-NN,the role,1,NA
+809,PMOD:people-NNS COORD:increase-VV,people increase,1,NA
+810,NMOD:the-DT SBJ:finding-NNS,the finding,2,NA
+811,NMOD:the-DT NMOD:brewery-NN,the brewery,1,NA
+812,NMOD:the-DT COORD:whole-NN,the whole,1,NA
+813,NMOD:the-DT ROOT:premise-NNS,the premise,1,NA
+814,NMOD:the-DT SBJ:entrance-NN,the entrance,1,NA
+815,DEP:the-DT VMOD:Three-NP,the Three,1,NA
+816,NMOD:the-DT SBJ:brother-NNS,the brother,1,NA
+817,SBJ:the-DT VMOD:Home-NP,the Home,1,NA
+818,NMOD:the-DT NMOD:revise-VVN,the revise,1,NA
+819,NMOD:the-DT SBJ:leaflet-NN,the leaflet,1,NA
+820,NMOD:the-DT SBJ:campaign-NN,the campaign,1,NA
+821,NMOD:the-DT SBJ:presence-NN,the presence,1,NA
+822,NMOD:the-DT SBJ:elderly-JJ,the elderly,1,NA
+823,NMOD:the-DT SBJ:procedure-NN,the procedure,1,NA
+824,NMOD:the-DT NMOD:small-JJ,the small,1,NA
+825,NMOD:the-DT NMOD:fibreoptic-JJ,the fibreoptic,1,NA
+826,NMOD:the-DT NMOD:important-JJ,the important,1,NA
+827,NMOD:no-DT NMOD:Tuner-NP,no Tuner,2,NA
+828,NMOD:no-DT NMOD:DVB-T-NP,no DVB-T,2,NA
+829,NMOD:no-DT NMOD:Hauppauge-NP,no Hauppauge,1,NA
+830,VMOD:no-DT VMOD:Hauppauge-NP,no Hauppauge,2,NA
+831,DEP:no-DT DEP:Hauppauge-NP,no Hauppauge,8,NA
+832,DEP:no-DT DEP:Analogue-NP,no Analogue,1,NA
+833,SBJ:people-NNS VC:report-VVN,people report,1,NA
+834,DEP:no-DT AMOD:Digital-NP,no Digital,1,NA
+835,DEP:no-DT DEP:Digital-NP,no Digital,1,NA
+836,NMOD:the-DT NMOD:easy-JJS,the easy,1,NA
+837,NMOD:the-DT NMOD:DVB-T-NP,the DVB-T,1,NA
+838,NMOD:no-DT SBJ:channel-NNS,no channel,1,NA
+839,"PMOD:people-NNS P:""-``","people """,2,NA
+840,PMOD:people-NNS NMOD:set-VVN,people set,1,NA
+841,OBJ:people-NNS NMOD:electrical-JJ,people electrical,1,NA
+842,NMOD:the-DT ROOT:nvidia-NN,the nvidia,1,NA
+843,NMOD:the-DT NMOD:hire-NN,the hire,1,NA
+844,NMOD:the-DT SBJ:countryside-NN,the countryside,1,NA
+845,NMOD:the-DT PMOD:falcon-NN,the falcon,1,NA
+846,NMOD:the-DT SBJ:village-NN,the village,1,NA
+847,DEP:the-DT ROOT:Bridge-NP,the Bridge,1,NA
+848,NMOD:the-DT SBJ:weather-NN,the weather,1,NA
+849,NMOD:the-DT SBJ:hay-NN,the hay,1,NA
+850,"VMOD:the-DT P:""-''","the """,1,NA
+851,NMOD:the-DT SBJ:local-NNS,the local,1,NA
+852,CC:and-CC SBJ:GOSLINGS-NP,and GOSLINGS,1,NA
+853,VMOD:the-DT SBJ:Nene-NP,the Nene,1,NA
+854,ROOT:the-DT ROOT:Wash-NP,the Wash,1,NA
+855,ROOT:the-DT ROOT:Middle-NP,the Middle,2,NA
+856,NMOD:the-DT SBJ:scenery-NN,the scenery,1,NA
+857,NMOD:the-DT SBJ:trouble-NN,the trouble,1,NA
+858,NMOD:the-DT SBJ:cathedral-NN,the cathedral,1,NA
+859,P:the-DT DEP:Wash-NP,the Wash,1,NA
+860,NMOD:the-DT SBJ:sign-NN,the sign,1,NA
+861,NMOD:no-DT ROOT:entry-NN,no entry,1,NA
+862,PMOD:people-NNS OBJ:miss-VVP,people miss,1,NA
+863,VMOD:the-DT SBJ:Ouse-NP,the Ouse,1,NA
+864,CC:and-CC NMOD:one-CD,and one,1,NA
+865,NMOD:the-DT NMOD:Middle-NP,the Middle,1,NA
+866,SBJ:people-NNS VMOD:n't-RB,people n't,1,NA
+867,CC:and-CC PRD:shall-MD,and shall,1,NA
+868,VMOD:the-DT SBJ:TUC-NP,the TUC,1,NA
+869,OBJ:people-NNS PMOD:tackle-VVG,people tackle,1,NA
+870,NMOD:the-DT NMOD:role-NN,the role,2,NA
+871,SBJ:people-NNS OBJ:get-VVP,people get,1,NA
+872,NMOD:the-DT SBJ:spider-NNS,the spider,1,NA
+873,NMOD:the-DT SBJ:result-NNS,the result,1,NA
+874,NMOD:the-DT SBJ:reason-NN,the reason,2,NA
+875,NMOD:Church-NP NMOD:'s-POS,Church 's,1,NA
+876,NMOD:the-DT ROOT:arrival-NN,the arrival,1,NA
+877,NMOD:the-DT NMOD:King-NP,the King,1,NA
+878,NMOD:the-DT ADV:French-JJ,the French,1,NA
+879,VMOD:the-DT SBJ:Structure-NP,the Structure,1,NA
+880,NMOD:the-DT NMOD:Encyclopaedia-NP,the Encyclopaedia,1,NA
+881,NMOD:the-DT NMOD:human-JJ,the human,1,NA
+882,NMOD:the-DT NMOD:vermiform-JJ,the vermiform,1,NA
+883,NMOD:the-DT SBJ:appendix-NN,the appendix,1,NA
+884,NMOD:the-DT NMOD:market-NN,the market,1,NA
+885,NMOD:the-DT ROOT:godfather-NNS,the godfather,1,NA
+886,NMOD:the-DT NMOD:downward-JJ,the downward,1,NA
+887,SBJ:people-NNS COORD:donate-VV,people donate,1,NA
+888,SBJ:people-NNS ADV:donate-VVP,people donate,1,NA
+889,DEP:the-DT DEP:rich-JJR,the rich,1,NA
+890,SBJ:people-NNS ROOT:give-VVP,people give,1,NA
+891,SBJ:people-NNS VC:struggle-VVG,people struggle,1,NA
+892,NMOD:the-DT SBJ:world-NN,the world,1,NA
+893,DEP:people-NNS NMOD:regional-JJ,people regional,1,NA
+894,SBJ:people-NNS OBJ:find-VVP,people find,2,NA
+895,SBJ:people-NNS ROOT:open-VVD,people open,1,NA
+896,NMOD:the-DT SBJ:charity-NN,the charity,4,NA
+897,NMOD:the-DT NMOD:charity-NN,the charity,1,NA
+898,OBJ:people-NNS NMOD:significant-JJ,people significant,1,NA
+899,OBJ:people-NNS PMOD:constituency-NN,people constituency,1,NA
+900,NMOD:people-NNS SBJ:adviser-NNS,people adviser,2,NA
+901,NMOD:the-DT NMOD:tomorrow-NN,the tomorrow,1,NA
+902,PMOD:people-NNS PMOD:Hastings-NP,people Hastings,1,NA
+903,SBJ:people-NNS NMOD:successful-JJ,people successful,1,NA
+904,NMOD:the-DT NMOD:professional-JJ,the professional,1,NA
+905,SBJ:people-NNS COORD:reflect-VVP,people reflect,1,NA
+906,PMOD:people-NNS SBJ:Wales-NP,people Wales,1,NA
+907,PMOD:people-NNS PMOD:Wales-NP,people Wales,1,NA
+908,NMOD:the-DT SBJ:art-NNS,the art,1,NA
+909,SBJ:people-NNS OBJ:change-VV,people change,1,NA
+910,COORD:people-NNS NMOD:learn-VVG,people learn,1,NA
+911,NMOD:the-DT NMOD:annual-JJ,the annual,1,NA
+912,COORD:people-NNS PMOD:art-NNS,people art,1,NA
+913,VMOD:the-DT VMOD:Social-NP,the Social,1,NA
+914,NMOD:the-DT SBJ:choice-NN,the choice,2,NA
+915,DEP:the-DT DEP:DEGREES-NP,the DEGREES,1,NA
+916,P:of-IN DEP:the-DT,of the,1,NA
+917,DEP:the-DT P:FACULTY-NP,the FACULTY,1,NA
+918,NMOD:the-DT NMOD:Ma-NP,the Ma,1,NA
+919,NMOD:the-DT NMOD:principal-JJ,the principal,1,NA
+920,NMOD:the-DT NMOD:ma-NN,the ma,1,NA
+921,NMOD:the-DT NMOD:Honours-NP,the Honours,1,NA
+922,NMOD:the-DT NMOD:three-year-JJ,the three-year,1,NA
+923,VMOD:the-DT SBJ:Faculty-NP,the Faculty,2,NA
+924,NMOD:the-DT NMOD:Faculty-NP,the Faculty,1,NA
+925,NMOD:the-DT NMOD:appropriate-JJ,the appropriate,1,NA
+926,SBJ:people-NNS OBJ:terminal-NN,people terminal,1,NA
+927,SBJ:people-NNS VC:go-VV,people go,1,NA
+928,NMOD:the-DT NMOD:hospice-NN,the hospice,1,NA
+929,IOBJ:people-NNS NMOD:painful-JJ,people painful,1,NA
+930,SBJ:people-NNS NMOD:come-VVP,people come,1,NA
+931,NMOD:the-DT NMOD:modern-JJ,the modern,1,NA
+932,NMOD:the-DT ADV:staff-NN,the staff,1,NA
+933,NMOD:the-DT SBJ:atmosphere-NN,the atmosphere,2,NA
+934,SBJ:people-NNS PRD:ill-JJ,people ill,1,NA
+935,ROOT:the-DT VMOD:Department-NP,the Department,1,NA
+936,NMOD:the-DT NMOD:standard-JJ,the standard,1,NA
+937,DEP:the-DT VMOD:Information-NP,the Information,1,NA
+938,ROOT:the-DT VMOD:Kitchen-NP,the Kitchen,1,NA
+939,DEP:and-CC SBJ:Jas-NP,and Jas,1,NA
+940,PMOD:people-NNS VMOD:like-IN,people like,1,NA
+941,SBJ:people-NNS COORD:like-VVP,people like,1,NA
+942,NMOD:the-DT NMOD:Basics-NP,the Basics,1,NA
+943,NMOD:the-DT NMOD:colour-NN,the colour,1,NA
+944,DEP:the-DT DEP:Basics-NP,the Basics,1,NA
+945,NMOD:the-DT SBJ:z-1-NN,the z-1,1,NA
+946,NMOD:the-DT SBJ:design-NN,the design,2,NA
+947,ROOT:the-DT VMOD:Z-1-NP,the Z-1,1,NA
+948,NMOD:the-DT SBJ:disorder-NN,the disorder,1,NA
+949,NMOD:the-DT SBJ:area-NNS,the area,1,NA
+950,NMOD:the-DT SBJ:blister-NNS,the blister,1,NA
+951,NMOD:the-DT SBJ:virus-NN,the virus,3,NA
+952,SBJ:people-NNS VC:come-VVN,people come,1,NA
+953,SBJ:people-NNS NMOD:mild-JJ,people mild,1,NA
+954,NMOD:the-DT SBJ:sore-NNS,the sore,2,NA
+955,PMOD:people-NNS NMOD:HSV-NP,people HSV,1,NA
+956,NMOD:the-DT SBJ:infection-NN,the infection,1,NA
+957,NMOD:the-DT NMOD:body-NN,the body,1,NA
+958,NMOD:the-DT SBJ:factor-NNS,the factor,1,NA
+959,NMOD:the-DT SBJ:treatment-NN,the treatment,1,NA
+960,NMOD:the-DT SBJ:development-NN,the development,1,NA
+961,SBJ:people-NNS OBJ:reactivation-NNS,people reactivation,1,NA
+962,NMOD:the-DT SBJ:review-NN,the review,1,NA
+963,NMOD:the-DT NMOD:American-JJ,the American,1,NA
+964,NMOD:the-DT NMOD:subscription-NN,the subscription,1,NA
+965,NMOD:the-DT NMOD:book-NNS,the book,1,NA
+966,NMOD:the-DT SBJ:contractor-NN,the contractor,1,NA
+967,DEP:the-DT SBJ:new-JJ,the new,1,NA
+968,NMOD:the-DT NMOD:advance-NN,the advance,1,NA
+969,NMOD:the-DT SBJ:block-NN,the block,1,NA
+970,VMOD:the-DT VMOD:relocate-VVN,the relocate,1,NA
+971,NMOD:the-DT SBJ:facility-NN,the facility,1,NA
+972,COORD:people-NNS PRD:enthusiastic-JJ,people enthusiastic,1,NA
+973,PMOD:people-NNS ROOT:meet-VVD,people meet,1,NA
+974,SBJ:people-NNS OBJ:respond-VVG,people respond,1,NA
+975,"NMOD:the-DT SBJ:school,population-NN","the school,population",1,NA
+976,NMOD:the-DT NMOD:S4-NP,the S4,1,NA
+977,DEP:the-DT VMOD:Scriptwriters-NP,the Scriptwriters,1,NA
+978,NMOD:the-DT NMOD:name-NNS,the name,1,NA
+979,NMOD:the-DT NMOD:Scriptwriters-NP,the Scriptwriters,1,NA
+980,NMOD:the-DT NMOD:six-CD,the six,1,NA
+981,NMOD:the-DT NMOD:film4-JJ,the film4,1,NA
+982,NMOD:the-DT NMOD:dreaded-JJ,the dreaded,1,NA
+983,NMOD:the-DT SBJ:template-NN,the template,1,NA
+984,NMOD:the-DT PMOD:complete-JJ,the complete,1,NA
+985,P:the-DT ROOT:House-NP,the House,1,NA
+986,NMOD:the-DT NMOD:parent-NNS,the parent,1,NA
+987,CC:and-CC SBJ:Dante-NP,and Dante,1,NA
+988,NMOD:the-DT SBJ:music-NN,the music,1,NA
+989,DEP:the-DT P:Dome-NP,the Dome,1,NA
+990,NMOD:the-DT NMOD:Rave-NP,the Rave,1,NA
+991,NMOD:the-DT SBJ:scene-NN,the scene,1,NA
+992,NMOD:the-DT SBJ:remit-NN,the remit,1,NA
+993,DEP:the-DT VMOD:Moray-NP,the Moray,1,NA
+994,NMOD:the-DT SBJ:group-NN,the group,1,NA
+995,NMOD:People-NP NMOD:'s-POS,People 's,1,NA
+996,P:People-NP NMOD:'s-POS,People 's,1,NA
+997,PMOD:people-NNS P:Depression-NP,people Depression,1,NA
+998,NMOD:the-DT NMOD:new-JJR,the new,1,NA
+999,VMOD:the-DT VMOD:Cat-NP,the Cat,1,NA
+1000,NMOD:the-DT NMOD:direct-JJ,the direct,1,NA
+1001,NMOD:the-DT NMOD:Internet-NN,the Internet,1,NA
+1002,NMOD:the-DT SBJ:prosecution-NN,the prosecution,1,NA
+1003,NMOD:the-DT SBJ:time-NN,the time,1,NA
+1004,NMOD:the-DT NMOD:threshold-NN,the threshold,1,NA
+1005,NMOD:the-DT SBJ:competition-NN,the competition,1,NA
+1006,SBJ:people-NNS OBJ:would-MD,people would,1,NA
+1007,NMOD:the-DT SBJ:nature-NN,the nature,1,NA
+1008,SBJ:people-NNS COORD:complain-VVD,people complain,1,NA
+1009,NMOD:the-DT NMOD:anti-trust-NN,the anti-trust,2,NA
+1010,NMOD:no-DT SBJ:company-NN,no company,1,NA
+1011,CC:and-CC NMOD:product-NNS,and product,1,NA
+1012,NMOD:the-DT NMOD:HTML-NP,the HTML,1,NA
+1013,NMOD:the-DT NMOD:addon-NN,the addon,1,NA
+1014,SBJ:people-NNS ROOT:hate-VVP,people hate,1,NA
+1015,ROOT:people-NNS SBJ:I-PP,people I,1,NA
+1016,NMOD:no-DT SBJ:zone-NNS,no zone,1,NA
+1017,NMOD:the-DT SBJ:awnser-NN,the awnser,1,NA
+1018,NMOD:the-DT NMOD:big-JJ,the big,1,NA
+1019,PMOD:people-NNS NMOD:make-VVD,people make,1,NA
+1020,PMOD:people-NNS VC:work-VVG,people work,1,NA
+1021,DEP:the-DT VMOD:KDE-NP,the KDE,1,NA
+1022,NMOD:the-DT SBJ:developer-NNS,the developer,1,NA
+1023,ADV:no-RB ROOT:tab-VVD,no tab,1,NA
+1024,NMOD:no-DT NMOD:extension-NNS,no extension,1,NA
+1025,NMOD:no-DT SBJ:theme-NNS,no theme,1,NA
+1026,NMOD:no-DT NMOD:Security-NP,no Security,1,NA
+1027,PMOD:people-NNS NMOD:use-VVG,people use,1,NA
+1028,SBJ:people-NNS VC:hear-VVN,people hear,1,NA
+1029,PMOD:people-NNS NMOD:want-VVP,people want,1,NA
+1030,NMOD:the-DT SBJ:product-NN,the product,1,NA
+1031,NMOD:the-DT SBJ:comfort-NN,the comfort,1,NA
+1032,SBJ:people-NNS COORD:please-VV,people please,1,NA
+1033,OBJ:people-NNS VC:enhance-VV,people enhance,1,NA
+1034,DEP:the-DT P:School-NP,the School,1,NA
+1035,NMOD:the-DT ROOT:beginning-NNS,the beginning,1,NA
+1036,NMOD:the-DT NMOD:racist-NN,the racist,1,NA
+1037,NMOD:the-DT SBJ:conceptualisation-NN,the conceptualisation,1,NA
+1038,NMOD:the-DT SBJ:essay-NN,the essay,3,NA
+1039,NMOD:the-DT SBJ:aspect-NN,the aspect,1,NA
+1040,NMOD:the-DT SBJ:appendice-NNS,the appendice,1,NA
+1041,NMOD:the-DT NMOD:make-VVG,the make,1,NA
+1042,ROOT:people-NNS P:.-SENT,people .,1,NA
+1043,ROOT:the-DT ROOT:National-NP,the National,1,NA
+1044,ROOT:the-DT ROOT:Associated-NP,the Associated,1,NA
+1045,NMOD:the-DT NMOD:University-NP,the University,1,NA
+1046,NMOD:the-DT NMOD:perfect-JJ,the perfect,1,NA
+1047,PMOD:people-NNS NMOD:could-MD,people could,1,NA
+1048,CC:and-CC NMOD:whole-JJ,and whole,1,NA
+1049,NMOD:the-DT NMOD:friendly-JJ,the friendly,1,NA
+1050,OBJ:people-NNS OBJ:concern-NNS,people concern,1,NA
+1051,SBJ:the-DT ADV:Turks-NPS,the Turks,1,NA
+1052,DEP:the-DT SBJ:Nazis-NPS,the Nazis,1,NA
+1053,CC:and-CC NMOD:Iranian-JJ,and Iranian,1,NA
+1054,NMOD:no-DT NMOD:fresh-JJ,no fresh,1,NA
+1055,PMOD:people-NNS VMOD:simply-RB,people simply,1,NA
+1056,NMOD:the-DT SBJ:response-NNS,the response,1,NA
+1057,NMOD:the-DT SBJ:consultation-NN,the consultation,1,NA
+1058,NMOD:the-DT NMOD:government-NN,the government,1,NA
+1059,VMOD:the-DT SBJ:Department-NP,the Department,1,NA
+1060,NMOD:the-DT SBJ:member-NNS,the member,1,NA
+1061,NMOD:the-DT SBJ:link-NNS,the link,1,NA
+1062,NMOD:the-DT SBJ:comparison-NN,the comparison,1,NA
+1063,SBJ:no-DT ROOT:remain-VVZ,no remain,1,NA
+1064,NMOD:the-DT SBJ:line-NN,the line,1,NA
+1065,NMOD:the-DT SBJ:popularity-NN,the popularity,1,NA
+1066,NMOD:the-DT NMOD:long-JJ,the long,1,NA
+1067,IOBJ:people-NNS NMOD:initial-JJ,people initial,1,NA
+1068,SBJ:people-NNS OBJ:use-VV,people use,1,NA
+1069,DEP:people-NNS COORD:region-NNS,people region,1,NA
+1070,PMOD:people-NNS NMOD:regional-JJ,people regional,1,NA
+1071,NMOD:the-DT COORD:facilitator-NN,the facilitator,1,NA
+1072,NMOD:the-DT NMOD:ďż˝distanced-JJ,the ďż˝distanced,1,NA
+1073,NMOD:the-DT NMOD:micro-dynamics-NN,the micro-dynamics,1,NA
+1074,NMOD:the-DT NMOD:viability-NN,the viability,1,NA
+1075,NMOD:the-DT COORD:role-NN,the role,2,NA
+1076,NMOD:the-DT ADV:relationship-NN,the relationship,1,NA
+1077,DEP:the-DT DEP:Andalusian-NP,the Andalusian,1,NA
+1078,NMOD:the-DT ROOT:link-NN,the link,1,NA
+1079,DEP:the-DT DEP:Social-NP,the Social,1,NA
+1080,NMOD:the-DT NMOD:case-NN,the case,4,NA
+1081,ROOT:of-IN NMOD:Farm-NP,of Farm,1,NA
+1082,NMOD:the-DT COORD:ict-NN,the ict,1,NA
+1083,NMOD:the-DT COORD:geography-NN,the geography,1,NA
+1084,NMOD:the-DT ROOT:analysis-NN,the analysis,1,NA
+1085,NMOD:the-DT COORD:future-NN,the future,1,NA
+1086,NMOD:the-DT OBJ:case-NN,the case,1,NA
+1087,SBJ:of-NNS NMOD:r&d-based-JJ,of r&d-based,1,NA
+1088,NMOD:of-NNS NMOD:European-JJ,of European,1,NA
+1089,NMOD:the-DT DEP:effects-NN,the effects,1,NA
+1090,NMOD:the-DT NMOD:regional-JJ,the regional,2,NA
+1091,DEP:the-DT DEP:Industrial-NP,the Industrial,1,NA
+1092,NMOD:the-DT ADV:case-NN,the case,1,NA
+1093,NMOD:the-DT ROOT:German-JJ,the German,1,NA
+1094,NMOD:the-DT PMOD:evidence-NN,the evidence,1,NA
+1095,ROOT:and-CC ROOT:Growth-NP,and Growth,1,NA
+1096,ROOT:of-IN ROOT:Accession-NP,of Accession,1,NA
+1097,NMOD:the-DT ROOT:measure-NN,the measure,1,NA
+1098,ROOT:the-DT DEP:Regional-NP,the Regional,1,NA
+1099,NMOD:the-DT COORD:case-NN,the case,1,NA
+1100,NMOD:the-DT ADV:role-NN,the role,1,NA
+1101,NMOD:the-DT NMOD:path-NN,the path,1,NA
+1102,NMOD:the-DT NMOD:evolution-NN,the evolution,1,NA
+1103,NMOD:the-DT ROOT:pitfall-NNS,the pitfall,1,NA
+1104,DEP:the-DT ROOT:Role-NP,the Role,1,NA
+1105,PMOD:people-NNS PMOD:era-NN,people era,1,NA
+1106,ROOT:the-DT ROOT:Regional-NP,the Regional,1,NA
+1107,NMOD:the-DT SBJ:Mexican-JJ,the Mexican,3,NA
+1108,DEP:the-DT ROOT:Royal-NP,the Royal,1,NA
+1109,NMOD:the-DT NMOD:poor-JJ,the poor,1,NA
