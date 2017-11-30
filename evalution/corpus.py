@@ -176,13 +176,12 @@ def extract_statistics(sentence, words, mwes, statistics):
     """
 
     for i in range(0, len(sentence)):
-        word = sentence[i][TOKEN]
         mwe = _check_mwes(i, TOKEN, mwes, sentence)
         if mwe:
             word, mwe_end_index = mwe
         else:
             # MWEs are processed as tokens, singleton as lemmas.
-            word = word[LEMMA]
+            word = sentence[i][LEMMA]
         if word in words or mwe:
             if word not in statistics:
                 statistics[word] = {}
@@ -196,8 +195,8 @@ def extract_statistics(sentence, words, mwes, statistics):
                 norm_token = norm_token.lower()
             statistics[word]["freq"] += 1
             statistics[word]["norm"][norm_token] += 1
-            statistics[word]["cap"][_cap_type(word[TOKEN])] += 1
-            statistics[word]["pos_dep"][word[POS] + "_" + word[DEP]] += 1
+            statistics[word]["cap"][_cap_type(sentence[i][TOKEN])] += 1
+            statistics[word]["pos_dep"][sentence[i][POS] + "_" + sentence[i][DEP]] += 1
     return True
 
 
@@ -423,9 +422,9 @@ def main():
         ngram_args = (sentence, words, ngrams, mwes)
         pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
         stat_args = (sentence, words, mwes, statistics)
-        for f, args in ((extract_ngrams, ngram_args),):
-            #                    (extract_patterns, pattern_args),
-            #                    (extract_statistics, stat_args)):
+        for f, args in ((extract_ngrams, ngram_args),
+                        #                    (extract_patterns, pattern_args),
+                        (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
@@ -433,7 +432,7 @@ def main():
     output_dir = '..\\data\\output\\'
     save_ngrams(ngrams, output_dir + 'ngrams.csv')
     # save_patterns(patterns, output_dir + 'patterns.csv')
-    # save_statistics(statistics, output_dir + 'statistics.csv')
+    save_statistics(statistics, output_dir + 'statistics.csv')
     # pprint(patterns)
     # pprint(statistics)
     # pprint(statistics['church'])
