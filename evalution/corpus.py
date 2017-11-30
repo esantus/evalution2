@@ -35,10 +35,6 @@ CORPUS_FIELDS = 6
 TOKEN, LEMMA, POS, INDEX, PARENT, DEP = range(0, CORPUS_FIELDS)
 
 
-class OrderedCounter(collections.Counter, collections.OrderedDict):
-    pass
-
-
 def _cap_type(word: str):
     """Returns a string describing the capitalization type of word.
 
@@ -205,8 +201,8 @@ def extract_statistics(sentence, words, statistics, mwes=None):
     return True
 
 
-def extract_patterns(sentence, word_pairs, patterns, islemma=False,
-                     save_token=True, save_dep=False, save_lemma=False, save_parent=False, save_pos=False):
+def extract_patterns(sentence, word_pairs, patterns,
+                     save_token=True, save_lemma=True, save_pos=True, save_dep=True):
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -222,37 +218,36 @@ def extract_patterns(sentence, word_pairs, patterns, islemma=False,
     # First time running, initialize dictionary
     if not patterns:
         for pair in word_pairs:
-            # We use OrderedCounter to cross-reference the fields.
-            patterns[pair] = {arg[5:].upper(): OrderedCounter() for (arg, val) in save_args.items() if val}
+            patterns[pair] = {arg[5:].upper(): collections.Counter() for (arg, val) in save_args.items() if val}
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
     # TODO: Benchmark a regexp approach?
-    all_words = [w[LEMMA] for w in sentence] if islemma else [w[TOKEN] for w in sentence]
+    all_lemmas = [w[LEMMA] for w in sentence]
+    all_tokens = [w[TOKEN] for w in sentence]
     for pair in word_pairs:
-        for i, word in enumerate(all_words):
-            if word == pair[0]:
+        for i in range(0, len(all_lemmas)):
+            if all_lemmas[i] == pair[0] or all_tokens[i] == pair[0]:
                 word1, word2 = pair[0], pair[1]
-            elif word == pair[1]:
+            elif all_lemmas[i] == pair[1] or all_tokens[i] == pair[1]:
                 word1, word2 = pair[1], pair[0]
             else:
                 continue
             match_index = i
-            for x in range(i, len(all_words)):
-                if all_words[x] == word2:
+            for x in range(i, len(all_lemmas)):
+                if all_lemmas[x] == word2 or all_tokens[x] == word2:
                     patterns[pair]['freq'] += 1
                     for arg, save in save_args.items():
                         if save:
                             target_name = arg[5:]
                             corpus_field = globals()[target_name]
                             all_targets = [w[corpus_field] for w in sentence]
-                            in_between = ' '.join(all_targets[match_index:x + 1])
+                            in_between = ' '.join(all_targets[match_index + 1:x])
                             patterns[pair][target_name][in_between] += 1
     return True
 
 
 def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, include_stopwords=False, islemma=True, pos=True,
-                   dep=True,
-                   PLMI=False):
+                   dep=True):
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -434,7 +429,7 @@ def main():
     logging.info('Extracting ngrams, patterns and statistics.')
     for sentence in tqdm.tqdm(get_sentences(corpus), mininterval=0.5):
         ngram_args = (sentence, words, ngrams, mwes)
-        pattern_args = (sentence, pattern_pairs, patterns, 0, 1, 1, 1)
+        pattern_args = (sentence, pattern_pairs, patterns)
         stat_args = (sentence, words, statistics, mwes)
         for f, args in ((extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
