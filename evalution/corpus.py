@@ -1,7 +1,6 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
-    * ngram probability check
     * Add test sets
     * More details in function annotations.
 """
@@ -18,12 +17,13 @@ import tqdm
 
 from evalution import _data
 
+#: Corpus fields in an eval corpus
+CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep']
+F = collections.namedtuple('F', CORPUS_FIELDS)
+F = F._make(range(0, len(CORPUS_FIELDS)))
+# Default logging level
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
-#: Number of fields in the tsv corpus datafile.
-CORPUS_FIELDS = 6
-#: List of constants spelling out the separators
-TOKEN, LEMMA, POS, INDEX, PARENT, DEP = range(0, CORPUS_FIELDS)
 
 
 def _cap_type(word: str) -> str:
@@ -48,7 +48,7 @@ def _check_mwes(word_index: int, field: int, mwes: set, sentence: 'eval sentence
 
     Args:
         word_index: Check if any mwe start from this index.
-        field: One of the corpus field, usually LEMMA or TOKEN.
+        field: One of the corpus field, usually F.lemma or F.token.
         mwes: A list of mwes.
         sentence: The sentence to check (it's a list of 6-tuples).
 
@@ -60,7 +60,7 @@ def _check_mwes(word_index: int, field: int, mwes: set, sentence: 'eval sentence
         if word == mwe[0]:
             joined_mwe = ' '.join(mwe)
             target_end_index = word_index + len(mwe)
-            all_tokens = [w[TOKEN] for w in sentence]
+            all_tokens = [w[F.token] for w in sentence]
             window = ' '.join(all_tokens[word_index:target_end_index])
             if joined_mwe == window:
                 word = joined_mwe
@@ -135,7 +135,7 @@ def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
             corpus = gzip.open(filename, 'rt', encoding=encoding)
         else:
             corpus = open(filename, 'r', encoding=encoding)
-        if len(corpus.readline().split("\t")) != CORPUS_FIELDS:
+        if len(corpus.readline().split("\t")) != len(CORPUS_FIELDS):
             corpus.close()
             raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
                              "convert_corpus(corpus) to create an evalution2 corpus" % filename)
@@ -167,11 +167,11 @@ def get_sentences(corpus_fn: 'file path') -> 'eval sentence':
                 elif '</s>' in line:
                     yield s
                     s = []
-                # Append all TOKENS
+                # Append all F.tokenS
                 else:
                     s_line = line.split()
                     # only append valid lines
-                    if len(s_line) == CORPUS_FIELDS:
+                    if len(s_line) == len(CORPUS_FIELDS):
                         word, lemma, pos, index, parent, dep = line.split()
                         s.append((word, lemma, pos, int(index), int(parent), dep))
                     else:
@@ -201,12 +201,12 @@ def extract_statistics(sentence: 'eval sentence', words: list,
     """
 
     for i in range(0, len(sentence)):
-        mwe = _check_mwes(i, TOKEN, mwes, sentence)
+        mwe = _check_mwes(i, F.token, mwes, sentence)
         if mwe:
             word, mwe_end_index = mwe
         else:
             # MWEs are processed as tokens, singleton as lemmas.
-            word = sentence[i][LEMMA]
+            word = sentence[i][F.lemma]
         if word in words or mwe:
             if word not in statistics:
                 statistics['last_id'] = statistics.get('last_id', 0) + 1
@@ -216,14 +216,14 @@ def extract_statistics(sentence: 'eval sentence', words: list,
                 statistics[word]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
                 statistics[word]["norm"] = collections.Counter()
                 statistics[word]["pos_dep"] = collections.Counter()
-            norm_token = word if mwe else sentence[i][TOKEN]
+            norm_token = word if mwe else sentence[i][F.token]
             # Only the normalized form of proper nouns is left capitalized.
             if not word.istitle() or mwe:
                 norm_token = norm_token.lower()
             statistics[word]["freq"] += 1
             statistics[word]["norm"][norm_token] += 1
-            statistics[word]["cap"][_cap_type(sentence[i][TOKEN])] += 1
-            statistics[word]["pos_dep"][sentence[i][POS] + "_" + sentence[i][DEP]] += 1
+            statistics[word]["cap"][_cap_type(sentence[i][F.token])] += 1
+            statistics[word]["pos_dep"][sentence[i][F.pos] + "_" + sentence[i][F.dep]] += 1
     return True
 
 
@@ -233,23 +233,23 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     The dictionary has the following structure:
     patterns {
             (w1, w1): { # keys are pairs (tuples) of two strings indicating a word (token, or lemma if islemma == True)
-            DEP: ... # the values are another dictionary whose keys are the corpus fields (DEP, LEMMA, TOKEN, ...)
-            LEMMA: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
+            F.dep: ... # the values are another dictionary whose keys are the corpus fields (F.dep, F.lemma, F.token, ...)
+            F.lemma: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
 
     Args:
         sentence: A list of 6tuples representing a sentence.
         word_pairs: A set of word pairs and their inverse.
         patterns: The pattern dictionary to be updated or initialized.
         save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
-            If empty, the following default values are used: {'TOKEN':True, 'LEMMA':True, 'POS':True, 'DEP':True}.
+            If empty, the following default values are used: {'token':True, 'lemma':True, 'POS':True, 'dep':True}.
     Returns:
         True if dictionary is sucessfully updated/created.
     """
 
     if not save_args:
-        save_args = {'TOKEN': True, 'LEMMA': True, 'POS': True, 'DEP': True}
+        save_args = {'token': True, 'lemma': True, 'pos': True, 'dep': True}
     else:
-        if not any([v for (k, v) in save_args.items() if k in ['TOKEN', 'LEMMA', 'POS', 'DEP', 'PARENT', 'INDEX']]):
+        if not any([v for (k, v) in save_args.items() if k in ['token', 'lemma', 'pos', 'dep', 'parent', 'index']]):
             raise ValueError('%s is not a valid dictionary.' % repr(save_args))
 
     # First time running, initialize dictionary
@@ -259,8 +259,8 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
             patterns[pair]['pair_id'] = pair_id
-    all_lemmas = [w[LEMMA] for w in sentence]
-    all_tokens = [w[TOKEN] for w in sentence]
+    all_lemmas = [w[F.lemma] for w in sentence]
+    all_tokens = [w[F.token] for w in sentence]
     for pair in word_pairs:
         for i in range(0, len(all_lemmas)):
             if all_lemmas[i] == pair[0] or all_tokens[i] == pair[0]:
@@ -275,8 +275,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
                     patterns[pair]['freq'] += 1
                     for field, value in save_args.items():
                         if value:
-                            corpus_field = globals()[field]
-                            all_targets = [w[corpus_field] for w in sentence]
+                            all_targets = [w[getattr(F, field)] for w in sentence]
                             in_between = ' '.join(all_targets[match_index + 1:x])
                             patterns[pair][field][in_between] += 1
     return True
@@ -313,17 +312,17 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
                            tot_ngram_freq=0, ngram_freq={}, last_id=0))
-    field = TOKEN if istoken else LEMMA
+    field = F.token if istoken else F.lemma
     ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
         # The stopword list was obtaned using nltk.corpus.stopwords
         stopwords = _data.stopwords
-        sentence = [w for w in sentence if w[TOKEN] not in stopwords]
+        sentence = [w for w in sentence if w[F.token] not in stopwords]
 
     if pos and not dep:
-        raw_sentence = [str(w[field] + '-' + w[POS]) for w in sentence]
+        raw_sentence = [str(w[field] + '-' + w[F.pos]) for w in sentence]
     elif pos and dep:
-        raw_sentence = [str(w[DEP] + ':' + w[field] + '-' + w[POS]) for w in sentence]
+        raw_sentence = [str(w[F.dep] + ':' + w[field] + '-' + w[F.pos]) for w in sentence]
     else:
         raw_sentence = [w[field] for w in sentence]
 
@@ -337,14 +336,14 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
             word, second_ngram_index = mwe
             raw_word = ' '.join(raw_sentence[i:second_ngram_index])
         else:
-            word = sentence[i][LEMMA]
+            word = sentence[i][F.lemma]
         # -1 because we include the first ngram
         end_window_index = second_ngram_index + win - 1
         if end_window_index > len(sentence):
             break
         if word in wordlist or mwe:
             ngram = (raw_word, *tuple(raw_sentence[second_ngram_index:end_window_index]))
-            all_lemma = [w[LEMMA] for w in sentence]
+            all_lemma = [w[F.lemma] for w in sentence]
             ngram_lemmas = (word, *tuple(all_lemma[second_ngram_index:end_window_index]))
             if ngram not in ngrams['ngram_freq']:
                 ngrams['last_id'] += 1
