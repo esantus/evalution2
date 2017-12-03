@@ -19,8 +19,8 @@ from evalution import _data
 
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep']
-F = collections.namedtuple('CorpusField', CORPUS_FIELDS)
-F = F._make(range(0, len(CORPUS_FIELDS)))
+CorpusField = collections.namedtuple('CorpusField', CORPUS_FIELDS)
+F = CorpusField(*range(0, len(CORPUS_FIELDS)))
 # Default logging level
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -233,7 +233,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     The dictionary has the following structure:
     patterns {
             (w1, w1): { # keys are pairs (tuples) of two strings indicating a word (token, or lemma if islemma == True)
-            F.dep: ... # the values are another dictionary whose keys are the corpus fields (F.dep, F.lemma, F.token, ...)
+            F.dep: ... # the values are another dictionary whose keys are the corpus fields (F.dep, F.lemma, F.token,)
             F.lemma: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
 
     Args:
@@ -416,6 +416,7 @@ def save_ngram_stats(ngrams: dict, statistics: dict, outfile_path: 'file path'):
 
     Args:
         ngrams: The ngram dictionary.
+        statistics: The statistics dictionary.
         outfile_path: The filename of the output file.
 
     Returns:
