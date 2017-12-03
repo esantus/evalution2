@@ -480,7 +480,7 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
     open_args = dict(mode='w', encoding='utf-8', newline='')
     with open(filenames[0], **open_args) as outfile_words, open(
             filenames[1], **open_args) as outfile_norm, open(
-        filenames[2], **open_args) as outfile_posdep:
+            filenames[2], **open_args) as outfile_posdep:
 
         wordf = csv.writer(outfile_words)
         normf = csv.writer(outfile_norm)
