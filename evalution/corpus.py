@@ -516,18 +516,21 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
 
 def main():
     """Save ngrams, patterns and statistics to a file using test data."""
-    wlist = '..\data\\test\\wordlist.csv'
-    corpus = '..\data\\test\\tiny_corpus.csv'
-    patterns_fn = '..\data\\test\\patterns.csv'
+    wlist_fn = '..\\data\\test\\wordlist.csv'
+    nlist_fn = '..\\data\\test\\wordlist.csv'
+    plist_fn = '..\\data\\test\\patterns.csv'
+    corpus_fn = '..\\data\\test\\tiny_corpus.csv'
+    output_dir = '..\\data\\output\\'
     ngrams, patterns, statistics = (dict() for _ in range(3))
-    words, mwes = _get_wlist(wlist)
-    pattern_pairs = _get_pattern_pairs(patterns_fn)
+    word_list, wmwes = _get_wlist(wlist_fn)
+    ngram_list, nmwes = _get_wlist(nlist_fn)
+    pattern_pairs = _get_pattern_pairs(plist_fn)
 
     logging.info('Extracting ngrams, patterns and statistics.')
-    for sentence in tqdm.tqdm(get_sentences(corpus), mininterval=0.5):
-        ngram_args = (sentence, words, ngrams, mwes)
+    for sentence in tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5):
+        ngram_args = (sentence, word_list, ngrams, nmwes)
         pattern_args = (sentence, pattern_pairs, patterns)
-        stat_args = (sentence, words, statistics, mwes)
+        stat_args = (sentence, ngram_list, statistics, wmwes)
         for f, args in ((extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args)):
@@ -535,15 +538,10 @@ def main():
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
     ngrams = add_ngram_probability(ngrams)
-    output_dir = '..\\data\\output\\'
     save_ngrams(ngrams, output_dir + 'ngrams.csv')
     save_patterns(patterns, output_dir + 'patterns.csv')
     save_statistics(statistics, output_dir + 'statistics.csv')
     save_ngram_stats(ngrams, statistics, output_dir + 'ngram_words.csv')
-    # pprint(patterns)
-    # pprint(statistics)
-    # pprint(statistics['church'])
-    # pprint(statistics['used to be'])
 
 
 if __name__ == '__main__':
