@@ -514,13 +514,17 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
     logging.info('%s saved.' % ', '.join(filenames))
 
 
-def main():
-    """Save ngrams, patterns and statistics to a file using test data."""
-    wlist_fn = '..\\data\\test\\wordlist.csv'
-    nlist_fn = '..\\data\\test\\wordlist.csv'
-    plist_fn = '..\\data\\test\\patterns.csv'
-    corpus_fn = '..\\data\\test\\tiny_corpus.csv'
-    output_dir = '..\\data\\output\\'
+def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str):
+    """Save statistics, patterns and ngram output files in a folder.
+
+    Args:
+        wlist_fn: Path to the file with the word list to use for statistics.
+        nlist_fn: Path to the file with the word list to use for ngrams.
+        plist_fn: Path to the file with the list of pair words to use for the patterns.
+        corpus_fn: Path to the file with the corpus.
+        output_dir: Path to the output file.
+    """
+
     ngrams, patterns, statistics = (dict() for _ in range(3))
     word_list, wmwes = _get_wlist(wlist_fn)
     ngram_list, nmwes = _get_wlist(nlist_fn)
@@ -542,6 +546,16 @@ def main():
     save_patterns(patterns, output_dir + 'patterns.csv')
     save_statistics(statistics, output_dir + 'statistics.csv')
     save_ngram_stats(ngrams, statistics, output_dir + 'ngram_words.csv')
+
+
+def main():
+    """Save ngrams, patterns and statistics to a file using test data."""
+    wlist_fn = '..\\data\\test\\wordlist.csv'
+    nlist_fn = wlist_fn
+    plist_fn = '..\\data\\test\\patterns.csv'
+    corpus_fn = '..\\data\\test\\tiny_corpus.csv'
+    output_dir = '..\\data\\output\\'
+    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir)
 
 
 if __name__ == '__main__':
