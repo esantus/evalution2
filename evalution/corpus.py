@@ -19,7 +19,7 @@ from evalution import _data
 
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep']
-F = collections.namedtuple('F', CORPUS_FIELDS)
+F = collections.namedtuple('CorpusField', CORPUS_FIELDS)
 F = F._make(range(0, len(CORPUS_FIELDS)))
 # Default logging level
 logging.basicConfig(level=logging.INFO)
