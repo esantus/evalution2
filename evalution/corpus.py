@@ -1,6 +1,8 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
+    * ngram probability check
+    * arg dict
     * Add test sets
     * More details in function annotations.
 """
@@ -8,7 +10,6 @@ TODO:
 import collections
 import csv
 import gzip
-import inspect
 import logging
 import math
 import os
@@ -111,7 +112,7 @@ def _get_wlist(wlist_fn: 'file path') -> (set, list):
     return words, mwes
 
 
-def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> IO:
+def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
     """Yield an eval corpus reader.
 
     Args:
@@ -178,7 +179,7 @@ def get_sentences(corpus_fn: 'file path') -> 'eval sentence':
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence: 'eval sentence', words: List(str),
+def extract_statistics(sentence: 'eval sentence', words: list,
                        statistics: dict, mwes: set = None) -> bool:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
@@ -227,9 +228,7 @@ def extract_statistics(sentence: 'eval sentence', words: List(str),
     return True
 
 
-def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
-                     save_token: bool = True, save_lemma: bool = True, save_pos: bool = True, save_dep: bool = True) \
-        -> bool:
+def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict, save_args: dict = None) -> bool:
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -242,25 +241,25 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
         sentence: A list of 6tuples representing a sentence.
         word_pairs: A set of word pairs and their inverse.
         patterns: The pattern dictionary to be updated or initialized.
-        save_FIELD: save patterns in the form specified (FIELD is a corpus field).
-            For example, if save_token and save_lemma are True, save a pattern with the lemmas and one with tokens.
-
+        save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
+            If empty, the following default values are used: {'TOKEN':True, 'LEMMA':True, 'POS':True, 'DEP':True}.
     Returns:
         True if dictionary is sucessfully updated/created.
     """
 
-    frame = inspect.currentframe()
-    # TODO: Replace with **kargs?
-    args = inspect.getargvalues(frame)[3]
-    save_args = {k.upper(): v for (k, v) in args.items() if k.startswith('save_')}
+    if not save_args:
+        save_args = {'TOKEN': True, 'LEMMA': True, 'POS': True, 'DEP': True}
+    else:
+        if not any([v for (k, v) in save_args.items() if k in ['TOKEN', 'LEMMA', 'POS', 'DEP', 'PARENT', 'INDEX']]):
+            raise ValueError('%s is not a valid dictionary.' % repr(save_args))
+
     # First time running, initialize dictionary
     if not patterns:
         for pair_id, pair in enumerate(word_pairs):
-            patterns[pair] = {arg[5:].upper(): collections.Counter() for (arg, val) in save_args.items() if val}
+            patterns[pair] = {arg: collections.Counter() for (arg, val) in save_args.items() if val}
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
             patterns[pair]['pair_id'] = pair_id
-    # TODO: Benchmark a regexp approach?
     all_lemmas = [w[LEMMA] for w in sentence]
     all_tokens = [w[TOKEN] for w in sentence]
     for pair in word_pairs:
@@ -275,13 +274,12 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
             for x in range(i, len(all_lemmas)):
                 if all_lemmas[x] == word2 or all_tokens[x] == word2:
                     patterns[pair]['freq'] += 1
-                    for arg, save in save_args.items():
-                        if save:
-                            target_name = arg[5:]
-                            corpus_field = globals()[target_name]
+                    for field, value in save_args.items():
+                        if value:
+                            corpus_field = globals()[field]
                             all_targets = [w[corpus_field] for w in sentence]
                             in_between = ' '.join(all_targets[match_index + 1:x])
-                            patterns[pair][target_name][in_between] += 1
+                            patterns[pair][field][in_between] += 1
     return True
 
 
@@ -536,7 +534,7 @@ def main():
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
-    # ngrams = add_ngram_probability(ngrams)
+    ngrams = add_ngram_probability(ngrams)
     output_dir = '..\\data\\output\\'
     save_ngrams(ngrams, output_dir + 'ngrams.csv')
     save_patterns(patterns, output_dir + 'patterns.csv')
