@@ -2,7 +2,6 @@
 
 TODO:
     * ngram probability check
-    * arg dict
     * Add test sets
     * More details in function annotations.
 """
@@ -368,26 +367,25 @@ def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
 
     """
 
-    # For every ngram that was identified
     for ngram in ngrams['ngram_freq']:
-        # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
         curr_ngram = ngrams['ngram_freq'][ngram]
-        if curr_ngram['freq'] > 3:
+        # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
+        if curr_ngram['freq'] < 4:
+            probability = 0
+        else:
             ngram_prob = float(curr_ngram['freq']) / ngrams['tot_ngram_freq']
             # Initializing the variable to calculate the probability of components as independent events
             components_prob = 1
             for word in ngram:
                 components_prob *= float(ngrams['word_freq'][word]) / ngrams['tot_word_freq']
-            # ngram probability in PPMI
             probability = math.log(ngram_prob / components_prob)  # PPMI
-            # Adaptation to PLMI
             if plmi:
                 probability *= curr_ngram['freq']  # PLMI
-            ngrams['ngram_freq'][ngram]['probability'] = probability
+        ngrams['ngram_freq'][ngram]['probability'] = probability
     return ngrams
 
 
-def save_ngrams(ngrams: dict, outfile_path: 'file path', probability: bool = True):
+def save_ngrams(ngrams: dict, outfile_path: 'file path'):
     """Save ngrams to a tsv file.
 
     Args:
@@ -398,6 +396,8 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path', probability: bool = Tru
         True if file is sucessfully written.
     """
 
+    # save probability only if at least one element has probability > 0
+    probability = any([ngram['probability'] for _, ngram in ngrams['ngram_freq'].items() if 'probability' in ngram])
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
         header = ['ngram_id', 'ngram', 'lemmas', 'freq']
@@ -407,7 +407,7 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path', probability: bool = Tru
         for ngram, ngram_d in ngrams['ngram_freq'].items():
             row = [ngram_d['ngram_id'], ' '.join(ngram), ' '.join(ngram_d['lemmas']), ngram_d['freq']]
             if probability:
-                row.append(ngram_d.get('probability', 'NA'))
+                row.append(ngram_d['probability'])
             ngram_writer.writerow(row)
     logging.info('%s saved.' % outfile_path)
 
