@@ -182,7 +182,7 @@ def extract_statistics(sentence: 'eval sentence', words: list,
                        statistics: dict, mwes: set = None) -> bool:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
-    The dictionary is strucutred as follows:
+    The dictionary is structured as follows:
     statistics {
         'word': {
             'cap': {lower<str>: freq<int>, upper<str>:freq<int>, title<str>:freq<int>, other<str>:freq<int>
@@ -197,7 +197,7 @@ def extract_statistics(sentence: 'eval sentence', words: list,
         mwes: A set of mwes strings.
 
     Returns:
-        True if dictionary is sucessfully updated/created.
+        True if dictionary is successfully updated/created.
     """
 
     for i in range(0, len(sentence)):
@@ -243,7 +243,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
         save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
             If empty, the following default values are used: {'token':True, 'lemma':True, 'POS':True, 'dep':True}.
     Returns:
-        True if dictionary is sucessfully updated/created.
+        True if dictionary is successfully updated/created.
     """
 
     if not save_args:
@@ -306,7 +306,7 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
         dep: If true, ngram includes DEP information.
 
     Returns:
-        True if dictionary is sucessfully updated/created.
+        True if dictionary is successfully updated/created.
     """
 
     if not ngrams:
@@ -315,7 +315,6 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
     field = F.token if istoken else F.lemma
     ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
-        # The stopword list was obtaned using nltk.corpus.stopwords
         stopwords = _data.stopwords
         sentence = [w for w in sentence if w[F.token] not in stopwords]
 
@@ -368,7 +367,7 @@ def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
 
     for ngram in ngrams['ngram_freq']:
         curr_ngram = ngrams['ngram_freq'][ngram]
-        # In calculating PPMI, put a cutoff of freq > 3 to avoid rare events to affect the rank
+        # In calculating ppmi, put a cutoff of freq > 3 to avoid rare events to affect the rank
         if curr_ngram['freq'] < 4:
             probability = 0
         else:
@@ -377,9 +376,9 @@ def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
             components_prob = 1
             for word in ngram:
                 components_prob *= float(ngrams['word_freq'][word]) / ngrams['tot_word_freq']
-            probability = math.log(ngram_prob / components_prob)  # PPMI
+            probability = math.log(ngram_prob / components_prob)  # ppmi
             if plmi:
-                probability *= curr_ngram['freq']  # PLMI
+                probability *= curr_ngram['freq']  # plmi
         ngrams['ngram_freq'][ngram]['probability'] = probability
     return ngrams
 
@@ -392,7 +391,7 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path'):
         outfile_path: The filename of the output file.
 
     Returns:
-        True if file is sucessfully written.
+        True if file is successfully written.
     """
 
     # save probability only if at least one element has probability > 0
@@ -420,7 +419,7 @@ def save_ngram_stats(ngrams: dict, statistics: dict, outfile_path: 'file path'):
         outfile_path: The filename of the output file.
 
     Returns:
-        True if file is sucessfully written.
+        True if file is successfully written.
     """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
@@ -444,7 +443,7 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
         outfile_path: The filename of the output file.
 
     Returns:
-        True if file is sucessfully written.
+        True if file is successfully written.
     """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
@@ -452,13 +451,13 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
         header = ['pattern_id', 'pair_id', 'word1', 'word2', 'freq.', 'type', 'context', 'frequency']
         pattern_writer.writerow(header)
         col_id = 0
-        for pair, ntypes in patterns.items():
-            pair_freq = ntypes['freq']
-            pair_id = ntypes['pair_id']
-            for ntype, contexts in ntypes.items():
+        for pair, n_types in patterns.items():
+            pair_freq = n_types['freq']
+            pair_id = n_types['pair_id']
+            for n_type, contexts in n_types.items():
                 if type(contexts) is collections.Counter:
                     for context, frequency in contexts.items():
-                        row = [col_id, pair_id, pair[0], pair[1], pair_freq, ntype, context, frequency]
+                        row = [col_id, pair_id, pair[0], pair[1], pair_freq, n_type, context, frequency]
                         pattern_writer.writerow(row)
                         col_id += 1
     logging.info('%s saved.' % outfile_path)
@@ -472,7 +471,7 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
         outfile_path: The filename of the output file.
 
     Returns:
-        True if file is sucessfully written.
+        True if file is successfully written.
     """
 
     filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
@@ -482,33 +481,33 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
               filenames[1], **open_args) as outfile_norm, open(
               filenames[2], **open_args) as outfile_posdep:
 
-        wordf = csv.writer(outfile_words)
-        normf = csv.writer(outfile_norm)
-        posdepf = csv.writer(outfile_posdep)
+        word_f = csv.writer(outfile_words)
+        norm_f = csv.writer(outfile_norm)
+        posdep_f = csv.writer(outfile_posdep)
         header_main = ['stat_id', 'word', 'freq.', 'cap_lower', 'cap_upper', 'cap_title', 'cap_other']
         header_norm = ['norm_id', 'stat_id', 'norm.', 'freq.']
         header_posdep = ['posdep_id', 'stat_id', 'posdep', 'freq.']
-        wordf.writerow(header_main)
-        normf.writerow(header_norm)
-        posdepf.writerow(header_posdep)
+        word_f.writerow(header_main)
+        norm_f.writerow(header_norm)
+        posdep_f.writerow(header_posdep)
         word_id, norm_id, posdep_id = (0 for _ in range(3))
 
-        for word, attrs in statistics.items():
+        for word, attribute in statistics.items():
             if word == 'last_id':
                 continue
-            cap = attrs['cap']
-            row = [word_id, word, attrs['freq'], cap['lower'], cap['upper'], cap['title'], cap['other']]
-            wordf.writerow(row)
-            for attr_name, attr_values in attrs.items():
+            cap = attribute['cap']
+            row = [word_id, word, attribute['freq'], cap['lower'], cap['upper'], cap['title'], cap['other']]
+            word_f.writerow(row)
+            for attr_name, attr_values in attribute.items():
                 if attr_name == 'norm':
                     for norm, freq in attr_values.items():
                         row = [norm_id, word_id, norm, freq]
-                        normf.writerow(row)
+                        norm_f.writerow(row)
                         norm_id += 1
                 elif attr_name == 'pos_dep':
                     for posdep, freq in attr_values.items():
                         row = [posdep_id, word_id, posdep, freq]
-                        posdepf.writerow(row)
+                        posdep_f.writerow(row)
                         posdep_id += 1
             word_id += 1
     logging.info('%s saved.' % ', '.join(filenames))
@@ -526,15 +525,15 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
     """
 
     ngrams, patterns, statistics = (dict() for _ in range(3))
-    word_list, wmwes = _get_wlist(wlist_fn)
-    ngram_list, nmwes = _get_wlist(nlist_fn)
+    word_list, w_mwes = _get_wlist(wlist_fn)
+    ngram_list, n_mwes = _get_wlist(nlist_fn)
     pattern_pairs = _get_pattern_pairs(plist_fn)
 
     logging.info('Extracting ngrams, patterns and statistics.')
     for sentence in tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5):
-        ngram_args = (sentence, word_list, ngrams, nmwes)
+        ngram_args = (sentence, word_list, ngrams, n_mwes)
         pattern_args = (sentence, pattern_pairs, patterns)
-        stat_args = (sentence, ngram_list, statistics, wmwes)
+        stat_args = (sentence, ngram_list, statistics, w_mwes)
         for f, args in ((extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args)):
