@@ -1,21 +1,10 @@
-"""Functions to generate annotated corpora from raw text files.
+"""Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
-An eval corpus is saved in a tsv file, and has the following structure:
-
-WORD	LEMMA	POS	INDEX	PARENT	DEP
-<text id="ukwac:http://observer.guardian.co.uk/osm/story/0,,1009777,00.html">
-<s>
-Hooligans	hooligan	NNS	1	4	NMOD
-
-This module further contains a set of functions that are used to generate the annotated gold dataset.
-
-Examples:
-    >>>
+TODO:
+    * Add test sets
+    * More details in function annotations.
 """
 
-# TODO: Add support for multiple corpus
-# TODO: Add test sets
-# TODO: Check patterns lemma
 import collections
 import csv
 import gzip
@@ -23,6 +12,7 @@ import inspect
 import logging
 import math
 import os
+from typing import *
 
 import tqdm
 
@@ -36,14 +26,14 @@ CORPUS_FIELDS = 6
 TOKEN, LEMMA, POS, INDEX, PARENT, DEP = range(0, CORPUS_FIELDS)
 
 
-def _cap_type(word: str):
+def _cap_type(word: str) -> str:
     """Returns a string describing the capitalization type of word.
 
     Args:
-        word (string): the word to be analyzed
+        word: The word to be analyzed.
 
     Returns:
-        A string indicating the capitalization of word: 'none', 'all', 'first' or 'others'
+        A string indicating the capitalization of word: 'none', 'all', 'first' or 'others'.
     """
 
     functions = [str.islower, str.isupper, str.istitle]
@@ -53,11 +43,17 @@ def _cap_type(word: str):
     return 'other'
 
 
-def _check_mwes(word_index, field, mwes, sentence):
-    """Check if any mwe is in the sentence.
+def _check_mwes(word_index: int, field: int, mwes: set, sentence: 'eval sentence') -> (str, int):
+    """Check if any mwe starts at an index of a sentence list.
+
+    Args:
+        word_index: Check if any mwe start from this index.
+        field: One of the corpus field, usually LEMMA or TOKEN.
+        mwes: A list of mwes.
+        sentence: The sentence to check (it's a list of 6-tuples).
 
     Returns:
-        (str, int): a tuple containing the mwe and its position in the sentence.
+        A tuple containing the mwe and its position in the sentence.
     """
     word = sentence[word_index][field]
     for mwe in mwes:
@@ -71,8 +67,13 @@ def _check_mwes(word_index, field, mwes, sentence):
                 return word, target_end_index
     return False
 
-def _get_pattern_pairs(wlist, separator="\t"):
+
+def _get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
+
+    Args:
+        wlist: Path to the file containing the list of pairs of words to fetch.
+        separator: The separator used in the wlist file.
 
     Returns:
         A set of pairs and their inverse. For example: {('the', 'a'), ('a', 'the'), ('for', 'be'), ('be', 'for')}
@@ -90,14 +91,14 @@ def _get_pattern_pairs(wlist, separator="\t"):
     return pattern_pairs
 
 
-def _get_wlist(wlist_fn):
+def _get_wlist(wlist_fn: 'file path') -> (set, list):
     """"Generate a set of MWEs and a list of words from a file.
 
     Args:
-        wlist_fn: a file that contains a list of words or MWEs.
+        wlist_fn: A file that contains a list of words or MWEs.
 
     Returns:
-        words, mwes: the set of MWEs and a list of words in wlist_fn.
+        The set of MWEs and a list of words in wlist_fn.
     """
     words = set()
     mwes = list()
@@ -110,8 +111,16 @@ def _get_wlist(wlist_fn):
     return words, mwes
 
 
-def _open_corpus(corpus_path, encoding='ISO-8859-2'):
-    """Yield an eval corpus reader at a time."""
+def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> IO:
+    """Yield an eval corpus reader.
+
+    Args:
+        corpus_path: Either a file or a folder. If a folder is passed, the generator yields one corpus at the time.
+        encoding: The encoding of the corpus files. Must be the same for all files.
+
+    Yields:
+        A corpus reader.
+    """
 
     if os.path.isdir(corpus_path):
         to_open = [(os.path.join(corpus_path, f)) for f in os.listdir(corpus_path) if
@@ -133,15 +142,15 @@ def _open_corpus(corpus_path, encoding='ISO-8859-2'):
         yield corpus
 
 
-def get_sentences(corpus_fn: str, check_corpus=False):
+def get_sentences(corpus_fn: 'file path') -> 'eval sentence':
     """
     Yield all the sentences in an eval corpus file.
 
     Args:
-        corpus_fn (str): path to the file containing the corpus.
-        check_corpus (bool): if True, print corpus warnings
+        corpus_fn: Filename of the corpus.
+
     Yields:
-        a list of tuples representing a sentence in the corpus.
+        A list of tuples representing a sentence in the corpus.
     """
 
     s = []
@@ -166,11 +175,11 @@ def get_sentences(corpus_fn: str, check_corpus=False):
                         word, lemma, pos, index, parent, dep = line.split()
                         s.append((word, lemma, pos, int(index), int(parent), dep))
                     else:
-                        if check_corpus:
-                            logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
+                        logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence, words, statistics, mwes=None):
+def extract_statistics(sentence: 'eval sentence', words: List(str),
+                       statistics: dict, mwes: set = None) -> bool:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
     The dictionary is strucutred as follows:
@@ -180,8 +189,15 @@ def extract_statistics(sentence, words, statistics, mwes=None):
             'freq': freq<int>
             'norm: dict(form<str>: freq<int>): # a dictionary containing normalized forms and their frequencies
             'pos_dep': dict(pos-dep<str>: freq<int>):
+
+    Args:
+        sentence: An eval sentence (a list 6-tuples).
+        words: The list of words to count.
+        statistics: The dictionary with the statistics to update (or initialize if empty).
+        mwes: A set of mwes strings.
+
     Returns:
-        True if the dictionary was updated sucessfully.
+        True if dictionary is sucessfully updated/created.
     """
 
     for i in range(0, len(sentence)):
@@ -211,8 +227,9 @@ def extract_statistics(sentence, words, statistics, mwes=None):
     return True
 
 
-def extract_patterns(sentence, word_pairs, patterns,
-                     save_token=True, save_lemma=True, save_pos=True, save_dep=True):
+def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
+                     save_token: bool = True, save_lemma: bool = True, save_pos: bool = True, save_dep: bool = True) \
+        -> bool:
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -220,9 +237,20 @@ def extract_patterns(sentence, word_pairs, patterns,
             (w1, w1): { # keys are pairs (tuples) of two strings indicating a word (token, or lemma if islemma == True)
             DEP: ... # the values are another dictionary whose keys are the corpus fields (DEP, LEMMA, TOKEN, ...)
             LEMMA: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
+
+    Args:
+        sentence: A list of 6tuples representing a sentence.
+        word_pairs: A set of word pairs and their inverse.
+        patterns: The pattern dictionary to be updated or initialized.
+        save_FIELD: save patterns in the form specified (FIELD is a corpus field).
+            For example, if save_token and save_lemma are True, save a pattern with the lemmas and one with tokens.
+
+    Returns:
+        True if dictionary is sucessfully updated/created.
     """
 
     frame = inspect.currentframe()
+    # TODO: Replace with **kargs?
     args = inspect.getargvalues(frame)[3]
     save_args = {k.upper(): v for (k, v) in args.items() if k.startswith('save_')}
     # First time running, initialize dictionary
@@ -257,8 +285,8 @@ def extract_patterns(sentence, word_pairs, patterns,
     return True
 
 
-def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, exclude_stopwords=True, islemma=True, pos=True,
-                   dep=True):
+def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict, mwes: set = None, win: int = 2,
+                   exclude_stopwords: bool = True, istoken: bool = False, pos: bool = True, dep: bool = True) -> bool:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -269,10 +297,26 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, exclude_stopwor
             'ngram_freq': <dict(ngram<tuple>: dict(freq: freq<int>): the key of the dictionary are ngram pairs (tuples),
                 the values are dictionary containing only the key 'freq' and the frequency of the ngram.
                 The dictionary can be further populated by add_ngram_probability().}
+
+    Args:
+        sentence: An eval sentence.
+        wordlist: The list of words to extract.
+        ngrams: The ngram dictionary, or an empty dictionary.
+        mwes: The set of mwes to extract.
+        win: The ngram window.
+        exclude_stopwords: if True, exclude stopwords from ngrams.
+        istoken: If True, match the tokens instead of lemmas.
+        pos: If True, ngram includes POS information.
+        dep: If true, ngram includes DEP information.
+
+    Returns:
+        True if dictionary is sucessfully updated/created.
     """
+
     if not ngrams:
-        ngrams.update(tot_word_freq=0, word_freq=collections.Counter(), tot_ngram_freq=0, ngram_freq={}, last_id=0)
-    field = LEMMA if islemma else TOKEN
+        ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
+                           tot_ngram_freq=0, ngram_freq={}, last_id=0))
+    field = TOKEN if istoken else LEMMA
     ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
         # The stopword list was obtaned using nltk.corpus.stopwords
@@ -314,8 +358,17 @@ def extract_ngrams(sentence, wordlist, ngrams, mwes=None, win=2, exclude_stopwor
     return True
 
 
-def add_ngram_probability(ngrams, plmi=False):
-    """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability']."""
+def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
+    """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability'].
+
+    Args:
+        ngrams: The ngram dictionary to update.
+        plmi: Use plmi.
+
+    Returns
+        The updated ngram dictionary containing a probability field for each ngram with freq. > 3.
+
+    """
 
     # For every ngram that was identified
     for ngram in ngrams['ngram_freq']:
@@ -336,8 +389,16 @@ def add_ngram_probability(ngrams, plmi=False):
     return ngrams
 
 
-def save_ngrams(ngrams, outfile_path, probability=True):
-    """Save ngrams to a tsv file."""
+def save_ngrams(ngrams: dict, outfile_path: 'file path', probability: bool = True):
+    """Save ngrams to a tsv file.
+
+    Args:
+        ngrams: The ngram dictionary.
+        outfile_path: The filename of the output file.
+
+    Returns:
+        True if file is sucessfully written.
+    """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
@@ -353,8 +414,16 @@ def save_ngrams(ngrams, outfile_path, probability=True):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_ngram_stats(ngrams, statistics, outfile_path):
-    """Save a file mapping ngrams_id to word_ids"""
+def save_ngram_stats(ngrams: dict, statistics: dict, outfile_path: 'file path'):
+    """Save a file mapping ngrams_id to word_ids.
+
+    Args:
+        ngrams: The ngram dictionary.
+        outfile_path: The filename of the output file.
+
+    Returns:
+        True if file is sucessfully written.
+    """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
@@ -369,8 +438,16 @@ def save_ngram_stats(ngrams, statistics, outfile_path):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_patterns(patterns, outfile_path):
-    """Save patterns dictionary in a csv file."""
+def save_patterns(patterns: dict, outfile_path: 'file path'):
+    """Save patterns dictionary in a csv file.
+
+    Args:
+        patterns: The patterns dictionary.
+        outfile_path: The filename of the output file.
+
+    Returns:
+        True if file is sucessfully written.
+    """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         pattern_writer = csv.writer(outfile)
@@ -389,8 +466,16 @@ def save_patterns(patterns, outfile_path):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_statistics(statistics, outfile_path):
-    """Save statistics dictionary in a csv file."""
+def save_statistics(statistics: dict, outfile_path: 'file path'):
+    """Save statistics dictionary in a csv file.
+
+    Args:
+        statistics: The statistics dictionary.
+        outfile_path: The filename of the output file.
+
+    Returns:
+        True if file is sucessfully written.
+    """
 
     filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
                  for suffix in ['words', 'forms', 'posdep']]
@@ -432,6 +517,7 @@ def save_statistics(statistics, outfile_path):
 
 
 def main():
+    """Save ngrams, patterns and statistics to a file using test data."""
     wlist = '..\data\\test\\wordlist.csv'
     corpus = '..\data\\test\\tiny_corpus.csv'
     patterns_fn = '..\data\\test\\patterns.csv'
