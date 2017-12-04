@@ -1,6 +1,4 @@
 """
-
-
 This module includes a class for the creation and management of both
 window- and dependency-based DSMs. It includes method for their
 training from corpora, as well as method for executing operations on
@@ -21,8 +19,6 @@ import numpy as np
 import scipy.sparse
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
-
-# TODO: add to init.py
 
 from evalution.composes.matrix.sparse_matrix import SparseMatrix
 from evalution.composes.semantic_space.space import Space
@@ -57,8 +53,7 @@ class DSM:
                 self.we_dsm = self.load_we(dsm_prefix)
                 self.is_we = True
             except Exception as error:
-                # TODO: raise error
-                logging.error(error)
+                raise ValueError("%s: cannot load %s." % (error, dsm_prefix))
 
         elif dsm_prefix.endswith("ppmi") or dsm_prefix.endswith("plmi") or dsm_prefix.endswith("freq"):
             # Load the DSM.
@@ -81,10 +76,11 @@ class DSM:
             choice = input(
                 "Insert the path if you want to create the matrix:"
                 "\n\t1) Write \"no\" to quit without creating the DSM"
-                "\n\t2) Write the path where to find the corpus.gz and the wordlist.txt\n\n")
+                "\n\t2) Write the path where to find the corpus.gz and the wordlist.txt\n\n> ")
             if choice.lower() != "no":
                 print("Trying to create a dep-based DSM out of " + choice + " directory")
-                self.create_sm_dsm(choice, choice + "wordlist.txt", "depDSM", dep=True)
+                # TODO: wrong args
+                self.create_sm_dsm(choice, os.path.join(choice, "wordlist.txt"), "depDSM", dep=True)
         elif self.dsm:
             self.word2index = {w: i for i, w in enumerate(self.dsm.id2row)}
         elif self.we_dsm:
@@ -146,7 +142,6 @@ class DSM:
         # Save in multiple files: npz for the matrix and pkl for the
         # other data members of Space
         else:
-
             try:
                 mat = scipy.sparse.coo_matrix(dsm.cooccurrence_matrix.get_mat())
                 np.savez_compressed(dsm_prefix + 'cooc.npz', data=mat.data, row=mat.row,
@@ -210,14 +205,14 @@ class DSM:
             return False
         return we_dsm
 
-    def create_sm_dsm(self, corpus_directory, target_list, output_prefix, dep=True, win=0, directional=False):
+    def create_sm_dsm(self, corpus_directory, target, output_prefix, dep=True, win=0, directional=False):
         """Create a window- or dependency-based co-occurence DSM from Wackypedia and UKWac.
 
         It is important to mention that DEP-based does not support MWE, but only SWE.
 
         Args:
             corpus_directory (string): the corpus directory
-            target_list (list of strings): the file containing the target lemmas
+            target: the file containing the target lemmas
             output_prefix (string): the prefix for the output files:
                 .sm sparse matrix output file, .rows and .cols
             dep (bool): True if dependency-based corpus, False otherwise
@@ -232,8 +227,8 @@ class DSM:
             return False
 
         # Load the frequent words file
-        with open(target_list, "r") as f_in:
-            target_words = set([line.strip() for line in f_in])
+        with open(target, "r") as f_in:
+            target_words = [line.strip() for line in f_in]
 
         cooc_mat = collections.defaultdict(lambda: collections.defaultdict(int))
 
