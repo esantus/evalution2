@@ -84,6 +84,7 @@ def _get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
             if len(split_line) == 2:
                 if not any(pair in pattern_pairs for pair in (split_line, split_line[::-1])):
                     pattern_pairs.add(split_line)
+                    pattern_pairs.add(split_line[::-1])
             else:
                 logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, wlist))
     return pattern_pairs
@@ -263,8 +264,6 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
         for i in range(0, len(all_lemmas)):
             if all_lemmas[i] == pair[0] or all_tokens[i] == pair[0]:
                 word1, word2 = pair[0], pair[1]
-            elif all_lemmas[i] == pair[1] or all_tokens[i] == pair[1]:
-                word1, word2 = pair[1], pair[0]
             else:
                 continue
             match_index = i
