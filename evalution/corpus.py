@@ -21,8 +21,6 @@ from evalution import _data
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep']
 CorpusField = collections.namedtuple('CorpusField', CORPUS_FIELDS)
 F = CorpusField(*range(0, len(CORPUS_FIELDS)))
-# Default logging level
-logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
 
 
