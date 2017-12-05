@@ -1,22 +1,5 @@
-"""Interface to sklearn.metrics.
+"""Graph interface library for semantic relations."""
 
-First, generate the true and the predict value arrays:
-
->>> y_true, y_pred - graphs_to_arrays (true=g1, pred=g2)
-
-We can now use sklearn metrics.
-
->>> sklearn.metrics.accuracy_score(y_true, y_pred)
-
-
-It is important to keep track of the annotations.
-For example, suppose a user has the annotation frequency for edges,
-and an attribute POS of verteces,
-we want to get some stats on how those variables correlate with metrics.
-
-We write some example function/helper for that.
-
-"""
 import copy
 import random
 
@@ -35,7 +18,9 @@ class Edge:
 
 
 class Graph:
-    def __init__(self, edges=[]):
+    def __init__(self, edges=None):
+        if edges is None:
+            edges = []
         self.vertices = []
         self.edges = copy.deepcopy(edges)
 
@@ -50,16 +35,12 @@ class Graph:
         self.vertices.append(edge.v2)
 
 
-def read_data(filename, separator=','):
-    return pd.read_csv(filename, sep=separator)
-
-
-def read_graph(filename, separator=',', rel=None, weighted=False):
+def create_graph(filename, separator=',', rel=None, weighted=False):
+    """Create a graph from a csv file containing relations and annotations."""
     g = Graph()
-
-    data = read_data(filename, separator)
+    data = pd.read_csv(filename, separator)
     m, _ = data.shape
-    if rel is not None and not isinstance(rel, list) and not isinstance(rel, tuple):
+    if rel and not isinstance(rel, list) and not isinstance(rel, tuple):
         rel = [rel]
 
     edge_dict = {}
@@ -88,7 +69,8 @@ def read_graph(filename, separator=',', rel=None, weighted=False):
     return g
 
 
-def build_rnd_graph(golden, rel, seed=SEED):
+def build_rnd_graph(golden, rel, seed=None):
+    """Build a random graph for testing."""
     def add_word(word):
         if word not in words:
             words.add(word)
@@ -122,6 +104,7 @@ def build_rnd_graph(golden, rel, seed=SEED):
 
 
 def evaluate_graph(graphs, relations, golden):
+    """Compare two set of graphs and return a y_true and y_pred array."""
     if not isinstance(graphs, list) and not isinstance(graphs, tuple):
         graphs = [graphs]
     else:
@@ -132,38 +115,38 @@ def evaluate_graph(graphs, relations, golden):
         relations = relations
 
     all_edges = set()
-    user_edges = [set() for i in range(len(graphs))]
-    golden_edges = [set() for i in range(len(graphs))]
+    user_edges = [set() for _ in range(len(graphs))]
+    golden_edges = [set() for _ in range(len(graphs))]
 
     for idx in range(len(relations)):
         rel = relations[idx]
         data = graphs[idx]
-        if not rel in list(golden['relation']):
+        if rel not in list(golden['relation']):
             # in case relation not found in golden, we may think of user graph
             # as of graph that didn't match any edges of golden at all
             return np.zeros(data.shape[0]), np.ones(data.shape[0])
 
         for i in range(data.shape[0]):
-            vert1 = data['word1_id'][i]
-            vert2 = data['word2_id'][i]
+            vertex_1 = data['word1_id'][i]
+            vertex_2 = data['word2_id'][i]
 
-            if vert1 > vert2:
-                vert1, vert2 = vert2, vert1
-            user_edges[idx].add((vert1, vert2))
-            all_edges.add((vert1, vert2))
+            if vertex_1 > vertex_2:
+                vertex_1, vertex_2 = vertex_2, vertex_1
+            user_edges[idx].add((vertex_1, vertex_2))
+            all_edges.add((vertex_1, vertex_2))
 
         for i in range(golden.shape[0]):
             if golden['relation'][i] != rel:
                 continue
-            vert1 = data['word1_id'][i]
-            vert2 = data['word2_id'][i]
-            if vert1 > vert2:
-                vert1, vert2 = vert2, vert1
-            golden_edges[idx].add((vert1, vert2))
-            all_edges.add((vert1, vert2))
+            vertex_1 = data['word1_id'][i]
+            vertex_2 = data['word2_id'][i]
+            if vertex_1 > vertex_2:
+                vertex_1, vertex_2 = vertex_2, vertex_1
+            golden_edges[idx].add((vertex_1, vertex_2))
+            all_edges.add((vertex_1, vertex_2))
 
-    y_pred = [[] for i in range(len(graphs))]
-    y_true = [[] for i in range(len(graphs))]
+    y_pred = [[] for _ in range(len(graphs))]
+    y_true = [[] for _ in range(len(graphs))]
 
     for edge in all_edges:
         for idx in range(len(relations)):
@@ -180,50 +163,38 @@ def evaluate_graph(graphs, relations, golden):
     return np.array(y_true), np.array(y_pred)
 
 
-def generate_talking_y(y, labels):
-    return [labels[x] for x in y]
-
-
 if __name__ == "__main__":
-    data = read_data('taxon_rank_data.csv')
-    golden = read_data('golden_taxon.csv')
+    data = pd.read_csv('taxon_rank_data.csv')
+    golden = pd.read_csv('golden_taxon.csv')
 
     # relations = ('part_holonym', 'taxon_rank')
     relations = ('taxon_rank',)
 
     for rel in relations:
-        print
-        'rel', rel
-        data = build_rnd_graph(golden, rel, seed=SEED)
+        print('rel', rel)
+        data = build_rnd_graph(golden, rel)
 
         data.to_csv(rel + '_test_gr.csv')
-        print
-        data.shape
-        y_true, y_pred = evaluate_graph((data), (rel), golden)
+        print(data.shape)
+        y_true, y_pred = evaluate_graph(data, rel, golden)
 
-        print
-        y_true.shape, y_pred.shape
-        print
-        y_true, y_pred
-        print
-        'equal:'
+        print(y_true.shape, y_pred.shape)
+        print(y_true, y_pred)
+        print('equal:')
+
         cnt = 0
         for x, y in zip(y_true[0], y_pred[0]):
             cnt += (x == y)
-        print
-        cnt
-        print
-        'precision:', precision_score(y_true[0], y_pred[0])
-        print
-        'recall:', recall_score(y_true[0], y_pred[0])
-        print
-        'f1:', f1_score(y_true[0], y_pred[0])
-        print
-        'RMSE:', mean_squared_error(y_true[0], y_pred[0])
+
+        print(cnt)
+        print('precision:', precision_score(y_true[0], y_pred[0]))
+        print('recall:', recall_score(y_true[0], y_pred[0]))
+        print('f1:', f1_score(y_true[0], y_pred[0]))
+        print('RMSE:', mean_squared_error(y_true[0], y_pred[0]))
 
         labels = ['non-taxon_rank', 'taxon_rank']
-        y_true_labeled = generate_talking_y(y_true[0], labels)
-        y_pred_labeled = generate_talking_y(y_pred[0], labels)
+        y_true_labeled = [labels[x] for x in y_true[0]]
+        y_pred_labeled = [labels[x] for x in y_pred[0]]
         cm = confusion_matrix(y_true_labeled, y_pred_labeled, labels)
         fig = plt.figure()
         ax = fig.add_subplot(111)
