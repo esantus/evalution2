@@ -13,7 +13,6 @@ import gzip
 import logging
 import os
 import pickle
-import sys
 
 import numpy as np
 import scipy.sparse
@@ -64,7 +63,7 @@ class DSM:
                 weight = input(
                     "Computing the matrix. Choose between:\n"
                     "\t1) 'no' = Don't compute it\n"
-                    "\t2) ppmi/plmi/freq = Chosen weight\n\n")
+                    "\t2) ppmi/plmi/freq = Chosen weight\n\n> ")
                 if weight.lower() != "no":
                     self.compute_matrix(dsm_prefix, weight)
             except Exception as error:
@@ -107,7 +106,7 @@ class DSM:
                 with np.load(dsm_prefix + 'cooc.npz') as loader:
                     coo = scipy.sparse.coo_matrix((loader['data'], (loader['row'], loader['col'])),
                                                   shape=loader['shape'])
-                cooccurrence_matrix = SparseMatrix(csr_matrix(coo))
+                cooccurrence_matrix = SparseMatrix(scipy.sparse.csr_matrix(coo))
                 with open(dsm_prefix + '_row2id.pkl', 'rb') as f_in:
                     row2id = pickle.load(f_in)
                 with open(dsm_prefix + '_id2row.pkl', 'rb') as f_in:
@@ -251,7 +250,7 @@ class DSM:
                     "\t1) 'no' = Don't compute it\n"
                     "\t2) 'ppmi/plmi/freq = Chosen weight\n\n")
                 if weight.lower() != "no":
-                    self.compute_matrix(dsm_prefix, weight)
+                    self.compute_matrix(scipy.sparse.dsm_prefix, weight)
             except Exception as error:
                 print(error)
                 return False
@@ -552,9 +551,10 @@ class DSM:
         Returns:
             Vector cosine
         """
-        return dot(v1, v2) / (norm(v1) * norm(v2))
+        return scipy.sparse.dot(v1, v2) / (scipy.sparse.norm(v1) * scipy.sparse.norm(v2))
 
 
+# noinspection PyPep8Naming
 def baseline(dataset, dsm):
     """Train the model, test on validation set and test on the final testset.
 
@@ -621,7 +621,7 @@ def baseline(dataset, dsm):
 
 
 def main():
-    dsm = DSM(sys.argv[1])
+    dsm = DSM('..\\data\\test\\tiny_corpus.csv')
     dataset = [("abstract", "Antonym", "concrete"),
                ("accident", "Antonym", "plan"),
                ("accident", "Antonym", "purpose"),
@@ -1135,6 +1135,7 @@ def main():
                ("bed", "Antonym", "sofa"),
                ("bed", "IsA", "device")]
     baseline(dataset, dsm)
+
 
 if __name__ == '__main__':
     main()
