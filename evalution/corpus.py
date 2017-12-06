@@ -15,7 +15,7 @@ from typing import *
 
 import tqdm
 
-from evalution import _data
+from evalution import data
 
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep']
@@ -312,7 +312,7 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
     field = F.token if istoken else F.lemma
     ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
-        stopwords = _data.stopwords
+        stopwords = data.stopwords
         sentence = [w for w in sentence if w[F.token] not in stopwords]
 
     if pos and not dep:
