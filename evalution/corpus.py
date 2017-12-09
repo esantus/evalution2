@@ -11,6 +11,7 @@ import gzip
 import logging
 import math
 import os
+
 from typing import *
 
 import tqdm
@@ -87,6 +88,8 @@ def _get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
                     pattern_pairs.add(split_line[::-1])
             else:
                 logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, wlist))
+
+
     return pattern_pairs
 
 
@@ -338,9 +341,11 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
         if end_window_index > len(sentence):
             break
         if word in wordlist or mwe:
-            ngram = (raw_word, *tuple(raw_sentence[second_ngram_index:end_window_index]))
+            context = ' '.join(raw_sentence[second_ngram_index:end_window_index])
+            ngram = (raw_word, context)
             all_lemma = [w[F.lemma] for w in sentence]
-            ngram_lemmas = (word, *tuple(all_lemma[second_ngram_index:end_window_index]))
+            context = ' '.join(all_lemma[second_ngram_index:end_window_index])
+            ngram_lemmas = (word, context)
             if ngram not in ngrams['ngram_freq']:
                 ngrams['last_id'] += 1
                 ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
