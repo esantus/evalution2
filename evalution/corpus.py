@@ -543,19 +543,21 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
     logging.info('Extraction completed.')
     ngrams = add_ngram_probability(ngrams)
-    save_ngrams(ngrams, output_dir + 'ngrams.csv')
-    save_patterns(patterns, output_dir + 'patterns.csv')
-    save_statistics(statistics, output_dir + 'statistics.csv')
-    save_ngram_stats(ngrams, statistics, output_dir + 'ngram_words.csv')
+    save_ngrams(ngrams, os.path.join(output_dir, 'ngrams.csv'))
+    save_patterns(patterns, os.path.join(output_dir, 'patterns.csv'))
+    save_statistics(statistics, os.path.join(output_dir, 'statistics.csv'))
+    save_ngram_stats(ngrams, statistics, os.path.join(output_dir, 'ngram_words.csv'))
 
 
 def main():
     """Save ngrams, patterns and statistics to a file using test data."""
-    wlist_fn = '..\\data\\test\\wordlist.csv'
+    data_dir = '../data/'.split('/')
+    test_dir = data_dir + ['test']
+    wlist_fn = os.path.join(*test_dir, 'wordlist.csv')
     nlist_fn = wlist_fn
-    plist_fn = '..\\data\\test\\patterns.csv'
-    corpus_fn = '..\\data\\test\\tiny_corpus.csv'
-    output_dir = '..\\data\\output\\'
+    plist_fn = os.path.join(*test_dir, 'patterns.csv')
+    corpus_fn = os.path.join(*test_dir, 'tiny_corpus.csv')
+    output_dir = os.path.join(*data_dir, 'output')
     save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir)
 
 
