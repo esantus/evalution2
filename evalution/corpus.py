@@ -3,6 +3,7 @@
 TODO:
     * Add test sets
     * More details in function annotations.
+    * Use flashtext if keyowrds > 1000.
 """
 
 import collections
