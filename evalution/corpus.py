@@ -1,7 +1,7 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
-    * Add test sets
+    * Add test sets.
     * More details in function annotations.
     * Use flashtext if keyowrds > 1000.
 """
@@ -550,13 +550,13 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
 
 def main():
     """Save ngrams, patterns and statistics to a file using test data."""
-    data_dir = '../data/'.split('/')
-    test_dir = data_dir + ['test']
-    wlist_fn = os.path.join(*test_dir, 'wordlist.csv')
+    data_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data'))
+    test_dir = os.path.join(data_dir, 'test')
+    wlist_fn = os.path.join(test_dir, 'wordlist.csv')
     nlist_fn = wlist_fn
-    plist_fn = os.path.join(*test_dir, 'patterns.csv')
-    corpus_fn = os.path.join(*test_dir, 'tiny_corpus.csv')
-    output_dir = os.path.join(*data_dir, 'output')
+    plist_fn = os.path.join(test_dir, 'patterns.csv')
+    corpus_fn = os.path.join(test_dir, 'tiny_corpus.csv')
+    output_dir = os.path.join(data_dir, 'output')
     save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir)
 
 
