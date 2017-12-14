@@ -546,7 +546,8 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
     ngram_list, n_mwes = _get_wlist(nlist_fn)
     pattern_pairs = _get_pattern_pairs(plist_fn)
     logging.info('Extracting ngrams, patterns and statistics.')
-    for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5)):
+    corpus_len = sum(1 for _ in get_sentences(corpus_fn))
+    for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         if sentence_no < start_from:
             continue
         ngram_args = (sentence, word_list, ngrams, n_mwes)
