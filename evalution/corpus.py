@@ -1,9 +1,10 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
+    * Use flashtext if keyowrds > 1000.
+    * add len for tqdm
     * Add test sets.
     * More details in function annotations.
-    * Use flashtext if keyowrds > 1000.
 """
 
 import collections
@@ -12,6 +13,7 @@ import gzip
 import logging
 import math
 import os
+import pickle
 from typing import *
 
 import tqdm
@@ -280,7 +282,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
 
 
 def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict, mwes: set = None, win: int = 2,
-                   exclude_stopwords: bool = True, istoken: bool = False, pos: bool = True, dep: bool = True) -> bool:
+                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> bool:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -302,7 +304,6 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
         istoken: If True, match the tokens instead of lemmas.
         pos: If True, ngram includes POS information.
         dep: If true, ngram includes DEP information.
-
     Returns:
         True if dictionary is successfully updated/created.
     """
@@ -394,7 +395,6 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path'):
     Returns:
         True if file is successfully written.
     """
-
     # save probability only if at least one element has probability > 0
     probability = any([ngram['probability'] for _, ngram in ngrams['ngram_freq'].items() if 'probability' in ngram])
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
@@ -514,7 +514,8 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
     logging.info('%s saved.' % ', '.join(filenames))
 
 
-def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str):
+def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str,
+             dump_every=None, pickled_dir=None):
     """Save statistics, patterns and ngram output files in a folder.
 
     Args:
@@ -523,29 +524,55 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
         plist_fn: Path to the file with the list of pair words to use for the patterns.
         corpus_fn: Path to the file with the corpus.
         output_dir: Path to the output file.
+        dump_every: dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
+        pickled_dir: a folder containing three pickled files 'ngrams.p', 'statistics.p', and 'patterns.p'
     """
 
-    ngrams, patterns, statistics = (dict() for _ in range(3))
+    if dump_every and any(os.path.exists(os.path.join(output_dir, file))
+                       for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
+        logging.error('Dump files already exists in %s. Use another folder.' % output_dir)
+        return False
+
+    pickled = None
+    start_from = 0
+    # TODO: spplit this, make a decorator for picking individual extractions, and add function save_one()
+    if pickled_dir:
+        pickled_files = (os.path.join(pickled_dir, file) for file in ['ngrams.p', 'patterns.p', 'statistics.p'])
+        start_from = pickle.load(os.path.join(pickled_dir, 'last_sentence_index.p'))
+        pickled = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickled_files)
+
+    ngrams, patterns, statistics = (dict() for _ in range(3)) if not pickled_dir else pickled
     word_list, w_mwes = _get_wlist(wlist_fn)
     ngram_list, n_mwes = _get_wlist(nlist_fn)
     pattern_pairs = _get_pattern_pairs(plist_fn)
-
     logging.info('Extracting ngrams, patterns and statistics.')
-    for sentence in tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5):
+    for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5)):
+        if sentence_no < start_from:
+            continue
         ngram_args = (sentence, word_list, ngrams, n_mwes)
         pattern_args = (sentence, pattern_pairs, patterns)
         stat_args = (sentence, ngram_list, statistics, w_mwes)
+        # Comment out any of the following lines to not run the specified extraction.
         for f, args in ((extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args)):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
+
+        if dump_every and not ((sentence_no + 1) % dump_every):
+            pickle_out_dir = os.path.join(output_dir, 'pickle')
+            pickle.dump(ngrams, open(os.path.join(pickle_out_dir, 'ngrams.p'), 'wb'))
+            pickle.dump(statistics, open(os.path.join(pickle_out_dir, 'statistics.p'), 'wb'))
+            pickle.dump(patterns, open(os.path.join(pickle_out_dir, 'patterns.p'), 'wb'))
+            pickle.dump(sentence_no, open(os.path.join(pickle_out_dir, 'last_sentence_index.p'), 'wb'))
+            logger.info('Picke files dumped in: %s' % pickle_out_dir)
+
     logging.info('Extraction completed.')
-    ngrams = add_ngram_probability(ngrams)
+    ngrams_prob = add_ngram_probability(ngrams)
     save_ngrams(ngrams, os.path.join(output_dir, 'ngrams.csv'))
     save_patterns(patterns, os.path.join(output_dir, 'patterns.csv'))
     save_statistics(statistics, os.path.join(output_dir, 'statistics.csv'))
-    save_ngram_stats(ngrams, statistics, os.path.join(output_dir, 'ngram_words.csv'))
+    save_ngram_stats(ngrams_prob, statistics, os.path.join(output_dir, 'ngram_words.csv'))
 
 
 def main():
@@ -557,7 +584,7 @@ def main():
     plist_fn = os.path.join(test_dir, 'patterns.csv')
     corpus_fn = os.path.join(test_dir, 'tiny_corpus.csv')
     output_dir = os.path.join(data_dir, 'output')
-    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir)
+    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir, dump_every=10**5)
 
 
 if __name__ == '__main__':
