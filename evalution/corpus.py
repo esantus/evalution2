@@ -1,7 +1,7 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
-    * Use flashtext if keyowrds > 1000.
+    * Use flash-text if keywords > 1000.
     * add len for tqdm
     * Add test sets.
     * More details in function annotations.
@@ -529,13 +529,13 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
     """
 
     if dump_every and any(os.path.exists(os.path.join(output_dir, file))
-                       for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
+                          for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
         logging.error('Dump files already exists in %s. Use another folder.' % output_dir)
         return False
 
     pickled = None
     start_from = 0
-    # TODO: spplit this, make a decorator for picking individual extractions, and add function save_one()
+    # TODO: split this, make a decorator for picking individual extractions, and add function save_one()
     if pickled_dir:
         pickled_files = (os.path.join(pickled_dir, file) for file in ['ngrams.p', 'patterns.p', 'statistics.p'])
         start_from = pickle.load(os.path.join(pickled_dir, 'last_sentence_index.p'))
@@ -566,7 +566,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
             pickle.dump(statistics, open(os.path.join(pickle_out_dir, 'statistics.p'), 'wb'))
             pickle.dump(patterns, open(os.path.join(pickle_out_dir, 'patterns.p'), 'wb'))
             pickle.dump(sentence_no, open(os.path.join(pickle_out_dir, 'last_sentence_index.p'), 'wb'))
-            logger.info('Picke files dumped in: %s' % pickle_out_dir)
+            logger.info('Pickle files dumped in: %s' % pickle_out_dir)
 
     logging.info('Extraction completed.')
     ngrams_prob = add_ngram_probability(ngrams)
