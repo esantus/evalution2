@@ -2,9 +2,8 @@
 
 TODO:
     * Use flash-text if keywords > 1000.
-    * add len for tqdm
     * Add test sets.
-    * More details in function annotations.
+    * Use pyannotate and mypy.
 """
 
 import collections
