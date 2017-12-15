@@ -233,8 +233,9 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
             # Explicitly declare freq = 0 just in case we need to iterate over keys.
             patterns[pair]['freq'] = 0
             patterns[pair]['pair_id'] = pair_id
-    all_lemmas = [w[F.lemma] for w in sentence]
-    all_tokens = [w[F.token] for w in sentence]
+
+    all_lemmas = [w.lemma for w in sentence]
+    all_tokens = [w.token for w in sentence]
     for pair in word_pairs:
         for i in range(0, len(all_lemmas)):
             if all_lemmas[i] == pair[0] or all_tokens[i] == pair[0]:
@@ -247,7 +248,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
                     patterns[pair]['freq'] += 1
                     for field, value in save_args.items():
                         if value:
-                            all_targets = [w[getattr(F, field)] for w in sentence]
+                            all_targets = [getattr(w, field) for w in sentence]
                             in_between = ' '.join(all_targets[match_index + 1:x])
                             patterns[pair][field][in_between] += 1
     return True
@@ -433,7 +434,7 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
                         row = [col_id, pair_id, pair[0], pair[1], pair_freq, n_type, context, frequency]
                         pattern_writer.writerow(row)
                         col_id += 1
-    logging.info('%s saved.' % outfile_path)
+    logging.info('Patterns, saved file: %s.' % outfile_path)
 
 
 def save_statistics(statistics: dict, outfile_path: 'file path'):
@@ -483,7 +484,7 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
                         posdep_f.writerow(row)
                         posdep_id += 1
             word_id += 1
-    logging.info('%s saved.' % ', '.join(filenames))
+    logging.info('Statistics, saved files:\n\t%s' % '\n\t'.join(filenames))
 
 
 def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str,
@@ -536,7 +537,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
         # Comment out any of the following lines to not run the specified extraction.
         for f, args in (
                         # (extract_ngrams, ngram_args),
-                        # (extract_patterns, pattern_args),
+                        (extract_patterns, pattern_args),
                         (extract_statistics, stat_args),):
             if not f(*args):
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
@@ -551,7 +552,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
     logging.info('Extraction completed.')
     # ngrams_prob = add_ngram_probability(ngrams)
     # save_ngrams(ngrams, join(output_dir, 'ngrams.csv'))
-    # save_patterns(patterns, join(output_dir, 'patterns.csv'))
+    save_patterns(patterns, join(output_dir, 'patterns.csv'))
     save_statistics(statistics, join(output_dir, 'statistics.csv'))
     # save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
 
