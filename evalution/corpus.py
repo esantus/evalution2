@@ -13,6 +13,7 @@ import logging
 import math
 import os
 import pickle
+from os.path import join
 from typing import *
 
 import tqdm
@@ -124,8 +125,8 @@ def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
     """
 
     if os.path.isdir(corpus_path):
-        to_open = [(os.path.join(corpus_path, f)) for f in os.listdir(corpus_path) if
-                   os.path.isfile(os.path.join(corpus_path, f))]
+        to_open = [(join(corpus_path, f)) for f in os.listdir(corpus_path) if
+                   os.path.isfile(join(corpus_path, f))]
     else:
         to_open = [corpus_path]
     if not to_open:
@@ -514,7 +515,7 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
 
 
 def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str,
-             dump_every=None, pickled_dir=None):
+             dump_every=10**5, pickled_inp_dir=None, pickled_out_dir=None, overwrite_pickles=False):
     """Save statistics, patterns and ngram output files in a folder.
 
     Args:
@@ -523,29 +524,37 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
         plist_fn: Path to the file with the list of pair words to use for the patterns.
         corpus_fn: Path to the file with the corpus.
         output_dir: Path to the output file.
-        dump_every: dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
-        pickled_dir: a folder containing three pickled files 'ngrams.p', 'statistics.p', and 'patterns.p'
+        dump_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
+        pickled_inp_dir: A folder containing pickled files dictionaries and index.
+        pickled_out_dir: Path to folder that stores the pickled files.
+        overwrite_pickles: If true, overwrite existing pickles.
     """
 
-    if dump_every and any(os.path.exists(os.path.join(output_dir, file))
-                          for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
-        logging.error('Dump files already exists in %s. Use another folder.' % output_dir)
-        return False
-
-    pickled = None
+    logging.info('Extracting ngrams, patterns and statistics.')
     start_from = 0
-    # TODO: split this, make a decorator for picking individual extractions, and add function save_one()
-    if pickled_dir:
-        pickled_files = (os.path.join(pickled_dir, file) for file in ['ngrams.p', 'patterns.p', 'statistics.p'])
-        start_from = pickle.load(os.path.join(pickled_dir, 'last_sentence_index.p'))
-        pickled = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickled_files)
+    pickled = None
+    corpus_len = sum(1 for _ in get_sentences(corpus_fn))
 
-    ngrams, patterns, statistics = (dict() for _ in range(3)) if not pickled_dir else pickled
+    if pickled_out_dir and any(os.path.exists(join(pickled_out_dir, file))
+                               for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
+        if overwrite_pickles:
+            logging.warning('Pickle files exist in %s. Overwriting them.' % pickled_inp_dir)
+        else:
+            logging.error('Pickles already exists in %s. Use another folder.' % pickled_inp_dir)
+            return False
+
+    # TODO: split this, make a decorator for picking individual extractions, and add function save_one()
+    if pickled_inp_dir:
+        pickled_files = (join(pickled_inp_dir, file) for file in ['ngrams.p', 'patterns.p', 'statistics.p'])
+        pickled = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickled_files)
+        start_from = pickle.load(open(join(pickled_inp_dir, 'last_sentence_index.p'), 'rb'))
+        logging.info('Pickles loaded. Starting at sentence number %s of %s.' % (str(start_from+1), str(corpus_len)))
+        corpus_len -= start_from
+
+    ngrams, patterns, statistics = (dict() for _ in range(3)) if not pickled_inp_dir else pickled
     word_list, w_mwes = _get_wlist(wlist_fn)
     ngram_list, n_mwes = _get_wlist(nlist_fn)
     pattern_pairs = _get_pattern_pairs(plist_fn)
-    logging.info('Extracting ngrams, patterns and statistics.')
-    corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         if sentence_no < start_from:
             continue
@@ -560,31 +569,33 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
                 logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
 
         if dump_every and not ((sentence_no + 1) % dump_every):
-            pickle_out_dir = os.path.join(output_dir, 'pickle')
-            pickle.dump(ngrams, open(os.path.join(pickle_out_dir, 'ngrams.p'), 'wb'))
-            pickle.dump(statistics, open(os.path.join(pickle_out_dir, 'statistics.p'), 'wb'))
-            pickle.dump(patterns, open(os.path.join(pickle_out_dir, 'patterns.p'), 'wb'))
-            pickle.dump(sentence_no, open(os.path.join(pickle_out_dir, 'last_sentence_index.p'), 'wb'))
-            logger.info('Pickle files dumped in: %s' % pickle_out_dir)
+            pickle.dump(ngrams, open(join(pickled_out_dir, 'ngrams.p'), 'wb'))
+            pickle.dump(statistics, open(join(pickled_out_dir, 'statistics.p'), 'wb'))
+            pickle.dump(patterns, open(join(pickled_out_dir, 'patterns.p'), 'wb'))
+            pickle.dump(sentence_no, open(join(pickled_out_dir, 'last_sentence_index.p'), 'wb'))
+            logger.info('Pickle files dumped in: %s' % pickled_out_dir)
 
     logging.info('Extraction completed.')
     ngrams_prob = add_ngram_probability(ngrams)
-    save_ngrams(ngrams, os.path.join(output_dir, 'ngrams.csv'))
-    save_patterns(patterns, os.path.join(output_dir, 'patterns.csv'))
-    save_statistics(statistics, os.path.join(output_dir, 'statistics.csv'))
-    save_ngram_stats(ngrams_prob, statistics, os.path.join(output_dir, 'ngram_words.csv'))
+    save_ngrams(ngrams, join(output_dir, 'ngrams.csv'))
+    save_patterns(patterns, join(output_dir, 'patterns.csv'))
+    save_statistics(statistics, join(output_dir, 'statistics.csv'))
+    save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
 
 
 def main():
     """Save ngrams, patterns and statistics to a file using test data."""
-    data_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data'))
-    test_dir = os.path.join(data_dir, 'test')
-    wlist_fn = os.path.join(test_dir, 'wordlist.csv')
+    data_dir = os.path.normpath(join(os.path.dirname(__file__), os.pardir + '/data'))
+    test_dir = join(data_dir, 'test')
+    wlist_fn = join(test_dir, 'wordlist.csv')
     nlist_fn = wlist_fn
-    plist_fn = os.path.join(test_dir, 'patterns.csv')
-    corpus_fn = os.path.join(test_dir, 'tiny_corpus.csv')
-    output_dir = os.path.join(data_dir, 'output')
-    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir, dump_every=10**5)
+    plist_fn = join(test_dir, 'patterns.csv')
+    corpus_fn = join(test_dir, 'tiny_corpus.csv')
+    output_dir = join(data_dir, 'output')
+    pickles = join(output_dir, 'pickle')
+    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir,
+             pickled_inp_dir=pickles)
+             # pickled_out_dir=pickles, dump_every=500, overwrite_pickles=True)
 
 
 if __name__ == '__main__':
