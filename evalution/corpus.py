@@ -582,6 +582,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
     save_statistics(statistics, join(output_dir, 'statistics.csv'))
     save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
 
+
 def test_data():
     """Save ngrams, patterns and statistics to a file using test data."""
     data_dir = os.path.normpath(join(os.path.dirname(__file__), os.pardir + '/data'))
@@ -595,6 +596,7 @@ def test_data():
     save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir,
     pickled_inp_dir=pickles)
     # pickled_out_dir=pickles, dump_every=500, overwrite_pickles=True)
+
 
 def main():
     test_data()
