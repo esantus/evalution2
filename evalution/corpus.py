@@ -43,31 +43,6 @@ def _cap_type(word: str) -> str:
     return 'other'
 
 
-def _check_mwes(word_index: int, field: int, mwes: set, sentence: 'eval sentence') -> (str, int):
-    """Check if any mwe starts at an index of a sentence list.
-
-    Args:
-        word_index: Check if any mwe start from this index.
-        field: One of the corpus field, usually F.lemma or F.token.
-        mwes: A list of mwes.
-        sentence: The sentence to check (it's a list of 6-tuples).
-
-    Returns:
-        A tuple containing the mwe and its position in the sentence.
-    """
-    word = sentence[word_index][field]
-    for mwe in mwes:
-        if word == mwe[0]:
-            joined_mwe = ' '.join(mwe)
-            target_end_index = word_index + len(mwe)
-            all_tokens = [w[F.token] for w in sentence]
-            window = ' '.join(all_tokens[word_index:target_end_index])
-            if joined_mwe == window:
-                word = joined_mwe
-                return word, target_end_index
-    return False
-
-
 def _get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
 
