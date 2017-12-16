@@ -289,7 +289,6 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
     ngrams['tot_word_freq'] += len(sentence)
     matches = collections.deque([match for match in words.extract_keywords(all_lemmas, span_info=True)
                                 if exclude_stopwords and match[0] not in data.stopwords])
-    # TODO: This is very fast O(N), but it doesn't capture overlapping ngram when n > 2.
     i = 0
     while matches:
         if i >= len(sentence):
@@ -310,12 +309,13 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                             # Push match end to the end of the stopword
                             match_end = word.lemma_i + len(word.lemma)
                             continue
-                    # We found the first n-gram word after the first (consider MWEs, exclude stopwords).
+                    # We found the second item (consider MWEs, exclude stopwords).
                     ngram_end_index = j + win - 1
                     i = j - 1
                     if ngram_end_index > len(sentence):
                         break
                     ngram_slice = slice(ngram_begin_index, ngram_end_index)
+                    # TODO: Exclude stopwords from ngrams!
                     if pos and not dep:
                         ngram = tuple(str(getattr(w, field)) + '-' + w.pos for w in sentence[ngram_slice])
                     elif pos and dep:
