@@ -255,7 +255,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     return True
 
 
-def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, mwes: set = None, win: int = 2,
+def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                    exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> bool:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
@@ -264,7 +264,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, mwes: set = N
             'tot_ngram_freq':freq<int>: total number of ngrams
             'tot_word_freq': freq<int>: total number of words
             'word_freq': <dict(word: freq<int>)>: a dict containing all the words (in the ngram format) and their freq.
-            'ngram_freq': <dict(ngram<tuple>: dict(freq: freq<int>): the key of the dictionary are ngram pairs (tuples),
+            'ngram_freq': <dict(ngram<tuple>: dict(freq: freq<int>): the keys of the dictionary are ngram tuples,
                 the values are dictionary containing only the key 'freq' and the frequency of the ngram.
                 The dictionary can be further populated by add_ngram_probability().}
 
@@ -272,7 +272,6 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, mwes: set = N
         sentence: An eval sentence.
         words: KeywordProcessor containing the list of words to count (see _get_wlist()).
         ngrams: The ngram dictionary, or an empty dictionary.
-        mwes: The set of mwes to extract.
         win: The ngram window.
         exclude_stopwords: if True, exclude stopwords from ngrams.
         istoken: If True, match the tokens instead of lemmas.
@@ -282,45 +281,60 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, mwes: set = N
         True if dictionary is successfully updated/created.
     """
 
+    field = 'token' if istoken else 'lemma'
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
                            tot_ngram_freq=0, ngram_freq={}, last_id=0))
-    if exclude_stopwords:
-        stopwords = data.stopwords
-        sentence = [w for w in sentence if w.token not in stopwords]
-
     all_lemmas = ' '.join([word.lemma for word in sentence])
-    matched_indexes = [match[1] for match in words.extract_keywords(all_lemmas, span_info=True)]
-
-
-    field = 'token' if istoken else 'lemma'
     ngrams['tot_word_freq'] += len(sentence)
-    if pos and not dep:
-        rich_sentence = [str(getattr(w, field)) + '-' + w.pos for w in sentence]
-    elif pos and dep:
-        rich_sentence = [str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos) for w in sentence]
-    else:
-        rich_sentence = [getattr(w, field) for w in sentence]
-
-    # Generates the ngrams
-    for index in matched_indexes:
-
-        end_window_index = second_ngram_index + win - 1
-        if end_window_index > len(sentence):
+    matches = collections.deque([match for match in words.extract_keywords(all_lemmas, span_info=True)
+                                if exclude_stopwords and match[0] not in data.stopwords])
+    # TODO: This is very fast O(N), but it doesn't capture overlapping ngram when n > 2.
+    i = 0
+    while matches:
+        if i >= len(sentence):
+            print()
+            error_msg = "Missing index for %s\n" % (matches)
+                                                    #pprint.pformat(sentence))
+            logging.warning(error_msg)
             break
-        if word in wordlist:
-            context_slice = slice(second_ngram_index, end_window_index)
-            context = ' '.join(rich_sentence[context_slice])
-            ngram = (raw_word, context)
-            all_lemma = [w.lemma for w in sentence]
-            context = ' '.join(all_lemma[context_slice])
-            ngram_lemmas = (word, context)
-            if ngram not in ngrams['ngram_freq']:
-                ngrams['last_id'] += 1
-                ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
-            ngrams['ngram_freq'][ngram]['freq'] += 1
-            ngrams['ngram_freq'][ngram]['lemmas'] = ngram_lemmas
-            ngrams['tot_ngram_freq'] += 1
+        _, match_begin, match_end = matches[0]
+        word = sentence[i]
+        if word.lemma_i == match_begin:
+            ngram_begin_index = i
+            for j in range(i+1, len(sentence)):
+                word = sentence[j]
+                if word.lemma_i == match_end + 1:
+                    if exclude_stopwords:
+                        if word.token in data.stopwords:
+                            # Push match end to the end of the stopword
+                            match_end = word.lemma_i + len(word.lemma)
+                            continue
+                    # We found the first n-gram word after the first (consider MWEs, exclude stopwords).
+                    ngram_end_index = j + win - 1
+                    i = j - 1
+                    if ngram_end_index > len(sentence):
+                        break
+                    ngram_slice = slice(ngram_begin_index, ngram_end_index)
+                    if pos and not dep:
+                        ngram = tuple(str(getattr(w, field)) + '-' + w.pos for w in sentence[ngram_slice])
+                    elif pos and dep:
+                        ngram = tuple(str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos) for w in sentence[ngram_slice])
+                    else:
+                        ngram = tuple(getattr(w, field) for w in sentence[ngram_slice])
+
+                    ngram_lemmas = ' '.join([w.lemma for w in sentence[ngram_slice]])
+                    if ngram not in ngrams['ngram_freq']:
+                        ngrams['last_id'] += 1
+                        ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
+                    ngrams['ngram_freq'][ngram]['freq'] += 1
+                    ngrams['ngram_freq'][ngram]['lemmas'] = ngram_lemmas
+                    ngrams['tot_ngram_freq'] += 1
+                    for item in ngram:
+                        ngrams['word_freq'][item] += 1
+                    matches.popleft()
+                    break
+        i += 1
     return True
 
 
@@ -373,7 +387,7 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path'):
             header.append('probability')
         ngram_writer.writerow(header)
         for ngram, ngram_d in ngrams['ngram_freq'].items():
-            row = [ngram_d['ngram_id'], ' '.join(ngram), ' '.join(ngram_d['lemmas']), ngram_d['freq']]
+            row = [ngram_d['ngram_id'], ' '.join(ngram), ngram_d['lemmas'], ngram_d['freq']]
             if probability:
                 row.append(ngram_d['probability'])
             ngram_writer.writerow(row)
@@ -532,7 +546,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
         stat_args = (sentence, ngram_list, statistics)
         # Comment out any of the following lines to not run the specified extraction.
         for f, args in (
-        #                (extract_ngrams, ngram_args),
+                        (extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args),):
             if not f(*args):
@@ -546,11 +560,11 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
             logger.info('Pickle files dumped in: %s' % pickled_out_dir)
 
     logging.info('Extraction completed.')
-    # ngrams_prob = add_ngram_probability(ngrams)
-    # save_ngrams(ngrams, join(output_dir, 'ngrams.csv'))
+    ngrams_prob = add_ngram_probability(ngrams)
+    save_ngrams(ngrams, join(output_dir, 'ngrams.csv'))
     save_patterns(patterns, join(output_dir, 'patterns.csv'))
     save_statistics(statistics, join(output_dir, 'statistics.csv'))
-    # save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
+    save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
 
 
 def test_data():
