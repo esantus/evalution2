@@ -4,6 +4,7 @@ TODO:
     * Use flash-text if keywords > 1000.
     * Add test sets.
     * Use pyannotate and mypy.
+    * Add extract function.
 """
 
 import collections
@@ -254,7 +255,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     return True
 
 
-def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict, mwes: set = None, win: int = 2,
+def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, mwes: set = None, win: int = 2,
                    exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> bool:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
@@ -269,7 +270,7 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
 
     Args:
         sentence: An eval sentence.
-        wordlist: The list of words to extract.
+        words: KeywordProcessor containing the list of words to count (see _get_wlist()).
         ngrams: The ngram dictionary, or an empty dictionary.
         mwes: The set of mwes to extract.
         win: The ngram window.
@@ -284,39 +285,34 @@ def extract_ngrams(sentence: 'eval sentence', wordlist: List[str], ngrams: dict,
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
                            tot_ngram_freq=0, ngram_freq={}, last_id=0))
-    field = F.token if istoken else F.lemma
-    ngrams['tot_word_freq'] += len(sentence)
     if exclude_stopwords:
         stopwords = data.stopwords
-        sentence = [w for w in sentence if w[F.token] not in stopwords]
+        sentence = [w for w in sentence if w.token not in stopwords]
 
+    all_lemmas = ' '.join([word.lemma for word in sentence])
+    matched_indexes = [match[1] for match in words.extract_keywords(all_lemmas, span_info=True)]
+
+
+    field = 'token' if istoken else 'lemma'
+    ngrams['tot_word_freq'] += len(sentence)
     if pos and not dep:
-        raw_sentence = [str(w[field] + '-' + w[F.pos]) for w in sentence]
+        rich_sentence = [str(getattr(w, field)) + '-' + w.pos for w in sentence]
     elif pos and dep:
-        raw_sentence = [str(w[F.dep] + ':' + w[field] + '-' + w[F.pos]) for w in sentence]
+        rich_sentence = [str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos) for w in sentence]
     else:
-        raw_sentence = [w[field] for w in sentence]
+        rich_sentence = [getattr(w, field) for w in sentence]
 
     # Generates the ngrams
-    for i in range(0, len(raw_sentence)):
-        second_ngram_index = i + 1
-        raw_word = raw_sentence[i]
-        ngrams['word_freq'][raw_word] += 1
-        mwe = _check_mwes(i, field, mwes, sentence)
-        if mwe:
-            word, second_ngram_index = mwe
-            raw_word = ' '.join(raw_sentence[i:second_ngram_index])
-        else:
-            word = sentence[i][F.lemma]
-        # -1 because we include the first ngram
+    for index in matched_indexes:
+
         end_window_index = second_ngram_index + win - 1
         if end_window_index > len(sentence):
             break
-        if word in wordlist or mwe:
+        if word in wordlist:
             context_slice = slice(second_ngram_index, end_window_index)
-            context = ' '.join(raw_sentence[context_slice])
+            context = ' '.join(rich_sentence[context_slice])
             ngram = (raw_word, context)
-            all_lemma = [w[F.lemma] for w in sentence]
+            all_lemma = [w.lemma for w in sentence]
             context = ' '.join(all_lemma[context_slice])
             ngram_lemmas = (word, context)
             if ngram not in ngrams['ngram_freq']:
@@ -536,7 +532,7 @@ def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output
         stat_args = (sentence, ngram_list, statistics)
         # Comment out any of the following lines to not run the specified extraction.
         for f, args in (
-                        # (extract_ngrams, ngram_args),
+        #                (extract_ngrams, ngram_args),
                         (extract_patterns, pattern_args),
                         (extract_statistics, stat_args),):
             if not f(*args):
