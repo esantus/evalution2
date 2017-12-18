@@ -14,6 +14,7 @@ import logging
 import math
 import os
 import pickle
+import re
 from os.path import join
 from typing import *
 
@@ -25,7 +26,8 @@ from evalution import data
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep', 'lemma_i', 'token_i']
 logger = logging.getLogger(__name__)
-
+skipped = 0
+added = 0
 
 def _cap_type(word: str) -> str:
     """Returns a string describing the capitalization type of word.
@@ -77,7 +79,9 @@ def _get_wlist(wlist_fn: 'file path') -> (set, list):
     Returns:
         The set of MWEs and a list of words in wlist_fn.
     """
-    words = flashtext.KeywordProcessor()
+    words = flashtext.KeywordProcessor(case_sensitive=True)
+    words.non_word_boundaries.add('-')
+    words.non_word_boundaries.add('\'')
     # words.add_keyword_from_file(wlist_fn)
     with open(wlist_fn, 'r', encoding='utf-8') as wlist_reader:
         for line in wlist_reader:
@@ -133,6 +137,9 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
     sentence = []
     lemma_i = 0
     token_i = 0
+    ended_with_full_stop = False
+    # We will exclude everything that does not look like a word, including punctuation.
+    word_regex = re.compile("[\w]+[\-']?[\w]+\.?$")
     for corpus_reader in _open_corpus(corpus_fn, encoding=file_encoding):
         with corpus_reader as corpus:
             for line in corpus:
@@ -146,12 +153,23 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                     yield sentence
                     sentence = []
                     lemma_i = token_i = 0
+                    ended_with_full_stop = False
                 else:
                     word_info = line.split() + [lemma_i, token_i]
                     if len(word_info) == len(CORPUS_FIELDS):
+                        if not word_regex.match(word_info[1]):
+                            continue
+                        # Full stop plus a capitalized non-proper name -> It's a missed sentence boundary.
+                        if ended_with_full_stop and word_info[0].istitle() and not word_info[1].istitle():
+                            yield sentence
+                            sentence = []
+                            lemma_i = token_i = 0
+                            ended_with_full_stop = False
+                        if word_info[1].endswith('.'):
+                            ended_with_full_stop = True
                         word = Word(*word_info)
                         sentence.append(word)
-                        # Beware! +1 is to artificially include whitespaces.
+                        # Beware, +1 is to include whitespaces.
                         lemma_i += len(word.lemma) + 1
                         token_i += len(word.token) + 1
                     else:
@@ -281,22 +299,18 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
         True if dictionary is successfully updated/created.
     """
 
+    global  skipped, added
     field = 'token' if istoken else 'lemma'
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
                            tot_ngram_freq=0, ngram_freq={}, last_id=0))
-    all_lemmas = ' '.join([word.lemma for word in sentence])
+    lemmas_to_search = ' '.join([word.lemma for word in sentence[:-win+1]])
     ngrams['tot_word_freq'] += len(sentence)
-    matches = collections.deque([match for match in words.extract_keywords(all_lemmas, span_info=True)
+    matches = collections.deque([match for match in words.extract_keywords(lemmas_to_search, span_info=True)
                                 if exclude_stopwords and match[0] not in data.stopwords])
     i = 0
+    last_is_stopword = False
     while matches:
-        if i >= len(sentence):
-            print()
-            error_msg = "Missing index for %s\n" % (matches)
-                                                    #pprint.pformat(sentence))
-            logging.warning(error_msg)
-            break
         _, match_begin, match_end = matches[0]
         word = sentence[i]
         if word.lemma_i == match_begin:
@@ -307,7 +321,8 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                     if exclude_stopwords:
                         if word.token in data.stopwords:
                             # Push match end to the end of the stopword
-                            match_end = word.lemma_i + len(word.lemma)
+                            match_end += len(word.lemma) + 1
+                            last_is_stopword = True
                             continue
                     # We found the second item (consider MWEs, exclude stopwords).
                     ngram_end_index = j + win - 1
@@ -333,8 +348,19 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                     for item in ngram:
                         ngrams['word_freq'][item] += 1
                     matches.popleft()
+                    added += 1
+                    last_is_stopword = False
                     break
         i += 1
+        if i == len(sentence):
+            if last_is_stopword:
+                return True
+            # We reached the end, but there are still item in the deque.
+            # logging.warning("Missing index for %s" % repr(matches[0]))
+            matches.popleft()
+            skipped += 1
+            i = 0
+            continue
     return True
 
 
@@ -580,7 +606,9 @@ def test_data():
     save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir,
     pickled_out_dir=pickles, dump_every=5000, overwrite_pickles=True)
     # pickled_inp_dir=pickles)
-
+    if skipped:
+        logging.warning('Skipped ngrams: ' + str(skipped))
+        logging.info('Added ngrams: ' + str(added))
 
 def main():
     test_data()
