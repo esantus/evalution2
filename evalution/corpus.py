@@ -319,34 +319,52 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
     i = 0
     last_is_stopword = False
     while matches:
+        if i == len(sentence):
+            if last_is_stopword:
+                return True
+            # We reached the end, but there are still items in the deque.
+            # logging.warning("Missing index for %s" % repr(matches[0]))
+            matches.popleft()
+            skipped += 1
+            i = 0
+            continue
         _, match_begin, match_end = matches[0]
         word = sentence[i]
         if word.lemma_i == match_begin:
-            ngram_begin_index = i
             for j in range(i+1, len(sentence)):
                 word = sentence[j]
                 if word.lemma_i == match_end + 1:
+                    if not last_is_stopword:
+                        after_target_i = j
                     if exclude_stopwords:
                         if word.token in data.stopwords:
                             # Push match end to the end of the stopword
                             match_end += len(word.lemma) + 1
                             last_is_stopword = True
                             continue
-                    # We found the second item.
-                    ngram_end_index = j + win - 1
-                    i = j - 1
+                    ngram_end_index = j + (win - 1)
                     if ngram_end_index > len(sentence):
                         break
-                    ngram_slice = slice(ngram_begin_index, ngram_end_index)
-                    # TODO: Exclude stopwords from ngrams!
-                    if pos and not dep:
-                        ngram = tuple(str(getattr(w, field)) + '-' + w.pos for w in sentence[ngram_slice])
-                    elif pos and dep:
-                        ngram = tuple(str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos) for w in sentence[ngram_slice])
-                    else:
-                        ngram = tuple(getattr(w, field) for w in sentence[ngram_slice])
+                    ngram_first_slice = sentence[i:after_target_i]
+                    ngram_second_slice = sentence[j:ngram_end_index]
 
-                    ngram_lemmas = ' '.join([w.lemma for w in sentence[ngram_slice]])
+                    if pos and not dep:
+                        ngram = tuple(' '.join((str(getattr(w, field)) + '-' + w.pos
+                                                for w in ngram_first_slice)))
+                        ngram += tuple(str(getattr(w, field)) + '-' + w.pos
+                                       for w in ngram_second_slice if w.lemma not in data.stopwords)
+                    elif pos and dep:
+                        ngram = (' '.join(tuple(str(w.dep) + ':' + str(getattr(w, field)) + '-' + w.pos
+                                 for w in ngram_first_slice)), )
+                        ngram += tuple((str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos)
+                                       for w in ngram_second_slice if w.lemma not in data.stopwords))
+                    else:
+                        ngram = tuple(' '.join(getattr(w, field) for w in ngram_first_slice))
+                        ngram += tuple(getattr(w, field) for w in ngram_second_slice
+                                       if w.lemma not in data.stopwords)
+                    ngram_lemmas = ' '.join([w.lemma for w in sentence[i:ngram_end_index]
+                                             if w.lemma not in data.stopwords])
+
                     if ngram not in ngrams['ngram_freq']:
                         ngrams['last_id'] += 1
                         ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
@@ -358,17 +376,9 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                     matches.popleft()
                     added += 1
                     last_is_stopword = False
+                    i = after_target_i - 1
                     break
         i += 1
-        if i == len(sentence):
-            if last_is_stopword:
-                return True
-            # We reached the end, but there are still items in the deque.
-            # logging.warning("Missing index for %s" % repr(matches[0]))
-            matches.popleft()
-            skipped += 1
-            i = 0
-            continue
     return True
 
 
