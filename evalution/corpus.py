@@ -172,6 +172,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                             yield sentence
                             sentence = []
                             lemma_i = token_i = 0
+                            word_info = line.split() + [lemma_i, token_i]
                             possible_eos = False
                         if word_info[1].endswith('.'):
                             possible_eos = True
