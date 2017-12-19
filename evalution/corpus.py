@@ -137,7 +137,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
     sentence = []
     lemma_i = 0
     token_i = 0
-    ended_with_full_stop = False
+    possible_eos = False
     # We will exclude everything that does not look like a word, including punctuation.
     word_regex = re.compile("[\w]+[\-']?[\w]+\.?$")
     for corpus_reader in _open_corpus(corpus_fn, encoding=file_encoding):
@@ -153,20 +153,28 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                     yield sentence
                     sentence = []
                     lemma_i = token_i = 0
-                    ended_with_full_stop = False
+                    possible_eos = False
                 else:
                     word_info = line.split() + [lemma_i, token_i]
                     if len(word_info) == len(CORPUS_FIELDS):
                         if not word_regex.match(word_info[1]):
                             continue
                         # Full stop plus a capitalized non-proper name -> It's a missed sentence boundary.
-                        if ended_with_full_stop and word_info[0].istitle() and not word_info[1].istitle():
+                        # TODO: Check if using a list of abbreviations instead gives better results.
+                        if possible_eos and word_info[0].istitle() and not word_info[1].istitle():
+                            last_word = sentence.pop()
+                            last_info = [field for field in last_word]
+                            # Remove full stop from lemma and token.
+                            last_info[0] = last_info[0][:-1]
+                            last_info[1] = last_info[1][:-1]
+                            word = Word(*last_info)
+                            sentence.append(word)
                             yield sentence
                             sentence = []
                             lemma_i = token_i = 0
-                            ended_with_full_stop = False
+                            possible_eos = False
                         if word_info[1].endswith('.'):
-                            ended_with_full_stop = True
+                            possible_eos = True
                         word = Word(*word_info)
                         sentence.append(word)
                         # Beware, +1 is to include whitespaces.
@@ -299,7 +307,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
         True if dictionary is successfully updated/created.
     """
 
-    global  skipped, added
+    global skipped, added
     field = 'token' if istoken else 'lemma'
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
@@ -324,7 +332,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                             match_end += len(word.lemma) + 1
                             last_is_stopword = True
                             continue
-                    # We found the second item (consider MWEs, exclude stopwords).
+                    # We found the second item.
                     ngram_end_index = j + win - 1
                     i = j - 1
                     if ngram_end_index > len(sentence):
@@ -355,7 +363,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
         if i == len(sentence):
             if last_is_stopword:
                 return True
-            # We reached the end, but there are still item in the deque.
+            # We reached the end, but there are still items in the deque.
             # logging.warning("Missing index for %s" % repr(matches[0]))
             matches.popleft()
             skipped += 1
