@@ -160,8 +160,8 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                         if not word_regex.match(word_info[1]):
                             continue
                         # Full stop plus a capitalized non-proper name -> It's a missed sentence boundary.
-                        # TODO: Check if using a list of abbreviations instead gives better results.
-                        if possible_eos and word_info[0].istitle() and not word_info[1].istitle():
+                        # TODO: Add list of abbreviations
+                        if possible_eos and word_info[0].istitle(): # and not word_info[1].istitle():
                             last_word = sentence.pop()
                             last_info = [field for field in last_word]
                             # Remove full stop from lemma and token.
