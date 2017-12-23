@@ -1,9 +1,8 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
 TODO:
-    * Use flash-text if keywords > 1000.
     * Add test sets.
-    * Use pyannotate and mypy.
+    * Use pyannotate/monkeygrease and mypy.
     * Add extract function.
 """
 
@@ -28,6 +27,7 @@ CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep', 'lemma_i', '
 logger = logging.getLogger(__name__)
 skipped = 0
 added = 0
+
 
 def _cap_type(word: str) -> str:
     """Returns a string describing the capitalization type of word.
