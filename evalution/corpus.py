@@ -89,6 +89,12 @@ def _get_wlist(wlist_fn: 'file path') -> (set, list):
     return words
 
 
+def _is_stopword(word: str)-> bool:
+    """Returns true if a word is a stopword."""
+    if word in data.stopwords or word.endswith("'ll") or word.endswith("'t"):
+        return True
+
+
 def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
     """Yield an eval corpus reader.
 
@@ -160,8 +166,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                         if not word_regex.match(word_info[1]):
                             continue
                         # Full stop plus a capitalized non-proper name -> It's a missed sentence boundary.
-                        # TODO: Add list of abbreviations
-                        if possible_eos and word_info[0].istitle(): # and not word_info[1].istitle():
+                        if possible_eos and word_info[0].istitle() and word_info[0] not in data.abbreviations:
                             last_word = sentence.pop()
                             last_info = [field for field in last_word]
                             # Remove full stop from lemma and token.
@@ -316,7 +321,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
     lemmas_to_search = ' '.join([word.lemma for word in sentence[:-win+1]])
     ngrams['tot_word_freq'] += len(sentence)
     matches = collections.deque([match for match in words.extract_keywords(lemmas_to_search, span_info=True)
-                                if exclude_stopwords and match[0] not in data.stopwords])
+                                if exclude_stopwords and not _is_stopword(match[0])])
     i = 0
     last_is_stopword = False
     while matches:
