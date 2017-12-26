@@ -484,7 +484,7 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
             pair_freq = n_types['freq']
             pair_id = n_types['pair_id']
             for n_type, contexts in n_types.items():
-                if type(contexts) is collections.Counter:
+                if isinstance(contexts, collections.Counter):
                     for context, frequency in contexts.items():
                         row = [col_id, pair_id, pair[0], pair[1], pair_freq, n_type, context, frequency]
                         pattern_writer.writerow(row)
@@ -566,7 +566,13 @@ class Dataset:
         self.pickle_every = pickle_every
         self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
         self._pickle_names = ['ngrams.p', 'statistics.p', 'patterns.p']
-
+        self.can_pickle = True
+        if not overwrite_pickles and any(os.path.exists(join(pickle_out, pickle_file)
+                                                        for pickle_file in self._pickle_names)):
+            logging.warning('Pickle files exists in %s and overwrite_pickles is False\n.'
+                            'Choose another folder for self.pickle_out or set self.overwrite_pick=True.' % pickle_out)
+            self.overwrite_pickles = False
+            self.can_pickle = False
 
     class Pickler:
         def __init__(self, pickle_file):
@@ -577,7 +583,7 @@ class Dataset:
                 if sentence_no < instance.start_from:
                     return
                 add_func(instance, sentence)
-                if instance.pickle_every and not (sentence_no + 1) % instance.pickle_every:
+                if instance.pickle_every and instance.can_pickle and not (sentence_no + 1) % instance.pickle_every:
                     pickle.dump(instance.ngrams, open(join(instance.pickle_out, self.pickle_file), 'wb'))
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
             return pickled_add
@@ -599,7 +605,7 @@ class Dataset:
 
     def load_pickles(self, pickle_names):
         # Assuming it is a folder
-        if type(pickle_names) == 'str':
+        if not isinstance(pickle_names, str):
             pickles = [join(pickle_names, filename) for filename in self._pickle_names]
             if not all(os.path.exists(file) for file in pickles):
                 raise ValueError('Missing pickles in %s:\n\tload_pickles requires folder to include %s'
@@ -608,7 +614,7 @@ class Dataset:
                 pickles.append('')
             else:
                 start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
-                if type(start_from) != 'int':
+                if not isinstance(start_from, int):
                     raise ValueError('last_sentence_index.p must be of type int.')
                 pickles.append(start_from)
                 logging.info('Found last_index.p. Resuming from sentence number %s' + str(self.start_from))
