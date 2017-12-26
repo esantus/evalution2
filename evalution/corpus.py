@@ -25,8 +25,6 @@ from evalution import data
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep', 'lemma_i', 'token_i']
 logger = logging.getLogger(__name__)
-skipped = 0
-added = 0
 
 
 def _cap_type(word: str) -> str:
@@ -44,49 +42,6 @@ def _cap_type(word: str) -> str:
         if f(word):
             return f.__name__[2:]
     return 'other'
-
-
-def _get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
-    """Get a set of unique, symmetric word pairs from a file containing pairs of words.
-
-    Args:
-        wlist: Path to the file containing the list of pairs of words to fetch.
-        separator: The separator used in the wlist file.
-
-    Returns:
-        A set of pairs and their inverse. For example: {('the', 'a'), ('a', 'the'), ('for', 'be'), ('be', 'for')}
-    """
-
-    pattern_pairs = set()
-    with open(wlist, 'r') as pattern_reader:
-        for line in pattern_reader:
-            split_line = tuple(word.strip() for word in line.split(separator))
-            if len(split_line) == 2:
-                if not any(pair in pattern_pairs for pair in (split_line, split_line[::-1])):
-                    pattern_pairs.add(split_line)
-                    pattern_pairs.add(split_line[::-1])
-            else:
-                logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, wlist))
-    return pattern_pairs
-
-
-def _get_wlist(wlist_fn: 'file path') -> (set, list):
-    """"Generate a set of MWEs and a list of words from a file.
-
-    Args:
-        wlist_fn: A file that contains a list of words or MWEs.
-
-    Returns:
-        The set of MWEs and a list of words in wlist_fn.
-    """
-    words = flashtext.KeywordProcessor(case_sensitive=True)
-    words.non_word_boundaries.add('-')
-    words.non_word_boundaries.add('\'')
-    # words.add_keyword_from_file(wlist_fn)
-    with open(wlist_fn, 'r', encoding='utf-8') as wlist_reader:
-        for line in wlist_reader:
-            words.add_keyword(line.strip())
-    return words
 
 
 def _is_stopword(word: str)-> bool:
@@ -124,6 +79,49 @@ def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
             raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
                              "convert_corpus(corpus) to create an evalution2 corpus" % filename)
         yield corpus
+
+
+def get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
+    """Get a set of unique, symmetric word pairs from a file containing pairs of words.
+
+    Args:
+        wlist: Path to the file containing the list of pairs of words to fetch.
+        separator: The separator used in the wlist file.
+
+    Returns:
+        A set of pairs and their inverse. For example: {('the', 'a'), ('a', 'the'), ('for', 'be'), ('be', 'for')}
+    """
+
+    pattern_pairs = set()
+    with open(wlist, 'r') as pattern_reader:
+        for line in pattern_reader:
+            split_line = tuple(word.strip() for word in line.split(separator))
+            if len(split_line) == 2:
+                if not any(pair in pattern_pairs for pair in (split_line, split_line[::-1])):
+                    pattern_pairs.add(split_line)
+                    pattern_pairs.add(split_line[::-1])
+            else:
+                logging.warning("line '%s' in corpus '%s' is not a valid pair" % (line, wlist))
+    return pattern_pairs
+
+
+def get_wlist(wlist_fn: 'file path') -> (set, list):
+    """"Generate a set of MWEs and a list of words from a file.
+
+    Args:
+        wlist_fn: A file that contains a list of words or MWEs.
+
+    Returns:
+        The set of MWEs and a list of words in wlist_fn.
+    """
+    words = flashtext.KeywordProcessor(case_sensitive=True)
+    words.non_word_boundaries.add('-')
+    words.non_word_boundaries.add('\'')
+    # words.add_keyword_from_file(wlist_fn)
+    with open(wlist_fn, 'r', encoding='utf-8') as wlist_reader:
+        for line in wlist_reader:
+            words.add_keyword(line.strip())
+    return words
 
 
 def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval sentence':
@@ -190,7 +188,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProcessor, statistics: dict) -> bool:
+def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProcessor, statistics: dict) -> dict:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
     The dictionary is structured as follows:
@@ -207,7 +205,7 @@ def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProces
         statistics: The dictionary with the statistics to update (or initialize if empty).
 
     Returns:
-        True if dictionary is successfully updated/created.
+        Reference to the updated dictionary.
     """
 
     all_lemmas = ' '.join([word.lemma for word in sentence])
@@ -231,10 +229,10 @@ def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProces
         statistics[lemma]["norm"][norm_token] += 1
         statistics[lemma]["cap"][_cap_type(word.token)] += 1
         statistics[lemma]["pos_dep"][word.pos + "_" + word.dep] += 1
-    return True
+    return statistics
 
 
-def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict, save_args: dict = None) -> bool:
+def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict, save_args: dict = None) -> dict:
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -250,7 +248,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
         save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
             If empty, the following default values are used: {'token':True, 'lemma':True, 'POS':True, 'dep':True}.
     Returns:
-        True if dictionary is successfully updated/created.
+        Reference to the updated dictionary.
     """
 
     if not save_args:
@@ -270,7 +268,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     all_lemmas = [w.lemma for w in sentence]
     all_tokens = [w.token for w in sentence]
     for pair in word_pairs:
-        for i in range(0, len(all_lemmas)):
+        for i in range(len(all_lemmas)):
             if all_lemmas[i] == pair[0] or all_tokens[i] == pair[0]:
                 word1, word2 = pair[0], pair[1]
             else:
@@ -284,11 +282,11 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
                             all_targets = [getattr(w, field) for w in sentence]
                             in_between = ' '.join(all_targets[match_index + 1:x])
                             patterns[pair][field][in_between] += 1
-    return True
+    return patterns
 
 
 def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
-                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> bool:
+                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> dict:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -309,11 +307,11 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
         istoken: If True, match the tokens instead of lemmas.
         pos: If True, ngram includes POS information.
         dep: If true, ngram includes DEP information.
+
     Returns:
-        True if dictionary is successfully updated/created.
+        Reference to the updated dictionary.
     """
 
-    global skipped, added
     field = 'token' if istoken else 'lemma'
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
@@ -327,11 +325,10 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
     while matches:
         if i == len(sentence):
             if last_is_stopword:
-                return True
+                return ngrams
             # We reached the end, but there are still items in the deque.
             # logging.warning("Missing index for %s" % repr(matches[0]))
             matches.popleft()
-            skipped += 1
             i = 0
             continue
         _, match_begin, match_end = matches[0]
@@ -380,12 +377,11 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                     for item in ngram:
                         ngrams['word_freq'][item] += 1
                     matches.popleft()
-                    added += 1
                     last_is_stopword = False
                     i = after_target_i - 1
                     break
         i += 1
-    return True
+    return ngrams
 
 
 def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
@@ -397,7 +393,6 @@ def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
 
     Returns
         The updated ngram dictionary containing a probability field for each ngram with freq. > 3.
-
     """
 
     for ngram in ngrams['ngram_freq']:
@@ -494,7 +489,7 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
                         row = [col_id, pair_id, pair[0], pair[1], pair_freq, n_type, context, frequency]
                         pattern_writer.writerow(row)
                         col_id += 1
-    logging.info('Patterns, saved file: %s.' % outfile_path)
+    logging.info('%s saved.' % outfile_path)
 
 
 def save_statistics(statistics: dict, outfile_path: 'file path'):
@@ -544,77 +539,98 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
                         posdep_f.writerow(row)
                         posdep_id += 1
             word_id += 1
-    logging.info('Statistics, saved files:\n\t%s' % '\n\t'.join(filenames))
+    for filename in filenames:
+        logging.info('%s saved.' % filename)
 
 
-def save_all(wlist_fn: str, nlist_fn: str, plist_fn: str, corpus_fn: str, output_dir: str,
-             dump_every=10**5, pickled_inp_dir=None, pickled_out_dir=None, overwrite_pickles=False):
-    """Save statistics, patterns and ngram output files in a folder.
+class Dataset:
+    def __init__(self, word_list=None, ngram_list=None, pattern_list=None, pickle_every=None,
+                 pickle_out=os.getcwd(), overwrite_pickles=False):
+        """Dataset object containing ngrams, statistics and pattern dictionaries, and methods to extract and save them.
 
-    Args:
-        wlist_fn: Path to the file with the word list to use for statistics.
-        nlist_fn: Path to the file with the word list to use for ngrams.
-        plist_fn: Path to the file with the list of pair words to use for the patterns.
-        corpus_fn: Path to the file with the corpus.
-        output_dir: Path to the output file.
-        dump_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
-        pickled_inp_dir: A folder containing pickled files dictionaries and index.
-        pickled_out_dir: Path to folder that stores the pickled files.
-        overwrite_pickles: If true, overwrite existing pickles.
-    """
+        Args:
+            word_list: set of words to search the statistics for.
+            ngram_list: set of words to use to extract the ngrams.
+            pattern_list: set of word pairs to use to extract the patterns.
+            pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
+            pickle_out: Path to folder that stores the pickled files.
+            overwrite_pickles: if set to False, raise an error when trying to write on a folder with existing pickles.
+        """
 
-    logging.info('Extracting ngrams, patterns and statistics.')
-    start_from = 0
-    pickled = None
-    corpus_len = sum(1 for _ in get_sentences(corpus_fn))
+        self.start_from = 0
+        self.pickled = None
+        self.ngram_list = ngram_list
+        self.word_list = word_list
+        self.pattern_list = pattern_list
+        self.pickle_out = pickle_out
+        self.pickle_every = pickle_every
+        self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
+        self._pickle_names = ['ngrams.p', 'statistics.p', 'patterns.p']
 
-    if pickled_out_dir and any(os.path.exists(join(pickled_out_dir, file))
-                               for file in ['ngrams.p', 'statistics.p', 'patterns.p']):
-        if overwrite_pickles:
-            logging.warning('Pickle files exist in %s. Overwriting them.' % pickled_out_dir)
+
+    class Pickler:
+        def __init__(self, pickle_file):
+            self.pickle_file = pickle_file
+
+        def __call__(self, add_func):
+            def pickled_add(instance, sentence, sentence_no):
+                if sentence_no < instance.start_from:
+                    return
+                add_func(instance, sentence)
+                if instance.pickle_every and not (sentence_no + 1) % instance.pickle_every:
+                    pickle.dump(instance.ngrams, open(join(instance.pickle_out, self.pickle_file), 'wb'))
+                    logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
+            return pickled_add
+
+    @Pickler(pickle_file='ngrams.p')
+    def add_ngrams(self, sentence):
+        self.ngrams = extract_ngrams(sentence, self.ngram_list, self.ngrams)
+
+    @Pickler(pickle_file='patterns.p')
+    def add_patterns(self, sentence):
+        self.patterns = extract_patterns(sentence, self.pattern_list, self.patterns)
+
+    @Pickler(pickle_file='statistics.p')
+    def add_statistics(self, sentence):
+        self.statistics = extract_statistics(sentence, self.word_list, self.statistics)
+
+    def add_ngram_prob(self):
+        self.ngrams = add_ngram_probability(self.ngrams)
+
+    def load_pickles(self, pickle_names):
+        # Assuming it is a folder
+        if type(pickle_names) == 'str':
+            pickles = [join(pickle_names, filename) for filename in self._pickle_names]
+            if not all(os.path.exists(file) for file in pickles):
+                raise ValueError('Missing pickles in %s:\n\tload_pickles requires folder to include %s'
+                                 'if @param pickle_names is a folder.' % (', '.join(self._pickle_names), pickle))
+            if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
+                pickles.append('')
+            else:
+                start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
+                if type(start_from) != 'int':
+                    raise ValueError('last_sentence_index.p must be of type int.')
+                pickles.append(start_from)
+                logging.info('Found last_index.p. Resuming from sentence number %s' + str(self.start_from))
+        elif len(pickle_names) == 4:
+            pickles = pickle_names
+            if not pickles[3]:
+                pickles[3] = 0
         else:
-            logging.error('Pickles already exists in %s. Use another folder.' % pickled_out_dir)
-            return False
+            raise ValueError('Invalid @param type pickle_names.')
 
-    # TODO: split this, make a decorator for picking individual extractions, and add function save_one()
-    if pickled_inp_dir:
-        pickled_files = (join(pickled_inp_dir, file) for file in ['ngrams.p', 'patterns.p', 'statistics.p'])
-        pickled = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickled_files)
-        start_from = pickle.load(open(join(pickled_inp_dir, 'last_sentence_index.p'), 'rb'))
-        logging.info('Pickles loaded. Starting at sentence number %s of %s.' % (str(start_from+1), str(corpus_len)))
-        corpus_len -= start_from
+        self.ngrams, self.patterns, self.statistics, self.start_from = (pickle.load(open(pickle_file, 'rb'))
+                                                                        for pickle_file in pickles)
 
-    ngrams, patterns, statistics = (dict() for _ in range(3)) if not pickled_inp_dir else pickled
-    word_list = _get_wlist(wlist_fn)
-    ngram_list = _get_wlist(nlist_fn)
-    pattern_pairs = _get_pattern_pairs(plist_fn)
-    for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
-        if sentence_no < start_from:
-            continue
-        ngram_args = (sentence, word_list, ngrams)
-        pattern_args = (sentence, pattern_pairs, patterns)
-        stat_args = (sentence, ngram_list, statistics)
-        # Comment out any of the following lines to not run the specified extraction.
-        for f, args in (
-                        (extract_ngrams, ngram_args),
-                        (extract_patterns, pattern_args),
-                        (extract_statistics, stat_args),):
-            if not f(*args):
-                logger.warning("Function {}() failed:\nsentence: {}".format(f.__name__, sentence))
-
-        if dump_every and not ((sentence_no + 1) % dump_every):
-            pickle.dump(ngrams, open(join(pickled_out_dir, 'ngrams.p'), 'wb'))
-            pickle.dump(statistics, open(join(pickled_out_dir, 'statistics.p'), 'wb'))
-            pickle.dump(patterns, open(join(pickled_out_dir, 'patterns.p'), 'wb'))
-            pickle.dump(sentence_no, open(join(pickled_out_dir, 'last_sentence_index.p'), 'wb'))
-            logger.info('Pickle files dumped in: %s' % pickled_out_dir)
-
-    logging.info('Extraction completed.')
-    ngrams_prob = add_ngram_probability(ngrams)
-    save_ngrams(ngrams, join(output_dir, 'ngrams.csv'))
-    save_patterns(patterns, join(output_dir, 'patterns.csv'))
-    save_statistics(statistics, join(output_dir, 'statistics.csv'))
-    save_ngram_stats(ngrams_prob, statistics, join(output_dir, 'ngram_words.csv'))
+    def save_all(self, output_dir=os.getcwd()):
+        if self.ngrams:
+            save_ngrams(self.ngrams, join(output_dir, 'ngrams.csv'))
+            if self.statistics:
+                save_ngram_stats(self.ngrams, self.statistics, join(output_dir, 'ngram_words.csv'))
+        if self.patterns:
+            save_patterns(self.patterns, join(output_dir, 'patterns.csv'))
+        if self.statistics:
+            save_statistics(self.statistics, join(output_dir, 'statistics.csv'))
 
 
 def test_data():
@@ -626,13 +642,17 @@ def test_data():
     plist_fn = join(test_dir, 'patterns.csv')
     corpus_fn = join(test_dir, 'tiny_corpus.csv')
     output_dir = join(data_dir, 'output')
-    pickles = join(output_dir, 'pickle')
-    save_all(wlist_fn, nlist_fn, plist_fn, corpus_fn, output_dir,
-    pickled_out_dir=pickles, dump_every=5000, overwrite_pickles=True)
-    # pickled_inp_dir=pickles)
-    if skipped:
-        logging.warning('Skipped ngrams: ' + str(skipped))
-        logging.info('Added ngrams: ' + str(added))
+    pickle_dir = join(output_dir, 'pickle')
+
+    dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir)
+    corpus_len = sum(1 for _ in get_sentences(corpus_fn))
+    for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
+        dataset.add_ngrams(sentence, sentence_no)
+        dataset.add_patterns(sentence, sentence_no)
+        dataset.add_statistics(sentence, sentence_no)
+    dataset.add_ngram_prob()
+    dataset.save_all(output_dir)
+
 
 def main():
     test_data()
