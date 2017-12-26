@@ -567,12 +567,21 @@ class Dataset:
         self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
         self._pickle_names = ['ngrams.p', 'statistics.p', 'patterns.p']
         self.can_pickle = True
-        if not overwrite_pickles and any(os.path.exists(join(pickle_out, pickle_file)
-                                                        for pickle_file in self._pickle_names)):
-            logging.warning('Pickle files exists in %s and overwrite_pickles is False\n.'
-                            'Choose another folder for self.pickle_out or set self.overwrite_pick=True.' % pickle_out)
-            self.overwrite_pickles = False
-            self.can_pickle = False
+        self.overwrite_pickles = overwrite_pickles
+
+    @property
+    def overwrite_pickles(self):
+        return self.overwrite_pickles
+
+    @overwrite_pickles.setter
+    def overwrite_pickles(self, overwrite):
+        if overwrite:
+            if not self.overwrite_pickles and any(os.path.exists(join(self.pickle_out, pickle_file)
+                                                                 for pickle_file in self._pickle_names)):
+                logging.warning('Pickle files exists in %s and overwrite_pickles is False\n.'
+                                'Change folder for self.pickle_out or set self.overwrite_pick=True.' % self.pickle_out)
+                self.overwrite_pickles = False
+                self.can_pickle = False
 
     class Pickler:
         def __init__(self, pickle_file):
