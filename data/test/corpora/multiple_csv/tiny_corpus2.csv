@@ -1,0 +1,14 @@
+WORD	LEMMA	POS	INDEX	PARENT	DEP
+<text id="ukwac:http://observer.guardian.co.uk/osm/story/0,,1009777,00.html">
+<s>
+Hooligans	hooligan	NNS	1	4	NMOD
+,	,	,	2	4	P
+unbridled	unbridled	JJ	3	4	NMOD
+passion	passion	NN	4	0	ROOT
+-	-	:	5	4	P
+and	and	CC	6	4	CC
+no	no	DT	7	9	NMOD
+executive	executive	JJ	8	9	NMOD
+boxes	box	NNS	9	4	COORD
+.	.	SENT	10	0	ROOT
+</s>
