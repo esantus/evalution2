@@ -3,11 +3,8 @@
 import copy
 import random
 
-import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
-from sklearn.metrics import precision_score, recall_score, f1_score, \
-    mean_squared_error, confusion_matrix, precision_recall_curve
 
 
 class Edge:
@@ -60,12 +57,13 @@ def create_graph(filename, separator=',', rel=None, weighted=False):
         edge_dict[(w1, w2)][data['relation'][i]] = w
 
     for edge in edge_dict:
-        for r in rel:
-            if rel not in edge:
-                w = -1
-            else:
-                w = edge[r]
-            g.add_edge(edge.v1, edge.v2, w)
+        if rel:
+            for r in rel:
+                if rel not in edge:
+                    w = -1
+                else:
+                    w = edge[r]
+                g.add_edge(edge.v1, edge.v2, w)
     return g
 
 
@@ -163,59 +161,4 @@ def evaluate_graph(graphs, relations, golden):
     return np.array(y_true), np.array(y_pred)
 
 
-if __name__ == "__main__":
-    data = pd.read_csv('taxon_rank_data.csv')
-    golden = pd.read_csv('golden_taxon.csv')
 
-    # relations = ('part_holonym', 'taxon_rank')
-    relations = ('taxon_rank',)
-
-    for rel in relations:
-        print('rel', rel)
-        data = build_rnd_graph(golden, rel)
-
-        data.to_csv(rel + '_test_gr.csv')
-        print(data.shape)
-        y_true, y_pred = evaluate_graph(data, rel, golden)
-
-        print(y_true.shape, y_pred.shape)
-        print(y_true, y_pred)
-        print('equal:')
-
-        cnt = 0
-        for x, y in zip(y_true[0], y_pred[0]):
-            cnt += (x == y)
-
-        print(cnt)
-        print('precision:', precision_score(y_true[0], y_pred[0]))
-        print('recall:', recall_score(y_true[0], y_pred[0]))
-        print('f1:', f1_score(y_true[0], y_pred[0]))
-        print('RMSE:', mean_squared_error(y_true[0], y_pred[0]))
-
-        labels = ['non-taxon_rank', 'taxon_rank']
-        y_true_labeled = [labels[x] for x in y_true[0]]
-        y_pred_labeled = [labels[x] for x in y_pred[0]]
-        cm = confusion_matrix(y_true_labeled, y_pred_labeled, labels)
-        fig = plt.figure()
-        ax = fig.add_subplot(111)
-        cax = ax.matshow(cm)
-        # plt.title('Confusion matrix of the classifier')
-        fig.colorbar(cax)
-        ax.set_xticklabels([''] + labels)
-        ax.set_yticklabels([''] + labels)
-        plt.xlabel('Predicted')
-        plt.ylabel('True')
-        plt.show()
-
-        precision, recall, _ = precision_recall_curve(y_true[0], y_pred[0])
-
-        plt.step(recall, precision, color='b', alpha=0.2,
-                 where='post')
-        plt.fill_between(recall, precision, step='post', alpha=0.2,
-                         color='b')
-
-        plt.xlabel('Recall')
-        plt.ylabel('Precision')
-        plt.ylim([0.0, 1.05])
-        plt.xlim([0.0, 1.0])
-        plt.title('taxon_rank Precision-Recall curve')
