@@ -557,6 +557,8 @@ class Dataset:
             overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
         """
 
+        self._pickle_names = ('ngrams.p', 'statistics.p', 'patterns.p')
+        self._overwrite_pickles = None
         self.start_from = 0
         self.pickled = None
         self.ngram_list = ngram_list
@@ -565,7 +567,6 @@ class Dataset:
         self.pickle_out = pickle_out
         self.pickle_every = pickle_every
         self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
-        self._pickle_names = ('ngrams.p', 'statistics.p', 'patterns.p')
         self.overwrite_pickles = overwrite_pickles
 
     @property
@@ -619,7 +620,7 @@ class Dataset:
                 raise ValueError('Missing pickles in %s:\n\tload_pickles requires folder to include %s'
                                  'if @param pickle_names is a folder.' % (', '.join(self._pickle_names), pickle))
             if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
-                pickles.append('')
+                pickles.append(None)
             else:
                 start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
                 if not isinstance(start_from, int):
