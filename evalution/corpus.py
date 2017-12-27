@@ -554,7 +554,7 @@ class Dataset:
             pattern_list: set of word pairs to use to extract the patterns.
             pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
             pickle_out: Path to folder that stores the pickled files.
-            overwrite_pickles: if set to False, raise an error when trying to write on a folder with existing pickles.
+            overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
         """
 
         self.start_from = 0
@@ -565,23 +565,22 @@ class Dataset:
         self.pickle_out = pickle_out
         self.pickle_every = pickle_every
         self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
-        self._pickle_names = ['ngrams.p', 'statistics.p', 'patterns.p']
-        self.can_pickle = True
+        self._pickle_names = ('ngrams.p', 'statistics.p', 'patterns.p')
         self.overwrite_pickles = overwrite_pickles
 
     @property
     def overwrite_pickles(self):
-        return self.overwrite_pickles
+        return self._overwrite_pickles
 
     @overwrite_pickles.setter
     def overwrite_pickles(self, overwrite):
-        if overwrite:
-            if not self.overwrite_pickles and any(os.path.exists(join(self.pickle_out, pickle_file)
-                                                                 for pickle_file in self._pickle_names)):
-                logging.warning('Pickle files exists in %s and overwrite_pickles is False\n.'
-                                'Change folder for self.pickle_out or set self.overwrite_pick=True.' % self.pickle_out)
-                self.overwrite_pickles = False
-                self.can_pickle = False
+        if not overwrite and any(os.path.exists(join(self.pickle_out, pickle_file))
+                                 for pickle_file in self._pickle_names):
+            logging.warning('Pickle files exist in %s. Set overwrite_pickle=True if you want to overwrite them. '
+                            'Pickles will not be dumped.' % self.pickle_out)
+            self._overwrite_pickles = False
+        else:
+            self._overwrite_pickles = True
 
     class Pickler:
         def __init__(self, pickle_file):
@@ -592,7 +591,7 @@ class Dataset:
                 if sentence_no < instance.start_from:
                     return
                 add_func(instance, sentence)
-                if instance.pickle_every and instance.can_pickle and not (sentence_no + 1) % instance.pickle_every:
+                if instance.pickle_every and instance.overwrite_pickles and not (sentence_no+1) % instance.pickle_every:
                     pickle.dump(instance.ngrams, open(join(instance.pickle_out, self.pickle_file), 'wb'))
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
             return pickled_add
@@ -659,7 +658,7 @@ def test_data():
     output_dir = join(data_dir, 'output')
     pickle_dir = join(output_dir, 'pickle')
 
-    dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir)
+    dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         dataset.add_ngrams(sentence, sentence_no)
