@@ -3,7 +3,6 @@
 TODO:
     * Add test sets.
     * Use pyannotate/monkeygrease and mypy.
-    * Add extract function.
 """
 
 import collections
@@ -557,7 +556,7 @@ class Dataset:
             overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
         """
 
-        self._pickle_names = ('ngrams.p', 'statistics.p', 'patterns.p')
+        self._pickle_names = ('ngrams.p', 'patterns.p', 'statistics.p')
         self._overwrite_pickles = None
         self.start_from = 0
         self.pickled = None
@@ -584,8 +583,9 @@ class Dataset:
             self._overwrite_pickles = True
 
     class Pickler:
-        def __init__(self, pickle_file):
-            self.pickle_file = pickle_file
+        def __init__(self, to_pickle):
+            self.to_pickle = to_pickle
+            self.pickle_file = to_pickle + '.p'
 
         def __call__(self, add_func):
             def pickled_add(instance, sentence, sentence_no):
@@ -593,19 +593,20 @@ class Dataset:
                     return
                 add_func(instance, sentence)
                 if instance.pickle_every and instance.overwrite_pickles and not (sentence_no+1) % instance.pickle_every:
-                    pickle.dump(instance.ngrams, open(join(instance.pickle_out, self.pickle_file), 'wb'))
+                    pickle.dump(getattr(instance, self.to_pickle),
+                                open(join(instance.pickle_out, self.pickle_file), 'wb'))
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
             return pickled_add
 
-    @Pickler(pickle_file='ngrams.p')
+    @Pickler(to_pickle='ngrams')
     def add_ngrams(self, sentence):
         self.ngrams = extract_ngrams(sentence, self.ngram_list, self.ngrams)
 
-    @Pickler(pickle_file='patterns.p')
+    @Pickler(to_pickle='patterns')
     def add_patterns(self, sentence):
         self.patterns = extract_patterns(sentence, self.pattern_list, self.patterns)
 
-    @Pickler(pickle_file='statistics.p')
+    @Pickler(to_pickle='statistics')
     def add_statistics(self, sentence):
         self.statistics = extract_statistics(sentence, self.word_list, self.statistics)
 
@@ -614,28 +615,27 @@ class Dataset:
 
     def load_pickles(self, pickle_names):
         # Assuming it is a folder
-        if not isinstance(pickle_names, str):
+        if isinstance(pickle_names, str):
             pickles = [join(pickle_names, filename) for filename in self._pickle_names]
             if not all(os.path.exists(file) for file in pickles):
-                raise ValueError('Missing pickles in %s:\n\tload_pickles requires folder to include %s'
-                                 'if @param pickle_names is a folder.' % (', '.join(self._pickle_names), pickle))
+                raise ValueError('Missing pickles in "%s":\nDataset.load_pickles() requires folder to include %s '
+                                 'if @param pickle_names is a folder.' % (pickle_names, ', '.join(self._pickle_names)))
             if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
-                pickles.append(None)
+                self.start_from = 0
             else:
                 start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
                 if not isinstance(start_from, int):
                     raise ValueError('last_sentence_index.p must be of type int.')
-                pickles.append(start_from)
-                logging.info('Found last_index.p. Resuming from sentence number %s' + str(self.start_from))
+                self.start_from = start_from
+                logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
         elif len(pickle_names) == 4:
-            pickles = pickle_names
-            if not pickles[3]:
-                pickles[3] = 0
+            pickles = pickle_names[:3]
+            self.start_from = pickles[3] if pickles[3] else 0
         else:
-            raise ValueError('Invalid @param type pickle_names.')
+            raise ValueError('Invalid @param type: pickle_names must be a string or a sequence of len 4.')
 
-        self.ngrams, self.patterns, self.statistics, self.start_from = (pickle.load(open(pickle_file, 'rb'))
-                                                                        for pickle_file in pickles)
+        self.ngrams, self.patterns, self.statistics = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
+        logging.info('Pickles loaded.')
 
     def save_all(self, output_dir=os.getcwd()):
         if self.ngrams:
@@ -660,6 +660,7 @@ def test_data():
     pickle_dir = join(output_dir, 'pickle')
 
     dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
+    dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         dataset.add_ngrams(sentence, sentence_no)
