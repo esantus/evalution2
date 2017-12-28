@@ -628,7 +628,7 @@ class Dataset:
                     raise ValueError('last_sentence_index.p must be of type int.')
                 self.start_from = start_from
                 logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
-        elif len(pickle_names) == 4:
+        elif isinstance(pickle_names, collections.abc.Iterable) and len(pickle_names) == 4:
             pickles = pickle_names[:3]
             self.start_from = pickles[3] if pickles[3] else 0
         else:
