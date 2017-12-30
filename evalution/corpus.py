@@ -1,8 +1,64 @@
 """Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
 
-TODO:
+Example:
+
+    The core of this module is constituted by the three extract functions:
+        extract_ngrams(): extract ngrams from a corpus given a set of words.
+        extract_patterns(): extract patterns from a corpus given a set of word pairs.
+        extract_statistics(): extract word statistics from a corpus given a set of words.
+
+Each function requires a list of words as an argument. The list of words can be an iterable or it can be extracted
+from a file using the helper functions get_wlist(filename) and get_pattern_list(filename). For example:
+
+>>> wlist_fn = join('..', 'data', 'test',  'wordlist_long.csv')
+>>> wlist = get_wlist(wlist_fn)
+
+Although the extract functions can be called directly, we recommend creating an instance of the class Dataset
+to hold the extracted values, and to exploit the pickle functionality available in the class.
+
+We can use the word list to initialize a Dataset instance.
+
+>>> dataset = Dataset(wlist)
+
+It is possible to pickle any of the dictionaries extracted by the extract methods in the class
+or to initialize the class using available pickled. To do so, refer to the documentation of the class Dataset.
+
+The dataset class contains three dicionaries which will hold the extracted data:
+
+>>> dataset.ngrams
+>>> dataset.patterns
+>>> dataset.statistics
+
+Once the class is initialized, we can iterate through the corpus sentence by sentence using get_sentences(filename),
+and start extracting the desired data. Suppose we want to extract the patterns and the statistics. We simply do:
+
+>>> corpus_fn = join('..', 'data', 'test',  'corpora', 'tint_corpus.csv')
+>>> for sentence_no, sentence in enumerate(get_sentences(corpus_fn):
+...     dataset.add_patterns(sentence, sentence_no)
+...     dataset.add_statistics(sentence, sentence_no)
+
+If you are pickling (unlike this time), specifying sentence_no will make the methods dump the sentence number as well.
+The sentence number can then be loaded and assigned to Dataset.start_from so that processed sentences are skipped if the
+same corpus is used to populate the instance's dictionaries.
+
+The class also provides a method to save all populated dictionaries in the various csv files.
+
+>>> dataset.save_all('./')
+
+The method save_all() simply calls the top level functions save_ngram_stats(), save_ngrams(), save_patterns() and
+save_statistics() using the data stored in the instance dictionaries.
+
+Alternatively, one can call the function directly by passing a dictionary as the argument.
+
+>>> save_patterns(dataset.patterns, './')
+
+Authors:
+    Luca Iacoponi (jacoponi@gmail.com)
+    Enrico Santus (esantus@gmail.com)
+
+Todo:
     * Add test sets.
-    * Use pyannotate/monkeygrease and mypy.
+    * Use pyannotate and mypy.
 """
 
 import collections
@@ -588,8 +644,8 @@ class Dataset:
             self.pickle_file = to_pickle + '.p'
 
         def __call__(self, add_func):
-            def pickled_add(instance, sentence, sentence_no):
-                if sentence_no < instance.start_from:
+            def pickled_add(instance, sentence, sentence_no=None):
+                if sentence_no and sentence_no < instance.start_from:
                     return
                 add_func(instance, sentence)
                 if instance.pickle_every and instance.overwrite_pickles and not (sentence_no+1) % instance.pickle_every:
@@ -652,13 +708,14 @@ def test_data():
     """Save ngrams, patterns and statistics to a file using test data."""
     data_dir = os.path.normpath(join(os.path.dirname(__file__), os.pardir + '/data'))
     test_dir = join(data_dir, 'test')
-    wlist_fn = join(test_dir, 'wordlist_long.csv')
-    nlist_fn = wlist_fn
-    plist_fn = join(test_dir, 'patterns.csv')
-    corpus_fn = join(test_dir, 'tiny_corpus.csv')
     output_dir = join(data_dir, 'output')
     pickle_dir = join(output_dir, 'pickle')
 
+    wlist_fn = join(test_dir, 'wordlist_long.csv')
+    plist_fn = join(test_dir, 'patterns.csv')
+    corpus_fn = join(test_dir, 'tiny_corpus.csv')
+
+    nlist_fn = wlist_fn
     dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
     dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
