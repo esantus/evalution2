@@ -1,4 +1,4 @@
-"""Functions to generate annotated corpora from raw text files, and to create support tables for the gold dataset.
+"""Functions to generate annotated corpora from raw text files and to extract data from a corpus.
 
 Example:
 
@@ -7,48 +7,33 @@ Example:
         extract_patterns(): extract patterns from a corpus given a set of word pairs.
         extract_statistics(): extract word statistics from a corpus given a set of words.
 
-Each function requires a list of words as an argument. The list of words can be an iterable or it can be extracted
-from a file using the helper functions get_wlist(filename) and get_pattern_list(filename). For example:
+First, we extract a list of words (get_wlist) or pair of words (get_pattern_list())
 
 >>> wlist_fn = join('..', 'data', 'test',  'wordlist_long.csv')
 >>> wlist = get_wlist(wlist_fn)
 
-Although the extract functions can be called directly, we recommend creating an instance of the class Dataset
-to hold the extracted values, and to exploit the pickle functionality available in the class.
-
-We can use the word list to initialize a Dataset instance.
+We can use the word list to initialize a Dataset instance (or to coll the add_ functions directly).
 
 >>> dataset = Dataset(wlist)
 
-It is possible to pickle any of the dictionaries extracted by the extract methods in the class
-or to initialize the class using available pickled. To do so, refer to the documentation of the class Dataset.
-
-The dataset class contains three dicionaries which will hold the extracted data:
+The dataset class contains three dicionaries which will hold the extracted data.
 
 >>> dataset.ngrams
 >>> dataset.patterns
 >>> dataset.statistics
 
-Once the class is initialized, we can iterate through the corpus sentence by sentence using get_sentences(filename),
-and start extracting the desired data. Suppose we want to extract the patterns and the statistics. We simply do:
+We then iterate through the corpus sentence by sentence using get_sentences(filename).
 
 >>> corpus_fn = join('..', 'data', 'test',  'corpora', 'tint_corpus.csv')
 >>> for sentence_no, sentence in enumerate(get_sentences(corpus_fn):
 ...     dataset.add_patterns(sentence, sentence_no)
 ...     dataset.add_statistics(sentence, sentence_no)
 
-If you are pickling (unlike this time), specifying sentence_no will make the methods dump the sentence number as well.
-The sentence number can then be loaded and assigned to Dataset.start_from so that processed sentences are skipped if the
-same corpus is used to populate the instance's dictionaries.
-
 The class also provides a method to save all populated dictionaries in the various csv files.
 
 >>> dataset.save_all('./')
 
-The method save_all() simply calls the top level functions save_ngram_stats(), save_ngrams(), save_patterns() and
-save_statistics() using the data stored in the instance dictionaries.
-
-Alternatively, one can call the function directly by passing a dictionary as the argument.
+Alternatively, one can call any of the save functions directly by passing a dictionary as the argument.
 
 >>> save_patterns(dataset.patterns, './')
 
@@ -57,6 +42,7 @@ Authors:
     Enrico Santus (esantus@gmail.com)
 
 Todo:
+    * Add function to extract from raw text.
     * Add test sets.
     * Use pyannotate and mypy.
 """
