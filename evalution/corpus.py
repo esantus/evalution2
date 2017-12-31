@@ -117,8 +117,7 @@ def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
             corpus = open(filename, 'r', encoding=encoding)
         if len(corpus.readline().split("\t")) != len(CORPUS_FIELDS) - 2:
             corpus.close()
-            raise ValueError("'%s' is not a valid evalution2 corpus. Use the function "
-                             "convert_corpus(corpus) to create an evalution2 corpus" % filename)
+            raise ValueError("'%s' is not a valid evalution2 corpus. Try convert_corpus(corpus)." % filename)
         yield corpus
 
 
@@ -660,21 +659,21 @@ class Dataset:
         if isinstance(pickle_names, str):
             pickles = [join(pickle_names, filename) for filename in self._pickle_names]
             if not all(os.path.exists(file) for file in pickles):
-                raise ValueError('Missing pickles in "%s":\nDataset.load_pickles() requires folder to include %s '
-                                 'if @param pickle_names is a folder.' % (pickle_names, ', '.join(self._pickle_names)))
+                raise ValueError('Missing pickles in "%s". load_pickles() requires %s'
+                                 % (pickle_names, ', '.join(self._pickle_names)))
             if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
                 self.start_from = 0
             else:
                 start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
                 if not isinstance(start_from, int):
-                    raise ValueError('last_sentence_index.p must be of type int.')
+                    raise TypeError('last_sentence_index.p must be of type int.')
                 self.start_from = start_from
                 logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
         elif isinstance(pickle_names, collections.abc.Sequence) and len(pickle_names) == 4:
             pickles = pickle_names[:3]
             self.start_from = pickles[3] if pickles[3] else 0
         else:
-            raise ValueError('Invalid @param type: pickle_names must be a string or a sequence of len 4.')
+            raise TypeError('pickle_names must be a string or a sequence of len 4.')
 
         self.ngrams, self.patterns, self.statistics = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
         logging.info('Pickles loaded.')
