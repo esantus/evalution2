@@ -55,8 +55,9 @@ import math
 import os
 import pickle
 import re
+import reprlib
 from os.path import join
-from typing import *
+from typing import List
 
 import flashtext
 import tqdm
@@ -65,6 +66,7 @@ from evalution import data
 
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep', 'lemma_i', 'token_i']
+Word = collections.namedtuple('Word', CORPUS_FIELDS)
 logger = logging.getLogger(__name__)
 
 
@@ -164,6 +166,33 @@ def get_wlist(wlist_fn: 'file path') -> (set, list):
     return words
 
 
+class Sentence:
+    def __init__(self, words: List[Word]):
+        """A sentence composed of several annotated words (Word)."""
+        self.words = words
+
+    def __getitem__(self, position):
+        return self.words[position]
+
+    def __iter__(self):
+        for word in self.words:
+            yield word
+
+    def __len__(self):
+        return len(self.words)
+
+    def __repr__(self):
+        return 'Sentence(%s)' % reprlib.repr(self.tokens)
+
+    @property
+    def tokens(self):
+        return ' '.join([word.token for word in self.words])
+
+    @property
+    def lemmas(self):
+        return ' '.join([word.lemma for word in self.words])
+
+
 def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval sentence':
     """
     Yield all the sentences in an eval corpus file as a list of Word namedtuples.
@@ -176,7 +205,6 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
         A list of tuples representing a sentence in the corpus.
     """
 
-    Word = collections.namedtuple('Word', CORPUS_FIELDS)
     line_no = 1
     sentence = []
     lemma_i = 0
@@ -194,7 +222,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                     continue
                 elif line.strip() == '</s>':
                     # We store the position of each word, as if the sentence was a string.
-                    yield sentence
+                    yield Sentence(sentence)
                     sentence = []
                     lemma_i = token_i = 0
                     possible_eos = False
@@ -212,7 +240,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                             last_info[1] = last_info[1][:-1]
                             word = Word(*last_info)
                             sentence.append(word)
-                            yield sentence
+                            yield Sentence(sentence)
                             sentence = []
                             lemma_i = token_i = 0
                             word_info = line.split() + [lemma_i, token_i]
