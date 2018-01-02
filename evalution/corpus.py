@@ -5,7 +5,7 @@ Example:
     The core of this module is constituted by the three extract functions:
         extract_ngrams(): extract ngrams from a corpus given a set of words.
         extract_patterns(): extract patterns from a corpus given a set of word pairs.
-        extract_statistics(): extract word statistics from a corpus given a set of words.
+        extract_frequencies(): extract word frequencies from a corpus given a set of words.
 
 First, we extract a list of words (get_wlist) or pair of words (get_pattern_list())
 
@@ -20,14 +20,14 @@ The dataset class contains three dicionaries which will hold the extracted data.
 
 >>> dataset.ngrams
 >>> dataset.patterns
->>> dataset.statistics
+>>> dataset.frequencies
 
 We then iterate through the corpus sentence by sentence using get_sentences(filename).
 
 >>> corpus_fn = join('..', 'data', 'test',  'corpora', 'tint_corpus.csv')
 >>> for sentence_no, sentence in enumerate(get_sentences(corpus_fn):
 ...     dataset.add_patterns(sentence, sentence_no)
-...     dataset.add_statistics(sentence, sentence_no)
+...     dataset.add_frequencies(sentence, sentence_no)
 
 The class also provides a method to save all populated dictionaries in the various csv files.
 
@@ -182,7 +182,7 @@ class Sentence:
     def __len__(self):
         return len(self.words)
 
-    def __repr__(self):
+    def __str__(self):
         return 'Sentence(%s)' % reprlib.repr(self.tokens)
 
     @property
@@ -257,48 +257,64 @@ def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr='utf-8') -> Sentence:
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence: Sentence, words: KeywordProcessor, statistics: MutableMapping) -> MutableMapping:
-    """Extracts statistical information for each word in words and mwes and stores it in w_stats.
+class WordFrequencies:
+    def __init__(self, word: AnyStr, stat_id: int=None):
+        """Data structure representing a word with its frequencies.
 
-    The dictionary is structured as follows:
-    statistics {
-        'word': {
-            'cap': {lower<str>: freq<int>, upper<str>:freq<int>, title<str>:freq<int>, other<str>:freq<int>
-            'freq': freq<int>
-            'norm': dict(form<str>: freq<int>): # a dictionary containing normalized forms and their frequencies
-            'pos_dep': dict(pos-dep<str>: freq<int>)}}
+        Attributes:
+            self.word: The lemma of the word we get the frequencies for.
+            self.id: The id of the lemma.
+            self.freq: The frequency of the word.
+            self.cap: A dictionary containing the frequency of the word in 'lower', 'upper', 'title', and 'other' form.
+            self.norm: A counter with the frequnencies of the word in its normalized forms.
+            self.pos_dep: A counter with the frequencies of the word's POS and DEP.
+        """
+
+        self.word = word
+        self.id = stat_id
+        self.freq = 0
+        self.cap = {cap: 0 for cap in ("lower", "upper", "title", "other")}
+        self.norm: MutableMapping[str, int] = collections.Counter()
+        self.pos_dep: MutableMapping[str, int] = collections.Counter()
+
+    def __str__(self):
+        return self.word
+
+    def __getitem__(self, item):
+        return self.word[item]
+
+
+def extract_frequencies(sentence: Sentence, words: KeywordProcessor, frequencies: MutableMapping) -> MutableMapping:
+    """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
     Args:
         sentence: A Sentence object.
         words: KeywordProcessor containing the list of words to count (see _get_wlist()).
-        statistics: The dictionary with the statistics to update (or initialize if empty).
+        frequencies: A dictionary with the frequencies to update. Keys are lemma, values are WordFrequency objects.
 
     Returns:
         Reference to the updated dictionary.
     """
 
+    if not frequencies:
+        frequencies['last_id'] = 0
     all_lemmas = ' '.join([word.lemma for word in sentence])
     matched_indexes = [match[1] for match in words.extract_keywords(all_lemmas, span_info=True)]
     matched_lemmas = [w for w in sentence if w.lemma_i in matched_indexes]
     for word in matched_lemmas:
         lemma = word.lemma
-        if lemma not in statistics:
-            statistics['last_id'] = statistics.get('last_id', 0) + 1
-            statistics[lemma] = {}
-            statistics[lemma]["id"] = statistics['last_id']
-            statistics[lemma]["freq"] = 0
-            statistics[lemma]["cap"] = {cap: 0 for cap in ("lower", "upper", "title", "other")}
-            statistics[lemma]["norm"] = collections.Counter()
-            statistics[lemma]["pos_dep"] = collections.Counter()
+        if lemma not in frequencies:
+            frequencies['last_id'] += 1
+            frequencies[lemma] = WordFrequencies(lemma, frequencies['last_id'])
         norm_token = word.token
         # Only the normalized form of proper nouns is left capitalized.
         if not word.token.istitle():
             norm_token = norm_token.lower()
-        statistics[lemma]["freq"] += 1
-        statistics[lemma]["norm"][norm_token] += 1
-        statistics[lemma]["cap"][_cap_type(word.token)] += 1
-        statistics[lemma]["pos_dep"][word.pos + "_" + word.dep] += 1
-    return statistics
+        frequencies[lemma].freq += 1
+        frequencies[lemma].norm[norm_token] += 1
+        frequencies[lemma].cap[_cap_type(word.token)] += 1
+        frequencies[lemma].pos_dep[word.pos + "_" + word.dep] += 1
+    return frequencies
 
 
 def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: MutableMapping,
@@ -489,9 +505,6 @@ def save_ngrams(ngrams: MutableMapping, outfile_path: AnyStr) -> None:
     Args:
         ngrams: The ngram dictionary.
         outfile_path: The filename of the output file.
-
-    Returns:
-        True if file is successfully written.
     """
     # save probability only if at least one element has probability > 0
     probability = any([ngram['probability'] for _, ngram in ngrams['ngram_freq'].items() if 'probability' in ngram])
@@ -509,12 +522,12 @@ def save_ngrams(ngrams: MutableMapping, outfile_path: AnyStr) -> None:
     logging.info('%s saved.' % outfile_path)
 
 
-def save_ngram_stats(ngrams: MutableMapping, statistics: Mapping, outfile_path: AnyStr) -> None:
+def save_ngram_stats(ngrams: MutableMapping, frequencies: Mapping, outfile_path: AnyStr) -> None:
     """Save a file mapping ngrams_id to word_ids.
 
     Args:
         ngrams: The ngram dictionary.
-        statistics: The statistics dictionary.
+        frequencies: The frequencies dictionary.
         outfile_path: The filename of the output file.
 
     Returns:
@@ -527,8 +540,8 @@ def save_ngram_stats(ngrams: MutableMapping, statistics: Mapping, outfile_path: 
         ngram_writer.writerow(header)
         for _, ngram_d in ngrams['ngram_freq'].items():
             for ngram_index, lemma in enumerate(ngram_d['lemmas']):
-                if lemma in statistics:
-                    word_id = statistics[lemma]['id']
+                if lemma in frequencies:
+                    word_id = frequencies[lemma].id
                     row = [ngram_d['ngram_id'], word_id, ngram_index]
                     ngram_writer.writerow(row)
     logging.info('%s saved.' % outfile_path)
@@ -540,9 +553,6 @@ def save_patterns(patterns: MutableMapping, outfile_path: AnyStr) -> None:
     Args:
         patterns: The patterns dictionary.
         outfile_path: The filename of the output file.
-
-    Returns:
-        True if file is successfully written.
     """
 
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
@@ -562,15 +572,12 @@ def save_patterns(patterns: MutableMapping, outfile_path: AnyStr) -> None:
     logging.info('%s saved.' % outfile_path)
 
 
-def save_statistics(statistics: MutableMapping, outfile_path: AnyStr) -> None:
-    """Save statistics dictionary in a csv file.
+def save_frequencies(frequencies: MutableMapping, outfile_path: AnyStr) -> None:
+    """Save frequencies dictionary in a csv file.
 
     Args:
-        statistics: The statistics dictionary.
+        frequencies: The frequencies dictionary.
         outfile_path: The filename of the output file.
-
-    Returns:
-        True if file is successfully written.
     """
 
     filenames = ["{}_{}.csv".format(os.path.splitext(outfile_path)[0], suffix)
@@ -591,23 +598,20 @@ def save_statistics(statistics: MutableMapping, outfile_path: AnyStr) -> None:
         posdep_f.writerow(header_posdep)
         word_id, norm_id, posdep_id = (0 for _ in range(3))
 
-        for word, attribute in statistics.items():
+        for word, word_stat in frequencies.items():
             if word == 'last_id':
                 continue
-            cap = attribute['cap']
-            row = [word_id, word, attribute['freq'], cap['lower'], cap['upper'], cap['title'], cap['other']]
+            cap = word_stat.cap
+            row = [word_id, word, word_stat.freq, cap['lower'], cap['upper'], cap['title'], cap['other']]
             word_f.writerow(row)
-            for attr_name, attr_values in attribute.items():
-                if attr_name == 'norm':
-                    for norm, freq in attr_values.items():
-                        row = [norm_id, word_id, norm, freq]
-                        norm_f.writerow(row)
-                        norm_id += 1
-                elif attr_name == 'pos_dep':
-                    for posdep, freq in attr_values.items():
-                        row = [posdep_id, word_id, posdep, freq]
-                        posdep_f.writerow(row)
-                        posdep_id += 1
+            for norm, freq in word_stat.norm.items():
+                row = [norm_id, word_id, norm, freq]
+                norm_f.writerow(row)
+                norm_id += 1
+            for posdep, freq in word_stat.pos_dep.items():
+                row = [posdep_id, word_id, posdep, freq]
+                posdep_f.writerow(row)
+                posdep_id += 1
             word_id += 1
     for filename in filenames:
         logging.info('%s saved.' % filename)
@@ -616,10 +620,10 @@ def save_statistics(statistics: MutableMapping, outfile_path: AnyStr) -> None:
 class Dataset:
     def __init__(self, w_list: KeywordProcessor=None, n_list: KeywordProcessor=None,  p_list: set=None,
                  pickle_every: int=None, pickle_out: AnyStr=os.getcwd(), overwrite_pickles: bool=False) -> None:
-        """Dataset object containing ngrams, statistics and pattern dictionaries, and methods to extract and save them.
+        """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
 
         Args:
-            w_list: set of words to search the statistics for.
+            w_list: set of words to search the frequencies for.
             n_list: set of words to use to extract the ngrams.
             p_list: set of word pairs to use to extract the patterns.
             pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
@@ -627,7 +631,7 @@ class Dataset:
             overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
         """
 
-        self._pickle_names = ('ngrams.p', 'patterns.p', 'statistics.p')
+        self._pickle_names = ('ngrams.p', 'patterns.p', 'frequencies.p')
         self._overwrite_pickles = None
         self.start_from = 0
         self.pickled = None
@@ -636,7 +640,7 @@ class Dataset:
         self.pattern_list = p_list
         self.pickle_out = pickle_out
         self.pickle_every = pickle_every
-        self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
+        self.ngrams, self.patterns, self.frequencies = (dict() for _ in range(3))
         self.overwrite_pickles = overwrite_pickles
 
     @property
@@ -677,9 +681,9 @@ class Dataset:
     def add_patterns(self, sentence):
         self.patterns = extract_patterns(sentence, self.pattern_list, self.patterns)
 
-    @Pickler(to_pickle='statistics')
-    def add_statistics(self, sentence):
-        self.statistics = extract_statistics(sentence, self.word_list, self.statistics)
+    @Pickler(to_pickle='frequencies')
+    def add_frequencies(self, sentence):
+        self.frequencies = extract_frequencies(sentence, self.word_list, self.frequencies)
 
     def add_ngram_prob(self):
         self.ngrams = add_ngram_probability(self.ngrams)
@@ -707,22 +711,22 @@ class Dataset:
             else:
                 self.start_from = pickles[3] if pickles[3] else 0
 
-        self.ngrams, self.patterns, self.statistics = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
+        self.ngrams, self.patterns, self.frequencies = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
         logging.info('Pickles loaded.')
 
     def save_all(self, output_dir=os.getcwd()):
         if self.ngrams:
             save_ngrams(self.ngrams, join(output_dir, 'ngrams.csv'))
-            if self.statistics:
-                save_ngram_stats(self.ngrams, self.statistics, join(output_dir, 'ngram_words.csv'))
+            if self.frequencies:
+                save_ngram_stats(self.ngrams, self.frequencies, join(output_dir, 'ngram_words.csv'))
         if self.patterns:
             save_patterns(self.patterns, join(output_dir, 'patterns.csv'))
-        if self.statistics:
-            save_statistics(self.statistics, join(output_dir, 'statistics.csv'))
+        if self.frequencies:
+            save_frequencies(self.frequencies, join(output_dir, 'frequencies.csv'))
 
 
 def test_data() -> None:
-    """Save ngrams, patterns and statistics to a file using test data."""
+    """Save ngrams, patterns and frequencies to a file using test data."""
     data_dir = os.path.normpath(join(os.path.dirname(__file__), os.pardir + '/data'))
     test_dir = join(data_dir, 'test')
     output_dir = join(data_dir, 'output')
@@ -734,12 +738,12 @@ def test_data() -> None:
 
     nlist_fn = wlist_fn
     dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
-    dataset.load_pickles(pickle_dir)
+    # dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         dataset.add_ngrams(sentence, sentence_no)
         dataset.add_patterns(sentence, sentence_no)
-        dataset.add_statistics(sentence, sentence_no)
+        dataset.add_frequencies(sentence, sentence_no)
     dataset.add_ngram_prob()
     dataset.save_all(output_dir)
 
