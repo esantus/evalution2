@@ -57,20 +57,21 @@ import pickle
 import re
 import reprlib
 from os.path import join
-from typing import List
+from typing import AnyStr, List, Mapping, MutableMapping, Set, TextIO, Tuple
 
-import flashtext
 import tqdm
+from flashtext import KeywordProcessor
 
 from evalution import data
 
+logger = logging.getLogger(__name__)
 #: Corpus fields in an eval corpus
 CORPUS_FIELDS = ['token', 'lemma', 'pos', 'index', 'parent', 'dep', 'lemma_i', 'token_i']
+PatternList = Set[Tuple[str, str]]
 Word = collections.namedtuple('Word', CORPUS_FIELDS)
-logger = logging.getLogger(__name__)
 
 
-def _cap_type(word: str) -> str:
+def _cap_type(word: AnyStr) -> str:
     """Returns a string describing the capitalization type of word.
 
     Args:
@@ -87,13 +88,13 @@ def _cap_type(word: str) -> str:
     return 'other'
 
 
-def _is_stopword(word: str)-> bool:
+def _is_stopword(word: AnyStr)-> bool:
     """Returns true if a word is a stopword."""
     if word in data.stopwords or word.endswith("'ll") or word.endswith("'t"):
         return True
 
 
-def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
+def _open_corpus(corpus_path: AnyStr, encoding: AnyStr='ISO-8859-2') -> TextIO:
     """Yield an eval corpus reader.
 
     Args:
@@ -123,7 +124,7 @@ def _open_corpus(corpus_path: 'file path', encoding='ISO-8859-2') -> 'IO':
         yield corpus
 
 
-def get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
+def get_pattern_pairs(wlist: AnyStr, separator: AnyStr="\t") -> PatternList:
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
 
     Args:
@@ -147,16 +148,16 @@ def get_pattern_pairs(wlist: 'file path', separator: 'str' = "\t") -> set:
     return pattern_pairs
 
 
-def get_wlist(wlist_fn: 'file path') -> (set, list):
+def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
     """"Generate a set of MWEs and a list of words from a file.
 
     Args:
         wlist_fn: A file that contains a list of words or MWEs.
 
     Returns:
-        The set of MWEs and a list of words in wlist_fn.
+        A KeywordProcessor containing the list of words from wlist_fn.
     """
-    words = flashtext.KeywordProcessor(case_sensitive=True)
+    words = KeywordProcessor(case_sensitive=True)
     words.non_word_boundaries.add('-')
     words.non_word_boundaries.add('\'')
     # words.add_keyword_from_file(wlist_fn)
@@ -193,7 +194,7 @@ class Sentence:
         return ' '.join([word.lemma for word in self.words])
 
 
-def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval sentence':
+def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr='utf-8') -> Sentence:
     """
     Yield all the sentences in an eval corpus file as a list of Word namedtuples.
 
@@ -202,7 +203,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
         file_encoding: Specify encoding of the corpus
 
     Yields:
-        A list of tuples representing a sentence in the corpus.
+        A Sentence object.
     """
 
     line_no = 1
@@ -256,7 +257,7 @@ def get_sentences(corpus_fn: 'file path', file_encoding='utf-8') -> 'eval senten
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProcessor, statistics: dict) -> dict:
+def extract_statistics(sentence: Sentence, words: KeywordProcessor, statistics: MutableMapping) -> MutableMapping:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
     The dictionary is structured as follows:
@@ -264,11 +265,11 @@ def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProces
         'word': {
             'cap': {lower<str>: freq<int>, upper<str>:freq<int>, title<str>:freq<int>, other<str>:freq<int>
             'freq': freq<int>
-            'norm: dict(form<str>: freq<int>): # a dictionary containing normalized forms and their frequencies
-            'pos_dep': dict(pos-dep<str>: freq<int>):
+            'norm': dict(form<str>: freq<int>): # a dictionary containing normalized forms and their frequencies
+            'pos_dep': dict(pos-dep<str>: freq<int>)}}
 
     Args:
-        sentence: An eval sentence (a list 6-tuples).
+        sentence: A Sentence object.
         words: KeywordProcessor containing the list of words to count (see _get_wlist()).
         statistics: The dictionary with the statistics to update (or initialize if empty).
 
@@ -300,7 +301,8 @@ def extract_statistics(sentence: 'eval sentence', words: flashtext.KeywordProces
     return statistics
 
 
-def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict, save_args: dict = None) -> dict:
+def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: MutableMapping,
+                     save_args: Mapping=None) -> MutableMapping:
     """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     The dictionary has the following structure:
@@ -310,7 +312,7 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
             F.lemma: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
 
     Args:
-        sentence: A list of 6tuples representing a sentence.
+        sentence: A Sentence object.
         word_pairs: A set of word pairs and their inverse.
         patterns: The pattern dictionary to be updated or initialized.
         save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
@@ -353,8 +355,8 @@ def extract_patterns(sentence: 'eval sentence', word_pairs: set, patterns: dict,
     return patterns
 
 
-def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
-                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> dict:
+def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableMapping, win: int=2,
+                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> MutableMapping:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -367,7 +369,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
                 The dictionary can be further populated by add_ngram_probability().}
 
     Args:
-        sentence: An eval sentence.
+        sentence: A Sentence object.
         words: KeywordProcessor containing the list of words to count (see _get_wlist()).
         ngrams: The ngram dictionary, or an empty dictionary.
         win: The ngram window.
@@ -452,7 +454,7 @@ def extract_ngrams(sentence: 'eval sentence', words, ngrams: dict, win: int = 2,
     return ngrams
 
 
-def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
+def add_ngram_probability(ngrams: MutableMapping, plmi: bool = False) -> MutableMapping:
     """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability'].
 
     Args:
@@ -481,7 +483,7 @@ def add_ngram_probability(ngrams: dict, plmi: bool = False) -> dict:
     return ngrams
 
 
-def save_ngrams(ngrams: dict, outfile_path: 'file path'):
+def save_ngrams(ngrams: MutableMapping, outfile_path: AnyStr) -> None:
     """Save ngrams to a tsv file.
 
     Args:
@@ -507,7 +509,7 @@ def save_ngrams(ngrams: dict, outfile_path: 'file path'):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_ngram_stats(ngrams: dict, statistics: dict, outfile_path: 'file path'):
+def save_ngram_stats(ngrams: MutableMapping, statistics: Mapping, outfile_path: AnyStr) -> None:
     """Save a file mapping ngrams_id to word_ids.
 
     Args:
@@ -532,7 +534,7 @@ def save_ngram_stats(ngrams: dict, statistics: dict, outfile_path: 'file path'):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_patterns(patterns: dict, outfile_path: 'file path'):
+def save_patterns(patterns: MutableMapping, outfile_path: AnyStr) -> None:
     """Save patterns dictionary in a csv file.
 
     Args:
@@ -560,7 +562,7 @@ def save_patterns(patterns: dict, outfile_path: 'file path'):
     logging.info('%s saved.' % outfile_path)
 
 
-def save_statistics(statistics: dict, outfile_path: 'file path'):
+def save_statistics(statistics: MutableMapping, outfile_path: AnyStr) -> None:
     """Save statistics dictionary in a csv file.
 
     Args:
@@ -612,14 +614,14 @@ def save_statistics(statistics: dict, outfile_path: 'file path'):
 
 
 class Dataset:
-    def __init__(self, word_list=None, ngram_list=None, pattern_list=None, pickle_every=None,
-                 pickle_out=os.getcwd(), overwrite_pickles=False):
+    def __init__(self, w_list: KeywordProcessor=None, n_list: KeywordProcessor=None,  p_list: set=None,
+                 pickle_every: int=None, pickle_out: AnyStr=os.getcwd(), overwrite_pickles: bool=False) -> None:
         """Dataset object containing ngrams, statistics and pattern dictionaries, and methods to extract and save them.
 
         Args:
-            word_list: set of words to search the statistics for.
-            ngram_list: set of words to use to extract the ngrams.
-            pattern_list: set of word pairs to use to extract the patterns.
+            w_list: set of words to search the statistics for.
+            n_list: set of words to use to extract the ngrams.
+            p_list: set of word pairs to use to extract the patterns.
             pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
             pickle_out: Path to folder that stores the pickled files.
             overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
@@ -629,9 +631,9 @@ class Dataset:
         self._overwrite_pickles = None
         self.start_from = 0
         self.pickled = None
-        self.ngram_list = ngram_list
-        self.word_list = word_list
-        self.pattern_list = pattern_list
+        self.ngram_list = n_list
+        self.word_list = w_list
+        self.pattern_list = p_list
         self.pickle_out = pickle_out
         self.pickle_every = pickle_every
         self.ngrams, self.patterns, self.statistics = (dict() for _ in range(3))
@@ -683,7 +685,7 @@ class Dataset:
         self.ngrams = add_ngram_probability(self.ngrams)
 
     def load_pickles(self, pickle_names):
-        # Assuming it is a folder
+        # Assuming it is a folder. Not a good idea to ask for forgiveness here.
         if isinstance(pickle_names, str):
             pickles = [join(pickle_names, filename) for filename in self._pickle_names]
             if not all(os.path.exists(file) for file in pickles):
@@ -697,11 +699,13 @@ class Dataset:
                     raise TypeError('last_sentence_index.p must be of type int.')
                 self.start_from = start_from
                 logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
-        elif isinstance(pickle_names, collections.abc.Sequence) and len(pickle_names) == 4:
-            pickles = pickle_names[:3]
-            self.start_from = pickles[3] if pickles[3] else 0
         else:
-            raise TypeError('pickle_names must be a string or a sequence of len 4.')
+            try:
+                pickles = pickle_names[:3]
+            except:
+                raise TypeError('pickle_names must be a string or a sequence of len 4.')
+            else:
+                self.start_from = pickles[3] if pickles[3] else 0
 
         self.ngrams, self.patterns, self.statistics = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
         logging.info('Pickles loaded.')
@@ -717,7 +721,7 @@ class Dataset:
             save_statistics(self.statistics, join(output_dir, 'statistics.csv'))
 
 
-def test_data():
+def test_data() -> None:
     """Save ngrams, patterns and statistics to a file using test data."""
     data_dir = os.path.normpath(join(os.path.dirname(__file__), os.pardir + '/data'))
     test_dir = join(data_dir, 'test')
@@ -740,7 +744,7 @@ def test_data():
     dataset.save_all(output_dir)
 
 
-def main():
+def main() -> None:
     test_data()
 
 if __name__ == "__main__":
