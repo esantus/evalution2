@@ -88,13 +88,13 @@ def _cap_type(word: AnyStr) -> str:
     return 'other'
 
 
-def _is_stopword(word: AnyStr)-> bool:
+def _is_stopword(word: AnyStr) -> bool:
     """Returns true if a word is a stopword."""
     if word in data.stopwords or word.endswith("'ll") or word.endswith("'t"):
         return True
 
 
-def _open_corpus(corpus_path: AnyStr, encoding: AnyStr='ISO-8859-2') -> TextIO:
+def _open_corpus(corpus_path: AnyStr, encoding: AnyStr = 'ISO-8859-2') -> TextIO:
     """Yield an eval corpus reader.
 
     Args:
@@ -124,7 +124,7 @@ def _open_corpus(corpus_path: AnyStr, encoding: AnyStr='ISO-8859-2') -> TextIO:
         yield corpus
 
 
-def get_pattern_pairs(wlist: AnyStr, separator: AnyStr="\t") -> PatternList:
+def get_pattern_pairs(wlist: AnyStr, separator: AnyStr = "\t") -> PatternList:
     """Get a set of unique, symmetric word pairs from a file containing pairs of words.
 
     Args:
@@ -189,12 +189,8 @@ class Sentence:
     def tokens(self):
         return ' '.join([word.token for word in self.words])
 
-    @property
-    def lemmas(self):
-        return ' '.join([word.lemma for word in self.words])
 
-
-def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr='utf-8') -> Sentence:
+def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentence:
     """
     Yield all the sentences in an eval corpus file as a list of Word namedtuples.
 
@@ -258,7 +254,7 @@ def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr='utf-8') -> Sentence:
 
 
 class WordFrequencies:
-    def __init__(self, word: AnyStr, stat_id: int=None):
+    def __init__(self, word: AnyStr, stat_id: int = None):
         """Data structure representing a word with its frequencies.
 
         Attributes:
@@ -317,39 +313,54 @@ def extract_frequencies(sentence: Sentence, words: KeywordProcessor, frequencies
     return frequencies
 
 
-def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: MutableMapping,
-                     save_args: Mapping=None) -> MutableMapping:
-    """Returns a dictionary containing all the words between each pair of a set of pair of words.
+class PatternFrequencies:
+    def __init__(self, pair: Tuple[str, str], pair_id: int = None):
+        """Data structure representing a pattern and its frequencies in a corpus.
 
-    The dictionary has the following structure:
-    patterns {
-            (w1, w1): { # keys are pairs (tuples) of two strings indicating a word (token, or lemma if islemma == True)
-            F.dep: ... # the values are another dictionary whose keys are the corpus fields (F.dep, F.lemma, F.token,)
-            F.lemma: dict(span<str>: freq<int>) # each dictionary contains the in-between span and its frequency.}}
+        Attribues:
+            self.pair: The pair of words.
+            self.id: Id of the pair.
+            self.freq: The frequency of the pair.
+            self.token, self.lemma, self.pos, self.dep:
+                The items between the words in the pair represented as token, lemma, pos or dep form and their freq.
+        """
+        self.pair = pair
+        self.id = pair_id
+        self.freq = 0
+        self.token, self.lemma, self.pos, self.dep = (collections.Counter()
+                                                      for _ in range(4))  # type: MutableMapping[str, int]
+
+    def __getitem__(self, item):
+        return self.pair[item]
+
+    def __repr__(self):
+        return '%s((%s, %s), %s)' % (self.__class__.__name__, self.pair[0], self.pair[1], str(self.id))
+
+    @property
+    def fields(self):
+        yield ('token', self.token)
+        yield ('lemma', self.lemma)
+        yield ('pos', self.pos)
+        yield ('dep', self.dep)
+
+
+def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: MutableMapping,
+                     save_args: Mapping = None) -> MutableMapping:
+    """Returns a dictionary containing all the words between each pair of a set of pair of words.
 
     Args:
         sentence: A Sentence object.
         word_pairs: A set of word pairs and their inverse.
         patterns: The pattern dictionary to be updated or initialized.
+            They keys are string indicating the pair, the values are PatternFrequencies objects.
         save_args: A dictionary with keys indicating a corpus field. If key is true. save the pattern indicated by it.
-            If empty, the following default values are used: {'token':True, 'lemma':True, 'POS':True, 'dep':True}.
+            Default is all True.
     Returns:
         Reference to the updated dictionary.
     """
 
     if not save_args:
         save_args = {'token': True, 'lemma': True, 'pos': True, 'dep': True}
-    else:
-        if not any([v for (k, v) in save_args.items() if k in ['token', 'lemma', 'pos', 'dep', 'parent', 'index']]):
-            raise ValueError('%s is not a valid dictionary.' % repr(save_args))
-
-    # First time running, initialize dictionary
-    if not patterns:
-        for pair_id, pair in enumerate(word_pairs):
-            patterns[pair] = {arg: collections.Counter() for (arg, val) in save_args.items() if val}
-            # Explicitly declare freq = 0 just in case we need to iterate over keys.
-            patterns[pair]['freq'] = 0
-            patterns[pair]['pair_id'] = pair_id
 
     all_lemmas = [w.lemma for w in sentence]
     all_tokens = [w.token for w in sentence]
@@ -362,17 +373,28 @@ def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: Muta
             match_index = i
             for x in range(i, len(all_lemmas)):
                 if all_lemmas[x] == word2 or all_tokens[x] == word2:
-                    patterns[pair]['freq'] += 1
+                    if pair not in patterns:
+                        pair_id = 0
+                        patterns[pair] = (PatternFrequencies(pair, pair_id))
+                    patterns[pair].freq += 1
                     for field, value in save_args.items():
                         if value:
                             all_targets = [getattr(w, field) for w in sentence]
                             in_between = ' '.join(all_targets[match_index + 1:x])
-                            patterns[pair][field][in_between] += 1
+                            if not in_between:
+                                # Nothing in between, set a special character #
+                                in_between = '#'
+                            # Returns a counter with the actual value or 0 if it does not exist.
+                            pattern_field = getattr(patterns[pair], field)
+                            # We increase the value and reassign.
+                            pattern_field[in_between] += 1
+                            setattr(patterns[pair], field, pattern_field)
     return patterns
 
 
-def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableMapping, win: int=2,
-                   exclude_stopwords: bool=True, istoken: bool=False, pos: bool=True, dep: bool=True) -> MutableMapping:
+def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableMapping, win: int = 2,
+                   exclude_stopwords: bool = True, istoken: bool = False, pos: bool = True,
+                   dep: bool = True) -> MutableMapping:
     """Extract_ngrams from a sentence and update an ngram dictionary.
 
     The ngram dictionary has the following structure:
@@ -402,10 +424,10 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
     if not ngrams:
         ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
                            tot_ngram_freq=0, ngram_freq={}, last_id=0))
-    lemmas_to_search = ' '.join([word.lemma for word in sentence[:-win+1]])
+    lemmas_to_search = ' '.join([word.lemma for word in sentence[:-win + 1]])
     ngrams['tot_word_freq'] += len(sentence)
     matches = collections.deque([match for match in words.extract_keywords(lemmas_to_search, span_info=True)
-                                if exclude_stopwords and not _is_stopword(match[0])])
+                                 if exclude_stopwords and not _is_stopword(match[0])])
     i = 0
     last_is_stopword = False
     while matches:
@@ -420,7 +442,7 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
         _, match_begin, match_end = matches[0]
         word = sentence[i]
         if word.lemma_i == match_begin:
-            for j in range(i+1, len(sentence)):
+            for j in range(i + 1, len(sentence)):
                 word = sentence[j]
                 if word.lemma_i == match_end + 1:
                     if not last_is_stopword:
@@ -444,9 +466,9 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
                                        for w in ngram_second_slice if w.lemma not in data.stopwords)
                     elif pos and dep:
                         ngram = (' '.join(tuple(str(w.dep) + ':' + str(getattr(w, field)) + '-' + w.pos
-                                 for w in ngram_first_slice)), )
+                                                for w in ngram_first_slice)),)
                         ngram += tuple((str(w.dep + ':' + str(getattr(w, field)) + '-' + w.pos)
-                                       for w in ngram_second_slice if w.lemma not in data.stopwords))
+                                        for w in ngram_second_slice if w.lemma not in data.stopwords))
                     else:
                         ngram = tuple(' '.join(getattr(w, field) for w in ngram_first_slice))
                         ngram += tuple(getattr(w, field) for w in ngram_second_slice
@@ -560,15 +582,12 @@ def save_patterns(patterns: MutableMapping, outfile_path: AnyStr) -> None:
         header = ['pattern_id', 'pair_id', 'word1', 'word2', 'freq.', 'type', 'context', 'frequency']
         pattern_writer.writerow(header)
         col_id = 0
-        for pair, n_types in patterns.items():
-            pair_freq = n_types['freq']
-            pair_id = n_types['pair_id']
-            for n_type, contexts in n_types.items():
-                if isinstance(contexts, collections.Counter):
-                    for context, frequency in contexts.items():
-                        row = [col_id, pair_id, pair[0], pair[1], pair_freq, n_type, context, frequency]
-                        pattern_writer.writerow(row)
-                        col_id += 1
+        for pair, frequencies in patterns.items():
+            for field_name, field_value in frequencies.fields:
+                for context, frequency in field_value.items():
+                    row = [col_id, frequencies.id, pair[0], pair[1], frequencies.freq, field_name, context, frequency]
+                    pattern_writer.writerow(row)
+                    col_id += 1
     logging.info('%s saved.' % outfile_path)
 
 
@@ -618,8 +637,8 @@ def save_frequencies(frequencies: MutableMapping, outfile_path: AnyStr) -> None:
 
 
 class Dataset:
-    def __init__(self, w_list: KeywordProcessor=None, n_list: KeywordProcessor=None,  p_list: set=None,
-                 pickle_every: int=None, pickle_out: AnyStr=os.getcwd(), overwrite_pickles: bool=False) -> None:
+    def __init__(self, w_list: KeywordProcessor = None, n_list: KeywordProcessor = None, p_list: set = None,
+                 pickle_every: int = None, pickle_out: AnyStr = os.getcwd(), overwrite_pickles: bool = False) -> None:
         """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
 
         Args:
@@ -667,10 +686,13 @@ class Dataset:
                 if sentence_no and sentence_no < instance.start_from:
                     return
                 add_func(instance, sentence)
-                if instance.pickle_every and instance.overwrite_pickles and not (sentence_no+1) % instance.pickle_every:
+                if instance.pickle_every \
+                        and instance.overwrite_pickles \
+                        and not (sentence_no + 1) % instance.pickle_every:
                     pickle.dump(getattr(instance, self.to_pickle),
                                 open(join(instance.pickle_out, self.pickle_file), 'wb'))
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
+
             return pickled_add
 
     @Pickler(to_pickle='ngrams')
@@ -750,6 +772,7 @@ def test_data() -> None:
 
 def main() -> None:
     test_data()
+
 
 if __name__ == "__main__":
     # To run as a script use python -m evalution.corpus from parent folder.
