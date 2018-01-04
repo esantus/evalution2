@@ -371,8 +371,8 @@ class Ngram:
         self.freq = 0
         self.probability = None
 
-    #def __getitem__(self, item):
-    #    return self.ngram[item]
+    def __getitem__(self, item):
+        return self.ngram[item]
 
     def __repr__(self):
         return '%s%s' % (self.__class__.__name__, repr(self.ngram))
