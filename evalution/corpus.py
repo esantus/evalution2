@@ -7,7 +7,7 @@ Example:
         extract_patterns(): extract patterns from a corpus given a set of word pairs.
         extract_frequencies(): extract word frequencies from a corpus given a set of words.
 
-First, we extract a list of words (get_wlist) or pair of words (get_pattern_list())
+First, we extract a list of words (get_wlist) or pair of words (get_pattern_list()).
 
 >>> wlist_fn = join('..', 'data', 'test',  'wordlist_long.csv')
 >>> wlist = get_wlist(wlist_fn)
@@ -44,7 +44,6 @@ Authors:
 Todo:
     * Add function to extract from raw text.
     * Add test sets.
-    * Use pyannotate and mypy.
 """
 
 import collections
@@ -158,6 +157,7 @@ def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
     Returns:
         A KeywordProcessor containing the list of words from wlist_fn.
     """
+
     words = KeywordProcessor(case_sensitive=True)
     words.non_word_boundaries.add('-')
     words.non_word_boundaries.add('\'')
@@ -169,7 +169,6 @@ def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
 
 
 class Sentence:
-    # Not very useful as it is, but it could be expanded to support more methods.
     def __init__(self, words: List[Word]):
         """A sentence composed of several annotated words (Word)."""
         self.words = words
@@ -343,6 +342,7 @@ class PatternFrequencies:
                 The items between the words in the pair represented as token, lemma, pos or dep form and their freq.
             self.fields: Yield self.token, self.lemma, self.pos and self.dep and their name.
         """
+
         self.pair = pair
         self.id = pair_id
         self.freq = 0
@@ -370,6 +370,7 @@ class Ngram:
         Args:
             ngram: The elements of the ngram.
         """
+
         self.ngram = ngram
         self.id = ngram_id
         self.lemma = None
@@ -650,7 +651,7 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngram_collection
 
 
 def add_ngram_probability(ngram_collection: NgramCollection, plmi: bool = False) -> NgramCollection:
-    """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability'].
+    """Add a probability value to each ngram.
 
     Args:
         ngram_collection: The ngram dictionary to update.
@@ -684,6 +685,7 @@ def save_ngrams(ngram_collection: NgramCollection, outfile_path: AnyStr) -> None
         ngram_collection: The ngram collection.
         outfile_path: The filename of the output file.
     """
+
     # save probability only if at least one element has probability > 0
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
