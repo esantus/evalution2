@@ -54,10 +54,11 @@ import logging
 import math
 import os
 import pickle
+import pprint
 import re
 import reprlib
 from os.path import join
-from typing import AnyStr, List, Mapping, MutableMapping, Set, TextIO, Tuple
+from typing import AnyStr, List, Mapping, MutableMapping, Set, Sequence, TextIO, Tuple
 
 import tqdm
 from flashtext import KeywordProcessor
@@ -168,6 +169,7 @@ def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
 
 
 class Sentence:
+    # Not very useful as it is, but it could be expanded to support more methods.
     def __init__(self, words: List[Word]):
         """A sentence composed of several annotated words (Word)."""
         self.words = words
@@ -175,19 +177,232 @@ class Sentence:
     def __getitem__(self, position):
         return self.words[position]
 
-    def __iter__(self):
-        for word in self.words:
-            yield word
-
     def __len__(self):
         return len(self.words)
 
     def __str__(self):
         return 'Sentence(%s)' % reprlib.repr(self.tokens)
 
+    def __repr__(self):
+        return pprint.pprint(self.words)
+
     @property
     def tokens(self):
         return ' '.join([word.token for word in self.words])
+
+
+class Dataset:
+    def __init__(self, w_list: KeywordProcessor = None, n_list: KeywordProcessor = None, p_list: set = None,
+                 pickle_every: int = None, pickle_out: AnyStr = os.getcwd(), overwrite_pickles: bool = False) -> None:
+        """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
+
+        Args:
+            w_list: set of words to search the frequencies for.
+            n_list: set of words to use to extract the ngrams.
+            p_list: set of word pairs to use to extract the patterns.
+            pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
+            pickle_out: Path to folder that stores the pickled files.
+            overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
+        """
+
+        self._pickle_names = ('ngrams.p', 'patterns.p', 'frequencies.p')
+        self._overwrite_pickles = None
+        self.start_from = 0
+        self.pickled = None
+        self.ngram_list = n_list
+        self.word_list = w_list
+        self.pattern_list = p_list
+        self.pickle_out = pickle_out
+        self.pickle_every = pickle_every
+        self.ngrams = NgramCollection()
+        self.patterns = {}
+        self.frequencies = {}
+        self.overwrite_pickles = overwrite_pickles
+
+    @property
+    def overwrite_pickles(self):
+        return self._overwrite_pickles
+
+    @overwrite_pickles.setter
+    def overwrite_pickles(self, overwrite):
+        if not overwrite and any(os.path.exists(join(self.pickle_out, pickle_file))
+                                 for pickle_file in self._pickle_names):
+            logging.warning('Pickle files exist in %s. Set overwrite_pickle=True if you want to overwrite them. '
+                            'Pickles will not be dumped.' % self.pickle_out)
+            self._overwrite_pickles = False
+        else:
+            self._overwrite_pickles = True
+
+    class Pickler:
+        def __init__(self, to_pickle):
+            self.to_pickle = to_pickle
+            self.pickle_file = to_pickle + '.p'
+
+        def __call__(self, add_func):
+            def pickled_add(instance, sentence, sentence_no=None):
+                if sentence_no and sentence_no < instance.start_from:
+                    return
+                add_func(instance, sentence)
+                if instance.pickle_every \
+                        and instance.overwrite_pickles \
+                        and not (sentence_no + 1) % instance.pickle_every:
+                    pickle.dump(getattr(instance, self.to_pickle),
+                                open(join(instance.pickle_out, self.pickle_file), 'wb'))
+                    logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
+
+            return pickled_add
+
+    @Pickler(to_pickle='ngrams')
+    def add_ngrams(self, sentence):
+        extract_ngrams(sentence, self.ngram_list, self.ngrams)
+
+    @Pickler(to_pickle='patterns')
+    def add_patterns(self, sentence):
+        extract_patterns(sentence, self.pattern_list, self.patterns)
+
+    @Pickler(to_pickle='frequencies')
+    def add_frequencies(self, sentence):
+        extract_frequencies(sentence, self.word_list, self.frequencies)
+
+    def add_ngram_prob(self):
+        self.ngrams = add_ngram_probability(self.ngrams)
+
+    def load_pickles(self, pickle_names):
+        # Assuming it is a folder. Not a good idea to ask for forgiveness here.
+        if isinstance(pickle_names, str):
+            pickles = [join(pickle_names, filename) for filename in self._pickle_names]
+            if not all(os.path.exists(file) for file in pickles):
+                raise ValueError('Missing pickles in "%s". load_pickles() requires %s'
+                                 % (pickle_names, ', '.join(self._pickle_names)))
+            if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
+                self.start_from = 0
+            else:
+                start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
+                if not isinstance(start_from, int):
+                    raise TypeError('last_sentence_index.p must be of type int.')
+                self.start_from = start_from
+                logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
+        else:
+            try:
+                pickles = pickle_names[:3]
+            except:
+                raise TypeError('pickle_names must be a string or a sequence of len 4.')
+            else:
+                self.start_from = pickles[3] if pickles[3] else 0
+
+        self.ngrams, self.patterns, self.frequencies = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
+        logging.info('Pickles loaded.')
+
+    def save_all(self, output_dir=os.getcwd()):
+        if self.ngrams:
+            save_ngrams(self.ngrams, join(output_dir, 'ngrams.csv'))
+            if self.frequencies:
+                save_ngram_stats(self.ngrams, self.frequencies, join(output_dir, 'ngram_words.csv'))
+        if self.patterns:
+            save_patterns(self.patterns, join(output_dir, 'patterns.csv'))
+        if self.frequencies:
+            save_frequencies(self.frequencies, join(output_dir, 'frequencies.csv'))
+
+
+class WordFrequencies:
+    def __init__(self, word: AnyStr, stat_id: int = None):
+        """Represent a word and its frequency information.
+
+        Attributes:
+            self.word: The lemma of the word we get the frequencies for.
+            self.id: The id of the lemma.
+            self.freq: The frequency of the word.
+            self.cap: A dictionary containing the frequency of the word in 'lower', 'upper', 'title', and 'other' form.
+            self.norm: A counter with the frequnencies of the word in its normalized forms.
+            self.pos_dep: A counter with the frequencies of the word's POS and DEP.
+        """
+
+        self.word = word
+        self.id = stat_id
+        self.freq = 0
+        self.cap = {cap: 0 for cap in ("lower", "upper", "title", "other")}
+        self.norm: MutableMapping[str, int] = collections.Counter()
+        self.pos_dep: MutableMapping[str, int] = collections.Counter()
+
+    def __str__(self):
+        return self.word
+
+    def __getitem__(self, item):
+        return self.word[item]
+
+
+class PatternFrequencies:
+    def __init__(self, pair: Tuple[str, str], pair_id: int = None):
+        """Represent a pattern and its frequency information.
+
+        Attribues:
+            self.pair: The pair of words.
+            self.id: Id of the pair.
+            self.freq: The frequency of the pair.
+            self.token, self.lemma, self.pos, self.dep:
+                The items between the words in the pair represented as token, lemma, pos or dep form and their freq.
+            self.fields: Yield self.token, self.lemma, self.pos and self.dep and their name.
+        """
+        self.pair = pair
+        self.id = pair_id
+        self.freq = 0
+        self.token, self.lemma, self.pos, self.dep = (collections.Counter()
+                                                      for _ in range(4))  # type: MutableMapping[str, int]
+
+    def __getitem__(self, item):
+        return self.pair[item]
+
+    def __repr__(self):
+        return '%s((%s, %s), %s)' % (self.__class__.__name__, self.pair[0], self.pair[1], str(self.id))
+
+    @property
+    def fields(self):
+        yield ('token', self.token)
+        yield ('lemma', self.lemma)
+        yield ('pos', self.pos)
+        yield ('dep', self.dep)
+
+
+class Ngram:
+    def __init__(self, ngram: Sequence[AnyStr], ngram_id: int=None):
+        self.ngram = ngram
+        self.id = ngram_id
+        self.lemma = None
+        self.freq = 0
+        self.probability = None
+
+    #def __getitem__(self, item):
+    #    return self.ngram[item]
+
+    def __repr__(self):
+        return '%s%s' % (self.__class__.__name__, repr(self.ngram))
+
+    def __len__(self):
+        return len(self.ngram)
+
+
+class NgramCollection:
+    def __init__(self, ngrams: Ngram=None):
+        """Data structure to keep track of n-grams and n-gram related frequencies in a corpus.
+
+        Args:
+            ngrams: a collection of Ngram tuples.
+        """
+        self.tot_word_freq = 0
+        self.tot_ngram_freq = 0
+        self.last_id = 0
+        self.word_freq = collections.Counter()
+        self.ngrams = ngrams if ngrams else {}
+
+    def __getitem__(self, item):
+        return self.ngrams[item]
+
+    def __iter__(self):
+        for ngram in self.ngrams.values():
+            yield ngram
+
+    def __len__(self):
+        return len(self.ngrams)
 
 
 def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentence:
@@ -253,33 +468,6 @@ def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentenc
                         logger.warning('Invalid line #%d in %s %s' % (line_no, corpus_fn, line))
 
 
-class WordFrequencies:
-    def __init__(self, word: AnyStr, stat_id: int = None):
-        """Data structure representing a word with its frequencies.
-
-        Attributes:
-            self.word: The lemma of the word we get the frequencies for.
-            self.id: The id of the lemma.
-            self.freq: The frequency of the word.
-            self.cap: A dictionary containing the frequency of the word in 'lower', 'upper', 'title', and 'other' form.
-            self.norm: A counter with the frequnencies of the word in its normalized forms.
-            self.pos_dep: A counter with the frequencies of the word's POS and DEP.
-        """
-
-        self.word = word
-        self.id = stat_id
-        self.freq = 0
-        self.cap = {cap: 0 for cap in ("lower", "upper", "title", "other")}
-        self.norm: MutableMapping[str, int] = collections.Counter()
-        self.pos_dep: MutableMapping[str, int] = collections.Counter()
-
-    def __str__(self):
-        return self.word
-
-    def __getitem__(self, item):
-        return self.word[item]
-
-
 def extract_frequencies(sentence: Sentence, words: KeywordProcessor, frequencies: MutableMapping) -> MutableMapping:
     """Extracts statistical information for each word in words and mwes and stores it in w_stats.
 
@@ -311,37 +499,6 @@ def extract_frequencies(sentence: Sentence, words: KeywordProcessor, frequencies
         frequencies[lemma].cap[_cap_type(word.token)] += 1
         frequencies[lemma].pos_dep[word.pos + "_" + word.dep] += 1
     return frequencies
-
-
-class PatternFrequencies:
-    def __init__(self, pair: Tuple[str, str], pair_id: int = None):
-        """Data structure representing a pattern and its frequencies in a corpus.
-
-        Attribues:
-            self.pair: The pair of words.
-            self.id: Id of the pair.
-            self.freq: The frequency of the pair.
-            self.token, self.lemma, self.pos, self.dep:
-                The items between the words in the pair represented as token, lemma, pos or dep form and their freq.
-        """
-        self.pair = pair
-        self.id = pair_id
-        self.freq = 0
-        self.token, self.lemma, self.pos, self.dep = (collections.Counter()
-                                                      for _ in range(4))  # type: MutableMapping[str, int]
-
-    def __getitem__(self, item):
-        return self.pair[item]
-
-    def __repr__(self):
-        return '%s((%s, %s), %s)' % (self.__class__.__name__, self.pair[0], self.pair[1], str(self.id))
-
-    @property
-    def fields(self):
-        yield ('token', self.token)
-        yield ('lemma', self.lemma)
-        yield ('pos', self.pos)
-        yield ('dep', self.dep)
 
 
 def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: MutableMapping,
@@ -392,24 +549,15 @@ def extract_patterns(sentence: Sentence, word_pairs: PatternList, patterns: Muta
     return patterns
 
 
-def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableMapping, win: int = 2,
-                   exclude_stopwords: bool = True, istoken: bool = False, pos: bool = True,
-                   dep: bool = True) -> MutableMapping:
+def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngram_collection: NgramCollection(), win: int = 2,
+                   exclude_stopwords: bool = True, istoken: bool = False,
+                   pos: bool = True, dep: bool = True) -> MutableMapping:
     """Extract_ngrams from a sentence and update an ngram dictionary.
-
-    The ngram dictionary has the following structure:
-    ngram {
-            'tot_ngram_freq':freq<int>: total number of ngrams
-            'tot_word_freq': freq<int>: total number of words
-            'word_freq': <dict(word: freq<int>)>: a dict containing all the words (in the ngram format) and their freq.
-            'ngram_freq': <dict(ngram<tuple>: dict(freq: freq<int>): the keys of the dictionary are ngram tuples,
-                the values are dictionary containing only the key 'freq' and the frequency of the ngram.
-                The dictionary can be further populated by add_ngram_probability().}
 
     Args:
         sentence: A Sentence object.
         words: KeywordProcessor containing the list of words to count (see _get_wlist()).
-        ngrams: The ngram dictionary, or an empty dictionary.
+        ngram_collection: an NgramCollection object: if populated, the ngrams will be updated.
         win: The ngram window.
         exclude_stopwords: if True, exclude stopwords from ngrams.
         istoken: If True, match the tokens instead of lemmas.
@@ -421,11 +569,8 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
     """
 
     field = 'token' if istoken else 'lemma'
-    if not ngrams:
-        ngrams.update(dict(tot_word_freq=0, word_freq=collections.Counter(),
-                           tot_ngram_freq=0, ngram_freq={}, last_id=0))
     lemmas_to_search = ' '.join([word.lemma for word in sentence[:-win + 1]])
-    ngrams['tot_word_freq'] += len(sentence)
+    ngram_collection.tot_word_freq += len(sentence)
     matches = collections.deque([match for match in words.extract_keywords(lemmas_to_search, span_info=True)
                                  if exclude_stopwords and not _is_stopword(match[0])])
     i = 0
@@ -433,7 +578,7 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
     while matches:
         if i == len(sentence):
             if last_is_stopword:
-                return ngrams
+                return ngram_collection
             # We reached the end, but there are still items in the deque.
             # logging.warning("Missing index for %s" % repr(matches[0]))
             matches.popleft()
@@ -476,79 +621,73 @@ def extract_ngrams(sentence: Sentence, words: KeywordProcessor, ngrams: MutableM
                     ngram_lemmas = ' '.join([w.lemma for w in sentence[i:ngram_end_index]
                                              if w.lemma not in data.stopwords])
 
-                    if ngram not in ngrams['ngram_freq']:
-                        ngrams['last_id'] += 1
-                        ngrams['ngram_freq'][ngram] = {'freq': 0, 'ngram_id': ngrams['last_id'] - 1}
-                    ngrams['ngram_freq'][ngram]['freq'] += 1
-                    ngrams['ngram_freq'][ngram]['lemmas'] = ngram_lemmas
-                    ngrams['tot_ngram_freq'] += 1
+                    if ngram not in ngram_collection.ngrams:
+                        ngram_collection.ngrams[ngram] = Ngram(ngram, ngram_collection.last_id)
+                        ngram_collection.last_id += 1
+                    ngram_collection.ngrams[ngram].freq += 1
+                    ngram_collection.ngrams[ngram].lemmas = ngram_lemmas
+                    ngram_collection.tot_ngram_freq += 1
                     for item in ngram:
-                        ngrams['word_freq'][item] += 1
+                        ngram_collection.word_freq[item] += 1
                     matches.popleft()
                     last_is_stopword = False
                     i = after_target_i - 1
                     break
         i += 1
-    return ngrams
+    return ngram_collection
 
 
-def add_ngram_probability(ngrams: MutableMapping, plmi: bool = False) -> MutableMapping:
+def add_ngram_probability(ngram_collection: NgramCollection, plmi: bool = False) -> NgramCollection:
     """Add a probability value to each ngram as ngrams[ngram_freq][ngram]['probability'].
 
     Args:
-        ngrams: The ngram dictionary to update.
+        ngram_collection: The ngram dictionary to update.
         plmi: Use plmi.
 
     Returns
         The updated ngram dictionary containing a probability field for each ngram with freq. > 3.
     """
 
-    for ngram in ngrams['ngram_freq']:
-        curr_ngram = ngrams['ngram_freq'][ngram]
+    for ngram in ngram_collection:
         # In calculating ppmi, put a cutoff of freq > 3 to avoid rare events to affect the rank
-        if curr_ngram['freq'] < 4:
+        if ngram.freq < 4:
             probability = 0
         else:
-            ngram_prob = float(curr_ngram['freq']) / ngrams['tot_ngram_freq']
+            ngram_prob = float(ngram.freq) / ngram_collection.tot_ngram_freq
             # Initializing the variable to calculate the probability of components as independent events
             components_prob = 1
-            for word in ngram:
-                components_prob *= float(ngrams['word_freq'][word]) / ngrams['tot_word_freq']
+            for word in ngram.ngram:
+                components_prob *= float(ngram_collection.word_freq[word]) / ngram_collection.tot_word_freq
             probability = math.log(ngram_prob / components_prob)  # ppmi
             if plmi:
-                probability *= curr_ngram['freq']  # plmi
-        ngrams['ngram_freq'][ngram]['probability'] = probability
-    return ngrams
+                probability *= ngram.freq  # plmi
+        ngram_collection.ngrams[ngram.ngram].probability = probability
+    return ngram_collection
 
 
-def save_ngrams(ngrams: MutableMapping, outfile_path: AnyStr) -> None:
+def save_ngrams(ngram_collection: NgramCollection, outfile_path: AnyStr) -> None:
     """Save ngrams to a tsv file.
 
     Args:
-        ngrams: The ngram dictionary.
+        ngram_collection: The ngram collection.
         outfile_path: The filename of the output file.
     """
     # save probability only if at least one element has probability > 0
-    probability = any([ngram['probability'] for _, ngram in ngrams['ngram_freq'].items() if 'probability' in ngram])
     with open(outfile_path, 'w', encoding='utf-8', newline='') as outfile:
         ngram_writer = csv.writer(outfile)
-        header = ['ngram_id', 'ngram', 'lemmas', 'freq']
-        if probability:
-            header.append('probability')
+        header = ['ngram_id', 'ngram', 'lemmas', 'freq', 'probability']
         ngram_writer.writerow(header)
-        for ngram, ngram_d in ngrams['ngram_freq'].items():
-            row = [ngram_d['ngram_id'], ' '.join(ngram), ngram_d['lemmas'], ngram_d['freq']]
-            if probability:
-                row.append(ngram_d['probability'])
+        for ngram in ngram_collection:
+            row = [ngram.id, ' '.join(ngram.ngram), ngram.lemmas, ngram.freq, ngram.probability]
             ngram_writer.writerow(row)
     logging.info('%s saved.' % outfile_path)
 
 
-def save_ngram_stats(ngrams: MutableMapping, frequencies: Mapping, outfile_path: AnyStr) -> None:
+def save_ngram_stats(ngram_collection: NgramCollection, frequencies: Mapping, outfile_path: AnyStr) -> None:
     """Save a file mapping ngrams_id to word_ids.
 
     Args:
-        ngrams: The ngram dictionary.
+        ngram_collection: The ngram collection.
         frequencies: The frequencies dictionary.
         outfile_path: The filename of the output file.
 
@@ -560,11 +699,11 @@ def save_ngram_stats(ngrams: MutableMapping, frequencies: Mapping, outfile_path:
         ngram_writer = csv.writer(outfile)
         header = ['ngram_id', 'word_id', 'ngram_index']
         ngram_writer.writerow(header)
-        for _, ngram_d in ngrams['ngram_freq'].items():
-            for ngram_index, lemma in enumerate(ngram_d['lemmas']):
+        for ngram in ngram_collection:
+            for ngram_index, lemma in enumerate(ngram.lemmas):
                 if lemma in frequencies:
                     word_id = frequencies[lemma].id
-                    row = [ngram_d['ngram_id'], word_id, ngram_index]
+                    row = [ngram.id, word_id, ngram_index]
                     ngram_writer.writerow(row)
     logging.info('%s saved.' % outfile_path)
 
@@ -634,117 +773,6 @@ def save_frequencies(frequencies: MutableMapping, outfile_path: AnyStr) -> None:
             word_id += 1
     for filename in filenames:
         logging.info('%s saved.' % filename)
-
-
-class Dataset:
-    def __init__(self, w_list: KeywordProcessor = None, n_list: KeywordProcessor = None, p_list: set = None,
-                 pickle_every: int = None, pickle_out: AnyStr = os.getcwd(), overwrite_pickles: bool = False) -> None:
-        """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
-
-        Args:
-            w_list: set of words to search the frequencies for.
-            n_list: set of words to use to extract the ngrams.
-            p_list: set of word pairs to use to extract the patterns.
-            pickle_every: Dump pickle file for ngrams, patterns and stats after the indicated no. of sentences.
-            pickle_out: Path to folder that stores the pickled files.
-            overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
-        """
-
-        self._pickle_names = ('ngrams.p', 'patterns.p', 'frequencies.p')
-        self._overwrite_pickles = None
-        self.start_from = 0
-        self.pickled = None
-        self.ngram_list = n_list
-        self.word_list = w_list
-        self.pattern_list = p_list
-        self.pickle_out = pickle_out
-        self.pickle_every = pickle_every
-        self.ngrams, self.patterns, self.frequencies = (dict() for _ in range(3))
-        self.overwrite_pickles = overwrite_pickles
-
-    @property
-    def overwrite_pickles(self):
-        return self._overwrite_pickles
-
-    @overwrite_pickles.setter
-    def overwrite_pickles(self, overwrite):
-        if not overwrite and any(os.path.exists(join(self.pickle_out, pickle_file))
-                                 for pickle_file in self._pickle_names):
-            logging.warning('Pickle files exist in %s. Set overwrite_pickle=True if you want to overwrite them. '
-                            'Pickles will not be dumped.' % self.pickle_out)
-            self._overwrite_pickles = False
-        else:
-            self._overwrite_pickles = True
-
-    class Pickler:
-        def __init__(self, to_pickle):
-            self.to_pickle = to_pickle
-            self.pickle_file = to_pickle + '.p'
-
-        def __call__(self, add_func):
-            def pickled_add(instance, sentence, sentence_no=None):
-                if sentence_no and sentence_no < instance.start_from:
-                    return
-                add_func(instance, sentence)
-                if instance.pickle_every \
-                        and instance.overwrite_pickles \
-                        and not (sentence_no + 1) % instance.pickle_every:
-                    pickle.dump(getattr(instance, self.to_pickle),
-                                open(join(instance.pickle_out, self.pickle_file), 'wb'))
-                    logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
-
-            return pickled_add
-
-    @Pickler(to_pickle='ngrams')
-    def add_ngrams(self, sentence):
-        self.ngrams = extract_ngrams(sentence, self.ngram_list, self.ngrams)
-
-    @Pickler(to_pickle='patterns')
-    def add_patterns(self, sentence):
-        self.patterns = extract_patterns(sentence, self.pattern_list, self.patterns)
-
-    @Pickler(to_pickle='frequencies')
-    def add_frequencies(self, sentence):
-        self.frequencies = extract_frequencies(sentence, self.word_list, self.frequencies)
-
-    def add_ngram_prob(self):
-        self.ngrams = add_ngram_probability(self.ngrams)
-
-    def load_pickles(self, pickle_names):
-        # Assuming it is a folder. Not a good idea to ask for forgiveness here.
-        if isinstance(pickle_names, str):
-            pickles = [join(pickle_names, filename) for filename in self._pickle_names]
-            if not all(os.path.exists(file) for file in pickles):
-                raise ValueError('Missing pickles in "%s". load_pickles() requires %s'
-                                 % (pickle_names, ', '.join(self._pickle_names)))
-            if not os.path.exists(join(pickle_names, 'last_sentence_index.p')):
-                self.start_from = 0
-            else:
-                start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
-                if not isinstance(start_from, int):
-                    raise TypeError('last_sentence_index.p must be of type int.')
-                self.start_from = start_from
-                logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
-        else:
-            try:
-                pickles = pickle_names[:3]
-            except:
-                raise TypeError('pickle_names must be a string or a sequence of len 4.')
-            else:
-                self.start_from = pickles[3] if pickles[3] else 0
-
-        self.ngrams, self.patterns, self.frequencies = (pickle.load(open(pickle_file, 'rb')) for pickle_file in pickles)
-        logging.info('Pickles loaded.')
-
-    def save_all(self, output_dir=os.getcwd()):
-        if self.ngrams:
-            save_ngrams(self.ngrams, join(output_dir, 'ngrams.csv'))
-            if self.frequencies:
-                save_ngram_stats(self.ngrams, self.frequencies, join(output_dir, 'ngram_words.csv'))
-        if self.patterns:
-            save_patterns(self.patterns, join(output_dir, 'patterns.csv'))
-        if self.frequencies:
-            save_frequencies(self.frequencies, join(output_dir, 'frequencies.csv'))
 
 
 def test_data() -> None:
