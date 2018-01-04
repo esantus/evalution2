@@ -365,6 +365,11 @@ class PatternFrequencies:
 
 class Ngram:
     def __init__(self, ngram: Sequence[AnyStr], ngram_id: int=None):
+        """An ngram object.
+
+        Args:
+            ngram: The elements of the ngram.
+        """
         self.ngram = ngram
         self.id = ngram_id
         self.lemma = None
@@ -383,14 +388,21 @@ class Ngram:
 
 class NgramCollection:
     def __init__(self, ngrams: Ngram=None):
-        """Data structure to keep track of n-grams and n-gram related frequencies in a corpus.
+        """Includes n-grams as Ngram objects and n-gram related frequencies in a corpus.
 
         Args:
             ngrams: a collection of Ngram tuples.
+
+        Attributes:
+            self.tot_word_freq: Number of processed words.
+            self.tot_ngram_freq: Number of ngram found.
+            self.word_freq: Frequency of the occurrence of a word in any ngram.
+            self.ngrams: A dictionary containing the ngram string as key and an ngram object as value.
         """
+
+        self.last_id = 0
         self.tot_word_freq = 0
         self.tot_ngram_freq = 0
-        self.last_id = 0
         self.word_freq = collections.Counter()
         self.ngrams = ngrams if ngrams else {}
 
@@ -411,7 +423,7 @@ def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentenc
 
     Args:
         corpus_fn: Filename of the corpus.
-        file_encoding: Specify encoding of the corpus
+        file_encoding: Specify encoding of the corpus.
 
     Yields:
         A Sentence object.
