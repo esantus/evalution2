@@ -1,7 +1,7 @@
 ngram_id,ngram,lemmas,freq,probability
-0,NMOD:hooligan-NNS NMOD:unbridled-JJ,hooligan unbridled,1,0
-1,ROOT:passion-NN NMOD:executive-JJ,passion executive,1,0
-2,NMOD:executive-JJ COORD:box-NNS,executive box,1,0
+0,NMOD:hooligan-NNS NMOD:unbridled-JJ,hooligan unbridled,2,0
+1,ROOT:passion-NN NMOD:executive-JJ,passion executive,2,0
+2,NMOD:executive-JJ COORD:box-NNS,executive box,2,0
 3,PRD:reminder-NN SBJ:football-NN,reminder football,1,0
 4,SBJ:football-NN,football,1,0
 5,NMOD:corporate-JJ PMOD:takeover-NN,corporate takeover,1,0
@@ -334,7 +334,7 @@ ngram_id,ngram,lemmas,freq,probability
 332,ROOT:Orange-NP ROOT:Lodge-NP,Orange Lodge,1,0
 333,NMOD:right-JJ PRD:wing-NN,right wing,1,0
 334,PRD:wing-NN ROOT:say-VVZ,wing say,1,0
-335,ROOT:say-VVZ,say,4,-1.270738383241725
+335,ROOT:say-VVZ,say,4,-1.270640834719266
 336,PMOD:lark-NN ROOT:know-VVG,lark know,1,0
 337,NMOD:true-JJ PRD:Orangeman-NN,true Orangeman,1,0
 338,NMOD:strong-JJ PRD:tradition-NN,strong tradition,1,0
@@ -1085,7 +1085,7 @@ ngram_id,ngram,lemmas,freq,probability
 1083,PMOD:item-NNS NMOD:survey-VVN,item survey,1,0
 1084,NMOD:survey-VVN SBJ:Cash-NP,survey Cash,1,0
 1085,OBJ:combination-NN NMOD:of-IN NMOD:marketing-NN,combination marketing,3,0
-1086,NMOD:marketing-NN PMOD:technique-NNS,marketing technique,4,9.012997017404889
+1086,NMOD:marketing-NN PMOD:technique-NNS,marketing technique,4,9.01344037381441
 1087,PMOD:technique-NNS ADV:specifically-RB,technique specifically,2,0
 1088,ADV:aim-VV ADV:at-IN PMOD:child-NNS,aim child,1,0
 1089,NMOD:marketing-NN PMOD:practice-NNS,marketing practice,1,0
@@ -1480,7 +1480,7 @@ ngram_id,ngram,lemmas,freq,probability
 1478,SBJ:query-NN ROOT:UDP-NP,query UDP,1,0
 1479,ROOT:UDP-NP NMOD:arbitrary-JJ,UDP arbitrary,1,0
 1480,NMOD:unprivileged-JJ NMOD:source-NN,unprivileged source,1,0
-1481,NMOD:source-NN PMOD:port-NN,source port,4,8.296592974680676
+1481,NMOD:source-NN PMOD:port-NN,source port,4,8.297036331090197
 1482,PMOD:port-NN NMOD:destination-NN,port destination,2,0
 1483,NMOD:destination-NN COORD:port-NN,destination port,1,0
 1484,COORD:port-NN NMOD:DNS-NP,port DNS,1,0
@@ -1735,7 +1735,7 @@ ngram_id,ngram,lemmas,freq,probability
 1733,NMOD:IP-NP PMOD:address-NN PMOD:server-NN,IP address server,1,0
 1734,PMOD:server-NN NMOD:access-list-NN,server access-list,1,0
 1735,ROOT:permit-VV NMOD:udp-NN,permit udp,1,0
-1736,NMOD:host-NN NMOD:eq-JJ,host eq,4,9.76676881978127
+1736,NMOD:host-NN NMOD:eq-JJ,host eq,4,9.767212176190789
 1737,NMOD:eq-JJ OBJ:domain-NN,eq domain,3,0
 1738,OBJ:domain-NN NMOD:access-list-NN,domain access-list,2,0
 1739,NMOD:permit-VV NMOD:tcp-NN,permit tcp,2,0
@@ -3597,7 +3597,7 @@ ngram_id,ngram,lemmas,freq,probability
 3595,SBJ:minute-NNS PMOD:impact-NN,minute impact,1,0
 3596,PMOD:impact-NN NMOD:escape-NN,impact escape,1,0
 3597,VC:go-VV ADV:into-IN NMOD:escape-NN,escape,1,0
-3598,NMOD:escape-NN PMOD:unit-NN,escape unit,4,8.22453965704062
+3598,NMOD:escape-NN PMOD:unit-NN,escape unit,4,8.224983013450139
 3599,PMOD:unit-NN NMOD:leave-VVG,unit leave,1,0
 3600,NMOD:leave-VVG NMOD:automatic-JJ,leave automatic,1,0
 3601,ROOT:prepare-VVZ OBJ:launch-VV,prepare launch,1,0
@@ -3744,7 +3744,7 @@ ngram_id,ngram,lemmas,freq,probability
 3742,VC:fit-VVN PMOD:offside-NN,fit offside,1,0
 3743,NMOD:right-hand-JJ PRN:side-NN NMOD:seat-VVN,right-hand seat,1,0
 3744,NMOD:seat-VVN NMOD:driver-NNS,seat driver,1,0
-3745,NMOD:driver-NNS PMOD:seat-NN,driver seat,4,9.55367560432056
+3745,NMOD:driver-NNS PMOD:seat-NN,driver seat,4,9.554118960730081
 3746,PMOD:seat-NN NMOD:exterior-JJ,seat exterior,1,0
 3747,NMOD:exterior-JJ DEP:mirror-NN,exterior mirror,1,0
 3748,DEP:mirror-NN NMOD:fit-VVN,mirror fit,1,0
@@ -4275,7 +4275,7 @@ ngram_id,ngram,lemmas,freq,probability
 4273,COORD:ancient-JJ NMOD:deer-NN,ancient deer,1,0
 4274,NMOD:deer-NN PMOD:park-NN,deer park,1,0
 4275,ADV:Water-NP NMOD:Europe-NP,Water Europe,1,0
-4276,NMOD:Europe-NP,Europe,6,-0.009607165075840543
+4276,NMOD:Europe-NP,Europe,6,-0.00950961655338136
 4277,NMOD:man-made-JJ DEP:reservoir-NN NMOD:offer-VVZ,man-made reservoir offer,1,0
 4278,NMOD:offer-VVZ OBJ:windsurfing-NN,offer windsurfing,1,0
 4279,OBJ:windsurfing-NN NMOD:canoe-VVG,windsurfing canoe,1,0
@@ -5600,7 +5600,7 @@ ngram_id,ngram,lemmas,freq,probability
 5598,NMOD:PVC-NP PMOD:product-NNS,PVC product,1,0
 5599,PMOD:product-NNS COORD:management-NN,product management,1,0
 5600,COORD:management-NN NMOD:PVC-NP,management PVC,1,0
-5601,NMOD:PVC-NP PMOD:waste-NN,PVC waste,5,7.391863065207597
+5601,NMOD:PVC-NP PMOD:waste-NN,PVC waste,5,7.392306421617118
 5602,PMOD:waste-NN ROOT:Eu-NP,waste Eu,1,0
 5603,VMOD:Member-NP SBJ:States-NPS,Member States,1,0
 5604,SBJ:States-NPS ROOT:react-VVD,States react,1,0
@@ -5925,7 +5925,7 @@ ngram_id,ngram,lemmas,freq,probability
 5923,SBJ:call-NNS NMOD:for-IN PMOD:inclusion-NN,inclusion,1,0
 5924,PMOD:inclusion-NN COORD:involvement-NN,inclusion involvement,1,0
 5925,COORD:involvement-NN NMOD:PVC-NP,involvement PVC,1,0
-5926,NMOD:PVC-NP PMOD:industry-NN,PVC industry,4,6.3802621535291175
+5926,NMOD:PVC-NP PMOD:industry-NN,PVC industry,4,6.380705509938638
 5927,PMOD:industry-NN NMOD:new-JJ,industry new,1,0
 5928,NMOD:new-JJ NMOD:member-NN,new member,1,0
 5929,NMOD:member-NN PMOD:state-NNS NMOD:finally-RB,member finally,1,0
@@ -6738,11 +6738,11 @@ ngram_id,ngram,lemmas,freq,probability
 6736,COORD:movement-NN NMOD:vocal-JJ,movement vocal,1,0
 6737,NMOD:vocal-JJ COORD:projection-NN,vocal projection,1,0
 6738,COORD:projection-NN COORD:improvisation-NN,projection improvisation,1,0
-6739,NMOD:autumn-NN SBJ:session-NNS,autumn session,5,9.86107949925251
-6740,SBJ:session-NNS ROOT:start-VVP,session start,5,9.242040290846287
+6739,NMOD:autumn-NN SBJ:session-NNS,autumn session,5,9.861522855662031
+6740,SBJ:session-NNS ROOT:start-VVP,session start,5,9.242483647255808
 6741,ROOT:start-VVP NMOD:Monday-NP,start Monday,1,0
 6742,NMOD:Monday-NP NMOD:September-NP,Monday September,1,0
-6743,PMOD:term-NN PRN:concession-NN,term concession,5,9.296765190535533
+6743,PMOD:term-NN PRN:concession-NN,term concession,5,9.297208546945054
 6744,PRN:concession-NN,concession,1,0
 6745,ADV:get-VVP ROOT:on-IN SBJ:Tuesday-NP,Tuesday,1,0
 6746,SBJ:Tuesday-NP NMOD:try-VVP,Tuesday try,1,0
@@ -6830,7 +6830,7 @@ ngram_id,ngram,lemmas,freq,probability
 6828,NMOD:master-NN PMOD:class-NN,master class,1,0
 6829,ADV:like-VVP,like,1,0
 6830,NMOD:alum-NN NMOD:Bay-NP,alum Bay,1,0
-6831,NMOD:Bay-NP NMOD:II-NP,Bay II,4,10.236772449027004
+6831,NMOD:Bay-NP NMOD:II-NP,Bay II,4,10.237215805436525
 6832,NMOD:II-NP NMOD:wreck-NN,II wreck,2,0
 6833,NMOD:wreck-NN ROOT:site-NN,wreck site,1,0
 6834,ROOT:site-NN NMOD:Anchor-NP,site Anchor,1,0
@@ -7241,7 +7241,7 @@ ngram_id,ngram,lemmas,freq,probability
 7239,PMOD:information-NN SBJ:course-NN,information course,1,0
 7240,SBJ:course-NN PMOD:cover-VVZ,course cover,1,0
 7241,PMOD:cover-VVZ NMOD:contact-NN,cover contact,1,0
-7242,NMOD:contact-NN,contact,5,-0.19192872186979507
+7242,NMOD:contact-NN,contact,5,-0.19183117334733604
 7243,NMOD:notifiable-JJ PRD:disease-NN,notifiable disease,1,0
 7244,PRD:disease-NN NMOD:Bee-NP,disease Bee,1,0
 7245,NMOD:diseases-NPS NMOD:Control-NP,diseases Control,1,0
@@ -8336,7 +8336,7 @@ ngram_id,ngram,lemmas,freq,probability
 8334,PMOD:type-NNS DEP:Ide-NP,type Ide,2,0
 8335,ADV:ATA-NP ADV:SATA-NP,ATA SATA,2,0
 8336,NMOD:ide-NN NMOD:ATA-NP,ide ATA,2,0
-8337,NMOD:ATA-NP NMOD:hard-JJ,ATA hard,12,6.7270196608105035
+8337,NMOD:ATA-NP NMOD:hard-JJ,ATA hard,12,6.727463017220025
 8338,NMOD:hard-JJ SBJ:drive-NNS VC:manufacture-VVN,hard drive manufacture,2,0
 8339,VC:manufacture-VVN VC:replace-VVN,manufacture replace,2,0
 8340,VC:replace-VVN NMOD:SATA-NP,replace SATA,2,0
@@ -8424,7 +8424,7 @@ ngram_id,ngram,lemmas,freq,probability
 8422,VC:buy-VV NMOD:SCSI-NP,buy SCSI,1,0
 8423,NMOD:SCSI-NP NMOD:hard-JJ,SCSI hard,2,0
 8424,NMOD:hard-JJ OBJ:drive-NN,hard drive,1,0
-8425,SBJ:motherboard-NN,motherboard,6,-0.0667655789157892
+8425,SBJ:motherboard-NN,motherboard,6,-0.06666803039333
 8426,VMOD:inbuilt-JJ ROOT:SCSI-NP,inbuilt SCSI,1,0
 8427,ROOT:SCSI-NP ADV:Controller-NP,SCSI Controller,1,0
 8428,ADV:Controller-NP OBJ:buy-VV,Controller buy,1,0
@@ -8526,7 +8526,7 @@ ngram_id,ngram,lemmas,freq,probability
 8524,COORD:cable-NN ADV:usually-RB,cable usually,1,0
 8525,ADV:usually-RB VC:provide-VVN,usually provide,1,0
 8526,VC:provide-VVN PMOD:motherboard-NN,provide motherboard,1,0
-8527,NMOD:new-JJ,new,6,-2.925786806927878
+8527,NMOD:new-JJ,new,6,-2.925689258405419
 8528,NMOD:come-VVP NMOD:round-NN,come round,1,0
 8529,NMOD:round-NN PMOD:cable-NNS,round cable,1,0
 8530,PMOD:cable-NNS NMOD:hard-JJ,cable hard,1,0
@@ -8541,7 +8541,7 @@ ngram_id,ngram,lemmas,freq,probability
 8539,PMOD:motherboard-NN NMOD:special-JJ,motherboard special,1,0
 8540,NMOD:special-JJ NMOD:ribbon-NN,special ribbon,2,0
 8541,NMOD:ribbon-NN PMOD:cable-NNS NMOD:PCI-NP,ribbon cable PCI,1,0
-8542,NMOD:PCI-NP NMOD:adapter-NN,PCI adapter,6,9.065322836406628
+8542,NMOD:PCI-NP NMOD:adapter-NN,PCI adapter,6,9.065766192816149
 8543,NMOD:adapter-NN PMOD:card-NN,adapter card,1,0
 8544,SBJ:type-NN NMOD:Ide-NP,type Ide,1,0
 8545,NMOD:ATA-NP NMOD:ribbon-NN,ATA ribbon,2,0
@@ -8578,7 +8578,7 @@ ngram_id,ngram,lemmas,freq,probability
 8576,OBJ:mode-NN PMOD:standard-NN,mode standard,1,0
 8577,PMOD:standard-NN NMOD:support-VVN,standard support,1,0
 8578,NMOD:support-VVN PMOD:motherboard-NN,support motherboard,1,0
-8579,NMOD:serial-JJ NMOD:ATA-NP,serial ATA,8,7.96567802312433
+8579,NMOD:serial-JJ NMOD:ATA-NP,serial ATA,8,7.96612137953385
 8580,NMOD:ATA-NP PRN:SATA-NP,ATA SATA,2,0
 8581,SBJ:drive-NNS,drive,2,0
 8582,NMOD:ribbon-NN OBJ:cable-NNS VC:accommodate-VV,ribbon cable accommodate,1,0
@@ -8612,7 +8612,7 @@ ngram_id,ngram,lemmas,freq,probability
 8610,DEP:note-NN SBJ:information-NN,note information,1,0
 8611,SBJ:information-NN PMOD:difference-NNS,information difference,1,0
 8612,PMOD:difference-NNS NMOD:different-JJ,difference different,1,0
-8613,NMOD:different-JJ PMOD:type-NNS,different type,4,6.480701745372745
+8613,NMOD:different-JJ PMOD:type-NNS,different type,4,6.481145101782265
 8614,PMOD:type-NNS NMOD:ribbon-NN,type ribbon,1,0
 8615,NMOD:ribbon-NN NMOD:ide-NN,ribbon ide,1,0
 8616,NMOD:ide-NN PMOD:cable-NNS,ide cable,3,0
@@ -8984,7 +8984,7 @@ ngram_id,ngram,lemmas,freq,probability
 8982,DEP:ATA-NP ROOT:Headers-NP,ATA Headers,1,0
 8983,SBJ:ATA-NP,ATA,2,0
 8984,NMOD:single-JJ OBJ:cable-NN,single cable,2,0
-8985,OBJ:cable-NN PMOD:drive-NN,cable drive,4,6.6097683986311555
+8985,OBJ:cable-NN PMOD:drive-NN,cable drive,4,6.610211755040676
 8986,ROOT:attach-VVP OBJ:drive-NN,attach drive,2,0
 8987,OBJ:drive-NN PMOD:cable-NN,drive cable,2,0
 8988,PRD:necessary-JJ AMOD:configure-VV,necessary configure,2,0
@@ -9075,10 +9075,10 @@ ngram_id,ngram,lemmas,freq,probability
 9073,DEP:Master-NP ADV:Slave-NP,Master Slave,1,0
 9074,ADV:Slave-NP DEP:CS-NP,Slave CS,1,0
 9075,DEP:CS-NP VMOD:Enabled-NP,CS Enabled,1,0
-9076,NMOD:Cable-NP NMOD:Select-NP,Cable Select,4,10.56527651599904
+9076,NMOD:Cable-NP NMOD:Select-NP,Cable Select,4,10.565719872408561
 9077,NMOD:jumper-NN SBJ:setting-NNS,jumper setting,1,0
 9078,SBJ:setting-NNS ADV:clearly-RB,setting clearly,1,0
-9079,PMOD:drive-NN,drive,4,-2.1251537113977927
+9079,PMOD:drive-NN,drive,4,-2.1250561628753335
 9080,ADV:note-NN NMOD:political-JJ,note political,1,0
 9081,NMOD:political-JJ PMOD:correctness-NN VC:offend-VVN,political correctness offend,1,0
 9082,VC:offend-VVN PMOD:word-NNS,offend word,1,0
@@ -9229,7 +9229,7 @@ ngram_id,ngram,lemmas,freq,probability
 9227,PMOD:master-NN NMOD:slave-NN,master slave,2,0
 9228,NMOD:slave-NN PMOD:position-NNS,slave position,1,0
 9229,PMOD:position-NNS NMOD:ribbon-NN,position ribbon,1,0
-9230,NMOD:the-DT NMOD:boot-NN NMOD:hard-JJ,boot hard,4,7.879699170748889
+9230,NMOD:the-DT NMOD:boot-NN NMOD:hard-JJ,boot hard,4,7.88014252715841
 9231,NMOD:hard-JJ DEP:drive-NN NMOD:install-VVN,hard drive install,1,0
 9232,NMOD:install-VVN ROOT:Primary-NP,install Primary,1,0
 9233,ROOT:Primary-NP VMOD:Ide-NP,Primary Ide,1,0
@@ -9265,7 +9265,7 @@ ngram_id,ngram,lemmas,freq,probability
 9263,NMOD:keyed-JJ PMOD:plug-NNS,keyed plug,1,0
 9264,PMOD:plug-NNS NMOD:come-VVG,plug come,1,0
 9265,NMOD:come-VVG NMOD:power-NN,come power,1,0
-9266,NMOD:power-NN NMOD:supply-NN PMOD:unit-NN,power supply unit,4,8.572846351308835
+9266,NMOD:power-NN NMOD:supply-NN PMOD:unit-NN,power supply unit,4,8.573289707718354
 9267,PMOD:unit-NN NMOD:fit-VVZ,unit fit,1,0
 9268,ROOT:diagram-VVZ SBJ:40-conductor-JJ,diagram 40-conductor,1,0
 9269,NMOD:ribbon-NN COORD:cable-NN COORD:plug-NN,ribbon cable plug,1,0
@@ -9364,8 +9364,8 @@ ngram_id,ngram,lemmas,freq,probability
 9362,PMOD:word-NNS PMOD:cable-NN,word cable,1,0
 9363,PMOD:cable-NN AMOD:long-RB,cable long,1,0
 9364,AMOD:long-RB NMOD:red-JJ,long red,1,0
-9365,NMOD:red-JJ PMOD:line-NN,red line,7,7.362401032477281
-9366,PMOD:line-NN PMOD:length-NN,line length,5,7.626702656284999
+9365,NMOD:red-JJ PMOD:line-NN,red line,7,7.362844388886802
+9366,PMOD:line-NN PMOD:length-NN,line length,5,7.627146012694519
 9367,PMOD:length-NN VC:attach-VVN,length attach,2,0
 9368,VC:attach-VVN NMOD:Pin-NP,attach Pin,1,0
 9369,ROOT:motherboard-NN P:Primary-NP,motherboard Primary,1,0
@@ -9537,7 +9537,7 @@ ngram_id,ngram,lemmas,freq,probability
 9535,AMOD:long-RB NMOD:correct-JJ,long correct,1,0
 9536,NMOD:correct-JJ NMOD:red-JJ,correct red,1,0
 9537,PMOD:length-NN VC:connect-VVN,length connect,3,0
-9538,VC:connect-VVN NMOD:Pin-NP,connect Pin,4,8.801687923737681
+9538,VC:connect-VVN NMOD:Pin-NP,connect Pin,4,8.802131280147202
 9539,PMOD:motherboard-NN NMOD:red-JJ,motherboard red,1,0
 9540,NMOD:red-JJ SBJ:line-NN,red line,1,0
 9541,SBJ:line-NN PMOD:cable-NN,line cable,1,0
@@ -9588,7 +9588,7 @@ ngram_id,ngram,lemmas,freq,probability
 9586,SBJ:cable-NN OBJ:conductor-NNS,cable conductor,1,0
 9587,OBJ:conductor-NNS PMOD:ribbon-NN,conductor ribbon,2,0
 9588,NMOD:hard-JJ SBJ:drive-NNS,hard drive,1,0
-9589,OBJ:mode-NNS PMOD:operation-NN,mode operation,7,9.186950324528327
+9589,OBJ:mode-NNS PMOD:operation-NN,mode operation,7,9.187393680937847
 9590,PMOD:operation-NN ROOT:require-VVP,operation require,1,0
 9591,ROOT:require-VVP NMOD:new-JJ,require new,1,0
 9592,NMOD:new-JJ OBJ:cable-NNS,new cable,1,0
@@ -10943,7 +10943,7 @@ ngram_id,ngram,lemmas,freq,probability
 10941,AMOD:worry-VVG,worry,1,0
 10942,PRD:worth-JJ,worth,1,0
 10943,SBJ:car-NN AMOD:year-NNS,car year,1,0
-10944,AMOD:year-NNS PRD:old-JJ,year old,4,8.647537243910424
+10944,AMOD:year-NNS PRD:old-JJ,year old,4,8.647980600319944
 10945,PRD:old-JJ PRD:worth-JJ,old worth,1,0
 10946,PRD:worth-JJ SBJ:dealership-NN,worth dealership,1,0
 10947,SBJ:dealership-NN ADV:sell-VVG,dealership sell,1,0
@@ -11202,7 +11202,7 @@ ngram_id,ngram,lemmas,freq,probability
 11200,ROOT:West-NP ROOT:Bank-NP,West Bank,1,0
 11201,ROOT:Bank-NP ROOT:River-NP,Bank River,1,0
 11202,PMOD:mile-NNS NMOD:market-NN,mile market,1,0
-11203,NMOD:market-NN PMOD:town-NN,market town,5,7.643310392684659
+11203,NMOD:market-NN PMOD:town-NN,market town,5,7.643753749094179
 11204,PMOD:town-NN PMOD:Retford-NP,town Retford,1,0
 11205,VMOD:West-NP NMOD:Burton-NP,West Burton,1,0
 11206,NMOD:power-NN SBJ:station-NN VC:produce-VV,power station produce,1,0
@@ -11242,7 +11242,7 @@ ngram_id,ngram,lemmas,freq,probability
 11240,NMOD:technical-JJ PMOD:expertise-NN,technical expertise,1,0
 11241,PMOD:expertise-NN NMOD:cementitious-JJ,expertise cementitious,1,0
 11242,VC:supply-VV NMOD:wide-JJ,supply wide,1,0
-11243,NMOD:wide-JJ OBJ:range-NN,wide range,7,7.424276436195369
+11243,NMOD:wide-JJ OBJ:range-NN,wide range,7,7.424719792604889
 11244,OBJ:range-NN SBJ:PFA-NP,range PFA,1,0
 11245,SBJ:PFA-NP PMOD:fly-VV,PFA fly,1,0
 11246,PMOD:fly-VV OBJ:ash-NN NMOD:blend-VVN,fly ash blend,1,0
@@ -11560,7 +11560,7 @@ ngram_id,ngram,lemmas,freq,probability
 11558,ADV:Industry-NP SBJ:Patricia-NP,Industry Patricia,1,0
 11559,VC:extend-VV OBJ:support-NN,extend support,1,0
 11560,OBJ:support-NN NMOD:rural-JJ,support rural,1,0
-11561,NMOD:rural-JJ NMOD:post-NN,rural post,4,8.514005851285901
+11561,NMOD:rural-JJ NMOD:post-NN,rural post,4,8.51444920769542
 11562,NMOD:post-NN NMOD:office-NN PMOD:network-NN,post office network,1,0
 11563,PMOD:network-NN ROOT:April-NP,network April,1,0
 11564,DEP:welcome-VVG OBJ:announcement-NN,welcome announcement,1,0
@@ -11676,7 +11676,7 @@ ngram_id,ngram,lemmas,freq,probability
 11674,ROOT:camera-NNS NMOD:story-NN,camera story,1,0
 11675,NMOD:story-NN AMOD:far-RB,story far,1,0
 11676,AMOD:far-RB NMOD:safety-NN,far safety,1,0
-11677,NMOD:safety-NN SBJ:camera-NNS,safety camera,4,8.811257374753833
+11677,NMOD:safety-NN SBJ:camera-NNS,safety camera,4,8.811700731163354
 11678,SBJ:camera-NNS NMOD:roadside-NN,camera roadside,1,0
 11679,PRD:camera-NNS NMOD:enable-VVG,camera enable,1,0
 11680,NMOD:enable-VVG OBJ:prosecution-NN,enable prosecution,1,0
@@ -12151,7 +12151,7 @@ ngram_id,ngram,lemmas,freq,probability
 12149,DEP:live-VVG,live,1,0
 12150,ROOT:edit-VVD OBJ:episode-NN,edit episode,1,0
 12151,OBJ:episode-NN,episode,1,0
-12152,ADV:DJ-NP,DJ,5,1.0318467097523205
+12152,ADV:DJ-NP,DJ,5,1.0319442582747798
 12153,ROOT:look-VVD AMOD:fairly-RB,look fairly,1,0
 12154,AMOD:fairly-RB NMOD:complicated-JJ,fairly complicated,1,0
 12155,NMOD:complicated-JJ OBJ:production-NN,complicated production,1,0
@@ -12178,7 +12178,7 @@ ngram_id,ngram,lemmas,freq,probability
 12176,NMOD:only-JJ PRD:one-NN NMOD:reduce-VVD,reduce,1,0
 12177,ADV:just-RB OBJ:right-NN,just right,1,0
 12178,VC:think-VVN ADV:properly-RB,think properly,1,0
-12179,ADV:just-RB,just,4,-1.8303541711771476
+12179,ADV:just-RB,just,4,-1.8302566226546888
 12180,NMOD:difficult-JJ,difficult,1,0
 12181,PRD:sequence-NN,sequence,1,0
 12182,VC:know-VV,know,2,0
@@ -12410,7 +12410,7 @@ ngram_id,ngram,lemmas,freq,probability
 12408,PMOD:inhibitor-NN NMOD:SSRI-NP,inhibitor SSRI,1,0
 12409,ROOT:type-NN NMOD:medicine-NN,type medicine,1,0
 12410,NMOD:medicine-NN,medicine,1,0
-12411,NMOD:nerve-NN PMOD:cell-NNS PMOD:brain-NN,nerve cell brain,4,9.448315088662735
+12411,NMOD:nerve-NN PMOD:cell-NNS PMOD:brain-NN,nerve cell brain,4,9.448758445072254
 12412,PMOD:brain-NN NMOD:numerous-JJ,brain numerous,1,0
 12413,NMOD:different-JJ NMOD:chemical-NN,different chemical,1,0
 12414,NMOD:chemical-NN PRD:compound-NNS,chemical compound,1,0
@@ -13534,7 +13534,7 @@ ngram_id,ngram,lemmas,freq,probability
 13532,ROOT:Gaming-NP SBJ:Launched-NP,Gaming Launched,1,0
 13533,COORD:popular-JJ NMOD:independent-JJ,popular independent,1,0
 13534,NMOD:independent-JJ NMOD:online-JJ,independent online,1,0
-13535,NMOD:online-JJ NMOD:gaming-NN,online gaming,7,7.660894021033277
+13535,NMOD:online-JJ NMOD:gaming-NN,online gaming,7,7.661337377442798
 13536,NMOD:gaming-NN PRD:network-NN,gaming network,1,0
 13537,PRD:network-NN PMOD:excess-NN,network excess,1,0
 13538,ADV:in-IN PMOD:excess-NN NMOD:game-NN,excess game,1,0
@@ -15015,7 +15015,7 @@ ngram_id,ngram,lemmas,freq,probability
 15013,NMOD:control-NN PMOD:unit-NN COORD:follow-VVZ,control unit follow,1,0
 15014,COORD:follow-VVZ ADV:warn-VVG,follow warn,1,0
 15015,NMOD:Zone-NP NMOD:6m-NP,Zone 6m,1,0
-15016,NMOD:perimeter-NN PMOD:wire-NN,perimeter wire,4,9.361303711673104
+15016,NMOD:perimeter-NN PMOD:wire-NN,perimeter wire,4,9.361747068082625
 15017,PMOD:wire-NN NMOD:Correction-NP,wire Correction,1,0
 15018,NMOD:Zone-NP NMOD:perimeter-NN,Zone perimeter,1,0
 15019,PMOD:wire-NN NMOD:Impulse-NP,wire Impulse,1,0
@@ -16236,7 +16236,7 @@ ngram_id,ngram,lemmas,freq,probability
 16234,SBJ:delay-NNS PRD:think-VVN,delay think,1,0
 16235,ADV:rush-VVG SBJ:Waverly-NP,rush Waverly,1,0
 16236,SBJ:second-NNS,second,1,0
-16237,SBJ:train-NN,train,5,-0.1313041000533601
+16237,SBJ:train-NN,train,5,-0.1312065515309013
 16238,ADV:arrive-VVG ADV:at-IN PMOD:platform-NN,arrive platform,1,0
 16239,PMOD:platform-NN PMOD:minute-NNS,platform minute,1,0
 16240,PMOD:minute-NNS NMOD:departure-NN,minute departure,1,0
@@ -16449,7 +16449,7 @@ ngram_id,ngram,lemmas,freq,probability
 16447,OBJ:clear-JJ PMOD:possible-JJ,clear possible,1,0
 16448,PMOD:possible-JJ PMOD:particularly-RB,possible particularly,1,0
 16449,PMOD:particularly-RB NMOD:noisy-JJ,particularly noisy,1,0
-16450,NMOD:second-JJ PMOD:year-NN,second year,4,6.418181388391411
+16450,NMOD:second-JJ PMOD:year-NN,second year,4,6.4186247448009315
 16451,PMOD:year-NN NMOD:Laboratory-NP,year Laboratory,1,0
 16452,DEP:focus-NN NMOD:on-IN NMOD:potential-JJ,focus potential,1,0
 16453,NMOD:potential-JJ PMOD:influence-NNS,potential influence,1,0
@@ -16611,7 +16611,7 @@ ngram_id,ngram,lemmas,freq,probability
 16609,ROOT:Party-NP ROOT:discontinue-VVN,Party discontinue,1,0
 16610,ROOT:discontinue-VVN NMOD:financial-JJ,discontinue financial,1,0
 16611,NMOD:financial-JJ OBJ:support-NN VC:declare-VVN,financial support declare,1,0
-16612,VC:declare-VVN OBJ:illegal-JJ,declare illegal,5,10.028133583915677
+16612,VC:declare-VVN OBJ:illegal-JJ,declare illegal,5,10.028576940325197
 16613,SBJ:in-IN PMOD:contrast-NN NMOD:foregoing-JJ,contrast foregoing,1,0
 16614,PMOD:assertion-NNS PMOD:defendant-NN,assertion defendant,1,0
 16615,PMOD:defendant-NN DEP:Seyss-Inquart-NP,defendant Seyss-Inquart,1,0
@@ -16651,7 +16651,7 @@ ngram_id,ngram,lemmas,freq,probability
 16649,ADV:direct-JJ ROOT:Gau-NP,direct Gau,1,0
 16650,SBJ:payment-NNS SBJ:party-NN,payment party,1,0
 16651,SBJ:party-NN VC:forbid-VVN,party forbid,1,0
-16652,ADV:later-RBR,later,4,-1.3195285474111569
+16652,ADV:later-RBR,later,4,-1.3194309988886983
 16653,ROOT:get-VVD ADV:in-IN NMOD:direct-JJ,direct,1,0
 16654,NMOD:direct-JJ PMOD:touch-NN,direct touch,1,0
 16655,PMOD:touch-NN ROOT:Ortsgruppe-NP,touch Ortsgruppe,1,0
@@ -16891,7 +16891,7 @@ ngram_id,ngram,lemmas,freq,probability
 16889,ROOT:Minister-NP NMOD:of-IN ROOT:Interior-NP,Minister Interior,1,0
 16890,ROOT:Interior-NP COORD:Security-NP,Interior Security,1,0
 16891,PRD:official-NN NMOD:Austrian-JJ,official Austrian,1,0
-16892,NMOD:Austrian-JJ PMOD:government-NN,Austrian government,5,7.785767350914686
+16892,NMOD:Austrian-JJ PMOD:government-NN,Austrian government,5,7.786210707324206
 16893,PMOD:government-NN COORD:render-VVD,government render,1,0
 16894,COORD:render-VVD OBJ:service-NNS,render service,1,0
 16895,OBJ:service-NNS NMOD:physical-JJ,service physical,1,0
@@ -16906,7 +16906,7 @@ ngram_id,ngram,lemmas,freq,probability
 16904,NMOD:radical-JJ ROOT:element-NNS,radical element,1,0
 16905,ROOT:element-NNS NMOD:engage-VVN,element engage,1,0
 16906,NMOD:engage-VVN NMOD:terroristic-JJ,engage terroristic,1,0
-16907,NMOD:terroristic-JJ,terroristic,4,0.47223092181689796
+16907,NMOD:terroristic-JJ,terroristic,4,0.4723284703393568
 16908,VMOD:particularly-RB SBJ:Party-NP,particularly Party,1,0
 16909,VMOD:the-DT SBJ:Party-NP VC:forbid-VVN,Party forbid,1,0
 16910,VC:forbid-VVN NMOD:July-NP,forbid July,1,0
@@ -16930,7 +16930,7 @@ ngram_id,ngram,lemmas,freq,probability
 16928,OBJ:view-point-NN PMOD:principle-NN,view-point principle,1,0
 16929,PMOD:principle-NN VC:oppose-VVN,principle oppose,1,0
 16930,VC:oppose-VVN PMOD:Anschluss-NNS,oppose Anschluss,1,0
-16931,NMOD:National-NP NMOD:Socialist-NP,National Socialist,4,8.693474339097449
+16931,NMOD:National-NP NMOD:Socialist-NP,National Socialist,4,8.69391769550697
 16932,NMOD:Socialist-NP PMOD:regime-NN,Socialist regime,3,0
 16933,PMOD:regime-NN PMOD:Reich-NP,regime Reich,1,0
 16934,PMOD:effort-NNS ROOT:Austrian-NP,effort Austrian,1,0
@@ -18007,7 +18007,7 @@ ngram_id,ngram,lemmas,freq,probability
 18005,SBJ:governor-NN ROOT:sign-VVD,governor sign,1,0
 18006,ROOT:sign-VVD OBJ:law-NN,sign law,1,0
 18007,OBJ:law-NN ADV:yesterday-NN,law yesterday,1,0
-18008,ROOT:say-VVD,say,6,-2.081668599458054
+18008,ROOT:say-VVD,say,6,-2.0815710509355947
 18009,PMOD:history-NN PMOD:world-NN,history world,1,0
 18010,NMOD:the-DT PMOD:world-NN NMOD:true-JJ,world true,1,0
 18011,NMOD:the-DT NMOD:true-JJ SBJ:test-NN,true test,1,0
@@ -18369,7 +18369,7 @@ ngram_id,ngram,lemmas,freq,probability
 18367,NMOD:vest-VVG PMOD:order-NN,vest order,1,0
 18368,PMOD:order-NN ROOT:Ministry-NP,order Ministry,1,0
 18369,ROOT:Ministry-NP ROOT:Northern-NP,Ministry Northern,1,0
-18370,ROOT:Northern-NP ROOT:Ireland-NP,Northern Ireland,4,9.989912371095478
+18370,ROOT:Northern-NP ROOT:Ireland-NP,Northern Ireland,4,9.990355727505
 18371,ROOT:Ireland-NP PMOD:virtue-NN,Ireland virtue,1,0
 18372,PMOD:virtue-NN VMOD:Roads-NP,virtue Roads,1,0
 18373,VMOD:Roads-NP ROOT:Improvement-NP,Roads Improvement,1,0
@@ -18601,7 +18601,7 @@ ngram_id,ngram,lemmas,freq,probability
 18599,PMOD:year-NNS ROOT:refer-VVP,year refer,1,0
 18600,ROOT:refer-VVP PMOD:secret-NNS,refer secret,1,0
 18601,PMOD:secret-NNS ROOT:American-NP,secret American,1,0
-18602,ROOT:American-NP ROOT:Kenpo-NP,American Kenpo,4,10.459916000341215
+18602,ROOT:American-NP ROOT:Kenpo-NP,American Kenpo,4,10.460359356750734
 18603,PMOD:effort-NNS NMOD:internalise-VV,effort internalise,2,0
 18604,ADV:incorporate-VVN ROOT:Dim-NP,incorporate Dim,1,0
 18605,PMOD:way-NN NMOD:teach-VVP,way teach,1,0
@@ -19747,7 +19747,7 @@ ngram_id,ngram,lemmas,freq,probability
 19745,OBJ:library-NNS NMOD:major-JJ,library major,1,0
 19746,NMOD:major-JJ COORD:local-JJ,major local,3,0
 19747,COORD:local-JJ COORD:libaries-NNS,local libaries,1,0
-19748,NMOD:access-NN,access,5,-0.6545522438179081
+19748,NMOD:access-NN,access,5,-0.6544546952954491
 19749,NMOD:resource-NNS NMOD:related-JJ,resource related,1,0
 19750,NMOD:related-JJ NMOD:page-NNS,related page,1,0
 19751,NMOD:page-NNS,page,1,0
@@ -20244,7 +20244,7 @@ ngram_id,ngram,lemmas,freq,probability
 20242,PMOD:curtain-NNS,curtain,1,0
 20243,VMOD:Green-NP VMOD:Dragon-NP,Green Dragon,1,0
 20244,VMOD:Dragon-NP NMOD:old-JJ,Dragon old,1,0
-20245,NMOD:old-JJ SBJ:gentleman-NN,old gentleman,7,7.699906060308293
+20245,NMOD:old-JJ SBJ:gentleman-NN,old gentleman,7,7.700349416717814
 20246,SBJ:gentleman-NN ADV:travel-VVD,gentleman travel,1,0
 20247,NMOD:old-JJ PRD:gentleman-NN,old gentleman,1,0
 20248,PRD:gentleman-NN COORD:look-VVD,gentleman look,1,0
@@ -20423,7 +20423,7 @@ ngram_id,ngram,lemmas,freq,probability
 20421,SBJ:bun-NNS OBJ:celebrate-VV,bun celebrate,1,0
 20422,PMOD:editor-NN ROOT:Children-NP,editor Children,1,0
 20423,ROOT:meet-VVD ROOT:Station-NP,meet Station,1,0
-20424,ROOT:Station-NP ROOT:Master-NP,Station Master,4,8.860528423760615
+20424,ROOT:Station-NP ROOT:Master-NP,Station Master,4,8.860971780170136
 20425,ROOT:feel-VVD PRD:uncomfortable-JJ,feel uncomfortable,1,0
 20426,NMOD:think-VV OBJ:affair-NN,think affair,1,0
 20427,OBJ:affair-NN PMOD:coal-mine-NN,affair coal-mine,1,0
@@ -20476,7 +20476,7 @@ ngram_id,ngram,lemmas,freq,probability
 20474,ROOT:say-VVD VC:want-VV,say want,1,0
 20475,VC:want-VV PRD:polite-JJ,want polite,1,0
 20476,PRD:polite-JJ VC:know-VV,polite know,1,0
-20477,ROOT:say-VVD ROOT:Station-NP,say Station,4,6.3531489181205565
+20477,ROOT:say-VVD ROOT:Station-NP,say Station,4,6.353592274530077
 20478,OBJ:think-VVD,think,2,0
 20479,OBJ:coal-NNS SBJ:Peter-NP,coal Peter,1,0
 20480,ROOT:go-VVD PRT:on-IN ROOT:say-VVD,say,1,0
@@ -20490,10 +20490,10 @@ ngram_id,ngram,lemmas,freq,probability
 20488,VC:buy-VV OBJ:bun-NNS,buy bun,1,0
 20489,OBJ:bun-NNS PMOD:tea-NN,bun tea,1,0
 20490,PMOD:tea-NN ROOT:say-VVD,tea say,1,0
-20491,ROOT:say-VVD VMOD:Peter-NP,say Peter,6,7.451761206788666
+20491,ROOT:say-VVD VMOD:Peter-NP,say Peter,6,7.452204563198187
 20492,OBJ:think-VVD PRD:poor-JJ,think poor,1,0
 20493,PRD:poor-JJ ROOT:say-VVD,poor say,1,0
-20494,ROOT:say-VVD ADV:Peter-NP,say Peter,4,7.6340827635826205
+20494,ROOT:say-VVD ADV:Peter-NP,say Peter,4,7.634526119992142
 20495,ADV:confidentially-RB OBJ:pennyworth-NN,confidentially pennyworth,1,0
 20496,PMOD:tea-NN SBJ:Mother-NP,tea Mother,1,0
 20497,SBJ:Mother-NP ADV:sell-VVZ,Mother sell,1,0
@@ -21111,7 +21111,7 @@ ngram_id,ngram,lemmas,freq,probability
 21109,PMOD:letter-NNS NMOD:white-JJ,letter white,1,0
 21110,NMOD:white-JJ PMOD:sheet-NN,white sheet,1,0
 21111,PMOD:sheet-NN NMOD:good-JJ,sheet good,1,0
-21112,NMOD:good-JJ,good,4,-2.3267910574910387
+21112,NMOD:good-JJ,good,4,-2.32669350896858
 21113,VC:look-VV PRT:out-RP PMOD:station-NN,look station,1,0
 21114,PMOD:station-NN VC:disappoint-VVN,station disappoint,1,0
 21115,SBJ:gentleman-NN ROOT:look-VVD,gentleman look,1,0
@@ -21300,7 +21300,7 @@ ngram_id,ngram,lemmas,freq,probability
 21298,NMOD:high-JJ PMOD:auction-NN,high auction,1,0
 21299,PMOD:auction-NN NMOD:Guide-NP,auction Guide,1,0
 21300,NMOD:Terrace-NP NMOD:House-NP,Terrace House,3,0
-21301,NMOD:House-NP NMOD:View-NP,House View,8,9.900300212405792
+21301,NMOD:House-NP NMOD:View-NP,House View,8,9.900743568815312
 21302,NMOD:similar-JJ NMOD:property-NN,similar property,1,0
 21303,NMOD:property-NN SBJ:Beaumont-NP,property Beaumont,1,0
 21304,ADV:Terrace-NP ADV:Prudhoe-NP,Terrace Prudhoe,1,0
@@ -21316,7 +21316,7 @@ ngram_id,ngram,lemmas,freq,probability
 21314,ROOT:read-VV,read,2,0
 21315,PMOD:Choices-NP DEP:Acquisitions-NP,Choices Acquisitions,1,0
 21316,DEP:Acquisitions-NP DEP:Investments-NP,Acquisitions Investments,1,0
-21317,NMOD:telephone-NN NMOD:Bedroom-NP,telephone Bedroom,7,10.123443763720001
+21317,NMOD:telephone-NN NMOD:Bedroom-NP,telephone Bedroom,7,10.123887120129522
 21318,NMOD:similar-JJ ADV:property-NN,similar property,3,0
 21319,ADV:property-NN SBJ:Wheatfield-NP,property Wheatfield,1,0
 21320,ADV:Close-NP VMOD:Ovingham-NP,Close Ovingham,2,0
@@ -21325,17 +21325,17 @@ ngram_id,ngram,lemmas,freq,probability
 21323,SBJ:present-VVN ROOT:extend-VVD,present extend,1,0
 21324,ROOT:extend-VVD NMOD:bedroomed-NN,extend bedroomed,1,0
 21325,NMOD:link-NN OBJ:house-NN,link house,2,0
-21326,OBJ:house-NN NMOD:locate-VVN,house locate,4,8.639407117827174
+21326,OBJ:house-NN NMOD:locate-VVN,house locate,4,8.639850474236694
 21327,NMOD:locate-VVN PMOD:edge-NN,locate edge,3,0
 21328,PMOD:edge-NN NMOD:Ovingham-NP,edge Ovingham,1,0
 21329,PMOD:village-NN NMOD:provide-VVG,village provide,1,0
 21330,NMOD:provide-VVG NMOD:convenient-JJ,provide convenient,1,0
-21331,OBJ:access-NN NMOD:local-JJ,access local,5,6.235713450860899
-21332,NMOD:local-JJ PMOD:amenity-NNS,local amenity,5,7.776158491808049
+21331,OBJ:access-NN NMOD:local-JJ,access local,5,6.2361568072704205
+21332,NMOD:local-JJ PMOD:amenity-NNS,local amenity,5,7.776601848217569
 21333,NMOD:trunk-NN PMOD:road-NN NMOD:connect-VVZ,trunk road connect,2,0
 21334,NMOD:connect-VVZ NMOD:Newcastle-NP,connect Newcastle,1,0
 21335,NMOD:city-NN PMOD:centre-NN NMOD:neighbour-VVG,city centre neighbour,1,0
-21336,NMOD:neighbour-VVG NMOD:market-NN,neighbour market,5,8.102842722063098
+21336,NMOD:neighbour-VVG NMOD:market-NN,neighbour market,5,8.10328607847262
 21337,COORD:town-NN PMOD:property-NN,town property,1,0
 21338,PMOD:property-NN ADV:stylishly-RB,property stylishly,1,0
 21339,VC:present-VVN PMOD:offer-NNS,present offer,2,0
@@ -21346,8 +21346,8 @@ ngram_id,ngram,lemmas,freq,probability
 21344,NMOD:ground-NN DEP:Open-NP,ground Open,1,0
 21345,DEP:Open-NP ROOT:Plan-NP,Open Plan,1,0
 21346,ROOT:Plan-NP ROOT:Area-NP,Plan Area,1,0
-21347,AMOD:Read-NP,Read,6,0.7441646373005396
-21348,NMOD:similar-JJ ROOT:property-NN,similar property,4,8.572846351308835
+21347,AMOD:Read-NP,Read,6,0.7442621858229986
+21348,NMOD:similar-JJ ROOT:property-NN,similar property,4,8.573289707718354
 21349,ROOT:property-NN P:Wellburn-NP,property Wellburn,1,0
 21350,ROOT:welcome-VVP PMOD:market-NN,welcome market,2,0
 21351,NMOD:present-VVN NMOD:bedroomed-NN,present bedroomed,1,0
@@ -21358,8 +21358,8 @@ ngram_id,ngram,lemmas,freq,probability
 21356,NMOD:provide-VVZ NMOD:convenient-JJ,provide convenient,3,0
 21357,NMOD:trunk-NN COORD:road-NN NMOD:connect-VVZ,trunk road connect,2,0
 21358,NMOD:connect-VVZ NMOD:neighbour-VVG,connect neighbour,3,0
-21359,PMOD:town-NN VMOD:Hexham-NP,town Hexham,4,9.81806211416882
-21360,PMOD:support-VVZ OBJ:range-NN,support range,4,8.912353491625202
+21359,PMOD:town-NN VMOD:Hexham-NP,town Hexham,4,9.818505470578339
+21360,PMOD:support-VVZ OBJ:range-NN,support range,4,8.912796848034722
 21361,OBJ:range-NN DEP:good-JJ,range good,1,0
 21362,DEP:good-JJ SBJ:shopping-NN,good shopping,1,0
 21363,SBJ:shopping-NN SBJ:leisure-NN,shopping leisure,1,0
@@ -22699,7 +22699,7 @@ ngram_id,ngram,lemmas,freq,probability
 22697,NMOD:II-NP NMOD:Felicia-NP,II Felicia,1,0
 22698,ADV:bibliography-NN P:Works-NP,bibliography Works,1,0
 22699,P:Works-NP DEP:Held-NP,Works Held,1,0
-22700,DEP:London-NP DEP:John-NP,London John,4,9.281261003999568
+22700,DEP:London-NP DEP:John-NP,London John,4,9.281704360409089
 22701,PMOD:Memory-NP DEP:late-JJ,Memory late,1,0
 22702,DEP:late-JJ DEP:King-NP,late King,1,0
 22703,AMOD:London-NP AMOD:John-NP,London John,1,0
@@ -23434,7 +23434,7 @@ ngram_id,ngram,lemmas,freq,probability
 23432,ROOT:support-VV NMOD:Weekly-NP,support Weekly,1,0
 23433,OBJ:fight-NN PMOD:transparency-NN,fight transparency,1,0
 23434,PMOD:transparency-NN NMOD:worker-NNS,transparency worker,1,0
-23435,NMOD:worker-NNS PMOD:movement-NN,worker movement,5,9.11444363374158
+23435,NMOD:worker-NNS PMOD:movement-NN,worker movement,5,9.1148869901511
 23436,SBJ:click-NN NMOD:download-VV,click download,1,0
 23437,NMOD:download-VV NMOD:standing-JJ,download standing,1,0
 23438,NMOD:standing-JJ NMOD:order-NN NMOD:regular-JJ,standing order regular,1,0
@@ -23728,7 +23728,7 @@ ngram_id,ngram,lemmas,freq,probability
 23726,OBJ:drop-VV NMOD:unfair-JJ,drop unfair,1,0
 23727,NMOD:unfair-JJ OBJ:debt-NN,unfair debt,1,0
 23728,OBJ:debt-NN NMOD:owe-VVN,debt owe,1,0
-23729,NMOD:develop-VVG PMOD:country-NNS,develop country,6,8.48121602846291
+23729,NMOD:develop-VVG PMOD:country-NNS,develop country,6,8.481659384872431
 23730,PMOD:country-NNS COORD:need-VVP,country need,1,0
 23731,COORD:need-VVP OBJ:change-VV,need change,1,0
 23732,OBJ:change-VV OBJ:rule-NNS,change rule,1,0
@@ -23836,7 +23836,7 @@ ngram_id,ngram,lemmas,freq,probability
 23834,PMOD:idea-NNS PMOD:charity-NN,idea charity,1,0
 23835,PMOD:charity-NN PMOD:rank-NNS,charity rank,1,0
 23836,PMOD:rank-NNS NMOD:work-VVG,rank work,1,0
-23837,NMOD:work-VVG NMOD:class-NN,work class,4,7.275631620242633
+23837,NMOD:work-VVG NMOD:class-NN,work class,4,7.276074976652153
 23838,NMOD:class-NN PMOD:movement-NN,class movement,1,0
 23839,PMOD:movement-NN DEP:struggle-NN,movement struggle,1,0
 23840,DEP:struggle-NN NMOD:charity-NN,struggle charity,1,0
@@ -25093,7 +25093,7 @@ ngram_id,ngram,lemmas,freq,probability
 25091,SBJ:minute-NNS NMOD:fifteenth-JJ,minute fifteenth,1,0
 25092,PMOD:amendment-NNS PMOD:paras-NN,amendment paras,1,0
 25093,ROOT:matter-NNS NMOD:arising-JJ,matter arising,1,0
-25094,VMOD:Mr-NP SBJ:Evans-NP,Mr Evans,4,9.172061712034576
+25094,VMOD:Mr-NP SBJ:Evans-NP,Mr Evans,4,9.172505068444098
 25095,ROOT:confirm-VVD VC:meet-VVN,confirm meet,1,0
 25096,VC:meet-VVN PMOD:Chairman-NP,meet Chairman,1,0
 25097,PMOD:Chairman-NP SBJ:Catering-NP,Chairman Catering,1,0
@@ -25150,7 +25150,7 @@ ngram_id,ngram,lemmas,freq,probability
 25148,OBJ:staff-NN NMOD:second-JJ,staff second,1,0
 25149,NMOD:second-JJ NMOD:dcal-JJ,second dcal,1,0
 25150,NMOD:press-NN PMOD:officer-NN,press officer,1,0
-25151,SBJ:Commission-NP ROOT:agree-VVD,Commission agree,6,8.619366366943726
+25151,SBJ:Commission-NP ROOT:agree-VVD,Commission agree,6,8.619809723353248
 25152,ROOT:agree-VVD NMOD:access-NN,agree access,1,0
 25153,NMOD:access-NN SBJ:pass-NNS,access pass,1,0
 25154,SBJ:pass-NNS OBJ:available-JJ,pass available,1,0
@@ -27046,7 +27046,7 @@ ngram_id,ngram,lemmas,freq,probability
 27044,PMOD:select-VVG PMOD:link-NNS,select link,2,0
 27045,PMOD:link-NNS NMOD:Old-NP,link Old,1,0
 27046,NMOD:Data-NP NMOD:Transfer-NP NMOD:Catalogue-NP,Data Transfer Catalogue,2,0
-27047,NMOD:New-NP NMOD:Supplier-NP,New Supplier,4,9.717978655611837
+27047,NMOD:New-NP NMOD:Supplier-NP,New Supplier,4,9.718422012021357
 27048,DEP:change-NN NMOD:relate-VVG,change relate,1,0
 27049,NMOD:relate-VVG VMOD:Agent-NP,relate Agent,1,0
 27050,VC:approve-VVN VC:implement-VVN,approve implement,1,0
@@ -27332,7 +27332,7 @@ ngram_id,ngram,lemmas,freq,probability
 27330,VC:read-VVN NMOD:book-NN,read book,1,0
 27331,NMOD:book-NN,book,1,0
 27332,NMOD:great-JJ OBJ:read-NN,great read,1,0
-27333,NMOD:customer-NN ROOT:rating-NN,customer rating,4,9.296765190535533
+27333,NMOD:customer-NN ROOT:rating-NN,customer rating,4,9.297208546945054
 27334,ROOT:rating-NN DEP:Review-NP,rating Review,3,0
 27335,ROOT:review-NN OBJ:read-VVP,review read,1,0
 27336,OBJ:read-VVP OBJ:book-NN,read book,1,0
@@ -28320,7 +28320,7 @@ ngram_id,ngram,lemmas,freq,probability
 28318,NMOD:technology-NN OBJ:impact-NN,technology impact,1,0
 28319,OBJ:impact-NN PMOD:metaphysics-NN,impact metaphysics,1,0
 28320,ADV:office-NN P:Furniture-NP,office Furniture,1,0
-28321,P:Office-NP DEP:Furniture-NP,Office Furniture,6,10.459916000341215
+28321,P:Office-NP DEP:Furniture-NP,Office Furniture,6,10.460359356750734
 28322,DEP:New-NP,New,1,0
 28323,NMOD:discount-NN NMOD:factory-NN,discount factory,1,0
 28324,NMOD:factory-NN NMOD:direct-JJ,factory direct,1,0
@@ -30130,7 +30130,7 @@ ngram_id,ngram,lemmas,freq,probability
 30128,PMOD:hour-NNS SBJ:E-crime-NP,hour E-crime,1,0
 30129,SBJ:E-crime-NP COORD:deter-VVZ,E-crime deter,1,0
 30130,COORD:deter-VVZ NMOD:online-JJ,deter online,1,0
-30131,NMOD:online-JJ OBJ:banking-NN,online banking,4,8.627334536592905
+30131,NMOD:online-JJ OBJ:banking-NN,online banking,4,8.627777893002424
 30132,SBJ:E-crime-NP ROOT:deter-VVZ,E-crime deter,1,0
 30133,ROOT:deter-VVZ NMOD:online-JJ,deter online,1,0
 30134,SBJ:user-NNS ROOT:fear-VVP,user fear,1,0
@@ -30593,7 +30593,7 @@ ngram_id,ngram,lemmas,freq,probability
 30591,PMOD:FTA-NP PMOD:respect-NN,FTA respect,1,0
 30592,ADV:in-IN PMOD:respect-NN NMOD:of-IN PMOD:supply-NN,respect supply,1,0
 30593,PMOD:supply-NN NMOD:aircrete-JJ,supply aircrete,2,0
-30594,NMOD:concrete-JJ PMOD:block-NNS,concrete block,4,8.550373495456776
+30594,NMOD:concrete-JJ PMOD:block-NNS,concrete block,4,8.550816851866296
 30595,PMOD:block-NNS PMOD:UK-NP,block UK,3,0
 30596,ROOT:party-NNS VMOD:Celcon-NP,party Celcon,1,0
 30597,VMOD:Celcon-NP SBJ:Ltd-NP,Celcon Ltd,2,0
@@ -30983,8 +30983,8 @@ ngram_id,ngram,lemmas,freq,probability
 30981,PMOD:practice-NN COORD:impact-NN,practice impact,2,0
 30982,COORD:impact-NN PMOD:decentralisation-NN,impact decentralisation,2,0
 30983,PMOD:decentralisation-NN ADV:Heymans-NP,decentralisation Heymans,1,0
-30984,ROOT:Department-NP VMOD:for-IN VMOD:International-NP SBJ:Development-NP PRN:DFID-NP,Department International Development DFID,4,10.27759444354726
-30985,NMOD:UK-NP,UK,14,-0.5775912026817797
+30984,ROOT:Department-NP VMOD:for-IN VMOD:International-NP SBJ:Development-NP PRN:DFID-NP,Department International Development DFID,4,10.27803779995678
+30985,NMOD:UK-NP,UK,14,-0.5774936541593207
 30986,SBJ:report-NN ROOT:set-VVZ,report set,1,0
 30987,ROOT:set-VVZ PRT:out-RP NMOD:research-NN,set research,1,0
 30988,NMOD:research-NN OBJ:agenda-NN,research agenda,1,0
@@ -31412,7 +31412,7 @@ ngram_id,ngram,lemmas,freq,probability
 31410,ROOT:issue-NNS NMOD:Vietnam-NP,issue Vietnam,1,0
 31411,ADV:in-IN NMOD:Vietnam-NP NMOD:Community-NP,Vietnam Community,1,0
 31412,NMOD:Community-NP PMOD:participation-NN,Community participation,1,0
-31413,PMOD:participation-NN NMOD:rural-JJ,participation rural,4,8.157330907347168
+31413,PMOD:participation-NN NMOD:rural-JJ,participation rural,4,8.15777426375669
 31414,PMOD:transport-NN ROOT:Vietnam-NP,transport Vietnam,1,0
 31415,NMOD:in-IN ROOT:Vietnam-NP ROOT:Mekong-NP,Vietnam Mekong,2,0
 31416,ROOT:Economics-NP DEP:South-NP,Economics South,2,0
@@ -31424,7 +31424,7 @@ ngram_id,ngram,lemmas,freq,probability
 31422,OBJ:kind-NN COORD:range-NN,kind range,1,0
 31423,COORD:range-NN PMOD:contribution-NNS,range contribution,1,0
 31424,PMOD:contribution-NNS NMOD:rural-JJ,contribution rural,1,0
-31425,NMOD:rural-JJ NMOD:transport-NN,rural transport,7,8.18631844422042
+31425,NMOD:rural-JJ NMOD:transport-NN,rural transport,7,8.186761800629942
 31426,NMOD:transport-NN PMOD:development-NN,transport development,3,0
 31427,PMOD:development-NN NMOD:pay-VVN,development pay,1,0
 31428,NMOD:pay-VVN NMOD:local-JJ,pay local,1,0
@@ -31997,7 +31997,7 @@ ngram_id,ngram,lemmas,freq,probability
 31995,NMOD:Forum-NP NMOD:Product-NP,Forum Product,1,0
 31996,NMOD:Product-NP NMOD:Support-NP,Product Support,1,0
 31997,NMOD:Support-NP NMOD:Media-NP,Support Media,1,0
-31998,NMOD:Media-NP NMOD:Center-NP,Media Center,7,9.296765190535533
+31998,NMOD:Media-NP NMOD:Center-NP,Media Center,7,9.297208546945054
 31999,NMOD:Center-NP ROOT:application-NN,Center application,1,0
 32000,ROOT:application-NN NMOD:MCE-NP,application MCE,1,0
 32001,NMOD:MCE-NP NMOD:Frequently-NP,MCE Frequently,2,0
@@ -32021,7 +32021,7 @@ ngram_id,ngram,lemmas,freq,probability
 32019,AMOD:digital-JJ PRN:satellite-JJ,digital satellite,1,0
 32020,PRN:satellite-JJ NMOD:Contents-NP,satellite Contents,1,0
 32021,ROOT:driver-NN NMOD:MCE-NP,driver MCE,2,0
-32022,NMOD:MCE-NP PMOD:CD-NN,MCE CD,5,8.95583860356494
+32022,NMOD:MCE-NP PMOD:CD-NN,MCE CD,5,8.956281959974461
 32023,PRD:update-JJ NMOD:Rollup-NP,update Rollup,2,0
 32024,ADV:compatibility-NN,compatibility,1,0
 32025,SBJ:card-NNS VC:work-VV,card work,3,0
@@ -32048,7 +32048,7 @@ ngram_id,ngram,lemmas,freq,probability
 32046,NMOD:Available-NP OBJ:error-NN,Available error,2,0
 32047,OBJ:error-NN PMOD:install-VVG,error install,2,0
 32048,PMOD:install-VVG OBJ:card-NN,install card,2,0
-32049,OBJ:card-NN,card,5,-0.30315435698001947
+32049,OBJ:card-NN,card,5,-0.30305680845756056
 32050,OBJ:problem-NNS ADV:set-VVG,problem set,2,0
 32051,ADV:set-VVG PRT:up-RP OBJ:card-NN,set card,2,0
 32052,OBJ:card-NN ADV:Media-NP,card Media,1,0
@@ -32086,7 +32086,7 @@ ngram_id,ngram,lemmas,freq,probability
 32084,OBJ:problem-NNS NMOD:tune-VVG,problem tune,1,0
 32085,NMOD:tune-VVG OBJ:channel-NNS,tune channel,1,0
 32086,OBJ:channel-NNS,channel,2,0
-32087,NMOD:DVB-T-NP NMOD:Radio-NP,DVB-T Radio,4,10.342132964684831
+32087,NMOD:DVB-T-NP NMOD:Radio-NP,DVB-T Radio,4,10.342576321094352
 32088,NMOD:Radio-NP SBJ:station-NNS VC:pick-VVN,Radio station pick,2,0
 32089,VC:pick-VVN PRT:up-RP ROOT:DVB-T-NP,pick DVB-T,1,0
 32090,ROOT:DVB-T-NP ROOT:Radio-NP,DVB-T Radio,2,0
@@ -32247,7 +32247,7 @@ ngram_id,ngram,lemmas,freq,probability
 32245,SBJ:card-NN AMOD:directly-RB,card directly,1,0
 32246,AMOD:directly-RB PRD:accessible-JJ,directly accessible,2,0
 32247,PRD:accessible-JJ ROOT:Media-NP,accessible Media,1,0
-32248,ROOT:Media-NP ROOT:Center-NP,Media Center,6,8.82416077958974
+32248,ROOT:Media-NP ROOT:Center-NP,Media Center,6,8.82460413599926
 32249,NMOD:NO-UH ADV:mean-NNS,NO mean,1,0
 32250,ADV:mean-NNS AMOD:directly-RB,mean directly,1,0
 32251,PRD:accessible-JJ VC:work-VV,accessible work,1,0
@@ -32315,7 +32315,7 @@ ngram_id,ngram,lemmas,freq,probability
 32313,NMOD:suitable-JJ SBJ:card-NNS,suitable card,1,0
 32314,SBJ:card-NNS ROOT:include-VVP,card include,1,0
 32315,ROOT:include-VVP NMOD:ATI-NP,include ATI,1,0
-32316,NMOD:ATI-NP NMOD:RADEON-NP,ATI RADEON,7,9.989912371095478
+32316,NMOD:ATI-NP NMOD:RADEON-NP,ATI RADEON,7,9.990355727505
 32317,ADV:series-NN ADV:X1300-NP,series X1300,1,0
 32318,NMOD:FX-NP NMOD:nVidia-NP,FX nVidia,1,0
 32319,NMOD:see-VVP ADV:below-IN NMOD:nVidia-NP,nVidia,1,0
@@ -32369,7 +32369,7 @@ ngram_id,ngram,lemmas,freq,probability
 32367,NMOD:Digital-NP ROOT:Terrestrial-NP,Digital Terrestrial,2,0
 32368,ROOT:Terrestrial-NP ROOT:DVB-T-NP,Terrestrial DVB-T,2,0
 32369,ROOT:DVB-T-NP NMOD:Set-NP,DVB-T Set,2,0
-32370,NMOD:Set-NP ROOT:Top-NP,Set Top,4,10.236772449027004
+32370,NMOD:Set-NP ROOT:Top-NP,Set Top,4,10.237215805436525
 32371,AMOD:Digital-NP ROOT:terrestrial-JJ ROOT:Freeview-NP,Digital terrestrial Freeview,1,0
 32372,DEP:external-JJ ROOT:STB-NP,external STB,1,0
 32373,DEP:PVR-NP DEP:Antenna-NP,PVR Antenna,1,0
@@ -32477,7 +32477,7 @@ ngram_id,ngram,lemmas,freq,probability
 32475,AMOD:Vector-NP PRD:adaptive-JJ,Vector adaptive,1,0
 32476,VMOD:sure-RB,sure,1,0
 32477,VC:install-VVN NMOD:late-JJS,install late,1,0
-32478,NMOD:late-JJS OBJ:driver-NNS,late driver,4,7.226151562979263
+32478,NMOD:late-JJS OBJ:driver-NNS,late driver,4,7.226594919388783
 32479,OBJ:driver-NNS NMOD:graphics-NNS,driver graphics,1,0
 32480,NMOD:graphics-NNS PMOD:card-NN,graphics card,1,0
 32481,NMOD:P2P-NP PMOD:network-NN VMOD:Please-UH,P2P network Please,1,0
@@ -33375,7 +33375,7 @@ ngram_id,ngram,lemmas,freq,probability
 33373,NMOD:tissue-NN PMOD:paper-NN,tissue paper,1,0
 33374,ROOT:nestle-VV NMOD:elegant-JJ,nestle elegant,1,0
 33375,NMOD:elegant-JJ NMOD:gift-NN,elegant gift,1,0
-33376,NMOD:gift-NN PMOD:box-NN,gift box,4,7.98337760022373
+33376,NMOD:gift-NN PMOD:box-NN,gift box,4,7.983820956633251
 33377,PMOD:box-NN NMOD:tie-VVN,box tie,1,0
 33378,NMOD:tie-VVN NMOD:luxury-NN,tie luxury,1,0
 33379,NMOD:satin-NN PMOD:ribbon-NN,satin ribbon,1,0
@@ -33395,7 +33395,7 @@ ngram_id,ngram,lemmas,freq,probability
 33393,NMOD:Box-NP NMOD:baby-NN,Box baby,1,0
 33394,NMOD:baby-NN NMOD:boy-NN,baby boy,1,0
 33395,NMOD:boy-NN NMOD:gift-NN,boy gift,1,0
-33396,NMOD:gift-NN NMOD:box-NN,gift box,7,8.474000516672202
+33396,NMOD:gift-NN NMOD:box-NN,gift box,7,8.474443873081723
 33397,NMOD:box-NN NMOD:baby-NN,box baby,1,0
 33398,NMOD:baby-NN NMOD:girl-NN,baby girl,1,0
 33399,NMOD:girl-NN NMOD:gift-NN,girl gift,1,0
@@ -34175,14 +34175,14 @@ ngram_id,ngram,lemmas,freq,probability
 34173,SBJ:conservative-NNS VC:return-VVN,conservative return,1,0
 34174,VC:return-VVN PMOD:power-NN,return power,1,0
 34175,PMOD:power-NN,power,1,0
-34176,NMOD:downward-JJ SBJ:slide-NN,downward slide,1,0
-34177,SBJ:slide-NN PMOD:NHS-NN,slide NHS,1,0
-34178,COORD:policy-NNS PMOD:privatisation-NN,policy privatisation,1,0
-34179,PMOD:privatisation-NN VC:continue-VV,privatisation continue,1,0
-34180,VC:continue-VV NMOD:right-wing-JJ,continue right-wing,1,0
-34181,OBJ:government-NN PMOD:future-NN,government future,1,0
-34182,PMOD:future-NN SBJ:North-East-NP,future North-East,1,0
-34183,AMOD:just-RB PRD:bleak-JJ,just bleak,1,0
+34176,NMOD:downward-JJ SBJ:slide-NN,downward slide,2,0
+34177,SBJ:slide-NN PMOD:NHS-NN,slide NHS,2,0
+34178,COORD:policy-NNS PMOD:privatisation-NN,policy privatisation,2,0
+34179,PMOD:privatisation-NN VC:continue-VV,privatisation continue,2,0
+34180,VC:continue-VV NMOD:right-wing-JJ,continue right-wing,2,0
+34181,OBJ:government-NN PMOD:future-NN,government future,2,0
+34182,PMOD:future-NN SBJ:North-East-NP,future North-East,2,0
+34183,AMOD:just-RB PRD:bleak-JJ,just bleak,2,0
 34184,DEP:Newton-NP ROOT:Aycliffe-NP,Newton Aycliffe,1,0
 34185,DEP:charitable-JJ DEP:GIVING-NP,charitable GIVING,1,0
 34186,VMOD:Tony-NP SBJ:Blair-NP,Tony Blair,1,0
@@ -39492,7 +39492,7 @@ ngram_id,ngram,lemmas,freq,probability
 39490,ROOT:introduce-VV COORD:debate-VV,introduce debate,1,0
 39491,COORD:debate-VV OBJ:model-NNS,debate model,1,0
 39492,OBJ:model-NNS PMOD:education-NN,model education,1,0
-39493,PMOD:education-NN PMOD:citizenship-NN,education citizenship,5,7.913600722424571
+39493,PMOD:education-NN PMOD:citizenship-NN,education citizenship,5,7.914044078834091
 39494,PMOD:citizenship-NN PMOD:reference-NN,citizenship reference,1,0
 39495,NMOD:with-IN PMOD:reference-NN NMOD:to-TO PMOD:aim-NNS,reference aim,1,0
 39496,ROOT:help-VV SBJ:student-NNS,help student,1,0
@@ -41930,7 +41930,7 @@ ngram_id,ngram,lemmas,freq,probability
 41928,SBJ:Mexican-JJ VMOD:Rustic-NP,Mexican Rustic,3,0
 41929,SBJ:Range-NP NMOD:authentic-JJ,Range authentic,3,0
 41930,NMOD:authentic-JJ NMOD:Mexican-JJ,authentic Mexican,3,0
-41931,NMOD:Mexican-JJ PRD:furniture-NN,Mexican furniture,6,9.872129335439094
+41931,NMOD:Mexican-JJ PRD:furniture-NN,Mexican furniture,6,9.872572691848616
 41932,PRD:furniture-NN NMOD:handcraft-VVN,furniture handcraft,3,0
 41933,NMOD:handcraft-VVN NMOD:ponderosa-NN,handcraft ponderosa,3,0
 41934,NMOD:ponderosa-NN PMOD:pine-NN,ponderosa pine,3,0
@@ -42008,27 +42008,27 @@ ngram_id,ngram,lemmas,freq,probability
 42006,ROOT:Real-NP ROOT:Natural-NP,Real Natural,1,0
 42007,ROOT:Veneer-NP ROOT:Cabinet-NP,Veneer Cabinet,1,0
 42008,NMOD:item-NNS NMOD:available-JJ,item available,1,0
-42009,NMOD:Mill-NP NMOD:Oak-NP,Mill Oak,14,10.05445089223305
+42009,NMOD:Mill-NP NMOD:Oak-NP,Mill Oak,14,10.05489424864257
 42010,NMOD:Corner-NP NMOD:TV-NP,Corner TV,1,0
-42011,NMOD:TV-NP NMOD:Video-NP,TV Video,7,8.73714940260011
+42011,NMOD:TV-NP NMOD:Video-NP,TV Video,7,8.737592759009631
 42012,NMOD:Video-NP NMOD:Display-NP,Video Display,2,0
 42013,NMOD:Unit-NP NMOD:TV-NP,Unit TV,2,0
 42014,NMOD:Video-NP SBJ:cabinet-NN,Video cabinet,1,0
 42015,SBJ:cabinet-NN ADV:individually-RB,cabinet individually,2,0
 42016,ADV:individually-RB NMOD:stain-VVN,individually stain,1,0
 42017,NMOD:stain-VVN ADV:polishedwhich-RB,stain polishedwhich,1,0
-42018,COORD:enhance-VVZ OBJ:patina-NN,enhance patina,8,9.989912371095478
-42019,OBJ:patina-NN PMOD:oak-NN,patina oak,8,9.296765190535533
-42020,PMOD:oak-NN NMOD:natural-JJ,oak natural,8,8.45843600013109
-42021,NMOD:natural-JJ PMOD:product-NNS,natural product,8,7.542145268256935
-42022,PMOD:product-NNS SBJ:variation-NNS,product variation,8,8.380474458661379
-42023,SBJ:variation-NNS PMOD:colour-NN,variation colour,8,9.430296583160056
-42024,ADV:in-IN PMOD:colour-NN VC:occur-VV,colour occur,8,10.197551735873724
-42025,DEP:available-JJ PMOD:light-NN,available light,5,9.14619233205616
-42026,PMOD:light-NN COORD:medium-NN,light medium,5,8.635366708290169
-42027,COORD:medium-NN NMOD:dark-JJ,medium dark,5,8.978311459416998
-42028,NMOD:dark-JJ COORD:oak-NN,dark oak,5,9.201455010731209
-42029,SBJ:item-NNS NMOD:available-VVG,item available,6,10.305765320513956
+42018,COORD:enhance-VVZ OBJ:patina-NN,enhance patina,8,9.990355727505
+42019,OBJ:patina-NN PMOD:oak-NN,patina oak,8,9.297208546945054
+42020,PMOD:oak-NN NMOD:natural-JJ,oak natural,8,8.45887935654061
+42021,NMOD:natural-JJ PMOD:product-NNS,natural product,8,7.542588624666456
+42022,PMOD:product-NNS SBJ:variation-NNS,product variation,8,8.380917815070898
+42023,SBJ:variation-NNS PMOD:colour-NN,variation colour,8,9.430739939569577
+42024,ADV:in-IN PMOD:colour-NN VC:occur-VV,colour occur,8,10.197995092283243
+42025,DEP:available-JJ PMOD:light-NN,available light,5,9.146635688465679
+42026,PMOD:light-NN COORD:medium-NN,light medium,5,8.635810064699688
+42027,COORD:medium-NN NMOD:dark-JJ,medium dark,5,8.97875481582652
+42028,NMOD:dark-JJ COORD:oak-NN,dark oak,5,9.201898367140728
+42029,SBJ:item-NNS NMOD:available-VVG,item available,6,10.306208676923477
 42030,NMOD:Flat-NP NMOD:Screen-NP,Flat Screen,1,0
 42031,NMOD:TV-NP NMOD:Cabinet-NP,TV Cabinet,2,0
 42032,NMOD:Cabinet-NP NMOD:TV-NP,Cabinet TV,3,0

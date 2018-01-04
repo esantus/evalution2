@@ -802,7 +802,7 @@ def test_data() -> None:
 
     nlist_fn = wlist_fn
     dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
-    # dataset.load_pickles(pickle_dir)
+    dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         dataset.add_ngrams(sentence, sentence_no)
