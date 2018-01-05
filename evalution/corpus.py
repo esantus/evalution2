@@ -92,9 +92,10 @@ def _is_stopword(word: AnyStr) -> bool:
     """Returns true if a word is a stopword."""
     if word in data.stopwords or word.endswith("'ll") or word.endswith("'t"):
         return True
+    return False
 
 
-def _open_corpus(corpus_path: AnyStr, encoding: AnyStr = 'ISO-8859-2') -> TextIO:
+def _open_corpus(corpus_path: AnyStr, encoding: AnyStr='ISO-8859-2') -> TextIO:
     """Yield an eval corpus reader.
 
     Args:
@@ -110,8 +111,6 @@ def _open_corpus(corpus_path: AnyStr, encoding: AnyStr = 'ISO-8859-2') -> TextIO
                    os.path.isfile(join(corpus_path, f))]
     else:
         to_open = [corpus_path]
-    if not to_open:
-        raise ValueError("'%s' does not contain any corpus " % corpus_path)
 
     for filename in to_open:
         if os.path.basename(filename).endswith('.gz'):
@@ -248,7 +247,6 @@ class Dataset:
                     pickle.dump(getattr(instance, self.to_pickle),
                                 open(join(instance.pickle_out, self.pickle_file), 'wb'))
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
-
             return pickled_add
 
     @Pickler(to_pickle='ngrams')
@@ -326,9 +324,6 @@ class WordFrequencies:
     def __str__(self):
         return self.word
 
-    def __getitem__(self, item):
-        return self.word[item]
-
 
 class PatternFrequencies:
     def __init__(self, pair: Tuple[str, str], pair_id: int = None):
@@ -348,9 +343,6 @@ class PatternFrequencies:
         self.freq = 0
         self.token, self.lemma, self.pos, self.dep = (collections.Counter()
                                                       for _ in range(4))  # type: MutableMapping[str, int]
-
-    def __getitem__(self, item):
-        return self.pair[item]
 
     def __repr__(self):
         return '%s((%s, %s), %s)' % (self.__class__.__name__, self.pair[0], self.pair[1], str(self.id))
@@ -376,9 +368,6 @@ class Ngram:
         self.lemma = None
         self.freq = 0
         self.probability = None
-
-    def __getitem__(self, item):
-        return self.ngram[item]
 
     def __repr__(self):
         return '%s%s' % (self.__class__.__name__, repr(self.ngram))
@@ -406,9 +395,6 @@ class NgramCollection:
         self.tot_ngram_freq = 0
         self.word_freq = collections.Counter()
         self.ngrams = ngrams if ngrams else {}
-
-    def __getitem__(self, item):
-        return self.ngrams[item]
 
     def __iter__(self):
         for ngram in self.ngrams.values():
