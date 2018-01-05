@@ -190,8 +190,7 @@ class Sentence:
 
 
 class Dataset:
-    def __init__(self, w_list: KeywordProcessor = None, n_list: KeywordProcessor = None, p_list: set = None,
-                 pickle_every: int = None, pickle_out: AnyStr = os.getcwd(), overwrite_pickles: bool = False) -> None:
+    def __init__(self, **kwargs) -> None:
         """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
 
         Args:
@@ -203,19 +202,14 @@ class Dataset:
             overwrite_pickles: if set to False, raise a warning when trying to write on a folder with existing pickles.
         """
 
+        self.__dict__.update(**kwargs)
         self._pickle_names = ('ngrams.p', 'patterns.p', 'frequencies.p')
         self._overwrite_pickles = None
         self.start_from = 0
         self.pickled = None
-        self.ngram_list = n_list
-        self.word_list = w_list
-        self.pattern_list = p_list
-        self.pickle_out = pickle_out
-        self.pickle_every = pickle_every
         self.ngrams = NgramCollection()
         self.patterns = {}
         self.frequencies = {}
-        self.overwrite_pickles = overwrite_pickles
 
     @property
     def overwrite_pickles(self):
@@ -251,15 +245,15 @@ class Dataset:
 
     @Pickler(to_pickle='ngrams')
     def add_ngrams(self, sentence):
-        extract_ngrams(sentence, self.ngram_list, self.ngrams)
+        extract_ngrams(sentence, self.n_list, self.ngrams)
 
     @Pickler(to_pickle='patterns')
     def add_patterns(self, sentence):
-        extract_patterns(sentence, self.pattern_list, self.patterns)
+        extract_patterns(sentence, self.p_list, self.patterns)
 
     @Pickler(to_pickle='frequencies')
     def add_frequencies(self, sentence):
-        extract_frequencies(sentence, self.word_list, self.frequencies)
+        extract_frequencies(sentence, self.w_list, self.frequencies)
 
     def add_ngram_prob(self):
         self.ngrams = add_ngram_probability(self.ngrams)
@@ -302,7 +296,7 @@ class Dataset:
 
 
 class WordFrequencies:
-    def __init__(self, word: AnyStr, stat_id: int = None):
+    def __init__(self, word: AnyStr, stat_id: int=None):
         """Represent a word and its frequency information.
 
         Attributes:
@@ -787,7 +781,8 @@ def test_data() -> None:
     corpus_fn = join(test_dir, 'tiny_corpus.csv')
 
     nlist_fn = wlist_fn
-    dataset = Dataset(get_wlist(wlist_fn), get_wlist(nlist_fn), get_pattern_pairs(plist_fn), 5000, pickle_dir, True)
+    dataset = Dataset(w_list=get_wlist(wlist_fn), n_list=get_wlist(nlist_fn), p_list=get_pattern_pairs(plist_fn),
+                      pickle_every=5000, pickle_out=pickle_dir, overwrite_pickles=True)
     dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
