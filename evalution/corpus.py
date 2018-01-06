@@ -168,9 +168,14 @@ def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
 
 
 class Sentence:
+    __slots__ = 'words',
+
     def __init__(self, words: List[Word]):
         """A sentence composed of several annotated words (Word)."""
         self.words = words
+
+    def __getattr__(self, item):
+        return [w for w in self.words if w.lemma == item]
 
     def __getitem__(self, position):
         return self.words[position]
@@ -210,6 +215,7 @@ class Dataset:
         self.ngrams = NgramCollection()
         self.patterns = {}
         self.frequencies = {}
+        self.overwrite_pickles = kwargs['overwrite_pickles']
 
     @property
     def overwrite_pickles(self):
@@ -238,8 +244,9 @@ class Dataset:
                 if instance.pickle_every \
                         and instance.overwrite_pickles \
                         and not (sentence_no + 1) % instance.pickle_every:
+                    # We need to use a new protocol to pickle objects with __slots__
                     pickle.dump(getattr(instance, self.to_pickle),
-                                open(join(instance.pickle_out, self.pickle_file), 'wb'))
+                                open(join(instance.pickle_out, self.pickle_file), 'wb'), protocol=4)
                     logging.info('%s pickled in: %s' % (self.pickle_file, instance.pickle_out))
             return pickled_add
 
@@ -272,7 +279,7 @@ class Dataset:
                 if not isinstance(start_from, int):
                     raise TypeError('last_sentence_index.p must be of type int.')
                 self.start_from = start_from
-                logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from))
+                logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from + 1))
         else:
             try:
                 pickles = pickle_names[:3]
@@ -296,8 +303,10 @@ class Dataset:
 
 
 class WordFrequencies:
+    __slots__ = ('word', 'id', 'freq', 'cap', 'norm', 'pos_dep')
+
     def __init__(self, word: AnyStr, stat_id: int=None):
-        """Represent a word and its frequency information.
+        """A __slots__ class representing a word and its frequency information.
 
         Attributes:
             self.word: The lemma of the word we get the frequencies for.
@@ -320,8 +329,10 @@ class WordFrequencies:
 
 
 class PatternFrequencies:
+    __slots__ = ('pair', 'id', 'freq', 'token', 'lemma', 'pos', 'dep')
+
     def __init__(self, pair: Tuple[str, str], pair_id: int = None):
-        """Represent a pattern and its frequency information.
+        """A _slots__ class representing a pattern and its frequency information.
 
         Attribues:
             self.pair: The pair of words.
@@ -350,8 +361,10 @@ class PatternFrequencies:
 
 
 class Ngram:
+    __slots__ = ('ngram', 'id', 'lemmas', 'freq', 'probability')
+
     def __init__(self, ngram: Sequence[AnyStr], ngram_id: int=None):
-        """An ngram object.
+        """A __slots__ class representing an ngram.
 
         Args:
             ngram: The elements of the ngram.
@@ -359,7 +372,7 @@ class Ngram:
 
         self.ngram = ngram
         self.id = ngram_id
-        self.lemma = None
+        self.lemmas = None
         self.freq = 0
         self.probability = None
 
