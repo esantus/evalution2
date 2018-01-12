@@ -1,3 +1,4 @@
+# coding=utf-8
 """Functions to generate annotated corpora from raw text files and to extract data from a corpus.
 
 Example:
@@ -55,7 +56,11 @@ import os
 import pickle
 import pprint
 import re
-import reprlib
+try:
+    import reprlib
+except ImportError:
+    import repr as reprlib
+
 from os.path import join
 from typing import AnyStr, List, Mapping, MutableMapping, Set, Sequence, TextIO, Tuple
 
@@ -116,7 +121,7 @@ def _open_corpus(corpus_path: AnyStr, encoding: AnyStr='ISO-8859-2') -> TextIO:
         if os.path.basename(filename).endswith('.gz'):
             corpus = gzip.open(filename, 'rt', encoding=encoding)
         else:
-            corpus = open(filename, 'r', encoding=encoding)
+            corpus = open(filename, encoding=encoding)
         if len(corpus.readline().split("\t")) != len(CORPUS_FIELDS) - 2:
             corpus.close()
             raise ValueError("'%s' is not a valid evalution2 corpus. Try convert_corpus(corpus)." % filename)
@@ -135,7 +140,7 @@ def get_pattern_pairs(wlist: AnyStr, separator: AnyStr = "\t") -> PatternList:
     """
 
     pattern_pairs = set()
-    with open(wlist, 'r') as pattern_reader:
+    with open(wlist) as pattern_reader:
         for line in pattern_reader:
             split_line = tuple(word.strip() for word in line.split(separator))
             if len(split_line) == 2:
@@ -161,7 +166,7 @@ def get_wlist(wlist_fn: AnyStr) -> KeywordProcessor:
     words.non_word_boundaries.add('-')
     words.non_word_boundaries.add('\'')
     # words.add_keyword_from_file(wlist_fn)
-    with open(wlist_fn, 'r', encoding='utf-8') as wlist_reader:
+    with open(wlist_fn, encoding='utf-8') as wlist_reader:
         for line in wlist_reader:
             words.add_keyword(line.strip())
     return words
@@ -194,6 +199,7 @@ class Sentence:
         return ' '.join([word.token for word in self.words])
 
 
+# noinspection PyUnresolvedReferences
 class Dataset:
     def __init__(self, **kwargs) -> None:
         """Dataset object containing ngrams, frequencies and pattern dictionaries, and methods to extract and save them.
@@ -321,8 +327,8 @@ class WordFrequencies:
         self.id = stat_id
         self.freq = 0
         self.cap = {cap: 0 for cap in ("lower", "upper", "title", "other")}
-        self.norm: MutableMapping[str, int] = collections.Counter()
-        self.pos_dep: MutableMapping[str, int] = collections.Counter()
+        self.norm = collections.Counter()  # type: MutableMapping[str, int]
+        self.pos_dep = collections.Counter()  # type: MutableMapping[str, int]
 
     def __str__(self):
         return self.word
@@ -796,13 +802,14 @@ def test_data() -> None:
     nlist_fn = wlist_fn
     dataset = Dataset(w_list=get_wlist(wlist_fn), n_list=get_wlist(nlist_fn), p_list=get_pattern_pairs(plist_fn),
                       pickle_every=5000, pickle_out=pickle_dir, overwrite_pickles=True)
-    dataset.load_pickles(pickle_dir)
+    # dataset.load_pickles(pickle_dir)
     corpus_len = sum(1 for _ in get_sentences(corpus_fn))
     for sentence_no, sentence in enumerate(tqdm.tqdm(get_sentences(corpus_fn), mininterval=0.5, total=corpus_len)):
         dataset.add_ngrams(sentence, sentence_no)
         dataset.add_patterns(sentence, sentence_no)
         dataset.add_frequencies(sentence, sentence_no)
     dataset.add_ngram_prob()
+    # pickle.dump(dataset, open('dataset.p', 'wb'), protocol=4)
     dataset.save_all(output_dir)
 
 
