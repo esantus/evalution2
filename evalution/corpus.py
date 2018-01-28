@@ -282,9 +282,7 @@ class Dataset:
                 self.start_from = 0
             else:
                 start_from = pickle.load(open(join(pickle_names, 'last_sentence_index.p'), 'rb'))
-                if not isinstance(start_from, int):
-                    raise TypeError('last_sentence_index.p must be of type int.')
-                self.start_from = start_from
+                self.start_from = int(start_from)
                 logging.info('Found last_index.p. Resuming from sentence number ' + str(self.start_from + 1))
         else:
             try:
@@ -307,7 +305,7 @@ class Dataset:
         if self.frequencies:
             save_frequencies(self.frequencies, join(output_dir, 'frequencies.csv'))
 
-
+# @dataclass
 class WordFrequencies:
     __slots__ = ('word', 'id', 'freq', 'cap', 'norm', 'pos_dep')
 
@@ -334,6 +332,7 @@ class WordFrequencies:
         return self.word
 
 
+# @dataclass
 class PatternFrequencies:
     __slots__ = ('pair', 'id', 'freq', 'token', 'lemma', 'pos', 'dep')
 
@@ -366,6 +365,7 @@ class PatternFrequencies:
         yield ('dep', self.dep)
 
 
+# @dataclass
 class Ngram:
     __slots__ = ('ngram', 'id', 'lemmas', 'freq', 'probability')
 
@@ -389,6 +389,7 @@ class Ngram:
         return len(self.ngram)
 
 
+# @dataclass
 class NgramCollection:
     def __init__(self, ngrams: Ngram=None):
         """Includes n-grams as Ngram objects and n-gram related frequencies in a corpus.
@@ -473,7 +474,7 @@ def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentenc
                             possible_eos = True
                         word = Word(*word_info)
                         sentence.append(word)
-                        # Beware, +1 is to include whitespaces.
+                        # +1 to include whitespaces.
                         lemma_i += len(word.lemma) + 1
                         token_i += len(word.token) + 1
                     else:
@@ -780,7 +781,7 @@ def save_frequencies(frequencies: MutableMapping, outfile_path: AnyStr) -> None:
                 norm_f.writerow(row)
                 norm_id += 1
             for posdep, freq in word_stat.pos_dep.items():
-                row = [posdep_id, word_id, posdep, freq]
+                eow = [posdep_id, word_id, posdep, freq]
                 posdep_f.writerow(row)
                 posdep_id += 1
             word_id += 1
