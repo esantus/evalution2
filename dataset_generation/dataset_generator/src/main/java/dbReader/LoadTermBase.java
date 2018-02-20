@@ -38,7 +38,7 @@ public class LoadTermBase {
 	public void openDataSource() {
 		String dbConnection = "jdbc:mysql://localhost:3306/"+DBname+"?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8"; 
 		try {
-			conn = DriverManager.getConnection(dbConnection, "your user", "your password");
+			conn = DriverManager.getConnection(dbConnection, "root", "squash33");
 
 		} catch (SQLException e) {
 			System.out.println("Some problem with opening the database");
@@ -504,11 +504,9 @@ public class LoadTermBase {
 		ResultSet rsCN;
 		for (String tempID : idList){
 			if (getPOS(tempID).isEmpty()){
-				newIDList.add(tempID+"\n");
+				newIDList.add(tempID+"/n");
 			}
-			else{
-				newIDList.add(tempID);
-			}
+			newIDList.add(tempID);
 		}
 		StringBuilder builderCN = new StringBuilder();
 		for( int i = 0 ; i < newIDList.size(); i++ ) {
