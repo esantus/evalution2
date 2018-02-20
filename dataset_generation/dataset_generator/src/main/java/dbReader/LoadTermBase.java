@@ -38,7 +38,7 @@ public class LoadTermBase {
 	public void openDataSource() {
 		String dbConnection = "jdbc:mysql://localhost:3306/"+DBname+"?autoReconnect=true&useSSL=false&useUnicode=true&characterEncoding=utf8"; 
 		try {
-			conn = DriverManager.getConnection(dbConnection, "root", "squash33");
+			conn = DriverManager.getConnection(dbConnection, "your user", "your password");
 
 		} catch (SQLException e) {
 			System.out.println("Some problem with opening the database");
