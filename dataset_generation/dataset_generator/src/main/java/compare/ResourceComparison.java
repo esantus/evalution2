@@ -201,7 +201,7 @@ public class ResourceComparison {
 					termiumIDs.addAll(termiumEnglish.get(term));
 					if (inCN.contains(term)){ 
 						
-						//Variable to bacht load the CN subset that matches with BabelNet
+						//Variable to batch load the CN subset that matches with BabelNet
 						cnIDsInBN.addAll(conceptNetEnglish.get(term));
 					}
 				}
@@ -254,7 +254,7 @@ public class ResourceComparison {
 		//Combine the relation targets that have not automatically been stored as well to the DB to ensure that 
 		//each relation has relatums in the DB and check again whether those do not overlap with at least 
 		//one of the TermBase resources
-		writeMissingBNTargets(iateEnglish, termiumEnglish, conceptNetEnglish);
+		//writeMissingBNTargets(iateEnglish, termiumEnglish, conceptNetEnglish);
 
 		//Run through all conceptNet IDs that do not overlap with BabelNet and check 
 		//whether they overlap with IATE or Termium and write the overlapping synsets
@@ -632,12 +632,13 @@ public class ResourceComparison {
 	 */
 	public void mergeEntries(Set<TermEntry> terminology, Long synsetID, String generatedID, Boolean conceptNet){
 		for(TermEntry termEntry : terminology){	
-			if (conceptNet & cnIDs.contains(termEntry.getOriginalEntryID())) { cnIDs.remove(termEntry.getOriginalEntryID()); }
-			if (conceptNet & cnIDs.contains(termEntry.getEntryID())) { cnIDs.remove(termEntry.getEntryID()); }
-			if(generatedID != null & !cnID2synsetID.containsKey(termEntry.getOriginalEntryID())) { 
-				cnID2synsetID.put(termEntry.getOriginalEntryID(), generatedID);
+			if (conceptNet && cnIDs.contains(termEntry.getOriginalEntryID())) { cnIDs.remove(termEntry.getOriginalEntryID()); }
+			if (conceptNet && cnIDs.contains(termEntry.getEntryID())) { cnIDs.remove(termEntry.getEntryID()); }
+			if(generatedID != null) { 
+				if (!cnID2synsetID.containsKey(termEntry.getOriginalEntryID())){cnID2synsetID.put(termEntry.getOriginalEntryID(), generatedID); }
 				if(!cnID2synsetID.containsKey(termEntry.getEntryID())){ cnID2synsetID.put(termEntry.getEntryID(), generatedID); }
 				if (conceptNet) { cnBNrelations.add(termEntry.getOriginalEntryID()); }
+				if (termEntry.getLanguage().equals("en") && !cnID2synsetID.containsKey(termEntry.getSource())){ cnID2synsetID.put(termEntry.getSource(), generatedID); }
 			}
 			Long sourceID;
 			if (conceptNet) { sourceID = source.create(termEntry.getSource(), sessionFactory); }
@@ -779,7 +780,6 @@ public class ResourceComparison {
 			}
 			Long relationID = relationName.create(tempEntry.getRelation().toLowerCase(), sessionFactory);
 			Long targetID = null;
-			System.out.println(cnID2synsetID.keySet());
 			if(cnID2synsetID.containsKey(tempEntry.getTarget())) { 
 				targetID = synsetIDs.create(cnID2synsetID.get(tempEntry.getTarget()), sessionFactory);
 			}
