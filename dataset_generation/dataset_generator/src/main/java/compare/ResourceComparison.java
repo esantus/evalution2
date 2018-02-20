@@ -254,7 +254,7 @@ public class ResourceComparison {
 		//Combine the relation targets that have not automatically been stored as well to the DB to ensure that 
 		//each relation has relatums in the DB and check again whether those do not overlap with at least 
 		//one of the TermBase resources
-		//writeMissingBNTargets(iateEnglish, termiumEnglish, conceptNetEnglish);
+		writeMissingBNTargets(iateEnglish, termiumEnglish, conceptNetEnglish);
 
 		//Run through all conceptNet IDs that do not overlap with BabelNet and check 
 		//whether they overlap with IATE or Termium and write the overlapping synsets
