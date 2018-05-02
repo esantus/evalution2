@@ -44,7 +44,6 @@ Authors:
 
 Todo:
     * Add function to extract from raw text.
-    * Add test sets.
 """
 
 import collections
@@ -418,7 +417,7 @@ class NgramCollection:
         return len(self.ngrams)
 
 
-def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr = 'utf-8') -> Sentence:
+def get_sentences(corpus_fn: AnyStr, file_encoding: AnyStr='utf-8') -> Sentence:
     """
     Yield all the sentences in an eval corpus file as a list of Word namedtuples.
 
