@@ -286,7 +286,7 @@ class Dataset:
         else:
             try:
                 pickles = pickle_names[:3]
-            except:
+            except IndexError:
                 raise TypeError('pickle_names must be a string or a sequence of len 4.')
             else:
                 self.start_from = pickles[3] if pickles[3] else 0
@@ -303,6 +303,7 @@ class Dataset:
             save_patterns(self.patterns, join(output_dir, 'patterns.csv'))
         if self.frequencies:
             save_frequencies(self.frequencies, join(output_dir, 'frequencies.csv'))
+
 
 # @dataclass
 class WordFrequencies:
@@ -780,7 +781,7 @@ def save_frequencies(frequencies: MutableMapping, outfile_path: AnyStr) -> None:
                 norm_f.writerow(row)
                 norm_id += 1
             for posdep, freq in word_stat.pos_dep.items():
-                eow = [posdep_id, word_id, posdep, freq]
+                row = [posdep_id, word_id, posdep, freq]
                 posdep_f.writerow(row)
                 posdep_id += 1
             word_id += 1
