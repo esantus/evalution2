@@ -13,7 +13,7 @@ First, we extract a list of words (get_wlist) or pair of words (get_pattern_list
 >>> wlist_fn = join('..', 'data', 'test',  'wordlist_long.csv')
 >>> wlist = get_wlist(wlist_fn)
 
-We can use the word list to initialize a Dataset instance (or to coll the add_ functions directly).
+We can use the word list to initialize a Dataset instance (or to call the add_ functions directly).
 
 >>> dataset = Dataset(wlist)
 
@@ -66,7 +66,8 @@ from typing import AnyStr, List, Mapping, MutableMapping, Set, Sequence, TextIO,
 import tqdm
 from flashtext import KeywordProcessor
 
-from evalution import data
+# from evalution import data
+import data
 
 logger = logging.getLogger(__name__)
 #: Corpus fields in an eval corpus
