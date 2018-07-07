@@ -96,14 +96,14 @@ that contains information about the semantic relations. Some useful tables are d
 
 A small API is provided that processes the most frequent queries.
 
-*all_words(lang)*: return a list of words from lang
+`all_words(lang)`: return a list of words from lang
 
-*all_rels(rel)*: return a list of all words related by rel.
+`all_rels(rel)`: return a list of all words related by rel.
     If rel is None, returns a list of all words related by any rel.
 
-*which_rels(w1, w2)*: return the list of relations between w1 and w2
+`which_rels(w1, w2)`: return the list of relations between w1 and w2
 
-*are_rel(w1, w2, rel)*: return True if w1 and w2 are related by a rel,
+`are_rel(w1, w2, rel)`: return True if w1 and w2 are related by a rel,
     if rel is None, return True if w1 and w2 are related by any rel. 
     Return False otherwise.
 
