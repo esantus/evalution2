@@ -12,7 +12,7 @@ from typing import AnyStr
 
 
 def main():
-    db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data/dataset/evalution2.db'))
+    db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../data/dataset/evalution2.db'))
     db = EvaldDB(db_path, verbose=0)
     ## get id from name or name from id. Can be used with lang, name, and rel.
     # db.lang_id('en')
@@ -90,7 +90,7 @@ class EvaldDB:
         # TODO: return self.query(self.word_values(word_ids))
         return self.query('select word_value from word where word_id in (%s)' % word_ids)
 
-    def rel_pairs(self, rel: AnyStr, lang=6) -> set():
+    def rel_pairs(self, rel: AnyStr) -> set():
         """Return a set of pairs of words related by rel. If rel is None, returns a set of all words related by any rel.
 
         Args:
@@ -144,7 +144,6 @@ class EvaldDB:
         # get all the synsets a word appears in
         synsets = self.query('select wordsense_id from allwordsenses '
                              'where language_id = %s and word_id = %s' % (self.lang_id(lang), self.word_id(word)))
-        print(synsets)
         # then get all the words in each of those synsets.
         for sense_id in synsets:
             synsets = [self.word_name(word_id[0]) for word_id in \
