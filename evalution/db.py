@@ -3,28 +3,68 @@
 
 import collections
 import os
+import pickle
 import sqlite3
 
+import tqdm
 
 from typing import AnyStr
 
 
+def main():
+    db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data/dataset/evalution2.db'))
+    db = EvaldDB(db_path, verbose=1)
+    db.synset_of('Bank')
+    # db.lang_id('en')
+    # db.lang_name(6)
+    # db.all_words('en')
+    # pickle.dump(db.synonyms(), open('syns.p', 'wb'))
+    # TODO: db.rel_pairs('isa')
+    # TODO: db.are_rel('Auto serviço', 'livello', 'isa')
+    # print(db.are_syns('Behaviorism', 'Behaviourism'))
+    # print(db.are_syns('Behaviorism', 'Bank'))
+
+
 class EvaldDB:
     """A connection object to an evalution db with some useful queries as methods."""
-    def __init__(self, db_name='/dataset/evaluation2.db'):
+    def __init__(self, db_name, verbose=1):
         if not os.path.exists(db_name):
             answer = input(db_name + ' does not exist. Do you want to download it (230MB)? [Y/n]')
-            print(answer)
-            raise ValueError()
+            raise ValueError(answer)
 
-        self.conn = sqlite3.connect('example.db')
+        self.verbose = verbose
+        self.conn = sqlite3.connect(db_name)
         self.cursor = self.conn.cursor()
         self.result_history_len = 5
         self.result_history = collections.deque(maxlen=self.result_history_len)
+        self.relations = dict()
 
-    def lang_id(self, lang_code):
+    # TODO: refactor this garbage to use an ORM.
+    def lang_id(self, lang_name):
         """Return the lang id from the two character language code."""
-        return self.query('select language_id from language where language_value=?', lang_code)
+        return self.query('select language_id from language where language_value like "%s"' %
+                          str(lang_name.lower()))[0][0]
+
+    def lang_name(self, lang_code):
+        """Return the lang name from the lang id."""
+        return self.query('select language_value from language where language_id = %s' % str(lang_code))[0][0]
+
+    def word_id(self, word_name):
+        """Return a word value from it's id(s)."""
+        return self.query('select word_id from word where word_value = "%s"' % str(word_name.lower()))[0][0]
+
+    def word_name(self, word_id):
+        """Return a word value from it's id(s)."""
+        return self.query('select word_value from word where word_id = %s' % str(word_id))[0][0]
+
+    def rel_id(self, rel_name):
+        """Return a relation id from a relation name."""
+        return self.query('select relationName_id from relationname where relationName_value = "%s"'
+                          % rel_name.lower())[0][0]
+
+    def rel_name(self, rel_id):
+        """Return a relation name from a relation id."""
+        return self.query('select relationName_value from relationname where relationName_id = %s' % rel_id)[0][0]
 
     def all_words(self, lang: AnyStr) -> set():
         """Returns all words in a language.
@@ -36,12 +76,16 @@ class EvaldDB:
         Returns:
             A set containing the words in the dataset.
         """
+        try:
+            int(lang)
+        except ValueError:
+            lang = self.lang_id(lang)
+        # Select subsqueries seem to be way slower.
+        word_ids = "select word_id from allwordsenses where language_id = %s" % str(lang)
+        # TODO: return self.query(self.word_values(word_ids))
+        return self.query('select word_value from word where word_id in (%s)' % word_ids)
 
-        if not self.query('select word_id from allwordsenses where language_id=?', lang):
-            self.query('select word_id from allwordsenses where language_id=?', self.lang_id(lang))
-            return self.result_history[-1](1)
-
-    def all_rels(self, rel: AnyStr) -> set():
+    def rel_pairs(self, rel: AnyStr, lang=6) -> set():
         """Return a set of pairs of words related by rel. If rel is None, returns a set of all words related by any rel.
 
         Args:
@@ -50,25 +94,73 @@ class EvaldDB:
         Returns:
             A set containing tuples with the two words related by the relation specified.
         """
-        return rel
+        try:
+            int(rel)
+        except ValueError:
+            rel = self.rel_id(rel)
+        # TODO add support for lang.
+        pairs = self.query('select sourcesynset_id, targetsynset_id from synsetrelations where relation_id="%s"' % rel)
+        return pairs
+
+    def synonyms(self, lang='en'):
+        """Returns a set of tuples with all synonyms in a language. The function may take long time to process!
+
+        This function should only be used if you need to alter the main dataset or you need to create a new pickle
+        (e.g. for a new language). A python dictionary with all the synsets in available in /data/synsets/.
+        """
+        # return every sense with more than one word (i.e. a sense with synonyms).
+        syns = dict()
+        sense_ids = self.query('select wordsense_id, count(*) as c from allwordsenses where language_id = %s '
+                               'group by wordsense_id having c = 23' % self.lang_id(lang))
+        for no, sense in enumerate(tqdm.tqdm(sense_ids, mininterval=0.5, total=len(sense_ids))):
+            words = set(self.query('select ( select word_value from word where word_id = allwordsenses.word_id ) '
+                                   'from allwordsenses where wordsense_id = %s' % sense[0]))
+            syns[sense[0]] = words
+        return syns
 
     def which_rels(self, w1: AnyStr, w2: AnyStr) -> set():
-        """Returns a set containing the relations on w1 and w2 (order sensitive)."""
-        return w1, w2
+        """Returns a set containing the relations from w1 to w2 (order sensitive)."""
+        pass
 
-    def are_rel(self, w1: AnyStr, w2: AnyStr, rel: AnyStr) -> bool:
+    def are_rel(self, w1: AnyStr, w2: AnyStr, rel='syn') -> bool:
         """Returns True if w1 and w2 are related by a rel, if rel is None, return True if w1 and w2 are related by any rel.
         Return False otherwise."""
-        return True
+        if rel:
+            res = self.query('select relation_id from synsetrelations where '
+                             'sourcesynset_id=%s and targetsynset_id=%s and relation_id=%s;' % (
+                              self.word_id(w1), self.word_id(w2), self.rel_id(rel)))
+        else:
+            res = self.query('select relation_id from synsetrelations where '
+                             'sourcesynset_id=%s and targetsynset_id=%s' % (
+                              self.word_id(w1), self.word_id(w2)))
 
-    def query(self, sql, arg=''):
+        return True if res else False
+
+    def are_syns(self, w1, w2, lang='en'):
+        """Returns true if two words are synonyms."""
+        result = self.query('select count(*) from allwordsenses where (word_id = %s or word_id = %s) '
+                            'and language_id = %s group by wordsense_id' % (
+                             self.word_id(w1), self.word_id(w2), self.lang_id(lang)))
+        return True if result[0][0] > 1 else False
+
+    def synset_of(self, word):
+        """Returns the synsets where `word` appears."""
+        synsets = self.query('select wordsense_id from allwordsenses where word_id = %s' % self.word_id(word))
+        for word_id in synsets:
+            yield self.word_name(self.query('select word_id from allwordsenses where word_id = %s' % word_id))
+
+    def query(self, sql: AnyStr) -> AnyStr:
         """Execute an arbitrary query."""
-        self.cursor.execute(sql, arg)
-        self.result_history.append(sql, self.cursor.fetchone())
-        return self.result_history[-1](1)
+        try:
+            self.cursor.execute(sql)
+        except sqlite3.OperationalError as e:
+            print(e)
 
-    def rows(self):
-        return self.cursor.rowcount
+        result = self.cursor.fetchall()
+        if self.verbose:
+            print("entries: %d\n\t%s -> %s" % (len(result), sql, result[:5]))
+        self.result_history.append((sql, result))
+        return self.result_history[-1][1]
 
     def __enter__(self):
         return self
@@ -77,3 +169,6 @@ class EvaldDB:
         if self.conn:
             self.conn.close()
         return exc_type, exc_val, exc_tb
+
+
+main()
