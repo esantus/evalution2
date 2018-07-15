@@ -13,20 +13,21 @@ from typing import AnyStr
 
 def main():
     db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../data/dataset/evalution2.db'))
+    # use verbose=1 for debugging.
     db = EvaldDB(db_path, verbose=0)
     ## get id from name or name from id. Can be used with lang, name, and rel.
-    # db.lang_id('en')
-    # db.lang_name(6)
+    db.lang_id('en')
+    db.lang_name(6)
     ## get all words in a language
     # db.all_words('en')
     ## get all synonyms in a language
     # pickle.dump(db.synonyms('en'), open('syns.p', 'wb'))
     ## return True of two words are synonyms.
-    # print(db.are_syns('Behaviorism', 'Behaviourism'))
-    # print(db.are_syns('Behaviorism', 'Bank'))
+    print(db.are_syns('Behaviorism', 'Behaviourism'))
+    print(db.are_syns('Behaviorism', 'Bank'))
     ## yield all synsets the argument word appears in.
-    for synset in db.synset_of('Bank'):
-        print(synset)
+    # for synset in db.synset_of('Bank'):
+    #   print(synset)
     # TODO: db.rel_pairs('isa')
     # TODO: db.are_rel('Auto serviço', 'livello', 'isa')
 
