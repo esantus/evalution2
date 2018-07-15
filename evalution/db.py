@@ -13,17 +13,22 @@ from typing import AnyStr
 
 def main():
     db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data/dataset/evalution2.db'))
-    db = EvaldDB(db_path, verbose=1)
-    db.synset_of('Bank')
+    db = EvaldDB(db_path, verbose=0)
+    ## get id from name or name from id. Can be used with lang, name, and rel.
     # db.lang_id('en')
     # db.lang_name(6)
+    ## get all words in a language
     # db.all_words('en')
-    # pickle.dump(db.synonyms(), open('syns.p', 'wb'))
-    # TODO: db.rel_pairs('isa')
-    # TODO: db.are_rel('Auto serviço', 'livello', 'isa')
+    ## get all synonyms in a language
+    # pickle.dump(db.synonyms('en'), open('syns.p', 'wb'))
+    ## return True of two words are synonyms.
     # print(db.are_syns('Behaviorism', 'Behaviourism'))
     # print(db.are_syns('Behaviorism', 'Bank'))
-
+    ## yield all synsets the argument word appears in.
+    for synset in db.synset_of('Bank'):
+        print(synset)
+    # TODO: db.rel_pairs('isa')
+    # TODO: db.are_rel('Auto serviço', 'livello', 'isa')
 
 class EvaldDB:
     """A connection object to an evalution db with some useful queries as methods."""
@@ -122,19 +127,10 @@ class EvaldDB:
         """Returns a set containing the relations from w1 to w2 (order sensitive)."""
         pass
 
-    def are_rel(self, w1: AnyStr, w2: AnyStr, rel='syn') -> bool:
+    def are_rel(self, w1: AnyStr, w2: AnyStr, rel) -> bool:
         """Returns True if w1 and w2 are related by a rel, if rel is None, return True if w1 and w2 are related by any rel.
         Return False otherwise."""
-        if rel:
-            res = self.query('select relation_id from synsetrelations where '
-                             'sourcesynset_id=%s and targetsynset_id=%s and relation_id=%s;' % (
-                              self.word_id(w1), self.word_id(w2), self.rel_id(rel)))
-        else:
-            res = self.query('select relation_id from synsetrelations where '
-                             'sourcesynset_id=%s and targetsynset_id=%s' % (
-                              self.word_id(w1), self.word_id(w2)))
-
-        return True if res else False
+        pass
 
     def are_syns(self, w1, w2, lang='en'):
         """Returns true if two words are synonyms."""
@@ -143,11 +139,19 @@ class EvaldDB:
                              self.word_id(w1), self.word_id(w2), self.lang_id(lang)))
         return True if result[0][0] > 1 else False
 
-    def synset_of(self, word):
+    def synset_of(self, word, lang='en', min_len=2):
         """Returns the synsets where `word` appears."""
-        synsets = self.query('select wordsense_id from allwordsenses where word_id = %s' % self.word_id(word))
-        for word_id in synsets:
-            yield self.word_name(self.query('select word_id from allwordsenses where word_id = %s' % word_id))
+        # get all the synsets a word appears in
+        synsets = self.query('select wordsense_id from allwordsenses '
+                             'where language_id = %s and word_id = %s' % (self.lang_id(lang), self.word_id(word)))
+        print(synsets)
+        # then get all the words in each of those synsets.
+        for sense_id in synsets:
+            synsets = [self.word_name(word_id[0]) for word_id in \
+                       self.query('select word_id from allwordsenses where wordsense_id = %s' % sense_id[0])]
+            # TODO: is it normal that there are so many singleton synsets?
+            if len(synsets) >= min_len:
+                yield (sense_id, synsets)
 
     def query(self, sql: AnyStr) -> AnyStr:
         """Execute an arbitrary query."""
