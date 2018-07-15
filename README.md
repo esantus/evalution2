@@ -54,7 +54,8 @@ TBF
 The dataset is an SQLite database (also available in MySQL format) 
 that contains information about the semantic relations. Some useful tables are described below.
 
-*allwordsenses* - maps word id to their synsets
+*allwordsenses* - maps word id to their synsets. Words with the same sense are
+synonyms. Words with the same word_id are homographs. 
 
 * word_id
 * language_id
@@ -94,16 +95,4 @@ that contains information about the semantic relations. Some useful tables are d
 
 #### dataset API
 
-A small API is provided that processes the most frequent queries.
-
-`all_words(lang)`: return a list of words from lang
-
-`all_rels(rel)`: return a list of all words related by rel.
-    If rel is None, returns a list of all words related by any rel.
-
-`which_rels(w1, w2)`: return the list of relations between w1 and w2
-
-`are_rel(w1, w2, rel)`: return True if w1 and w2 are related by a rel,
-    if rel is None, return True if w1 and w2 are related by any rel. 
-    Return False otherwise.
 
