@@ -2,16 +2,17 @@
 
 import collections
 import datetime
+import itertools
 import os
 import pickle
 import random
 
 import numpy as np
 
-from . import baseline
+from evalution import db
 
 
-def split_relations(relations, splits=(60, 20, 20)):
+def split_relations(relations_to_test, all_relations, splits=(60, 20, 20), size=500):
     """Returns a tuple containing training, validation and test dataset.
 
     Args:
@@ -23,15 +24,30 @@ def split_relations(relations, splits=(60, 20, 20)):
     """
 
     Datasets = collections.namedtuple('Datasets', ['training', 'validation', 'test'])
-    datasets = Datasets()
-    for dataset in range(3):
-        for rel_kind in relations:
-            # TODO: does 60, 20, 20 means 60% of the total or 60% from each relation?
-            dataset_instances = len(rel_kind) // splits[dataset]
-            for _ in range(dataset_instances):
-                rel_to_add = relations[rel_kind].pop(random.randint(0, len(relations[rel_kind])))
-                datasets[dataset][rel_kind].append(rel_to_add)
-    return datasets
+    datasets = Datasets([], [], [])
+    eval_db = db.EvaldDB()
+    for dataset_no in range(3):
+        len_dataset = int(size/100*splits[dataset_no])
+        for rel_kind in relations_to_test:
+            if rel_kind == 'synonym':
+                synsets = [k for k in all_relations[rel_kind].keys()]
+                random.shuffle(synsets)
+                for synset in synsets:
+                    for s in itertools.combinations(all_relations[synset], 2):
+                        if len(datasets.training) >= len_dataset:
+                            return datasets
+                        datasets.training.append(s)
+            else:
+                random.shuffle(all_relations[rel_kind])
+                for synset_rel in all_relations[rel_kind]:
+                    words_right = eval_db.words_in_synset(synset_rel[0])
+                    words_left = eval_db.words_in_synset(synset_rel[1])
+                    list(itertools.product(words_right, words_left))
+                    for rel in list(itertools.product(words_right, words_left)):
+                        if len(datasets.training) >= len_dataset:
+                            return datasets
+                        datasets.training.append(rel)
+            return datasets
 
 
 def evaluate_model(true_relations, pred_relations):
@@ -106,13 +122,19 @@ def format_report(report_data, pdf=False):
 
 
 def main():
-    data_dir = ''
-    relations = pickle.load(os.path.join(data_dir, 'all_relations_en.p'))
-    splitted_relations = split_relations(relations, splits=(50, 30, 20))
-    y_true, y_pred = evaluate_model(splitted_relations, baseline.test_baseline())
-    report_data = generate_report_data(y_true, y_pred)
-    print(format_report(report_data))
-    print('\n----\nPDF generated at:' + format_report(report_data, pdf=True))
+    dataset_dir = os.path.normpath(os.path.join(os.path.dirname(__file__), os.pardir + '/data/dataset/'))
+    syns_path = os.path.join(dataset_dir, 'syns.p')
+    all_relations = dict()
+    print(syns_path)
+    with open(syns_path, 'rb') as syns:
+        all_relations['synonym'] = pickle.load(syns)
+    all_relations['hypernym'] = ''
+    relations_to_test = ['synonym', 'hypernym']
+    splitted_relations = split_relations(relations_to_test, all_relations, splits=(50, 30, 20))
+    # y_true, y_pred = evaluate_model(splitted_relations, baseline.test_baseline())
+    # report_data = generate_report_data(y_true, y_pred)
+    # print(format_report(report_data))
+    # print('\n----\nPDF generated at:' + format_report(report_data, pdf=True))
 
 
 if __name__ == "__main__":
