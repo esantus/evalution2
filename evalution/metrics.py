@@ -7,11 +7,20 @@ import random
 
 import numpy as np
 
-import baseline_emb as baseline
-from evalution import db
+from evalution import db, baseline_emb
 
 
-def split_relations(relations_to_test, splits=(60, 20, 20), size=1000):
+def flatten_datasets(rel_datasets):
+    """Take a dictionary of different kind of relations, and returns them in tuple format."""
+    flattened_datasets = [[], [], []]
+    for kind in rel_datasets.keys():
+        for i in range(0, 3):
+            for rel in rel_datasets[kind][i]:
+                flattened_datasets[i].append([*rel, kind])
+    return flattened_datasets
+
+
+def split_relations(relations_to_test, splits=(60, 20, 20), size=1000, flatten=True):
     """Returns a tuple containing training, validation and test dataset.
 
     Args:
@@ -26,7 +35,7 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000):
     dataset_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../data/dataset/'))
     db_path = os.path.join(dataset_path, 'evalution2.db')
     datasets = {k: [[], [], []] for k in relations_to_test}
-    eval_db = db.EvaldDB(db_path, verbose=1)
+    eval_db = db.EvaldDB(db_path, verbose=False)
     for rel_kind in relations_to_test:
         if rel_kind != 'synonym':
             relations = eval_db.rel_pairs(rel_kind)
@@ -54,7 +63,10 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000):
                         datasets[rel_kind][dataset_no].append(
                                 word_relations.pop(random.randint(0, len(word_relations)-1)))
                     break
-    return datasets
+    if flatten:
+        return flatten_datasets(datasets)
+    else:
+        return datasets
 
 
 def evaluate_model(true_relations, pred_relations):
@@ -129,10 +141,9 @@ def format_report(report_data, pdf=False):
 
 def main():
     relations_to_test = ['synonym']
-    datasets = split_relations(relations_to_test, splits=(80, 0, 20))
-    results = baseline.classify(datasets[0], datasets[1], datasets[2])
-    ## RESULTS = DICTIONARY OF CLASSIFIER+COMBINATION_TYPE, EACH OF WHICH CONTAINING test, predictions
-    #evaluate_model(datasets[2], baseline.test_baseline())
+    datasets = split_relations(relations_to_test, splits=(50, 30, 20), size=100, flatten=True)
+    baseline_emb.classify(*datasets)
+    # y_true, y_pred = evaluate_model(datasets[2], baseline.test_baseline())
     # report_data = generate_report_data(y_true, y_pred)
     # print(format_report(report_data))
     # print('\n----\nPDF generated at:' + format_report(report_data, pdf=True))
