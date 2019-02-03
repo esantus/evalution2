@@ -5,10 +5,12 @@ Created on Tue Jan  8 18:24:09 2019
 @author: esantus
 """
 
+import codecs
 # Load the Embeddings
 import os
-import numpy as np
 import pickle as p
+
+import numpy as np
 
 
 def load_embeddings(emb_path, emb_dims):
@@ -28,7 +30,7 @@ def load_embeddings(emb_path, emb_dims):
         return p.load(open(pickle_emb_path, 'rb'))
 
     # Load the file
-    lines = open(emb_path).readlines()
+    lines = codecs.open(emb_path, 'r', 'utf-8').readlines()
     
     # Creating the list and adding the PADDING embedding
     emb_tensor = [np.zeros(emb_dims)]
