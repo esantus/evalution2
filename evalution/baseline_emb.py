@@ -50,13 +50,15 @@ def load_dataset(dataset, combinations, embs, w2i):
         w1_emb = get_vec(w1, embs, w2i)
         w2_emb = get_vec(w2, embs, w2i)
         if w1_emb != np.array([]) and w2_emb != np.array([]):
-            ds.append((w1, w2, rel))
+            ds.append([w1, w2, rel])
             for combination in combinations:
                 if combination not in X:
                     X[combination] = []
                     Y[combination] = []
                 X[combination].append(combine(w1_emb, w2_emb, combination))
                 Y[combination].append(rel)
+        else:
+            print('Warning Out-Of-Vocabulary (line removed from the dataset): {}, {}, {}'.format(w1, w2, rel))
     return X, Y, ds
 
 
@@ -84,6 +86,12 @@ def load_classifier(clf_name):
         return AdaBoostClassifier()
 
 
+def print_predictions(y_true, y_pred, N=7):
+    print("GROUND TRUTH\t\tPREDICTION")
+    for ground_truth, pred in zip(y_true[:N], y_pred[:N]):
+        print("{}\t\t{}".format(ground_truth, pred))
+
+
 def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../data/embeddings/glove.6B.300d.txt', emb_dims=300):
     '''
     Load the embeddings and turn the datasets in a format that is
@@ -94,18 +102,33 @@ def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combination
     clf = {}
     results = {}
 
+    print('Original length of the datasets: train ({}), dev ({}), test ({})'.format(len(train), len(dev), len(test)))
     X_train, Y_train, train = load_dataset(train, combinations, embs, w2i)
     X_dev, Y_dev, dev = load_dataset(dev, combinations, embs, w2i)
     X_test, Y_test, test = load_dataset(test, combinations, embs, w2i)
+    print('Length of the processed datasets (embeddings): train ({}), dev ({}), test ({})'.format(len(train), len(dev),
+                                                                                                  len(test)))
+
+    if len(train) < 20 or len(test) < 20:
+        print('The dataset does not contain enough examples'.format(len(train), len(dev),
+                                                                                                  len(test)))
+        return {}
 
     for clf_name in clfs:
         clf[clf_name] = load_classifier(clf_name)
 
         for comb in X_train:
-            clf[clf_name].fit(X_train[comb], Y_train[comb])
-            print('Classifier: {}\nScore is: {}'.format(clf_name, clf[clf_name].score(X_test, Y_test)))
-            results[clf_name + ' ' + comb] = (test, clf[clf_name].predict(X_test, Y_test))
 
+            if len(set(Y_test[comb])) == 1:
+                print(
+                    "It is useless to train a classifier to predict only one class: {}. Add classes to the data.".format(
+                        set(Y_test[comb])))
+                return {}
+
+            clf[clf_name].fit(X_train[comb], Y_train[comb])
+            print('\nClassifier: {}\nScore is: {}'.format(clf_name, clf[clf_name].score(X_test[comb], Y_test[comb])))
+            print_predictions(Y_test[comb], clf[clf_name].predict(X_test[comb]), 10)
+            results[clf_name + ' ' + comb] = (test, clf[clf_name].predict(X_test[comb]))
     return results
 
 

@@ -166,7 +166,8 @@ class EvaldDB:
         words = self.query('select ( select word_value from word where word_id = word2Synset.word_id ) '
                            'from word2Synset where synset_id = %s and language_id = %s' % (str(synset), self.lang_id(lang)))
 
-        words = {w[0].lower() for w in words}
+        #print(words)
+        words = {w[0].lower() for w in words if type(w[0])==str}
         return words
 
 
