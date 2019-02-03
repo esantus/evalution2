@@ -59,7 +59,7 @@ def load_classifier(clf_name):
         return AdaBoostClassifier()
 
 
-def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../embeddings/glove.6B.300d.txt', emb_dims=300):
+def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../data/embeddings/glove.6B.300d.txt', emb_dims=300):
     embs, w2i = emb.load_embeddings(emb_path, emb_dims)
 
     X_train, Y_train, X_dev, Y_dev, X_test, Y_test = [], [], [], [], [], []
