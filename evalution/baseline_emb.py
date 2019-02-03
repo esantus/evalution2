@@ -21,7 +21,7 @@ def get_vec(w, embs, w2i):
     '''
     Return the embedding vector for word w or False
     '''
-    return embs[w2i[w], :] if w in w2i else False
+    return embs[w2i[w], :] if w in w2i else np.array([])
 
 
 def combine(w1, w2, combination):
@@ -49,7 +49,7 @@ def load_dataset(dataset, combinations, embs, w2i):
     for w1, w2, rel in dataset:
         w1_emb = get_vec(w1, embs, w2i)
         w2_emb = get_vec(w2, embs, w2i)
-        if x != False and y != False:
+        if w1_emb != np.array([]) and w2_emb != np.array([]):
             ds.append((w1, w2, rel))
             for combination in combinations:
                 if combination not in X:
@@ -91,19 +91,20 @@ def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combination
     '''
     embs, w2i = emb.load_embeddings(emb_path, emb_dims)
 
-    X_train, Y_train, X_dev, Y_dev, X_test, Y_test = [], [], [], [], [], []
+    clf = {}
+    results = {}
 
     X_train, Y_train, train = load_dataset(train, combinations, embs, w2i)
     X_dev, Y_dev, dev = load_dataset(dev, combinations, embs, w2i)
     X_test, Y_test, test = load_dataset(test, combinations, embs, w2i)
 
     for clf_name in clfs:
-        clf = load_classifier(clf_name)
+        clf[clf_name] = load_classifier(clf_name)
 
         for comb in X_train:
-            clf.fit(X_train[comb], Y_train[comb])
-            print('Classifier: {}\nScore is: {}'.format(clf_name, clf.score(X_test, y_test)))
-            results[clf_name + ' ' + comb] = (test, clf.predict(X_test, y_test))
+            clf[clf_name].fit(X_train[comb], Y_train[comb])
+            print('Classifier: {}\nScore is: {}'.format(clf_name, clf[clf_name].score(X_test, Y_test)))
+            results[clf_name + ' ' + comb] = (test, clf[clf_name].predict(X_test, Y_test))
 
     return results
 
