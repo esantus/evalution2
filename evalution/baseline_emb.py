@@ -30,9 +30,9 @@ def combine(w1, w2, combination):
         return w1 * w2
 
 
-def load_dataset(train, combinations, embs, w2i):
+def load_dataset(dataset, combinations, embs, w2i):
     X, Y = {}, {}
-    for w1, w2, rel in train:
+    for w1, w2, rel in dataset:
         for combination in combinations:
             if combination not in X:
                 X[combination] = []
@@ -65,7 +65,7 @@ def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combination
     X_train, Y_train, X_dev, Y_dev, X_test, Y_test = [], [], [], [], [], []
 
     X_train, Y_train = load_dataset(train, combinations, embs, w2i)
-    X_dev, Y_dev = load_dataset(dev, combinations, embs, w2i)
+    #X_dev, Y_dev = load_dataset(dev, combinations, embs, w2i)
     X_test, Y_test = load_dataset(test, combinations, embs, w2i)
 
     for clf_name in clfs:
