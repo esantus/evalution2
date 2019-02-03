@@ -7,6 +7,7 @@ import random
 
 import numpy as np
 
+import baseline_emb as baseline
 from evalution import db
 
 
@@ -128,8 +129,10 @@ def format_report(report_data, pdf=False):
 
 def main():
     relations_to_test = ['synonym']
-    datasets = split_relations(relations_to_test, splits=(50, 30, 20))
-    # y_true, y_pred = evaluate_model(datasets[2], baseline.test_baseline())
+    datasets = split_relations(relations_to_test, splits=(80, 0, 20))
+    results = baseline.classify(datasets[0], datasets[1], datasets[2])
+    ## RESULTS = DICTIONARY OF CLASSIFIER+COMBINATION_TYPE, EACH OF WHICH CONTAINING test, predictions
+    #evaluate_model(datasets[2], baseline.test_baseline())
     # report_data = generate_report_data(y_true, y_pred)
     # print(format_report(report_data))
     # print('\n----\nPDF generated at:' + format_report(report_data, pdf=True))

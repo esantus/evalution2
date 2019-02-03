@@ -74,12 +74,8 @@ def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combination
         for comb in X_train:
             clf.fit(X_train[comb], Y_train[comb])
             print('Classifier: {}\nScore is: {}'.format(clf_name, clf.score(X_test, y_test)))
-            results[clf_name + ' ' + comb] = (X_test, y_test, clf.predict(X_test, y_test))
+            results[clf_name + ' ' + comb] = (test, clf.predict(X_test, y_test))
 
     return results
-
-
-
-classify([('one', 'two', 'three'), ('one', 'two', 'three')], [('one', 'two', 'three')], [('one', 'two', 'three')])
 
 
