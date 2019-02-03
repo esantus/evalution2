@@ -50,7 +50,7 @@ class EvaldDB:
     # TODO: refactor this garbage to use an ORM.
     def lang_id(self, lang_name):
         """Return the lang id from the two character language code."""
-        return self.query('select language_id from language where language_value like \'"%s"\'' %
+        return self.query('select language_id from language where language_value like "%s"' %
                           str(lang_name.lower()))[0][0]
 
     def lang_name(self, lang_code):
