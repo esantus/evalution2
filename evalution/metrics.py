@@ -22,32 +22,37 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000):
         A named tuple with three Relations dictionaries (datasets): 'training', 'validation' and 'test'.
     """
 
-    db_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../data/dataset/evalution2.db'))
+    dataset_path = os.path.normpath(os.path.join(os.path.dirname(__file__), '../data/dataset/'))
+    db_path = os.path.join(dataset_path, 'evalution2.db')
     datasets = {k: [[], [], []] for k in relations_to_test}
     eval_db = db.EvaldDB(db_path, verbose=1)
     for rel_kind in relations_to_test:
-        if rel_kind == 'synonym':
-            synonyms = eval_db.synonyms()
-            relations = list(itertools.combinations(synonyms, 2))
-        else:
+        if rel_kind != 'synonym':
             relations = eval_db.rel_pairs(rel_kind)
-            random.shuffle(relations)
-        print(relations)
+        else:
+            relations = eval_db.all_synsets()
+        random.shuffle(relations)
+        # print(relations)
         for dataset_no in range(3):
             len_dataset = int(size / 100 * splits[dataset_no])
             for synset_relation in relations:
-                words_in_domain = eval_db.words_in_synset(synset_relation[0])
-                words_in_codomain = eval_db.words_in_synset(synset_relation[1])
-                word_relations = list(itertools.product(words_in_domain, words_in_codomain))
-                # print(word_relations)
-            if len(datasets[rel_kind][dataset_no]) + len(word_relations) < len_dataset:
-                for r in word_relations:
-                    datasets[rel_kind][dataset_no].append(r)
-            else:
-                relations_left = len_dataset - len(datasets[rel_kind][dataset_no])
-                for i in range(relations_left):
-                    datasets[rel_kind][dataset_no].append(word_relations[i])
-                break
+                if rel_kind != 'synonym':
+                    words_in_domain = eval_db.words_in_synset(synset_relation[0])
+                    words_in_codomain = eval_db.words_in_synset(synset_relation[1])
+                    word_relations = list(itertools.product(words_in_domain, words_in_codomain))
+                else:
+                    words_in_synset = eval_db.words_in_synset(synset_relation)
+                    word_relations = list(itertools.combinations(words_in_synset, 2))
+                num_of_processed_relations = len(datasets[rel_kind][dataset_no])
+                if num_of_processed_relations + len(word_relations) < len_dataset:
+                    for r in word_relations:
+                        datasets[rel_kind][dataset_no].append(r)
+                else:
+                    relations_left = len_dataset - num_of_processed_relations
+                    for _ in range(relations_left):
+                        datasets[rel_kind][dataset_no].append(
+                                word_relations.pop(random.randint(0, len(word_relations)-1)))
+                    break
     return datasets
 
 
@@ -122,7 +127,7 @@ def format_report(report_data, pdf=False):
 
 
 def main():
-    relations_to_test = ['antonym']
+    relations_to_test = ['synonym']
     datasets = split_relations(relations_to_test, splits=(50, 30, 20))
     # y_true, y_pred = evaluate_model(datasets[2], baseline.test_baseline())
     # report_data = generate_report_data(y_true, y_pred)
