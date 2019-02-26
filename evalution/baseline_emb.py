@@ -21,7 +21,22 @@ def get_vec(w, embs, w2i):
     '''
     Return the embedding vector for word w or False
     '''
-    return embs[w2i[w], :] if w in w2i else np.array([])
+    emb = []
+    count = 0
+    for c in w:
+        if c in w2i:
+            count += 1
+
+        if emb == []:
+            emb = embs[w2i[c]] if c in w2i else np.array([0]*len(embs[0]))
+        else:
+            emb += embs[w2i[c]] if c in w2i else np.array([0]*len(embs[0]))
+
+    if count != 0:
+        emb /= count
+
+    print(emb, count)
+    return emb
 
 
 def combine(w1, w2, combination):
