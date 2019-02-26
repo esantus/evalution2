@@ -19,7 +19,7 @@ from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
 
 def get_vec(w, embs, w2i):
     '''
-    Return the embedding vector for word w or False
+    Return the embedding vector for word w or empty vector
     '''
     emb = []
     count = 0
@@ -34,6 +34,8 @@ def get_vec(w, embs, w2i):
 
     if count != 0:
         emb /= count
+    else:
+        print('No embeddings were found')
 
     print(emb, count)
     return emb
@@ -107,7 +109,7 @@ def print_predictions(y_true, y_pred, N=7):
         print("{}\t\t{}".format(ground_truth, pred))
 
 
-def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../data/embeddings/glove.6B.300d.txt', emb_dims=300):
+def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../data/embeddings/char-embeddings.txt', emb_dims=300):
     '''
     Load the embeddings and turn the datasets in a format that is
     compatible to the classifiers.
