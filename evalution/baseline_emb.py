@@ -5,16 +5,13 @@ several classifiers to predict the relation between words.
 author: enrico santus
 """
 
-import numpy as np
-import pdb
 import embeddings as emb
-
-from sklearn.neural_network import MLPClassifier
-from sklearn.neighbors import KNeighborsClassifier
-from sklearn.svm import SVC
-from sklearn.gaussian_process.kernels import RBF
-from sklearn.tree import DecisionTreeClassifier
+import numpy as np
 from sklearn.ensemble import RandomForestClassifier, AdaBoostClassifier
+from sklearn.neighbors import KNeighborsClassifier
+from sklearn.neural_network import MLPClassifier
+from sklearn.svm import SVC
+from sklearn.tree import DecisionTreeClassifier
 
 
 def get_vec(w, embs, w2i):
@@ -92,7 +89,9 @@ def print_predictions(y_true, y_pred, N=7):
         print("{}\t\t{}".format(ground_truth, pred))
 
 
-def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'], combinations=['concat', 'sum', 'mult'], emb_path='../data/embeddings/glove.6B.300d.txt', emb_dims=300):
+def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'],
+             combinations=['concat', 'sum', 'mult'],
+             emb_path='..\data\embeddings\glove.6B.300d.txt', emb_dims=300):
     '''
     Load the embeddings and turn the datasets in a format that is
     compatible to the classifiers.
