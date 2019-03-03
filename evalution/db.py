@@ -77,7 +77,7 @@ class EvaldDB:
         """Return a relation name from a relation id."""
         return self.query('select relationName_value from relationname where relationName_id = %s' % rel_id)[0][0]
 
-    def all_words(self, lang: AnyStr) -> set():
+    def all_words(self, lang: AnyStr = 'en') -> set():
         """Returns all words in a language.
 
         Args:
@@ -94,7 +94,8 @@ class EvaldDB:
         # Select subsqueries seem to be way slower.
         word_ids = "select word_id from allwordsenses where language_id = %s" % str(lang)
         # TODO: return self.query(self.word_values(word_ids))
-        return self.query('select word_value from word where word_id in (%s)' % word_ids)
+        return [w[0] for w in self.query('select word_value from word where '
+                                         'word_id in (%s)' % word_ids)]
 
     def rel_pairs(self, rel: AnyStr) -> set():
         """Return a set of pairs of synsets related by rel. If rel is None, returns a set of all synsets related by any rel.
