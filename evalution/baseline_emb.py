@@ -16,9 +16,26 @@ from sklearn.tree import DecisionTreeClassifier
 
 def get_vec(w, embs, w2i):
     '''
-    Return the embedding vector for word w or False
+    Return the embedding vector for word w or empty vector
     '''
-    return embs[w2i[w], :] if w in w2i else np.array([])
+    emb = []
+    count = 0
+    for c in w:
+        if c in w2i:
+            count += 1
+
+        if emb == []:
+            emb = embs[w2i[c]] if c in w2i else np.array([0] * len(embs[0]))
+        else:
+            emb += embs[w2i[c]] if c in w2i else np.array([0] * len(embs[0]))
+
+    if count != 0:
+        emb /= count
+    else:
+        print('No embeddings were found')
+
+    print(emb, count)
+    return emb
 
 
 def combine(w1, w2, combination):
@@ -92,6 +109,10 @@ def print_predictions(y_true, y_pred, N=7):
 def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'],
              combinations=['concat', 'sum', 'mult'],
              emb_path='..\data\embeddings\glove.6B.300d.txt', emb_dims=300):
+    def classify(train, dev, test, clfs=['random_forest', 'mlp', 'svc'],
+                 combinations=['concat', 'sum', 'mult'],
+                 emb_path='../data/embeddings/char-embeddings.txt',
+                 emb_dims=300):
     '''
     Load the embeddings and turn the datasets in a format that is
     compatible to the classifiers.

@@ -14,15 +14,13 @@ import numpy as np
 
 
 def load_embeddings(emb_path, emb_dims):
-    '''
-    Load the embeddings from a text file
+    """Load the embeddings from a text file
     
         :param emb_path: Path of the text file
         :param emb_dims: Embedding dimensions
         
         :return emb_tensor: tensor containing all word embeedings
-        :return word_to_indx: dictionary with word:index
-    '''
+        :return word_to_indx: dictionary with word:index."""
     
     # Check if the serial version of the embedding exists
     pickle_emb_path = emb_path[:-3]+'p'
