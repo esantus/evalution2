@@ -38,12 +38,14 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000,
     """Returns a tuple containing training, validation and test dataset.
 
     Args:
-        relations_to_test: list of relations to consider (e.g. [Relations['Synonym'], Relations['IsA']])
-        splits: a triplet indicating the size of training, validation and test dataset
+        relations_to_test: list of relations to consider
+            (e.g. [Relations['Synonym'], Relations['IsA']])
+        splits: a triplet indicating the size of training, validation and test
         size: size of the testet for each relation
 
     Returns:
-        A named tuple with three Relations dictionaries (datasets): 'training', 'validation' and 'test'.
+        A named tuple with three Relations dictionaries (datasets):
+        'training', 'validation' and 'test'.
     """
 
     dataset_path = os.path.normpath(
@@ -58,11 +60,10 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000,
         else:
             relations = eval_db.all_synsets()
         random.shuffle(relations)
-        # print(relations)
         for dataset_no in range(3):
             len_dataset = int(size / 100 * splits[dataset_no])
+            word_relations = []
             for synset_relation in relations:
-                word_relations = []
                 if rel_kind != 'synonym':
                     words_in_domain = eval_db.words_in_synset(
                         synset_relation[0])
@@ -107,6 +108,37 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000,
                                 word_relations.pop(
                                     random.randint(0, len(word_relations) - 1)))
                     break
+    return datasets
+
+
+def dump_relations(relations_to_test):
+    """ Return a dictionary where k is the name of the relations, and v is a
+    list of relations """
+    # TODO: dedupe split_relations()
+    dataset_path = os.path.normpath(
+        os.path.join(os.path.dirname(__file__), '../data/dataset/'))
+    db_path = os.path.join(dataset_path, 'evalution2.db')
+    datasets = {k: [[], [], []] for k in relations_to_test}
+    eval_db = db.EvaldDB(db_path, verbose=False)
+    for rel_kind in relations_to_test:
+        if rel_kind == 'synonym':
+            relations = eval_db.all_synsets()
+        else:
+            relations = eval_db.rel_pairs(rel_kind)
+        word_relations = []
+        for synset_relation in relations:
+            if rel_kind == 'synonym':
+                words_in_synset = eval_db.words_in_synset(synset_relation)
+                for w1, w2 in itertools.combinations(words_in_synset, 2):
+                    word_relations.append((w1, w2, rel_kind))
+            else:
+                words_in_domain = eval_db.words_in_synset(
+                    synset_relation[0])
+                words_in_codomain = eval_db.words_in_synset(
+                    synset_relation[1])
+                for w1, w2 in itertools.product(words_in_domain,
+                                                words_in_codomain):
+                    word_relations.append((w1, w2, rel_kind))
     return datasets
 
 
@@ -183,10 +215,11 @@ def format_report(report_data, pdf=False):
 
 def main():
     relations_to_test = ['synonym']
-    datasets = split_relations(relations_to_test, splits=(80, 0, 20),
-                               size=10000)
-    results = baseline_emb.classify(*datasets['synonym'])
+    # datasets = split_relations(relations_to_test, splits=(80, 0, 20),
+    #                           size=10000)
+    all_pairs = dump_relations(relations_to_test)
     pass
+    # results = baseline_emb.classify(*datasets['synonym'])
     # y_true, y_pred = evaluate_model(datasets[2], baseline.test_baseline())
     # report_data = generate_report_data(y_true, y_pred)
     # print(format_report(report_data))
