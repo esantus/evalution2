@@ -1,5 +1,6 @@
 """Generate metrics for a model."""
 
+import codecs
 import datetime
 import itertools
 import os
@@ -7,7 +8,7 @@ import random
 
 import numpy as np
 
-from evalution import db, baseline_emb
+from evalution import db
 
 
 def flatten_datasets(rel_datasets):
@@ -111,35 +112,19 @@ def split_relations(relations_to_test, splits=(60, 20, 20), size=1000,
     return datasets
 
 
-def dump_relations(relations_to_test):
-    """ Return a dictionary where k is the name of the relations, and v is a
-    list of relations """
-    # TODO: dedupe split_relations()
+def dump_synonyms(relations_to_test, lang='en'):
+    """ Return the list of all syns in a language."""
     dataset_path = os.path.normpath(
         os.path.join(os.path.dirname(__file__), '../data/dataset/'))
     db_path = os.path.join(dataset_path, 'evalution2.db')
-    datasets = {k: [[], [], []] for k in relations_to_test}
     eval_db = db.EvaldDB(db_path, verbose=False)
-    for rel_kind in relations_to_test:
-        if rel_kind == 'synonym':
-            relations = eval_db.all_synsets()
-        else:
-            relations = eval_db.rel_pairs(rel_kind)
-        word_relations = []
-        for synset_relation in relations:
-            if rel_kind == 'synonym':
-                words_in_synset = eval_db.words_in_synset(synset_relation)
-                for w1, w2 in itertools.combinations(words_in_synset, 2):
-                    word_relations.append((w1, w2, rel_kind))
-            else:
-                words_in_domain = eval_db.words_in_synset(
-                    synset_relation[0])
-                words_in_codomain = eval_db.words_in_synset(
-                    synset_relation[1])
-                for w1, w2 in itertools.product(words_in_domain,
-                                                words_in_codomain):
-                    word_relations.append((w1, w2, rel_kind))
-    return datasets
+    relations = eval_db.all_synsets()
+    synonyms = []
+    for synset_relation in relations:
+        words_in_synset = eval_db.words_in_synset(synset_relation, lang)
+        for w1, w2 in itertools.combinations(words_in_synset, 2):
+            synonyms.append((w1, w2))
+    return synonyms
 
 
 def evaluate_model(true_relations, pred_relations):
@@ -217,8 +202,13 @@ def main():
     relations_to_test = ['synonym']
     # datasets = split_relations(relations_to_test, splits=(80, 0, 20),
     #                           size=10000)
-    all_pairs = dump_relations(relations_to_test)
-    pass
+    with codecs.open('syns.txt', 'wb') as f:
+        for lang in ['en', 'it', 'de', 'fr', 'es', 'scn', 'ja']:
+            for syn in dump_synonyms(relations_to_test, lang):
+                w1, w2 = syn
+                a = "%s\t%s\t%s\n" % (w1, w2, lang)
+                f.write(bytes(a, 'utf-8'))
+    print('done')
     # results = baseline_emb.classify(*datasets['synonym'])
     # y_true, y_pred = evaluate_model(datasets[2], baseline.test_baseline())
     # report_data = generate_report_data(y_true, y_pred)
